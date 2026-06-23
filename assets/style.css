@@ -21,7 +21,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-snap-type: y mandatory; }
 
 body {
   background: var(--bg);
@@ -172,6 +172,8 @@ body {
   border-radius: var(--radius);
   overflow: hidden;
   background: var(--card);
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 .home-track {
@@ -233,6 +235,8 @@ body {
   background: var(--card);
   display: flex;
   flex-direction: column;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 .work-header {
@@ -345,11 +349,15 @@ body {
 #about {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 3rem;
+  min-height: calc(100vh - var(--page-m));
   margin: 0 var(--page-m) var(--page-m);
   border-radius: var(--radius);
   background: var(--card);
   padding: 3.5rem 1.75rem;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 .about-title {
@@ -433,10 +441,16 @@ body {
    CONTACT
 ───────────────────────────────────────────── */
 #contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: calc(100vh - var(--page-m));
   margin: 0 var(--page-m) var(--page-m);
   border-radius: var(--radius);
   background: var(--card);
   padding: 3.5rem 1.75rem calc(var(--nav-h) + 2.5rem);
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 .contact-inner { max-width: 100%; }
