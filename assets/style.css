@@ -159,3 +159,20 @@ nav {
     flex-shrink: 0;
   }
   
+  /* ─────────────────────────────────────────────
+   SHARED
+───────────────────────────────────────────── */
+.section-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 0.85rem;
+  }
+  
+  .divider {
+    height: 1px;
+    background: var(--line);
+    margin: 0 2.5rem;
+  }
+  
