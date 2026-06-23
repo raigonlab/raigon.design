@@ -28,4 +28,16 @@
   links.querySelectorAll('.nav-link').forEach(function (link) {
     link.addEventListener('click', closeMenu);
   });
+
+  const workMore = document.getElementById('workMore');
+  const workMoreBtn = document.getElementById('workMoreBtn');
+  const workHidden = document.getElementById('workHidden');
+
+  if (workMore && workMoreBtn && workHidden) {
+    workMoreBtn.addEventListener('click', function () {
+      workHidden.hidden = false;
+      workMoreBtn.setAttribute('aria-expanded', 'true');
+      workMore.remove();
+    });
+  }
 })();
