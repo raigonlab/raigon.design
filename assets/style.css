@@ -92,4 +92,70 @@ nav {
     background: var(--ink);
     transition: transform 0.25s, opacity 0.25s;
   }
+  /* ─────────────────────────────────────────────
+   HERO
+───────────────────────────────────────────── */
+#hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 2.5rem 4.5rem;
+  }
+  
+  .hero-eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 1.75rem;
+  }
+  
+  h1.hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(4.5rem, 11vw, 10rem);
+    font-weight: 300;
+    line-height: 0.93;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 2.5rem;
+  }
+  
+  h1.hero-name em {
+    font-style: italic;
+    color: var(--warm);
+  }
+  
+  .hero-bottom {
+    display: flex;
+    align-items: center;
+    gap: 3.5rem;
+  }
+  
+  .hero-role {
+    font-size: 0.85rem;
+    color: var(--mid);
+    line-height: 1.85;
+    max-width: 280px;
+    font-weight: 300;
+  }
+  
+  .hero-scroll {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mid);
+  }
+  
+  .hero-scroll::before {
+    content: '';
+    display: block;
+    width: 44px;
+    height: 1px;
+    background: var(--warm);
+    flex-shrink: 0;
+  }
   
