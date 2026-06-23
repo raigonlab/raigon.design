@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Railson Gonçalves — Designer</title>
+  <title>Rai Gonçalves — Designer</title>
   <meta name="description" content="UX/UI, Web & Graphic Designer based in Zürich. 8+ years of experience in luxury branding and digital identity.">
 
   <!-- Fonts -->
@@ -12,61 +12,64 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav id="mainNav">
-    <a href="#" class="nav-logo">Railson</a>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#work"    onclick="closeMenu()">Work</a></li>
-      <li><a href="#about"   onclick="closeMenu()">About</a></li>
-      <li><a href="#blog"    onclick="closeMenu()">Notes</a></li>
-      <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
-    </ul>
-  </nav>
+  <!-- HOME -->
+  <section id="home" class="home">
+    <div class="home-track" id="homeTrack">
 
-  <!-- HERO -->
-  <section id="hero">
-    <p class="hero-eyebrow">UX/UI · Web · Graphic Designer — Zürich, Switzerland</p>
-    <h1 class="hero-name">
-      Railson<br>
-      <em>Gonçalves</em>
-    </h1>
-    <div class="hero-bottom">
-      <p class="hero-role">
-        Crafting digital experiences and<br>
-        brand identities with<br>
-        precision and purpose.
-      </p>
-      <span class="hero-scroll">Scroll to explore</span>
+      <article class="home-slide" id="home-slide-1">
+        <div class="home-bg"></div>
+        <div class="home-overlay"></div>
+        <div class="home-content">
+          <h1 class="home-title">Own the Sky</h1>
+          <p class="home-subtitle">Unforgettable moments<br>above the world.</p>
+        </div>
+      </article>
+
+      <article class="home-slide" id="home-slide-2">
+        <div class="home-bg"></div>
+        <div class="home-overlay"></div>
+        <div class="home-content">
+          <h1 class="home-title">Design with Purpose</h1>
+          <p class="home-subtitle">Brand identity and digital<br>experiences, crafted with care.</p>
+        </div>
+      </article>
+
+      <article class="home-slide" id="home-slide-3">
+        <div class="home-bg"></div>
+        <div class="home-overlay"></div>
+        <div class="home-content">
+          <h1 class="home-title">Rai Gonçalves</h1>
+          <p class="home-subtitle">UX/UI · Web · Graphic Designer<br>— Zürich, Switzerland</p>
+        </div>
+      </article>
+
     </div>
   </section>
 
   <!-- WORK -->
-  <section id="work">
+  <section id="work" class="work">
     <div class="work-header">
-      <div>
-        <p class="section-label">Selected work</p>
-        <h2 class="work-title">Projects</h2>
-      </div>
-      <span class="work-count">05 projects</span>
+      <p class="section-label">Selected work</p>
+      <h2 class="work-title">Projects</h2>
     </div>
 
-    <div class="projects-track" id="projectsTrack">
+    <div class="work-track" id="workTrack">
 
-      <!-- 1 — Arca_Vault
-           Para adicionar imagem: style="background-image: url('../images/arcavault.jpg');" -->
-      <article class="project-slide p-arcavault">
-        <div class="project-bg"></div>
-        <div class="project-overlay"></div>
-        <div class="project-info">
-          <p class="project-category">UX/UI Design · Fintech</p>
-          <h3 class="project-name">Arca_Vault</h3>
+      <!-- 1 — Arca_Vault -->
+      <article class="work-project p-arcavault" id="project-arcavault">
+        <div class="work-project-main">
+          <div class="project-bg"></div>
+          <div class="project-overlay"></div>
+          <div class="project-info">
+            <p class="project-category">UX/UI Design · Fintech</p>
+            <h3 class="project-name">Arca_Vault</h3>
+          </div>
+        </div>
+        <div class="work-project-details">
           <p class="project-desc">A financial decision app combining banking data, behavioural insights and credit health into a single, clear experience — from problem definition to high-fidelity prototype.</p>
           <div class="project-tags">
             <span class="project-tag">UX Research</span>
@@ -77,12 +80,16 @@
       </article>
 
       <!-- 2 — inxfitness -->
-      <article class="project-slide p-inxfitness">
-        <div class="project-bg"></div>
-        <div class="project-overlay"></div>
-        <div class="project-info">
-          <p class="project-category">Brand Identity · From Scratch</p>
-          <h3 class="project-name">inxfitness</h3>
+      <article class="work-project p-inxfitness" id="project-inxfitness">
+        <div class="work-project-main">
+          <div class="project-bg"></div>
+          <div class="project-overlay"></div>
+          <div class="project-info">
+            <p class="project-category">Brand Identity · From Scratch</p>
+            <h3 class="project-name">inxfitness</h3>
+          </div>
+        </div>
+        <div class="work-project-details">
           <p class="project-desc">Complete brand identity built from zero — symbol, logotype, colour system, typography and full stationery for a fitness community brand.</p>
           <div class="project-tags">
             <span class="project-tag">Logo Design</span>
@@ -93,12 +100,16 @@
       </article>
 
       <!-- 3 — REHXA -->
-      <article class="project-slide p-rehxa">
-        <div class="project-bg"></div>
-        <div class="project-overlay"></div>
-        <div class="project-info">
-          <p class="project-category">Brand Identity · Concept</p>
-          <h3 class="project-name">REHXA</h3>
+      <article class="work-project p-rehxa" id="project-rehxa">
+        <div class="work-project-main">
+          <div class="project-bg"></div>
+          <div class="project-overlay"></div>
+          <div class="project-info">
+            <p class="project-category">Brand Identity · Concept</p>
+            <h3 class="project-name">REHXA</h3>
+          </div>
+        </div>
+        <div class="work-project-details">
           <p class="project-desc">Branding for an autonomous market concept — bold typographic identity designed for the future of AI-driven commerce and retail.</p>
           <div class="project-tags">
             <span class="project-tag">Branding</span>
@@ -109,12 +120,16 @@
       </article>
 
       <!-- 4 — sky-fly -->
-      <article class="project-slide p-skyfly">
-        <div class="project-bg"></div>
-        <div class="project-overlay"></div>
-        <div class="project-info">
-          <p class="project-category">Web Design · UX</p>
-          <h3 class="project-name">sky-fly</h3>
+      <article class="work-project p-skyfly" id="project-skyfly">
+        <div class="work-project-main">
+          <div class="project-bg"></div>
+          <div class="project-overlay"></div>
+          <div class="project-info">
+            <p class="project-category">Web Design · UX</p>
+            <h3 class="project-name">sky-fly</h3>
+          </div>
+        </div>
+        <div class="work-project-details">
           <p class="project-desc">Website design for a paragliding experience company in Switzerland — immersive full-screen layout focused on emotion and conversion.</p>
           <div class="project-tags">
             <span class="project-tag">Web Design</span>
@@ -125,12 +140,16 @@
       </article>
 
       <!-- 5 — kerart -->
-      <article class="project-slide p-kerart">
-        <div class="project-bg"></div>
-        <div class="project-overlay"></div>
-        <div class="project-info">
-          <p class="project-category">Luxury Branding · Art Direction</p>
-          <h3 class="project-name">kerart Gallery</h3>
+      <article class="work-project p-kerart" id="project-kerart">
+        <div class="work-project-main">
+          <div class="project-bg"></div>
+          <div class="project-overlay"></div>
+          <div class="project-info">
+            <p class="project-category">Luxury Branding · Art Direction</p>
+            <h3 class="project-name">kerart Gallery</h3>
+          </div>
+        </div>
+        <div class="work-project-details">
           <p class="project-desc">Creative direction and luxury brand identity for an international fine-art gallery spanning Portugal and Dubai, including Expo 2020 participation.</p>
           <div class="project-tags">
             <span class="project-tag">Art Direction</span>
@@ -141,31 +160,7 @@
       </article>
 
     </div>
-
-    <div class="projects-controls">
-      <div class="projects-dots" id="projectsDots">
-        <div class="dot active"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-      </div>
-      <div class="projects-nav">
-        <button id="prevBtn" aria-label="Previous project">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M19 12H5M5 12l7 7M5 12l7-7"/>
-          </svg>
-        </button>
-        <button id="nextBtn" aria-label="Next project">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 12h14M14 5l7 7-7 7"/>
-          </svg>
-        </button>
-      </div>
-    </div>
   </section>
-
-  <div class="divider" style="margin-top: 5rem;"></div>
 
   <!-- ABOUT -->
   <section id="about">
@@ -173,12 +168,12 @@
       <p class="section-label">About</p>
       <h2 class="about-title">Design with<br><em>purpose</em></h2>
       <p class="about-text">
-        I'm Railson — a designer with 8+ years of experience across luxury branding, UX/UI and digital identity. Currently based in Zürich with a valid B permit, I bring a minimalist-luxury sensibility to every project, balancing visual precision with meaningful user experience.
+        I'm Rai — a designer with 8+ years of experience across luxury branding, UX/UI and digital identity. Currently based in Zürich with a valid B permit, I bring a minimalist-luxury sensibility to every project, balancing visual precision with meaningful user experience.
       </p>
       <p class="about-text">
         Founder of Raigon Lab. Previously led brand design for international art galleries in Portugal and Dubai. Available for full-time roles and freelance projects in Switzerland and beyond.
       </p>
-      <a href="CV_Railson_Goncalves_EN.docx" class="about-cta" download>Download CV →</a>
+      <a href="CV_Rai_Goncalves_EN.docx" class="about-cta" download>Download CV →</a>
     </div>
 
     <div class="about-right">
@@ -209,38 +204,6 @@
     </div>
   </section>
 
-  <div class="divider"></div>
-
-  <!-- BLOG / NOTES -->
-  <section id="blog">
-    <div class="blog-header">
-      <div>
-        <p class="section-label">Notes</p>
-        <h2 class="blog-heading">Thinking out loud</h2>
-      </div>
-      <p class="blog-note-label">Updated occasionally</p>
-    </div>
-    <div class="blog-grid">
-      <div class="blog-card">
-        <p class="blog-date">Jun 2026</p>
-        <h3 class="blog-card-title">What luxury branding taught me about UX</h3>
-        <p class="blog-card-text">Years working in high-end art galleries changed how I think about white space, restraint and the user's attention.</p>
-      </div>
-      <div class="blog-card">
-        <p class="blog-date">May 2026</p>
-        <h3 class="blog-card-title">Designing in a second language</h3>
-        <p class="blog-card-text">Working in German-speaking Switzerland as a Portuguese designer — what gets lost in translation, and what doesn't.</p>
-      </div>
-      <div class="blog-card">
-        <p class="blog-date">Apr 2026</p>
-        <h3 class="blog-card-title">The problem with most portfolio sites</h3>
-        <p class="blog-card-text">They show the output, not the thinking. A reflection on what makes a design case study worth reading.</p>
-      </div>
-    </div>
-  </section>
-
-  <div class="divider"></div>
-
   <!-- CONTACT -->
   <section id="contact">
     <div class="contact-inner">
@@ -268,12 +231,32 @@
 
   <!-- FOOTER -->
   <footer>
-    <span class="footer-name">Railson Gonçalves</span>
+    <span class="footer-name">Rai Gonçalves</span>
     <span class="footer-copy">© 2026 — Zürich, Switzerland</span>
   </footer>
 
-  <!-- JS no final do body -->
-  <script src="js/main.js"></script>
+  <!-- NAV (fixed, bottom, mobile-first) -->
+  <nav id="mainNav" class="main-nav">
+    <a href="#home" class="nav-home" id="navHome" aria-label="Home"></a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+      <span class="nav-toggle-icon nav-toggle-icon--menu" aria-hidden="true">
+        <span></span><span></span>
+      </span>
+      <span class="nav-toggle-icon nav-toggle-icon--close" aria-hidden="true">
+        <span></span><span></span>
+      </span>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#work" class="nav-link" data-nav="work">Work</a></li>
+      <li><a href="#about" class="nav-link" data-nav="about">About</a></li>
+      <li><a href="#contact" class="nav-link" data-nav="contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- JS -->
+  <script src="assets/js/script.js"></script>
 
 </body>
 </html>
