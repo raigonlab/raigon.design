@@ -2,7 +2,7 @@
 
 Personal portfolio website for **Rai Gonçalves**, UX/UI & Graphic Designer based in Zürich, Switzerland.
 
-Live at → **[raigon.design](https://raigon.design)** *(coming soon)*
+Live at → **[raigon.design](https://raigonlab.github.io/raigon.design/)** *(coming soon)*
 
 ---
 
