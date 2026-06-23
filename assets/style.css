@@ -272,7 +272,8 @@ body {
 .work-project::-webkit-scrollbar { display: none; }
 
 .work-project-main,
-.work-project-details {
+.work-project-details,
+.work-project-extra {
   flex: 0 0 100%;
   scroll-snap-align: start;
   height: 100%;
@@ -281,6 +282,8 @@ body {
 .work-project-main {
   position: relative;
   overflow: hidden;
+  /* TEMP placeholder colour — remove once real cover imagery is in */
+  background: #A85D55;
 }
 
 .work-project-details {
@@ -288,6 +291,44 @@ body {
   flex-direction: column;
   justify-content: center;
   padding: 0 1.75rem calc(var(--nav-h) + 1.5rem);
+  /* TEMP placeholder colour — remove once real content replaces it */
+  background: #C9912F;
+}
+
+.work-project-extra {
+  /* TEMP placeholder colour — remove once real content replaces it */
+  background: #2E6670;
+}
+
+.work-project-dots {
+  position: absolute;
+  left: 1.75rem;
+  right: 1.75rem;
+  bottom: calc(var(--nav-h) + 0.75rem);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.work-project-dots .dot {
+  height: 5px;
+  width: 5px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transition: width 0.3s ease, background 0.3s ease;
+}
+
+.work-project-dots .dot.active {
+  background: #fff;
+  width: 16px;
+  border-radius: 3px;
+}
+
+.work-project-arrow {
+  margin-left: auto;
+  color: #fff;
+  font-size: 1.1rem;
+  opacity: 0.8;
 }
 
 .project-bg {
@@ -301,14 +342,15 @@ body {
   position: absolute;
   bottom: 0; left: 0; right: 0;
   padding: 1.5rem 1.75rem calc(var(--nav-h) + 1.5rem);
-  color: var(--ink);
+  /* TEMP: white text while .work-project-main has a flat test colour */
+  color: #fff;
 }
 
 .project-category {
   font-size: 0.62rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--mid);
+  color: rgba(255, 255, 255, 0.7);
   margin-bottom: 0.6rem;
 }
 
@@ -442,12 +484,15 @@ body {
 
 .about-cta:hover { gap: 1.1rem; }
 
+.about-linkedin { margin-top: 1.5rem; }
+
 .skills-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 1px;
   background: var(--line);
   border: 1px solid var(--line);
+  margin-bottom: 1.5rem;
 }
 
 .skill-cell {
@@ -469,20 +514,6 @@ body {
   color: var(--ink);
   line-height: 1.4;
 }
-
-.about-languages { margin-top: 1.5rem; }
-
-.lang-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.65rem 0;
-  border-bottom: 1px solid var(--line);
-  font-size: 0.85rem;
-}
-
-.lang-name { color: var(--ink); }
-.lang-level { color: var(--mid); font-size: 0.72rem; letter-spacing: 0.06em; }
 
 /* ─────────────────────────────────────────────
    CONTACT
