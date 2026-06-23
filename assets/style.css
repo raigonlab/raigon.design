@@ -8,13 +8,16 @@
    TOKENS
 ───────────────────────────────────────────── */
 :root {
-  --bg:    #F5F4F0;
-  --ink:   #0F0F0E;
-  --mid:   #7A7774;
-  --warm:  #B8A898;
-  --line:  #E0DED9;
-  --white: #FAFAF8;
-  --nav-h: 64px;
+  --bg:     #EEF1F4;
+  --card:   #FAFBFC;
+  --ink:    #14171A;
+  --mid:    #767C82;
+  --warm:   #B8A898;
+  --line:   #E2E6EA;
+  --white:  #FFFFFF;
+  --nav-h:  64px;
+  --page-m: 0.75rem;
+  --radius: 28px;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -164,12 +167,15 @@ body {
    HOME — vertical slide track
 ───────────────────────────────────────────── */
 .home {
-  height: 100vh;
+  height: calc(100vh - (var(--page-m) * 2));
+  margin: var(--page-m);
+  border-radius: var(--radius);
   overflow: hidden;
+  background: var(--card);
 }
 
 .home-track {
-  height: 100vh;
+  height: 100%;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
   scrollbar-width: none;
@@ -178,13 +184,13 @@ body {
 .home-track::-webkit-scrollbar { display: none; }
 
 .home-slide {
-  height: 100vh;
+  height: 100%;
   scroll-snap-align: start;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 0 1.5rem calc(var(--nav-h) + 2.5rem);
+  padding: 0 1.75rem calc(var(--nav-h) + 2.25rem);
   overflow: hidden;
 }
 
@@ -195,20 +201,9 @@ body {
   background-position: center;
 }
 
-.home-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(5, 5, 5, 0.65) 0%,
-    rgba(5, 5, 5, 0.15) 50%,
-    transparent 75%
-  );
-}
-
 .home-content {
   position: relative;
-  color: #fff;
+  color: var(--ink);
 }
 
 .home-title {
@@ -224,19 +219,25 @@ body {
   font-size: 0.95rem;
   font-weight: 300;
   line-height: 1.6;
-  opacity: 0.85;
+  color: var(--mid);
 }
-
-/* placeholder backgrounds — replace with real imagery */
-#home-slide-1 .home-bg { background: linear-gradient(165deg, #1b2a3d, #3a587c); }
-#home-slide-2 .home-bg { background: linear-gradient(165deg, #1b1b1b, #3a3a3a); }
-#home-slide-3 .home-bg { background: linear-gradient(165deg, #231507, #5a3a18); }
 
 /* ─────────────────────────────────────────────
    WORK — vertical between projects, horizontal within
 ───────────────────────────────────────────── */
+.work {
+  height: calc(100vh - (var(--page-m) * 2));
+  margin: var(--page-m);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--card);
+  display: flex;
+  flex-direction: column;
+}
+
 .work-header {
-  padding: 4rem 1.5rem 1.5rem;
+  flex: 0 0 auto;
+  padding: 2.5rem 1.75rem 1rem;
 }
 
 .work-title {
@@ -247,7 +248,7 @@ body {
 }
 
 .work-track {
-  height: 100vh;
+  flex: 1;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
   scrollbar-width: none;
@@ -256,7 +257,7 @@ body {
 .work-track::-webkit-scrollbar { display: none; }
 
 .work-project {
-  height: 100vh;
+  height: 100%;
   scroll-snap-align: start;
   display: flex;
   overflow-x: scroll;
@@ -282,8 +283,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: var(--bg);
-  padding: 0 1.5rem calc(var(--nav-h) + 2rem);
+  padding: 0 1.75rem calc(var(--nav-h) + 1.5rem);
 }
 
 .project-bg {
@@ -293,29 +293,18 @@ body {
   background-position: center;
 }
 
-.project-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(5, 5, 5, 0.82) 0%,
-    rgba(5, 5, 5, 0.25) 45%,
-    transparent 70%
-  );
-}
-
 .project-info {
   position: absolute;
   bottom: 0; left: 0; right: 0;
-  padding: 1.5rem 1.5rem calc(var(--nav-h) + 2rem);
-  color: #fff;
+  padding: 1.5rem 1.75rem calc(var(--nav-h) + 1.5rem);
+  color: var(--ink);
 }
 
 .project-category {
   font-size: 0.62rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  opacity: 0.65;
+  color: var(--mid);
   margin-bottom: 0.6rem;
 }
 
@@ -350,13 +339,6 @@ body {
   border-radius: 2px;
 }
 
-/* placeholder backgrounds — replace with real imagery */
-.p-arcavault  .project-bg { background: linear-gradient(145deg, #160808, #3a0f0f 60%, #160808); }
-.p-inxfitness .project-bg { background: linear-gradient(160deg, #0d0d0d, #191919); }
-.p-rehxa      .project-bg { background: linear-gradient(135deg, #080810, #131326 60%, #080810); }
-.p-skyfly     .project-bg { background: linear-gradient(175deg, #0a1f38, #1b4880 50%, #2d6ab4); }
-.p-kerart     .project-bg { background: linear-gradient(135deg, #151008, #261c0e 55%, #151008); }
-
 /* ─────────────────────────────────────────────
    ABOUT
 ───────────────────────────────────────────── */
@@ -364,7 +346,10 @@ body {
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  padding: 5rem 1.5rem;
+  margin: 0 var(--page-m) var(--page-m);
+  border-radius: var(--radius);
+  background: var(--card);
+  padding: 3.5rem 1.75rem;
 }
 
 .about-title {
@@ -448,7 +433,10 @@ body {
    CONTACT
 ───────────────────────────────────────────── */
 #contact {
-  padding: 5rem 1.5rem calc(var(--nav-h) + 4rem);
+  margin: 0 var(--page-m) var(--page-m);
+  border-radius: var(--radius);
+  background: var(--card);
+  padding: 3.5rem 1.75rem calc(var(--nav-h) + 2.5rem);
 }
 
 .contact-inner { max-width: 100%; }
