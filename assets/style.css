@@ -244,13 +244,6 @@ body {
   padding: 2.5rem 1.75rem 1rem;
 }
 
-.work-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 300;
-  font-size: clamp(2rem, 8vw, 3rem);
-  line-height: 1.05;
-}
-
 .work-track {
   flex: 1;
   overflow-y: scroll;
@@ -282,8 +275,6 @@ body {
 .work-project-main {
   position: relative;
   overflow: hidden;
-  /* TEMP placeholder colour — remove once real cover imagery is in */
-  background: #A85D55;
 }
 
 .work-project-details {
@@ -291,18 +282,34 @@ body {
   flex-direction: column;
   justify-content: center;
   padding: 0 1.75rem calc(var(--nav-h) + 1.5rem);
-  /* TEMP placeholder colour — remove once real content replaces it */
-  background: #C9912F;
 }
 
-.work-project-extra {
-  /* TEMP placeholder colour — remove once real content replaces it */
-  background: #2E6670;
+/* TEMP placeholder colours — one per project, same across its 3 panels.
+   Remove once real cover imagery/content replaces them. */
+.p-arcavault  .work-project-main, .p-arcavault  .work-project-details, .p-arcavault  .work-project-extra { background: #A85D55; }
+.p-inxfitness .work-project-main, .p-inxfitness .work-project-details, .p-inxfitness .work-project-extra { background: #C9912F; }
+.p-rehxa      .work-project-main, .p-rehxa      .work-project-details, .p-rehxa      .work-project-extra { background: #2E6670; }
+.p-skyfly     .work-project-main, .p-skyfly     .work-project-details, .p-skyfly     .work-project-extra { background: #2D6AB4; }
+.p-kerart     .work-project-main, .p-kerart     .work-project-details, .p-kerart     .work-project-extra { background: #6B4F8C; }
+
+.work-project-down {
+  position: absolute;
+  left: 50%;
+  bottom: calc(var(--nav-h) + 0.75rem);
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.2rem;
+  line-height: 1;
+  animation: work-down-bounce 1.8s ease-in-out infinite;
+}
+
+@keyframes work-down-bounce {
+  0%, 100% { transform: translate(-50%, 0); }
+  50%      { transform: translate(-50%, 4px); }
 }
 
 .work-project-dots {
   position: absolute;
-  left: 1.75rem;
   right: 1.75rem;
   bottom: calc(var(--nav-h) + 0.75rem);
   display: flex;
