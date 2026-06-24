@@ -80,18 +80,16 @@ body {
 .nav-home {
   flex: 0 0 calc(var(--nav-btn) * 1.8);
   height: calc(var(--nav-btn) * 0.85);
-  border-radius: 10px;
-  background: #274e756b;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: flex-basis 0.35s ease, height 0.35s ease, background 0.35s ease;
+  transition: flex-basis 0.35s ease, height 0.35s ease;
 }
 
 .nav-home-icon {
   width: 45%;
   height: 45%;
-  fill: #fff;
+  fill: #274e75;
 }
 
 .nav-toggle {
