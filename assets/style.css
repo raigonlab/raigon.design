@@ -168,6 +168,7 @@ body {
 ───────────────────────────────────────────── */
 .home {
   height: calc(100vh - (var(--page-m) * 2));
+  height: calc(100dvh - (var(--page-m) * 2));
   margin: var(--page-m);
   border-radius: var(--radius);
   overflow: hidden;
@@ -229,6 +230,7 @@ body {
 ───────────────────────────────────────────── */
 .work {
   height: calc(100vh - (var(--page-m) * 2));
+  height: calc(100dvh - (var(--page-m) * 2));
   margin: var(--page-m);
   border-radius: var(--radius);
   overflow: hidden;
@@ -446,6 +448,7 @@ body {
   justify-content: center;
   gap: 3rem;
   min-height: calc(100vh - var(--page-m));
+  min-height: calc(100dvh - var(--page-m));
   margin: 0 var(--page-m) var(--page-m);
   border-radius: var(--radius);
   background: var(--card);
@@ -528,6 +531,7 @@ body {
   flex-direction: column;
   justify-content: center;
   min-height: calc(100vh - var(--page-m));
+  min-height: calc(100dvh - var(--page-m));
   margin: 0 var(--page-m) var(--page-m);
   border-radius: var(--radius);
   background: var(--card);
