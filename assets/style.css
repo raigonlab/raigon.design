@@ -15,9 +15,11 @@
   --warm:   #B8A898;
   --line:   #E2E6EA;
   --white:  #FFFFFF;
-  --nav-h:  64px;
+  --nav-h:  19.2px;
   --page-m: 0.75rem;
   --radius: 28px;
+  /* space reserved below every card so it never sits under the floating nav */
+  --nav-clearance: calc(var(--nav-h) + 1.75rem);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -54,7 +56,7 @@ body {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.4rem;
+  padding: 0.12rem;
   height: var(--nav-h);
   max-width: calc(100vw - 2rem);
   background: rgba(245, 244, 240, 0.6);
@@ -66,8 +68,8 @@ body {
 }
 
 .nav-home {
-  flex: 0 0 calc(var(--nav-h) - 0.8rem);
-  height: calc(var(--nav-h) - 0.8rem);
+  flex: 0 0 calc(var(--nav-h) - 0.24rem);
+  height: calc(var(--nav-h) - 0.24rem);
   border-radius: 999px;
   /* TEMP: placeholder logo block — swap for brand mark later */
   background: var(--ink);
@@ -75,8 +77,8 @@ body {
 
 .nav-toggle {
   position: relative;
-  flex: 0 0 calc(var(--nav-h) - 0.8rem);
-  height: calc(var(--nav-h) - 0.8rem);
+  flex: 0 0 calc(var(--nav-h) - 0.24rem);
+  height: calc(var(--nav-h) - 0.24rem);
   border-radius: 999px;
   background: var(--line);
   border: none;
@@ -175,9 +177,9 @@ body {
    HOME — vertical slide track
 ───────────────────────────────────────────── */
 .home {
-  height: calc(100vh - (var(--page-m) * 2));
-  height: calc(100dvh - (var(--page-m) * 2));
-  margin: var(--page-m);
+  height: calc(100vh - var(--page-m) - var(--nav-clearance));
+  height: calc(100dvh - var(--page-m) - var(--nav-clearance));
+  margin: var(--page-m) var(--page-m) var(--nav-clearance);
   border-radius: var(--radius);
   overflow: hidden;
   background: var(--card);
@@ -201,7 +203,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 0 1.75rem calc(var(--nav-h) + 2.25rem);
+  padding: 0 1.75rem 2.25rem;
   overflow: hidden;
 }
 
@@ -237,9 +239,9 @@ body {
    WORK — vertical between projects, horizontal within
 ───────────────────────────────────────────── */
 .work {
-  height: calc(100vh - (var(--page-m) * 2));
-  height: calc(100dvh - (var(--page-m) * 2));
-  margin: var(--page-m);
+  height: calc(100vh - var(--page-m) - var(--nav-clearance));
+  height: calc(100dvh - var(--page-m) - var(--nav-clearance));
+  margin: var(--page-m) var(--page-m) var(--nav-clearance);
   border-radius: var(--radius);
   overflow: hidden;
   /* TEMP placeholder colour — remove once real content/imagery is in */
@@ -299,13 +301,13 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0 1.75rem calc(var(--nav-h) + 1.5rem);
+  padding: 0 1.75rem 1.5rem;
 }
 
 .work-project-down {
   position: absolute;
   left: 50%;
-  bottom: calc(var(--nav-h) + 0.75rem);
+  bottom: 0.75rem;
   transform: translateX(-50%);
   color: rgba(255, 255, 255, 0.8);
   font-size: 1.2rem;
@@ -321,7 +323,7 @@ body {
 .work-project-dots {
   position: absolute;
   right: 1.75rem;
-  bottom: calc(var(--nav-h) + 0.75rem);
+  bottom: 0.75rem;
   display: flex;
   align-items: center;
   gap: 0.4rem;
@@ -358,7 +360,7 @@ body {
 .project-info {
   position: absolute;
   bottom: 0; left: 0; right: 0;
-  padding: 1.5rem 1.75rem calc(var(--nav-h) + 1.5rem);
+  padding: 1.5rem 1.75rem;
   /* TEMP: white text while .work-project-main has a flat test colour */
   color: #fff;
 }
@@ -458,9 +460,9 @@ body {
   flex-direction: column;
   justify-content: center;
   gap: 3rem;
-  min-height: calc(100vh - var(--page-m));
-  min-height: calc(100dvh - var(--page-m));
-  margin: 0 var(--page-m) var(--page-m);
+  min-height: calc(100vh - var(--nav-clearance));
+  min-height: calc(100dvh - var(--nav-clearance));
+  margin: 0 var(--page-m) var(--nav-clearance);
   border-radius: var(--radius);
   background: var(--card);
   padding: 3.5rem 1.75rem;
@@ -541,12 +543,12 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: calc(100vh - var(--page-m));
-  min-height: calc(100dvh - var(--page-m));
-  margin: 0 var(--page-m) var(--page-m);
+  min-height: calc(100vh - var(--nav-clearance));
+  min-height: calc(100dvh - var(--nav-clearance));
+  margin: 0 var(--page-m) var(--nav-clearance);
   border-radius: var(--radius);
   background: var(--card);
-  padding: 3.5rem 1.75rem calc(var(--nav-h) + 2.5rem);
+  padding: 3.5rem 1.75rem;
   scroll-snap-align: start;
   scroll-snap-stop: always;
 }
