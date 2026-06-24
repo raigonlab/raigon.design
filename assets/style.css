@@ -202,31 +202,16 @@ body {
 }
 
 /* ─────────────────────────────────────────────
-   HOME — vertical slide track
+   HOME — intro slides (each is a top-level snap card)
 ───────────────────────────────────────────── */
-.home {
+.home-slide {
   height: calc(100vh - var(--page-m) - var(--nav-clearance));
   height: calc(100dvh - var(--page-m) - var(--nav-clearance));
   margin: var(--page-m) var(--page-m) var(--nav-clearance);
   border-radius: var(--radius);
-  overflow: hidden;
   background: var(--card);
   scroll-snap-align: start;
   scroll-snap-stop: always;
-}
-
-.home-track {
-  height: 100%;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-  scrollbar-width: none;
-}
-
-.home-track::-webkit-scrollbar { display: none; }
-
-.home-slide {
-  height: 100%;
-  scroll-snap-align: start;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -266,7 +251,7 @@ body {
 /* ─────────────────────────────────────────────
    WORK — vertical between projects, horizontal within
 ───────────────────────────────────────────── */
-.work {
+.work-project {
   height: calc(100vh - var(--page-m) - var(--nav-clearance));
   height: calc(100dvh - var(--page-m) - var(--nav-clearance));
   margin: var(--page-m) var(--page-m) var(--nav-clearance);
@@ -303,25 +288,15 @@ body {
   gap: 0.4rem;
 }
 
-.work-track {
+.work-project-track {
   height: 100%;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-  scrollbar-width: none;
-}
-
-.work-track::-webkit-scrollbar { display: none; }
-
-.work-project {
-  height: 100%;
-  scroll-snap-align: start;
   display: flex;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
 }
 
-.work-project::-webkit-scrollbar { display: none; }
+.work-project-track::-webkit-scrollbar { display: none; }
 
 .work-project-main,
 .work-project-details,
@@ -428,15 +403,23 @@ body {
   border-radius: 2px;
 }
 
-.work-hidden { display: contents; }
-.work-hidden[hidden] { display: none; }
-
 .work-more {
-  height: 100%;
+  height: calc(100vh - var(--page-m) - var(--nav-clearance));
+  height: calc(100dvh - var(--page-m) - var(--nav-clearance));
+  margin: var(--page-m) var(--page-m) var(--nav-clearance);
+  border-radius: var(--radius);
+  background: var(--card);
+  position: relative;
   scroll-snap-align: start;
+  scroll-snap-stop: always;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.work-more .work-header .section-label {
+  color: var(--mid);
+  text-shadow: none;
 }
 
 .work-more-btn {
