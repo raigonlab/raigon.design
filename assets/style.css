@@ -20,7 +20,7 @@
   --page-m: 0.75rem;
   --radius: 28px;
   /* space reserved below every card so it never sits under the floating nav */
-  --nav-clearance: calc(var(--nav-h) + 1.75rem);
+  --nav-clearance: calc((var(--nav-h) + 1.75rem) * 0.95);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -151,6 +151,7 @@ body {
 .nav-links {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.4rem;
   list-style: none;
   flex: 1;
