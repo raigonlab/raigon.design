@@ -49,7 +49,6 @@ body {
 .main-nav {
   position: fixed;
   left: 1rem;
-  right: 1rem;
   bottom: calc(1rem + env(safe-area-inset-bottom));
   z-index: 200;
   display: flex;
@@ -57,6 +56,7 @@ body {
   gap: 0.5rem;
   padding: 0.4rem;
   height: var(--nav-h);
+  max-width: calc(100vw - 2rem);
   background: rgba(245, 244, 240, 0.6);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -104,14 +104,14 @@ body {
 
 .nav-toggle-icon--close {
   opacity: 0;
-  transform: rotate(-45deg) scale(0.7);
+  transform: scale(0.7);
 }
 
 .nav-toggle-icon--close span:first-child {
   width: 16px;
   height: 1px;
   background: var(--ink);
-  transform: rotate(90deg);
+  transform: rotate(45deg);
   position: absolute;
 }
 
@@ -119,6 +119,8 @@ body {
   width: 16px;
   height: 1px;
   background: var(--ink);
+  transform: rotate(-45deg);
+  position: absolute;
 }
 
 .main-nav.is-open .nav-toggle-icon--menu {
@@ -136,20 +138,21 @@ body {
   align-items: center;
   gap: 0.4rem;
   list-style: none;
-  flex: 1;
   overflow: hidden;
   white-space: nowrap;
+  width: 0;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.25s ease, visibility 0s linear 0.25s;
+  transition: width 0.35s ease, opacity 0.25s ease, visibility 0s linear 0.35s;
 }
 
 .main-nav.is-open .nav-links {
+  width: var(--nav-links-w, 200px);
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-  transition: opacity 0.25s ease, visibility 0s linear 0s;
+  transition: width 0.35s ease, opacity 0.25s ease, visibility 0s linear 0s;
 }
 
 .nav-link {

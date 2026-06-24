@@ -6,6 +6,7 @@
   if (!nav || !toggle || !links) return;
 
   function openMenu() {
+    nav.style.setProperty('--nav-links-w', links.scrollWidth + 'px');
     nav.classList.add('is-open');
     toggle.setAttribute('aria-expanded', 'true');
     toggle.setAttribute('aria-label', 'Close menu');
