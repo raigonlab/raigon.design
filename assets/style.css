@@ -15,7 +15,8 @@
   --warm:   #B8A898;
   --line:   #E2E6EA;
   --white:  #FFFFFF;
-  --nav-h:  19.2px;
+  --nav-h:  23.04px;
+  --nav-btn: calc(var(--nav-h) - 0.24rem);
   --page-m: 0.75rem;
   --radius: 28px;
   /* space reserved below every card so it never sits under the floating nav */
@@ -51,6 +52,7 @@ body {
 .main-nav {
   position: fixed;
   left: 1rem;
+  right: 1rem;
   bottom: calc(1rem + env(safe-area-inset-bottom));
   z-index: 200;
   display: flex;
@@ -58,27 +60,34 @@ body {
   gap: 0.5rem;
   padding: 0.12rem;
   height: var(--nav-h);
-  max-width: calc(100vw - 2rem);
+  --nav-btn: calc(var(--nav-h) - 0.24rem);
   background: rgba(245, 244, 240, 0.6);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 999px;
   box-shadow: 0 10px 30px rgba(15, 15, 14, 0.08);
+  transition: height 0.35s ease;
+}
+
+.main-nav.is-open {
+  height: calc(var(--nav-h) * 1.5);
+  --nav-btn: calc((var(--nav-h) * 1.5) - 0.24rem);
 }
 
 .nav-home {
-  flex: 0 0 calc(var(--nav-h) - 0.24rem);
-  height: calc(var(--nav-h) - 0.24rem);
+  flex: 0 0 var(--nav-btn);
+  height: var(--nav-btn);
   border-radius: 999px;
   /* TEMP: placeholder logo block — swap for brand mark later */
-  background: var(--ink);
+  background: #274e75;
+  transition: flex-basis 0.35s ease, height 0.35s ease, background 0.35s ease;
 }
 
 .nav-toggle {
   position: relative;
-  flex: 0 0 calc(var(--nav-h) - 0.24rem);
-  height: calc(var(--nav-h) - 0.24rem);
+  flex: 0 0 var(--nav-btn);
+  height: var(--nav-btn);
   border-radius: 999px;
   background: var(--line);
   border: none;
@@ -86,6 +95,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: flex-basis 0.35s ease, height 0.35s ease;
 }
 
 .nav-toggle-icon {
@@ -140,21 +150,20 @@ body {
   align-items: center;
   gap: 0.4rem;
   list-style: none;
+  flex: 1;
   overflow: hidden;
   white-space: nowrap;
-  width: 0;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: width 0.35s ease, opacity 0.25s ease, visibility 0s linear 0.35s;
+  transition: opacity 0.25s ease, visibility 0s linear 0.25s;
 }
 
 .main-nav.is-open .nav-links {
-  width: var(--nav-links-w, 200px);
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-  transition: width 0.35s ease, opacity 0.25s ease, visibility 0s linear 0s;
+  transition: opacity 0.25s ease, visibility 0s linear 0s;
 }
 
 .nav-link {
