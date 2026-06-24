@@ -90,6 +90,7 @@ body {
   width: 67.5%;
   height: 67.5%;
   fill: #274e75;
+  transform: translateX(-15%);
 }
 
 .nav-toggle {
