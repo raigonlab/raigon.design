@@ -65,7 +65,7 @@ body {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 999px;
+  border-radius: 16px;
   box-shadow: 0 10px 30px rgba(15, 15, 14, 0.08);
   transition: height 0.35s ease;
 }
@@ -78,7 +78,7 @@ body {
 .nav-home {
   flex: 0 0 calc(var(--nav-btn) * 1.8);
   height: calc(var(--nav-btn) * 0.85);
-  border-radius: 999px;
+  border-radius: 10px;
   /* TEMP: placeholder logo block — swap for brand mark later */
   background: #274e756b;
   transition: flex-basis 0.35s ease, height 0.35s ease, background 0.35s ease;
@@ -180,7 +180,7 @@ body {
   color: var(--mid);
   text-decoration: none;
   padding: 0 0.85rem;
-  border-radius: 999px;
+  border-radius: 10px;
   transition: background 0.2s ease, color 0.2s ease;
 }
 
