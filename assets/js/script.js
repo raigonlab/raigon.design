@@ -112,4 +112,40 @@
 
     pageSections.forEach(function (section) { sectionObserver.observe(section); });
   }
+
+  // Work header dots: stay fixed in place and reflect which of the 3
+  // horizontal panels (main/details/extra) is in view for whichever
+  // project is currently the active vertical slide.
+  const workDots = document.querySelectorAll('#workDots .dot');
+  const workProjects = Array.from(document.querySelectorAll('.work-project'));
+
+  if (workDots.length && workProjects.length) {
+    let activeProject = workProjects[0];
+
+    function updateDots(project) {
+      const index = Math.min(2, Math.round(project.scrollLeft / project.clientWidth));
+      workDots.forEach(function (dot, i) {
+        dot.classList.toggle('active', i === index);
+      });
+    }
+
+    workProjects.forEach(function (project) {
+      project.addEventListener('scroll', function () {
+        if (project === activeProject) updateDots(project);
+      }, { passive: true });
+    });
+
+    const projectObserver = new IntersectionObserver(function (entries) {
+      const visible = entries
+        .filter(function (entry) { return entry.isIntersecting; })
+        .sort(function (a, b) { return b.intersectionRatio - a.intersectionRatio; })[0];
+
+      if (!visible) return;
+
+      activeProject = visible.target;
+      updateDots(activeProject);
+    }, { root: document.getElementById('workTrack'), threshold: 0.5 });
+
+    workProjects.forEach(function (project) { projectObserver.observe(project); });
+  }
 })();
