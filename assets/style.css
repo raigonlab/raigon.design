@@ -76,11 +76,11 @@ body {
 }
 
 .nav-home {
-  flex: 0 0 var(--nav-btn);
-  height: var(--nav-btn);
+  flex: 0 0 calc(var(--nav-btn) * 1.8);
+  height: calc(var(--nav-btn) * 0.85);
   border-radius: 999px;
   /* TEMP: placeholder logo block — swap for brand mark later */
-  background: #274e75;
+  background: #274e756b;
   transition: flex-basis 0.35s ease, height 0.35s ease, background 0.35s ease;
 }
 
@@ -88,8 +88,8 @@ body {
   position: relative;
   flex: 0 0 var(--nav-btn);
   height: var(--nav-btn);
-  border-radius: 999px;
-  background: var(--line);
+  margin-right: calc(var(--nav-btn) * 0.3);
+  background: none;
   border: none;
   cursor: pointer;
   display: flex;
@@ -110,8 +110,9 @@ body {
 .nav-toggle-icon--menu span {
   display: block;
   width: 16px;
-  height: 1px;
-  background: var(--ink);
+  height: 2.5px;
+  border-radius: 999px;
+  background: #274e754d;
 }
 
 .nav-toggle-icon--close {
@@ -121,16 +122,18 @@ body {
 
 .nav-toggle-icon--close span:first-child {
   width: 16px;
-  height: 1px;
-  background: var(--ink);
+  height: 2.5px;
+  border-radius: 999px;
+  background: #274e756b;;
   transform: rotate(45deg);
   position: absolute;
 }
 
 .nav-toggle-icon--close span:last-child {
   width: 16px;
-  height: 1px;
-  background: var(--ink);
+  height: 2.5px;
+  border-radius: 999px;
+  background: #274e756b;;
   transform: rotate(-45deg);
   position: absolute;
 }
@@ -167,8 +170,9 @@ body {
 }
 
 .nav-link {
-  font-size: 0.78rem;
+  font-size: 0.65rem;
   letter-spacing: 0.04em;
+  text-transform: uppercase;
   color: var(--mid);
   text-decoration: none;
   padding: 0.55rem 0.85rem;
