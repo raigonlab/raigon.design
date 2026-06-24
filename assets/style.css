@@ -66,15 +66,11 @@ body {
 }
 
 .nav-home {
-  flex: 1;
-  height: 100%;
-  border-radius: 999px;
-  background: var(--line);
-  transition: flex-grow 0.35s ease;
-}
-
-.main-nav.is-open .nav-home {
   flex: 0 0 calc(var(--nav-h) - 0.8rem);
+  height: calc(var(--nav-h) - 0.8rem);
+  border-radius: 999px;
+  /* TEMP: placeholder logo block — swap for brand mark later */
+  background: var(--ink);
 }
 
 .nav-toggle {
@@ -136,16 +132,25 @@ body {
 }
 
 .nav-links {
-  display: none;
+  display: flex;
   align-items: center;
   gap: 0.4rem;
   list-style: none;
   flex: 1;
   overflow: hidden;
   white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, visibility 0s linear 0.25s;
 }
 
-.main-nav.is-open .nav-links { display: flex; }
+.main-nav.is-open .nav-links {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 0.25s ease, visibility 0s linear 0s;
+}
 
 .nav-link {
   font-size: 0.78rem;
