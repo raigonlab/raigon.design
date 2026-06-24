@@ -320,11 +320,6 @@ body {
   position: relative;
 }
 
-.work-project-details,
-.work-project-extra {
-  background: var(--card);
-}
-
 .work-project-details {
   display: flex;
   flex-direction: column;
@@ -395,7 +390,7 @@ body {
 
 .project-desc {
   font-size: 0.85rem;
-  color: var(--mid);
+  color: rgba(255, 255, 255, 0.75);
   line-height: 1.75;
   font-weight: 300;
   margin-bottom: 1.25rem;
@@ -411,8 +406,8 @@ body {
   font-size: 0.62rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  border: 1px solid var(--line);
-  color: var(--ink);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: rgba(255, 255, 255, 0.85);
   padding: 0.3rem 0.75rem;
   border-radius: 2px;
 }
