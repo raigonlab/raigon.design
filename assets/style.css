@@ -182,7 +182,9 @@ body {
 .nav-link {
   display: flex;
   align-items: center;
+  justify-content: center;
   height: calc(var(--nav-btn) * 0.85);
+  line-height: 1;
   font-size: 0.65rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
