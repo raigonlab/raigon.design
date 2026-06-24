@@ -92,4 +92,24 @@
   }
 
   document.querySelectorAll('.home-track, .work-track').forEach(attachChaining);
+
+  // Highlight the nav link for whichever top-level section is currently
+  // in view (home has no link, so being there just clears all of them).
+  const navLinksList = Array.from(document.querySelectorAll('.nav-link'));
+
+  if (navLinksList.length) {
+    const sectionObserver = new IntersectionObserver(function (entries) {
+      const visible = entries
+        .filter(function (entry) { return entry.isIntersecting; })
+        .sort(function (a, b) { return b.intersectionRatio - a.intersectionRatio; })[0];
+
+      if (!visible) return;
+
+      navLinksList.forEach(function (link) {
+        link.classList.toggle('active', link.dataset.nav === visible.target.id);
+      });
+    }, { threshold: 0.5 });
+
+    pageSections.forEach(function (section) { sectionObserver.observe(section); });
+  }
 })();
