@@ -269,23 +269,24 @@ body {
   top: 0; left: 0; right: 0;
   z-index: 2;
   padding: 1.5rem 1.75rem 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   pointer-events: none;
 }
 
 .work-header .section-label {
   font-size: 0.75rem;
-  margin-bottom: 0;
   color: rgba(255, 255, 255, 0.7);
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
 }
 
 .work-dots {
+  position: absolute;
+  right: 1.75rem;
+  bottom: 0.75rem;
+  z-index: 2;
   display: flex;
   align-items: center;
   gap: 0.4rem;
+  pointer-events: none;
 }
 
 .work-project-track {
