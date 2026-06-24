@@ -236,23 +236,26 @@ body {
   overflow: hidden;
   /* TEMP placeholder colour — remove once real content/imagery is in */
   background: #A85D55;
-  display: flex;
-  flex-direction: column;
+  position: relative;
   scroll-snap-align: start;
   scroll-snap-stop: always;
 }
 
 .work-header {
-  flex: 0 0 auto;
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  z-index: 2;
   padding: 2.5rem 1.75rem 1rem;
+  pointer-events: none;
 }
 
 .work-header .section-label {
   color: rgba(255, 255, 255, 0.7);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
 }
 
 .work-track {
-  flex: 1;
+  height: 100%;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
   scrollbar-width: none;
