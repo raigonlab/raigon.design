@@ -663,6 +663,10 @@ body {
   gap: 1.75rem 1rem;
 }
 
+.work-gallery-grid[hidden] {
+  display: none;
+}
+
 .work-gallery-item {
   display: block;
   text-decoration: none;
