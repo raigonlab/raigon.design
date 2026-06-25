@@ -452,27 +452,62 @@ body {
   background-position: center;
 }
 
+/* default: project name/category sit at the bottom of the main panel,
+   same spot they have always been in */
 .project-info {
-  text-align: right;
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 1.5rem 1.75rem;
   /* TEMP: white text while .work-project-main has a flat test colour */
   color: #fff;
 }
 
 .project-category {
-  font-size: 0.6rem;
-  font-weight: 300;
-  letter-spacing: 0.18em;
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.65);
-  margin-bottom: 0.3rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 0.6rem;
 }
 
 .project-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(1.8rem, 8vw, 2.6rem);
+  line-height: 1.05;
+  color: #fff;
+}
+
+/* header copy: small + bold, only shown once the user has swiped past
+   the main panel (work-header.is-secondary), replacing "Selected work" */
+.work-header .project-info {
+  position: static;
+  padding: 0;
+  text-align: right;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.work-header.is-secondary .project-info {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.work-header .project-category {
+  font-size: 0.6rem;
+  font-weight: 300;
+  letter-spacing: 0.18em;
+  margin-bottom: 0.3rem;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.work-header .project-name {
   font-family: 'Inter', sans-serif;
   font-weight: 700;
   font-size: 0.75rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
+  line-height: normal;
   color: #fff;
 }
 
