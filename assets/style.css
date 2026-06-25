@@ -321,7 +321,7 @@ body {
 .work-header {
   position: absolute;
   top: 0; left: 0; right: 0;
-  padding: 2.25rem 1.75rem 1rem;
+  padding: 3rem 1.25rem 1rem;
 }
 
 /* the three header titles ("Selected work", name+category, name+section)
