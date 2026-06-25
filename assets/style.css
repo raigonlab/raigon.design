@@ -299,8 +299,8 @@ body {
   margin: var(--page-m) var(--page-m) var(--nav-clearance);
   border-radius: var(--radius);
   overflow: hidden;
-  /* TEMP placeholder colour — remove once real content/imagery is in */
-  background: #A85D55;
+  /* shows through the track gap, so each panel reads as a separate card */
+  background: var(--bg);
   position: relative;
   scroll-snap-align: start;
   scroll-snap-stop: always;
@@ -375,6 +375,8 @@ body {
   scroll-snap-align: start;
   height: 100%;
   overflow: hidden;
+  /* TEMP placeholder colour — remove once real content/imagery is in */
+  background: #A85D55;
 }
 
 /* corners alternate whole-card, square / rounded / square, each panel
@@ -511,6 +513,21 @@ body {
   inset: 0;
   background-size: cover;
   background-position: center;
+}
+
+/* TEMP: stand-in for the real project shot, inset within the main panel */
+.project-image-placeholder {
+  position: absolute;
+  top: 4.5rem; left: 1.25rem; right: 1.25rem; bottom: 6.5rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
 }
 
 /* default: project name/category sit at the bottom of the main panel,
