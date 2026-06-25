@@ -205,11 +205,10 @@ body {
    HOME — intro slides (each is a top-level snap card)
 ───────────────────────────────────────────── */
 .home-slide {
-  height: calc(100vh - var(--page-m) - var(--nav-clearance));
-  height: calc(100dvh - var(--page-m) - var(--nav-clearance));
-  margin: var(--page-m) var(--page-m) var(--nav-clearance);
-  border-radius: var(--radius);
-  background: var(--card);
+  height: calc(100vh - var(--nav-clearance));
+  height: calc(100dvh - var(--nav-clearance));
+  margin: 0 0 var(--nav-clearance);
+  background: var(--bg);
   scroll-snap-align: start;
   scroll-snap-stop: always;
   position: relative;
