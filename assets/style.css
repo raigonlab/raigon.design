@@ -378,6 +378,15 @@ body {
   overflow: hidden;
 }
 
+/* panels that follow another one in the swipe get square corners on
+   the leading (left) edge, where they tuck against the previous
+   panel — only the trailing (right) edge stays rounded */
+.work-project-details,
+.work-project-extra {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
 .work-project-extra {
   display: flex;
   flex-direction: column;
