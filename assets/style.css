@@ -455,14 +455,12 @@ body {
 }
 
 .work-more {
-  height: calc(100vh - var(--page-m) - var(--nav-clearance));
-  height: calc(100dvh - var(--page-m) - var(--nav-clearance));
-  margin: var(--page-m) var(--page-m) var(--nav-clearance);
+  height: 160px;
+  margin: var(--page-m) var(--page-m) calc(var(--page-m) + var(--nav-clearance));
   border-radius: var(--radius);
   background: var(--card);
   position: relative;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
+  scroll-snap-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
