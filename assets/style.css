@@ -385,8 +385,26 @@ body {
 .work-project-details {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 0 1.75rem 1.5rem;
+  justify-content: flex-start;
+  overflow-y: auto;
+  padding: 5rem 1.75rem 1.5rem;
+}
+
+.project-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.project-gallery-img {
+  height: 140px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.project-gallery-full {
+  grid-column: 1 / -1;
 }
 
 .work-project-down {
