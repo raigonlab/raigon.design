@@ -54,17 +54,17 @@ body {
 .all-projects-btn {
   position: fixed;
   left: 50%;
-  bottom: calc(1rem + var(--nav-h) + 1.5rem + env(safe-area-inset-bottom));
+  bottom: calc(1rem + var(--nav-h) + 0.75rem + env(safe-area-inset-bottom));
   transform: translateX(-50%);
   z-index: 150;
-  padding: 0.55rem 1rem;
+  padding: 0.4rem 0.75rem;
   border-radius: 999px;
   border: none;
   background: rgba(245, 244, 240, 0.7);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   box-shadow: 0 6px 20px rgba(15, 15, 14, 0.1);
-  font-size: 0.68rem;
+  font-size: 0.6rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--ink);
