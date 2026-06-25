@@ -374,25 +374,37 @@ body {
   flex: 0 0 80%;
   scroll-snap-align: start;
   height: 100%;
-  border-radius: calc(var(--radius) - 6px);
   overflow: hidden;
 }
 
-/* panels that follow another one in the swipe get square corners on
-   the leading (left) edge, where they tuck against the previous
-   panel — only the trailing (right) edge stays rounded */
-.work-project-details,
+/* corners alternate whole-card, square / rounded / square, each panel
+   fully separated by the track gap (never flush, never overlapping) */
+.work-project-main,
 .work-project-extra {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
+  border-radius: 0;
+}
+
+.work-project-details {
+  border-radius: calc(var(--radius) - 6px);
 }
 
 .work-project-extra {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 2rem;
   padding: 5rem 1.75rem 1.5rem;
+}
+
+.project-ps-line {
+  display: block;
+  width: 70px;
+  height: 1px;
+  align-self: flex-end;
+  margin: -0.5rem 2rem;
+  background: rgba(255, 255, 255, 0.5);
+  transform: rotate(35deg);
 }
 
 .project-problem-solution h4 {
