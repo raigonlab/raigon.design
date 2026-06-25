@@ -737,34 +737,156 @@ body {
    ABOUT
 ───────────────────────────────────────────── */
 #about {
+  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 3rem;
+  gap: 1.5rem;
   min-height: calc(100vh - var(--nav-clearance));
   min-height: calc(100dvh - var(--nav-clearance));
   margin: 0 var(--page-m) var(--nav-clearance);
   border-radius: var(--radius);
   background: var(--card);
-  padding: 3.5rem 1.75rem;
+  padding: 2.25rem 0 2.5rem;
   scroll-snap-align: start;
   scroll-snap-stop: always;
+  overflow: hidden;
 }
 
-.about-title {
+.about-header {
+  padding: 0 1.75rem;
+}
+
+/* ─── cinematic cover slides, horizontal swipe ─── */
+.about-track {
+  display: flex;
+  gap: 1.5rem;
+  padding: 0 1.75rem;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.about-track::-webkit-scrollbar { display: none; }
+
+.about-slide {
+  position: relative;
+  flex: 0 0 80%;
+  height: 50vh;
+  min-height: 280px;
+  border-radius: calc(var(--radius) - 6px);
+  overflow: hidden;
+  scroll-snap-align: start;
+  /* TEMP placeholder colour — swap for real photography */
+  background: linear-gradient(160deg, #2a2f36, #14171a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-slide-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+.about-slide-quote {
+  position: relative;
+  z-index: 1;
   font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
   font-weight: 300;
-  font-size: clamp(2rem, 8vw, 2.8rem);
-  line-height: 1.08;
-  margin-bottom: 1.5rem;
+  font-size: clamp(1.5rem, 6vw, 2rem);
+  line-height: 1.3;
+  text-align: center;
+  color: #fff;
+  padding: 0 1.5rem;
 }
 
-.about-title em { font-style: italic; color: var(--warm); }
+.about-slide-quote span {
+  display: block;
+  margin-top: 0.6rem;
+  font-style: normal;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.about-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.about-dots .dot {
+  height: 5px;
+  width: 5px;
+  border-radius: 50%;
+  background: var(--line);
+  transition: width 0.3s ease, background 0.3s ease;
+}
+
+.about-dots .dot.active {
+  background: var(--ink);
+  width: 16px;
+  border-radius: 3px;
+}
+
+/* ─── skills, dark icon/chip grid ─── */
+.skills-panel {
+  margin: 0.5rem 1.75rem 0;
+  padding: 1.75rem 1.5rem;
+  border-radius: calc(var(--radius) - 6px);
+  background: var(--ink);
+}
+
+.skills-panel-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 1.25rem;
+}
+
+.skills-group { margin-bottom: 1.25rem; }
+.skills-group:last-child { margin-bottom: 0; }
+
+.skills-group-title {
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 0.65rem;
+}
+
+.skills-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skill-chip {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #fff;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* ─── condensed bio + links ─── */
+.about-bio {
+  padding: 0 1.75rem;
+}
 
 .about-text {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--mid);
-  line-height: 1.85;
+  line-height: 1.75;
   margin-bottom: 1.25rem;
   font-weight: 300;
 }
@@ -786,36 +908,7 @@ body {
 
 .about-cta:hover { gap: 1.1rem; }
 
-.about-linkedin { margin-top: 1.5rem; }
-
-.skills-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
-  margin-bottom: 1.5rem;
-}
-
-.skill-cell {
-  background: var(--bg);
-  padding: 1.1rem 1.25rem;
-}
-
-.skill-label {
-  font-size: 0.6rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--mid);
-  margin-bottom: 0.5rem;
-}
-
-.skill-value {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.95rem;
-  color: var(--ink);
-  line-height: 1.4;
-}
+.about-linkedin { margin-left: 1.5rem; }
 
 /* ─────────────────────────────────────────────
    CONTACT
