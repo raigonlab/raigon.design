@@ -247,7 +247,7 @@ body {
 ───────────────────────────────────────────── */
 .home-marquee {
   position: absolute;
-  inset: 0;
+  inset: 0 1.75rem;
   z-index: 0;
   overflow: hidden;
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 32%, black 68%, transparent 100%);
