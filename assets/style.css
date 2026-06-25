@@ -297,7 +297,9 @@ body {
   height: calc(100vh - var(--page-m) - var(--nav-clearance));
   height: calc(100dvh - var(--page-m) - var(--nav-clearance));
   margin: var(--page-m) var(--page-m) var(--nav-clearance);
-  border-radius: var(--radius);
+  /* no radius here — each panel defines its own corner shape; an outer
+     radius + overflow:hidden would clip the edge panel back to round */
+  border-radius: 0;
   overflow: hidden;
   /* shows through the track gap, so each panel reads as a separate card */
   background: var(--bg);
