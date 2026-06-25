@@ -319,7 +319,7 @@ body {
 .work-header {
   position: absolute;
   top: 0; left: 0; right: 0;
-  padding: 1.5rem 1.75rem 1rem;
+  padding: 2.25rem 1.75rem 1rem;
 }
 
 /* the three header titles ("Selected work", name+category, name+section)
@@ -376,6 +376,29 @@ body {
   height: 100%;
   border-radius: calc(var(--radius) - 6px);
   overflow: hidden;
+}
+
+.work-project-extra {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  padding: 5rem 1.75rem 1.5rem;
+}
+
+.project-problem-solution h4 {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.project-problem-solution p {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.7;
+  font-weight: 300;
 }
 
 .work-project-main {
