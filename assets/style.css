@@ -491,7 +491,9 @@ body {
 }
 
 .work-project-down {
-  position: relative;
+  position: absolute;
+  left: 0.85rem;
+  bottom: 0.75rem;
   width: 20px;
   height: 12px;
   background: none;
