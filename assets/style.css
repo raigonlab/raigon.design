@@ -466,6 +466,7 @@ body {
   padding: 0;
   cursor: pointer;
   pointer-events: auto;
+  opacity: 0.5;
   transform: translateX(-50%);
   animation: work-down-bounce 1.8s ease-in-out infinite;
 }
@@ -474,9 +475,9 @@ body {
   position: absolute;
   top: 0;
   width: 12px;
-  height: 5px;
+  height: 4px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.8);
+  background: #fff;
 }
 
 .work-project-down span:first-child {
