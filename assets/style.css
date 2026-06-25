@@ -473,7 +473,7 @@ body {
 
 .work-project-down span {
   position: absolute;
-  top: 0;
+  bottom: 0;
   width: 10px;
   height: 4px;
   border-radius: 999px;
