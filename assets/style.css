@@ -675,7 +675,34 @@ body {
   scroll-snap-align: start;
 }
 
+.work-gallery-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.work-gallery-header .section-label {
+  margin-bottom: 0;
+}
+
+.work-gallery-collapse {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: none;
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: var(--ink);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.85rem;
+}
+
 .work-gallery-grid {
+  margin-top: 1.75rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.75rem 1rem;

@@ -157,7 +157,7 @@
 
   <!-- SEE MORE trigger -->
   <section class="work-more" id="workMore">
-    <div class="work-header">
+    <div class="work-header" id="workMoreHeader">
       <p class="section-label">Selected work</p>
     </div>
     <button class="work-more-btn" id="workMoreBtn" aria-expanded="false" aria-controls="workGallery">
@@ -168,7 +168,10 @@
 
   <!-- SEE MORE WORK — gallery overview, links into the full project cards -->
   <section class="work-gallery" id="workGallery" hidden>
-    <p class="section-label">See more work</p>
+    <div class="work-gallery-header">
+      <p class="section-label">See more work</p>
+      <button class="work-gallery-collapse" id="workGalleryCollapse" aria-label="Collapse">−</button>
+    </div>
     <div class="work-gallery-grid">
       <a href="#project-arcavault" class="work-gallery-item">
         <div class="work-gallery-thumb"></div>

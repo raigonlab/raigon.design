@@ -26,13 +26,26 @@
   });
 
   const workMoreBtn = document.getElementById('workMoreBtn');
+  const workMoreHeader = document.getElementById('workMoreHeader');
   const workGallery = document.getElementById('workGallery');
+  const workGalleryCollapse = document.getElementById('workGalleryCollapse');
 
   if (workMoreBtn && workGallery) {
     workMoreBtn.addEventListener('click', function () {
       workMoreBtn.setAttribute('aria-expanded', 'true');
+      if (workMoreHeader) workMoreHeader.hidden = true;
       workGallery.removeAttribute('hidden');
       workGallery.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+
+  if (workGalleryCollapse && workGallery) {
+    workGalleryCollapse.addEventListener('click', function () {
+      workGallery.setAttribute('hidden', '');
+      if (workMoreBtn) workMoreBtn.setAttribute('aria-expanded', 'false');
+      if (workMoreHeader) workMoreHeader.hidden = false;
+      const workMore = document.getElementById('workMore');
+      if (workMore) workMore.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   }
 
