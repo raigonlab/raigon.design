@@ -351,7 +351,7 @@ body {
 
 .work-dots {
   position: absolute;
-  right: 1.75rem;
+  right: 0.85rem;
   bottom: 0.75rem;
   display: flex;
   align-items: center;
@@ -394,11 +394,36 @@ body {
   position: absolute;
   left: 50%;
   bottom: 0.75rem;
+  width: 20px;
+  height: 12px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  pointer-events: auto;
   transform: translateX(-50%);
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 1.2rem;
-  line-height: 1;
   animation: work-down-bounce 1.8s ease-in-out infinite;
+}
+
+.work-project-down span {
+  position: absolute;
+  top: 0;
+  width: 12px;
+  height: 5px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.work-project-down span:first-child {
+  left: 0;
+  transform-origin: right center;
+  transform: rotate(45deg);
+}
+
+.work-project-down span:last-child {
+  right: 0;
+  transform-origin: left center;
+  transform: rotate(-45deg);
 }
 
 @keyframes work-down-bounce {

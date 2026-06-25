@@ -88,5 +88,13 @@
       // name/category take over its spot on the left.
       if (header) header.classList.toggle('is-secondary', index > 0);
     }, { passive: true });
+
+    const down = project.querySelector('.work-project-down');
+    if (down) {
+      down.addEventListener('click', function () {
+        const next = project.nextElementSibling;
+        if (next) next.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
   });
 })();
