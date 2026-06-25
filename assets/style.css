@@ -329,7 +329,7 @@ body {
 .work-header-title {
   position: absolute;
   top: 0; left: 0; right: 0;
-  padding: 3rem 1.25rem 1rem;
+  padding: 2rem 1.25rem 1rem;
   display: flex;
   align-items: baseline;
   gap: 0.5rem;
