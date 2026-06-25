@@ -155,24 +155,14 @@
     </div>
   </section>
 
-  <!-- SEE MORE trigger -->
+  <!-- SEE MORE — single card that expands in place -->
   <section class="work-more" id="workMore">
-    <div class="work-header" id="workMoreHeader">
-      <p class="section-label">Selected work</p>
+    <div class="work-more-header">
+      <h3 class="work-more-heading" id="workMoreHeading">See more about our stories and projects</h3>
+      <button class="work-more-toggle" id="workMoreBtn" aria-expanded="false">See more</button>
     </div>
-    <button class="work-more-btn" id="workMoreBtn" aria-expanded="false" aria-controls="workGallery">
-      <span class="work-more-icon" aria-hidden="true">+</span>
-      <span class="work-more-label">See more projects</span>
-    </button>
-  </section>
-
-  <!-- SEE MORE WORK — gallery overview, links into the full project cards -->
-  <section class="work-gallery" id="workGallery" hidden>
-    <div class="work-gallery-header">
-      <p class="section-label">See more work</p>
-      <button class="work-gallery-collapse" id="workGalleryCollapse" aria-label="Collapse">−</button>
-    </div>
-    <div class="work-gallery-grid">
+    <p class="work-more-intro" id="workMoreIntro" hidden>See how we solve real problems for people and businesses through a clear and structured process.</p>
+    <div class="work-gallery-grid" id="workGalleryGrid" hidden>
       <a href="#project-arcavault" class="work-gallery-item">
         <div class="work-gallery-thumb"></div>
         <p class="work-gallery-name">Arca Vault</p>

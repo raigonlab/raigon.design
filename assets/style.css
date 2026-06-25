@@ -606,96 +606,54 @@ body {
   border-radius: 2px;
 }
 
+/* ─────────────────────────────────────────────
+   SEE MORE — single card, expands in place to reveal the gallery
+───────────────────────────────────────────── */
 .work-more {
-  height: 160px;
   margin: var(--page-m) var(--page-m) calc(var(--page-m) + var(--nav-clearance));
   border-radius: var(--radius);
   background: var(--card);
-  position: relative;
-  scroll-snap-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 1.75rem;
+  scroll-snap-align: start;
 }
 
-.work-more .work-header .section-label {
-  color: var(--mid);
-  text-shadow: none;
-}
-
-.work-more-btn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.75rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--mid);
-}
-
-.work-more-icon {
-  width: 56px;
-  height: 56px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
+.work-more-header {
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  font-weight: 300;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.work-more-heading {
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.35;
   color: var(--ink);
+}
+
+.work-more-toggle {
+  flex-shrink: 0;
+  padding: 0.55rem 1.1rem;
+  border-radius: 999px;
+  border: none;
+  background: var(--line);
+  color: var(--mid);
+  font-size: 0.72rem;
+  font-weight: 500;
+  cursor: pointer;
   transition: background 0.2s ease, color 0.2s ease;
 }
 
-.work-more-btn:hover .work-more-icon {
+.work-more-toggle:hover {
   background: var(--ink);
   color: var(--white);
 }
 
-.work-more-label {
-  font-size: 0.72rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-/* ─────────────────────────────────────────────
-   WORK GALLERY — overview grid, links into the full project cards
-───────────────────────────────────────────── */
-.work-gallery {
-  min-height: calc(100vh - var(--nav-clearance));
-  min-height: calc(100dvh - var(--nav-clearance));
-  margin: 0 var(--page-m) var(--nav-clearance);
-  border-radius: var(--radius);
-  background: var(--card);
-  padding: 3.5rem 1.75rem;
-  scroll-snap-align: start;
-}
-
-.work-gallery-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.work-gallery-header .section-label {
-  margin-bottom: 0;
-}
-
-.work-gallery-collapse {
-  width: 32px;
-  height: 32px;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  background: none;
-  font-size: 1.1rem;
-  font-weight: 300;
-  color: var(--ink);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 0.85rem;
+.work-more-intro {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: var(--mid);
+  line-height: 1.6;
 }
 
 .work-gallery-grid {

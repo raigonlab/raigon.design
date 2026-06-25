@@ -25,27 +25,24 @@
     }
   });
 
+  const workMore = document.getElementById('workMore');
   const workMoreBtn = document.getElementById('workMoreBtn');
-  const workMoreHeader = document.getElementById('workMoreHeader');
-  const workGallery = document.getElementById('workGallery');
-  const workGalleryCollapse = document.getElementById('workGalleryCollapse');
+  const workMoreHeading = document.getElementById('workMoreHeading');
+  const workMoreIntro = document.getElementById('workMoreIntro');
+  const workGalleryGrid = document.getElementById('workGalleryGrid');
 
-  if (workMoreBtn && workGallery) {
+  const COLLAPSED_HEADING = 'See more about our stories and projects';
+  const EXPANDED_HEADING = 'Our stories and projects';
+
+  if (workMore && workMoreBtn && workMoreHeading && workMoreIntro && workGalleryGrid) {
     workMoreBtn.addEventListener('click', function () {
-      workMoreBtn.setAttribute('aria-expanded', 'true');
-      if (workMoreHeader) workMoreHeader.hidden = true;
-      workGallery.removeAttribute('hidden');
-      workGallery.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-  }
-
-  if (workGalleryCollapse && workGallery) {
-    workGalleryCollapse.addEventListener('click', function () {
-      workGallery.setAttribute('hidden', '');
-      if (workMoreBtn) workMoreBtn.setAttribute('aria-expanded', 'false');
-      if (workMoreHeader) workMoreHeader.hidden = false;
-      const workMore = document.getElementById('workMore');
-      if (workMore) workMore.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const expanding = workMoreBtn.getAttribute('aria-expanded') !== 'true';
+      workMoreBtn.setAttribute('aria-expanded', String(expanding));
+      workMoreBtn.textContent = expanding ? 'See less' : 'See more';
+      workMoreHeading.textContent = expanding ? EXPANDED_HEADING : COLLAPSED_HEADING;
+      workMoreIntro.hidden = !expanding;
+      workGalleryGrid.hidden = !expanding;
+      if (expanding) workMore.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   }
 
@@ -65,13 +62,13 @@
   // top-level scroll-snap item (single continuous vertical scroll —
   // no nested scroll-snap tracks, so no scroll-chaining hacks needed).
   const pageSlides = Array.from(
-    document.querySelectorAll('.home-slide, .work-project, .work-more, .work-gallery, #about, #contact')
+    document.querySelectorAll('.home-slide, .work-project, .work-more, #about, #contact')
   );
 
   function navGroupFor(el) {
     if (el.id === 'about') return 'about';
     if (el.id === 'contact') return 'contact';
-    if (el.classList.contains('work-project') || el.classList.contains('work-more') || el.classList.contains('work-gallery')) return 'work';
+    if (el.classList.contains('work-project') || el.classList.contains('work-more')) return 'work';
     return null;
   }
 
