@@ -67,8 +67,13 @@
 
   if (reduceMotion) return;
 
-  let offset0 = -SET_H * 0.5;
-  let offset1 = -SET_H * 1.0;
+  // Distance travelled accumulates forever; the on-screen offset is
+  // derived from it with modulo, so the position is always a pure
+  // function of elapsed distance — no threshold check, no risk of a
+  // skipped/duplicated frame causing a visible stall or jump at the
+  // wrap point.
+  let traveled0 = 0;
+  let traveled1 = 0;
   let lastTs = null;
 
   function render(ts) {
@@ -78,11 +83,11 @@
 
     const spd = SPEED * (dt / 16.67);
 
-    offset0 -= spd;
-    if (offset0 < -SET_H * 2) offset0 += SET_H;
+    traveled0 += spd;
+    traveled1 += spd;
 
-    offset1 += spd;
-    if (offset1 > 0) offset1 -= SET_H;
+    const offset0 = -SET_H - (traveled0 % SET_H);
+    const offset1 = -SET_H + (traveled1 % SET_H);
 
     col0.style.transform = 'translateY(' + offset0.toFixed(1) + 'px)';
     col1.style.transform = 'translateY(' + offset1.toFixed(1) + 'px)';
