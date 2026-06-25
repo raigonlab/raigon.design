@@ -326,6 +326,22 @@ body {
   gap: 1rem;
 }
 
+.work-header .section-label,
+.work-header .project-info {
+  transition: opacity 0.25s ease;
+}
+
+.work-header.is-secondary .section-label {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.work-header.is-secondary .project-info {
+  flex: 1;
+  text-align: left;
+}
+
 .work-header .section-label {
   font-size: 0.75rem;
   margin-bottom: 0;
