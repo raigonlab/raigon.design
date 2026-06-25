@@ -53,8 +53,9 @@ body {
 ───────────────────────────────────────────── */
 .all-projects-btn {
   position: fixed;
-  top: 1.25rem;
-  right: 1rem;
+  left: 50%;
+  bottom: calc(1rem + var(--nav-h) + 1.5rem + env(safe-area-inset-bottom));
+  transform: translateX(-50%);
   z-index: 150;
   padding: 0.55rem 1rem;
   border-radius: 999px;
@@ -376,10 +377,18 @@ body {
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
 }
 
-.work-dots {
+/* down arrow + pagination dots grouped together, bottom-right, acting
+   as one navigation control cluster */
+.work-nav-controls {
   position: absolute;
   right: 0.85rem;
   bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.work-dots {
   display: flex;
   align-items: center;
   gap: 0.4rem;
@@ -482,9 +491,7 @@ body {
 }
 
 .work-project-down {
-  position: absolute;
-  left: 50%;
-  bottom: 0.75rem;
+  position: relative;
   width: 20px;
   height: 12px;
   background: none;
@@ -493,7 +500,6 @@ body {
   cursor: pointer;
   pointer-events: auto;
   opacity: 0.5;
-  transform: translateX(-50%);
   animation: work-down-bounce 1.8s ease-in-out infinite;
 }
 
@@ -519,8 +525,8 @@ body {
 }
 
 @keyframes work-down-bounce {
-  0%, 100% { transform: translate(-50%, 0); }
-  50%      { transform: translate(-50%, 4px); }
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(4px); }
 }
 
 .work-dots .dot {
