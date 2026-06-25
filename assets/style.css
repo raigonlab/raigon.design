@@ -320,26 +320,25 @@ body {
   position: absolute;
   top: 0; left: 0; right: 0;
   padding: 1.5rem 1.75rem 1rem;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 1rem;
 }
 
-.work-header .section-label,
-.work-header .project-info {
+/* the three header titles ("Selected work", name+category, name+section)
+   sit stacked on the same spot and cross-fade based on which of the 3
+   horizontal panels is active */
+.work-header-title {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  opacity: 0;
+  pointer-events: none;
   transition: opacity 0.25s ease;
 }
 
-.work-header.is-secondary .section-label {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.work-header.is-secondary .project-info {
-  flex: 1;
-  text-align: left;
+.work-header-title.is-active {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .work-header .section-label {
@@ -482,26 +481,14 @@ body {
   color: #fff;
 }
 
-/* header copy: small + bold, only shown once the user has swiped past
-   the main panel (work-header.is-secondary), replacing "Selected work" */
-.work-header .project-info {
-  position: static;
-  padding: 0;
-  text-align: right;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.work-header.is-secondary .project-info {
-  opacity: 1;
-  pointer-events: auto;
-}
-
+/* header copy: name + a panel-specific subtitle, side by side, only
+   shown on the work-header-title that is currently active */
 .work-header .project-category {
   font-size: 0.6rem;
   font-weight: 300;
   letter-spacing: 0.18em;
-  margin-bottom: 0.3rem;
+  text-transform: uppercase;
+  margin-bottom: 0;
   color: rgba(255, 255, 255, 0.65);
 }
 

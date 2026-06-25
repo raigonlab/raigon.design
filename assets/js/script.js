@@ -77,16 +77,18 @@
   document.querySelectorAll('.work-project').forEach(function (project) {
     const track = project.querySelector('.work-project-track');
     const dots = project.querySelectorAll('.work-dots .dot');
-    const header = project.querySelector('.work-header');
+    const titles = project.querySelectorAll('.work-header-title');
 
     if (!track || !dots.length) return;
 
     track.addEventListener('scroll', function () {
       const index = Math.min(2, Math.round(track.scrollLeft / track.clientWidth));
       dots.forEach(function (dot, i) { dot.classList.toggle('active', i === index); });
-      // Past the main panel, "Selected work" recedes and the project
-      // name/category take over its spot on the left.
-      if (header) header.classList.toggle('is-secondary', index > 0);
+      // Each panel has its own header title ("Selected work" on the
+      // main panel, name + a panel-specific subtitle on the others).
+      titles.forEach(function (title) {
+        title.classList.toggle('is-active', Number(title.dataset.panel) === index);
+      });
     }, { passive: true });
 
     const down = project.querySelector('.work-project-down');
