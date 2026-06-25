@@ -31,6 +31,7 @@
   if (workMoreBtn && workGallery) {
     workMoreBtn.addEventListener('click', function () {
       workMoreBtn.setAttribute('aria-expanded', 'true');
+      workGallery.removeAttribute('hidden');
       workGallery.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   }
