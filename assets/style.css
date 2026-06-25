@@ -618,10 +618,15 @@ body {
 }
 
 .work-more-header {
+  position: sticky;
+  top: 1rem;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  background: var(--card);
+  padding-bottom: 0.5rem;
 }
 
 .work-more-heading {
