@@ -49,6 +49,32 @@ body {
 }
 
 /* ─────────────────────────────────────────────
+   ALL PROJECTS — fixed shortcut, visible only inside the work section
+───────────────────────────────────────────── */
+.all-projects-btn {
+  position: fixed;
+  top: 1.25rem;
+  right: 1rem;
+  z-index: 150;
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  border: none;
+  background: rgba(245, 244, 240, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 6px 20px rgba(15, 15, 14, 0.1);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.all-projects-btn[hidden] {
+  display: none;
+}
+
+/* ─────────────────────────────────────────────
    NAV — fixed bottom, glassmorphism
 ───────────────────────────────────────────── */
 .main-nav {

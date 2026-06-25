@@ -76,6 +76,8 @@
   // in view (home slides have no link, so being there clears them all).
   const navLinksList = Array.from(document.querySelectorAll('.nav-link'));
 
+  const allProjectsBtn = document.getElementById('allProjectsBtn');
+
   if (navLinksList.length && pageSlides.length) {
     const sectionObserver = new IntersectionObserver(function (entries) {
       const visible = entries
@@ -88,9 +90,23 @@
       navLinksList.forEach(function (link) {
         link.classList.toggle('active', link.dataset.nav === group);
       });
+
+      // "All Projects" is only useful while browsing inside the work
+      // section (any project, any horizontal panel, or the see-more card).
+      if (allProjectsBtn) allProjectsBtn.hidden = group !== 'work';
     }, { threshold: 0.5 });
 
     pageSlides.forEach(function (slide) { sectionObserver.observe(slide); });
+  }
+
+  if (allProjectsBtn && workMore && workMoreBtn) {
+    allProjectsBtn.addEventListener('click', function () {
+      if (workMoreBtn.getAttribute('aria-expanded') !== 'true') {
+        workMoreBtn.click();
+      } else {
+        workMore.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
   }
 
   // Each work card carries its own header dots, reflecting which of
