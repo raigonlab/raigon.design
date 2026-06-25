@@ -598,6 +598,50 @@ body {
 }
 
 /* ─────────────────────────────────────────────
+   WORK GALLERY — overview grid, links into the full project cards
+───────────────────────────────────────────── */
+.work-gallery {
+  min-height: calc(100vh - var(--nav-clearance));
+  min-height: calc(100dvh - var(--nav-clearance));
+  margin: 0 var(--page-m) var(--nav-clearance);
+  border-radius: var(--radius);
+  background: var(--card);
+  padding: 3.5rem 1.75rem;
+  scroll-snap-align: start;
+}
+
+.work-gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.75rem 1rem;
+}
+
+.work-gallery-item {
+  display: block;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.work-gallery-thumb {
+  height: 140px;
+  border-radius: var(--radius);
+  background: var(--line);
+  margin-bottom: 0.75rem;
+}
+
+.work-gallery-name {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 0.15rem;
+}
+
+.work-gallery-desc {
+  font-size: 0.72rem;
+  color: var(--mid);
+}
+
+/* ─────────────────────────────────────────────
    ABOUT
 ───────────────────────────────────────────── */
 #about {

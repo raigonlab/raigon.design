@@ -25,29 +25,39 @@
     }
   });
 
-  const workMore = document.getElementById('workMore');
   const workMoreBtn = document.getElementById('workMoreBtn');
-  const hiddenProjects = document.querySelectorAll('.work-project[hidden]');
+  const workGallery = document.getElementById('workGallery');
 
-  if (workMore && workMoreBtn && hiddenProjects.length) {
+  if (workMoreBtn && workGallery) {
     workMoreBtn.addEventListener('click', function () {
-      hiddenProjects.forEach(function (project) { project.removeAttribute('hidden'); });
       workMoreBtn.setAttribute('aria-expanded', 'true');
-      workMore.remove();
+      workGallery.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   }
+
+  // Gallery thumbnails jump straight to a project's full card, unhiding
+  // it first if it had not been revealed yet.
+  document.querySelectorAll('.work-gallery-item').forEach(function (item) {
+    item.addEventListener('click', function (e) {
+      const target = document.querySelector(item.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      target.removeAttribute('hidden');
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
 
   // Every intro slide, work card, about and contact is now a direct,
   // top-level scroll-snap item (single continuous vertical scroll —
   // no nested scroll-snap tracks, so no scroll-chaining hacks needed).
   const pageSlides = Array.from(
-    document.querySelectorAll('.home-slide, .work-project, .work-more, #about, #contact')
+    document.querySelectorAll('.home-slide, .work-project, .work-more, .work-gallery, #about, #contact')
   );
 
   function navGroupFor(el) {
     if (el.id === 'about') return 'about';
     if (el.id === 'contact') return 'contact';
-    if (el.classList.contains('work-project') || el.classList.contains('work-more')) return 'work';
+    if (el.classList.contains('work-project') || el.classList.contains('work-more') || el.classList.contains('work-gallery')) return 'work';
     return null;
   }
 
