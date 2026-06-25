@@ -250,8 +250,8 @@ body {
   inset: 0;
   z-index: 0;
   overflow: hidden;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 16%, black 84%, transparent 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, black 16%, black 84%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 32%, black 68%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 32%, black 68%, transparent 100%);
 }
 
 .home-marquee-col {
