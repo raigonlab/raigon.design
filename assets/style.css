@@ -336,7 +336,6 @@ body {
 .work-fixed {
   position: absolute;
   inset: 0;
-  width: 80%;
   z-index: 2;
   pointer-events: none;
 }
@@ -407,29 +406,13 @@ body {
 .work-project-main,
 .work-project-details,
 .work-project-extra {
-  flex: 0 0 80%;
+  flex: 0 0 100%;
   scroll-snap-align: start;
   height: 100%;
   overflow: hidden;
+  border-radius: 0;
   /* TEMP placeholder colour — remove once real content/imagery is in */
   background: #A85D55;
-}
-
-/* corners alternate whole-card, square / rounded / square, each panel
-   fully separated by the track gap (never flush, never overlapping) */
-.work-project-main,
-.work-project-extra {
-  border-radius: 0;
-}
-
-/* lets the image placeholder bleed past the panel's own 80% edge,
-   out to the true screen edge, instead of being clipped at 80% */
-.work-project-main {
-  overflow: visible;
-}
-
-.work-project-details {
-  border-radius: 0;
 }
 
 .work-project-extra {
@@ -560,10 +543,8 @@ body {
 /* TEMP: stand-in for the real project shot, inset within the main panel */
 .project-image-placeholder {
   position: absolute;
-  top: 4.5rem; left: 1.25rem; right: -25%; bottom: 6.5rem;
+  top: 4.5rem; left: 1.25rem; right: 1.25rem; bottom: 6.5rem;
   border-radius: 16px;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
   background: rgba(255, 255, 255, 0.15);
   display: flex;
   align-items: center;
