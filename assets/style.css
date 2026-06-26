@@ -812,7 +812,7 @@ body {
   height: calc(100vh - var(--nav-clearance));
   height: calc(100dvh - var(--nav-clearance));
   margin: 0 0 var(--nav-clearance);
-  padding: 2.5rem 1.75rem 2rem;
+  padding: 3.25rem 1.75rem 2.25rem;
   border-radius: 0;
   background: var(--ink);
   scroll-snap-align: start;
@@ -821,12 +821,12 @@ body {
 }
 
 .skills-header {
-  margin-bottom: 2rem;
+  margin-bottom: 2.75rem;
 }
 
 .skills-eyebrow {
   color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .skills-panel-label {
@@ -852,7 +852,7 @@ body {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.4);
-  margin-bottom: 0.9rem;
+  margin-bottom: 1.2rem;
 }
 
 .skills-group-note {
@@ -873,7 +873,7 @@ body {
 .skills-river-track {
   display: flex;
   width: max-content;
-  gap: 1.1rem;
+  gap: 1.85rem;
   animation: skills-river-scroll 38s linear infinite;
 }
 
@@ -887,7 +887,7 @@ body {
   font-size: 0.7rem;
   font-weight: 500;
   color: #fff;
-  padding: 0.55rem 1.15rem;
+  padding: 0.65rem 1.4rem;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   background: rgba(255, 255, 255, 0.06);
