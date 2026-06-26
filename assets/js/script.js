@@ -42,8 +42,22 @@
       workMoreHeading.textContent = expanding ? EXPANDED_HEADING : COLLAPSED_HEADING;
       workMoreIntro.hidden = !expanding;
       workGalleryGrid.hidden = !expanding;
-      if (expanding) workMore.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (expanding) jumpTo(workMore);
     });
+  }
+
+  // scroll-snap-type: mandatory on <html> can "catch" a long programmatic
+  // scrollIntoView at the nearest snap point instead of letting it travel
+  // all the way to a far-away target, so it's switched off for the
+  // duration of the jump and restored once the scroll settles.
+  let snapReleaseTimer = null;
+  function jumpTo(target) {
+    document.documentElement.style.scrollSnapType = 'none';
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    clearTimeout(snapReleaseTimer);
+    snapReleaseTimer = setTimeout(function () {
+      document.documentElement.style.scrollSnapType = '';
+    }, 800);
   }
 
   // Gallery thumbnails jump straight to a project's full card, unhiding
@@ -54,7 +68,7 @@
       if (!target) return;
       e.preventDefault();
       target.removeAttribute('hidden');
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      jumpTo(target);
     });
   });
 
@@ -101,7 +115,7 @@
         if (workMoreBtn.getAttribute('aria-expanded') !== 'true') {
           workMoreBtn.click();
         } else {
-          workMore.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          jumpTo(workMore);
         }
       });
     });
@@ -130,7 +144,7 @@
     if (down) {
       down.addEventListener('click', function () {
         const next = project.nextElementSibling;
-        if (next) next.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (next) jumpTo(next);
       });
     }
   });
