@@ -812,7 +812,7 @@ body {
   height: calc(100vh - var(--nav-clearance));
   height: calc(100dvh - var(--nav-clearance));
   margin: 0 0 var(--nav-clearance);
-  padding: 3.25rem 1.75rem 2.25rem;
+  padding: 2.5rem 1.75rem 2rem;
   border-radius: 0;
   background: var(--ink);
   scroll-snap-align: start;
@@ -820,13 +820,60 @@ body {
   overflow: hidden;
 }
 
+/* collapsed mode trades the fixed full-bleed height for natural flow,
+   since every chip is unwrapped and visible at once instead of clipped */
+.skills-panel.is-collapsed {
+  height: auto;
+  min-height: calc(100vh - var(--nav-clearance));
+  min-height: calc(100dvh - var(--nav-clearance));
+  overflow: visible;
+}
+
 .skills-header {
-  margin-bottom: 2.75rem;
+  margin-bottom: 2.25rem;
+}
+
+.skills-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.85rem;
 }
 
 .skills-eyebrow {
   color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 1rem;
+  margin-bottom: 0;
+}
+
+.skills-toggle {
+  flex-shrink: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 4px;
+  width: 1.9rem;
+  height: 1.9rem;
+  padding: 7px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+}
+
+.skills-toggle span {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.55);
+  justify-self: center;
+  align-self: center;
+  transition: background 0.2s ease;
+}
+
+.skills-toggle:hover span,
+.skills-toggle[aria-pressed="true"] span {
+  background: #fff;
 }
 
 .skills-panel-label {
@@ -845,6 +892,12 @@ body {
   flex: 1;
 }
 
+.skills-panel.is-collapsed .skills-groups {
+  justify-content: flex-start;
+  gap: 1.5rem;
+  flex: none;
+}
+
 .skills-group { margin-bottom: 0; }
 
 .skills-group-title {
@@ -852,7 +905,7 @@ body {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.4);
-  margin-bottom: 1.2rem;
+  margin-bottom: 0.7rem;
 }
 
 .skills-group-note {
@@ -870,11 +923,30 @@ body {
   mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
 }
 
+.skills-panel.is-collapsed .skills-river {
+  overflow: visible;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
 .skills-river-track {
   display: flex;
   width: max-content;
-  gap: 1.85rem;
+  gap: 0.85rem;
   animation: skills-river-scroll 38s linear infinite;
+}
+
+/* collapsed: stop the scroll, wrap into a static stacked grid, and hide
+   the duplicate chip set (it only exists to make the loop seamless) */
+.skills-panel.is-collapsed .skills-river-track {
+  animation: none;
+  transform: none;
+  flex-wrap: wrap;
+  width: auto;
+}
+
+.skills-panel.is-collapsed .skill-chip[aria-hidden="true"] {
+  display: none;
 }
 
 @keyframes skills-river-scroll {
@@ -887,7 +959,7 @@ body {
   font-size: 0.7rem;
   font-weight: 500;
   color: #fff;
-  padding: 0.65rem 1.4rem;
+  padding: 0.5rem 1rem;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   background: rgba(255, 255, 255, 0.06);

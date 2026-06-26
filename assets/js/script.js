@@ -46,6 +46,16 @@
     });
   }
 
+  const skillsPanel = document.getElementById('skills');
+  const skillsToggle = document.getElementById('skillsToggle');
+
+  if (skillsPanel && skillsToggle) {
+    skillsToggle.addEventListener('click', function () {
+      const collapsed = skillsPanel.classList.toggle('is-collapsed');
+      skillsToggle.setAttribute('aria-pressed', String(collapsed));
+    });
+  }
+
   // scroll-snap-type: mandatory on <html> can "catch" a long programmatic
   // scrollIntoView at the nearest snap point instead of letting it travel
   // all the way to a far-away target, so it's switched off for the
