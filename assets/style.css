@@ -439,6 +439,7 @@ body {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: #fff;
+  margin-top: -0.4rem;
   margin-bottom: 0.5rem;
 }
 
@@ -543,7 +544,8 @@ body {
 /* TEMP: stand-in for the real project shot, inset within the main panel */
 .project-image-placeholder {
   position: absolute;
-  top: 4.5rem; left: 1.25rem; right: 0; bottom: 6.5rem;
+  top: 4.5rem; left: 1.25rem; right: 0;
+  height: 140px;
   border-radius: 16px;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
