@@ -732,7 +732,7 @@ body {
 .about-track {
   display: flex;
   gap: 1.5rem;
-  padding: 0 1.75rem;
+  padding: 0 2rem;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
@@ -742,9 +742,9 @@ body {
 
 .about-slide {
   position: relative;
-  flex: 0 0 80%;
-  height: 50vh;
-  min-height: 280px;
+  flex: 0 0 85%;
+  height: 55vh;
+  min-height: 320px;
   border-radius: calc(var(--radius) - 6px);
   overflow: hidden;
   scroll-snap-align: start;
@@ -768,7 +768,7 @@ body {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
   font-weight: 300;
-  font-size: clamp(1.5rem, 6vw, 2rem);
+  font-size: clamp(1.7rem, 7vw, 2.3rem);
   line-height: 1.3;
   text-align: center;
   color: #fff;
