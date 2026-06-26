@@ -26,7 +26,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; scroll-snap-type: y proximity; }
+html { scroll-behavior: smooth; scroll-snap-type: y mandatory; }
 
 body {
   background: var(--bg);
@@ -233,6 +233,7 @@ body {
   margin: 0 0 var(--nav-clearance);
   background: var(--bg);
   scroll-snap-align: start;
+  scroll-snap-stop: always;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -327,6 +328,7 @@ body {
   background: var(--bg);
   position: relative;
   scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 /* confined to the current panel's own width (matches work-project-track
@@ -713,6 +715,7 @@ body {
   background: var(--white);
   padding: 2.25rem 0 2.5rem;
   scroll-snap-align: start;
+  scroll-snap-stop: always;
   overflow: hidden;
 }
 
@@ -813,6 +816,7 @@ body {
   border-radius: 0;
   background: var(--ink);
   scroll-snap-align: start;
+  scroll-snap-stop: always;
   overflow: hidden;
 }
 
@@ -892,11 +896,12 @@ body {
   justify-content: flex-start;
   min-height: calc(100vh - var(--nav-clearance));
   min-height: calc(100dvh - var(--nav-clearance));
-  margin: 0 var(--page-m) var(--nav-clearance);
-  border-radius: var(--radius);
-  background: var(--card);
+  margin: 0 0 var(--nav-clearance);
+  border-radius: 0;
+  background: var(--white);
   padding: 3.5rem 1.75rem;
   scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 .contact-inner {
