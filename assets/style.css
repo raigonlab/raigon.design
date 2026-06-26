@@ -423,7 +423,7 @@ body {
 }
 
 .work-project-details {
-  border-radius: calc(var(--radius) - 6px);
+  border-radius: 0;
 }
 
 .work-project-extra {
@@ -467,8 +467,7 @@ body {
 .work-project-details {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  overflow-y: auto;
+  justify-content: center;
   padding: 5rem 1.75rem 1.5rem;
 }
 
