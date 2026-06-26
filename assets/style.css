@@ -715,7 +715,7 @@ body {
   min-height: calc(100dvh - var(--nav-clearance));
   margin: 0 0 var(--nav-clearance);
   border-radius: 0;
-  background: var(--card);
+  background: var(--white);
   padding: 2.25rem 0 2.5rem;
   scroll-snap-align: start;
   overflow: hidden;
