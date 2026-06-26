@@ -143,7 +143,8 @@
     const down = project.querySelector('.work-project-down');
     if (down) {
       down.addEventListener('click', function () {
-        const next = project.nextElementSibling;
+        let next = project.nextElementSibling;
+        while (next && next.hasAttribute('hidden')) next = next.nextElementSibling;
         if (next) jumpTo(next);
       });
     }
