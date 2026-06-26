@@ -51,9 +51,19 @@
 
   if (skillsPanel && skillsToggle) {
     skillsToggle.addEventListener('click', function () {
-      const collapsed = skillsPanel.classList.toggle('is-collapsed');
-      skillsToggle.setAttribute('aria-pressed', String(collapsed));
+      const paused = skillsPanel.classList.toggle('is-paused');
+      skillsToggle.setAttribute('aria-pressed', String(paused));
+      skillsToggle.setAttribute('aria-label', paused ? 'Resume the flowing animation' : 'Pause the flowing animation');
     });
+
+    // Pause is never permanent — any scroll on the page resumes the
+    // flow automatically, so the section defaults back to feeling alive.
+    window.addEventListener('scroll', function () {
+      if (!skillsPanel.classList.contains('is-paused')) return;
+      skillsPanel.classList.remove('is-paused');
+      skillsToggle.setAttribute('aria-pressed', 'false');
+      skillsToggle.setAttribute('aria-label', 'Pause the flowing animation');
+    }, { passive: true });
   }
 
   // scroll-snap-type: mandatory on <html> can "catch" a long programmatic
