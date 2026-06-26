@@ -755,6 +755,8 @@ body {
 .about-slide-bg {
   position: absolute;
   inset: 0 0 0 1.25rem;
+  /* TEMP placeholder so the left inset is visible — swap for real photography */
+  background: rgba(255, 255, 255, 0.08);
   background-size: cover;
   background-position: center;
 }
