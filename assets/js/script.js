@@ -49,15 +49,29 @@
   // scroll-snap-type: mandatory on <html> can "catch" a long programmatic
   // scrollIntoView at the nearest snap point instead of letting it travel
   // all the way to a far-away target, so it's switched off for the
-  // duration of the jump and restored once the scroll settles.
+  // duration of the jump and restored once the scroll actually settles
+  // (a fixed timeout is unreliable here — far jumps, e.g. down to the
+  // see-more card at the very end of the page, can easily take longer
+  // than a short delay, so snap would re-engage mid-scroll and yank the
+  // view back toward the nearest snap point).
   let snapReleaseTimer = null;
   function jumpTo(target) {
     document.documentElement.style.scrollSnapType = 'none';
     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    clearTimeout(snapReleaseTimer);
-    snapReleaseTimer = setTimeout(function () {
+
+    function restoreSnap() {
       document.documentElement.style.scrollSnapType = '';
-    }, 800);
+      window.removeEventListener('scrollend', restoreSnap);
+      clearTimeout(snapReleaseTimer);
+    }
+
+    if ('onscrollend' in window) {
+      window.addEventListener('scrollend', restoreSnap, { once: true });
+    }
+    // Always also arm a generous fallback timeout in case scrollend
+    // never fires (unsupported browser, or the scroll gets interrupted).
+    clearTimeout(snapReleaseTimer);
+    snapReleaseTimer = setTimeout(restoreSnap, 2500);
   }
 
   // Gallery thumbnails jump straight to a project's full card, unhiding
