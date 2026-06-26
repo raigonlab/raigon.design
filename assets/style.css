@@ -757,7 +757,7 @@ body {
 
 .about-slide-bg {
   position: absolute;
-  inset: 0;
+  inset: 0 0 0 1.25rem;
   background-size: cover;
   background-position: center;
 }
