@@ -60,7 +60,7 @@
     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
     function restoreSnap() {
-      document.documentElement.style.scrollSnapType = '';
+      applySnapTypeForGroup(navGroupFor(target));
       window.removeEventListener('scrollend', restoreSnap);
       clearTimeout(snapReleaseTimer);
     }
@@ -100,6 +100,13 @@
     return null;
   }
 
+  // Hybrid scroll-snap: Home and Work stay mandatory (full-bleed cards
+  // never look right half-shown), About/Contact scroll freely.
+  function applySnapTypeForGroup(group) {
+    const immersive = group === null || group === 'work';
+    document.documentElement.style.scrollSnapType = immersive ? 'y mandatory' : 'y proximity';
+  }
+
   // Highlight the nav link for whichever top-level slide is currently
   // in view (home slides have no link, so being there clears them all).
   const navLinksList = Array.from(document.querySelectorAll('.nav-link'));
@@ -116,6 +123,7 @@
       navLinksList.forEach(function (link) {
         link.classList.toggle('active', link.dataset.nav === group);
       });
+      applySnapTypeForGroup(group);
     }, { threshold: 0.5 });
 
     pageSlides.forEach(function (slide) { sectionObserver.observe(slide); });
