@@ -397,7 +397,6 @@ body {
 .work-project-track {
   height: 100%;
   display: flex;
-  gap: 1.5rem;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
