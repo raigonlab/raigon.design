@@ -53,9 +53,8 @@ body {
 ───────────────────────────────────────────── */
 .all-projects-btn {
   position: fixed;
-  left: 50%;
+  left: 1rem;
   bottom: calc(1rem + var(--nav-h) + 0.75rem + env(safe-area-inset-bottom));
-  transform: translateX(-50%);
   z-index: 150;
   padding: 0.4rem 0.75rem;
   border-radius: 999px;
@@ -494,8 +493,9 @@ body {
 
 .work-project-down {
   position: absolute;
-  left: 0.85rem;
+  left: 50%;
   bottom: 0.75rem;
+  transform: translateX(-50%);
   width: 20px;
   height: 12px;
   background: none;
@@ -529,8 +529,8 @@ body {
 }
 
 @keyframes work-down-bounce {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(4px); }
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%      { transform: translateX(-50%) translateY(4px); }
 }
 
 .work-dots .dot {
