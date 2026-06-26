@@ -90,11 +90,11 @@
   // top-level scroll-snap item (single continuous vertical scroll —
   // no nested scroll-snap tracks, so no scroll-chaining hacks needed).
   const pageSlides = Array.from(
-    document.querySelectorAll('.home-slide, .work-project, #about, #skills, #contact')
+    document.querySelectorAll('.home-slide, .work-project, #about, #skills, #beyond-work, #places-lived, #contact')
   );
 
   function navGroupFor(el) {
-    if (el.id === 'about' || el.id === 'skills') return 'about';
+    if (el.id === 'about' || el.id === 'skills' || el.id === 'beyond-work' || el.id === 'places-lived') return 'about';
     if (el.id === 'contact') return 'contact';
     if (el.classList.contains('work-project')) return 'work';
     return null;
