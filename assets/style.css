@@ -808,11 +808,11 @@ body {
 .skills-panel {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   height: calc(100vh - var(--nav-clearance));
   height: calc(100dvh - var(--nav-clearance));
   margin: 0 0 var(--nav-clearance);
-  padding: 1.75rem 1.75rem;
+  padding: 2.5rem 1.75rem 2rem;
   border-radius: 0;
   background: var(--ink);
   scroll-snap-align: start;
@@ -820,25 +820,39 @@ body {
   overflow: hidden;
 }
 
+.skills-header {
+  margin-bottom: 2rem;
+}
+
+.skills-eyebrow {
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 0.75rem;
+}
+
 .skills-panel-label {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
   font-weight: 300;
-  font-size: clamp(1.3rem, 5vw, 1.7rem);
-  line-height: 1.2;
+  font-size: clamp(1.4rem, 5.5vw, 1.9rem);
+  line-height: 1.25;
   color: #fff;
-  margin-bottom: 1.5rem;
 }
 
-.skills-group { margin-bottom: 1rem; }
-.skills-group:last-child { margin-bottom: 0; }
+.skills-groups {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.skills-group { margin-bottom: 0; }
 
 .skills-group-title {
   font-size: 0.6rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.4);
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.9rem;
 }
 
 .skills-group-note {
@@ -859,7 +873,7 @@ body {
 .skills-river-track {
   display: flex;
   width: max-content;
-  gap: 0.5rem;
+  gap: 1.1rem;
   animation: skills-river-scroll 38s linear infinite;
 }
 
@@ -873,7 +887,7 @@ body {
   font-size: 0.7rem;
   font-weight: 500;
   color: #fff;
-  padding: 0.45rem 0.85rem;
+  padding: 0.55rem 1.15rem;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   background: rgba(255, 255, 255, 0.06);
