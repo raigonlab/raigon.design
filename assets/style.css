@@ -543,8 +543,10 @@ body {
 /* TEMP: stand-in for the real project shot, inset within the main panel */
 .project-image-placeholder {
   position: absolute;
-  top: 4.5rem; left: 1.25rem; right: 1.25rem; bottom: 6.5rem;
+  top: 4.5rem; left: 1.25rem; right: 0; bottom: 6.5rem;
   border-radius: 16px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
   background: rgba(255, 255, 255, 0.15);
   display: flex;
   align-items: center;
