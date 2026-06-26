@@ -820,6 +820,15 @@ body {
   overflow: hidden;
 }
 
+/* collapsed mode trades the fixed full-bleed height for natural flow,
+   since every chip is unwrapped and shown at once instead of clipped */
+.skills-panel.is-collapsed {
+  height: auto;
+  min-height: calc(100vh - var(--nav-clearance));
+  min-height: calc(100dvh - var(--nav-clearance));
+  overflow: visible;
+}
+
 .skills-header {
   margin-bottom: 2.25rem;
 }
@@ -904,6 +913,12 @@ body {
   flex: 1;
 }
 
+.skills-panel.is-collapsed .skills-groups {
+  justify-content: flex-start;
+  gap: 1.5rem;
+  flex: none;
+}
+
 .skills-group { margin-bottom: 0; }
 
 .skills-group-title {
@@ -934,6 +949,12 @@ body {
 
 .skills-river:first-of-type { margin-top: 0; }
 
+.skills-panel.is-collapsed .skills-river {
+  overflow: visible;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
 .skills-river-track {
   display: flex;
   width: max-content;
@@ -945,8 +966,17 @@ body {
   animation-direction: reverse;
 }
 
-.skills-panel.is-paused .skills-river-track {
-  animation-play-state: paused;
+/* collapsed: stop the scroll, wrap into a static stacked grid, and hide
+   the duplicate chip set (it only exists to make the loop seamless) */
+.skills-panel.is-collapsed .skills-river-track {
+  animation: none;
+  transform: none;
+  flex-wrap: wrap;
+  width: auto;
+}
+
+.skills-panel.is-collapsed .skill-chip[aria-hidden="true"] {
+  display: none;
 }
 
 @keyframes skills-river-scroll {

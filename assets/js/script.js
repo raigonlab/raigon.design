@@ -51,18 +51,18 @@
 
   if (skillsPanel && skillsToggle) {
     skillsToggle.addEventListener('click', function () {
-      const paused = skillsPanel.classList.toggle('is-paused');
-      skillsToggle.setAttribute('aria-pressed', String(paused));
-      skillsToggle.setAttribute('aria-label', paused ? 'Resume the flowing animation' : 'Pause the flowing animation');
+      const collapsed = skillsPanel.classList.toggle('is-collapsed');
+      skillsToggle.setAttribute('aria-pressed', String(collapsed));
+      skillsToggle.setAttribute('aria-label', collapsed ? 'Resume the flowing animation' : 'Pause and show everything at once');
     });
 
     // Pause is never permanent — any scroll on the page resumes the
     // flow automatically, so the section defaults back to feeling alive.
     window.addEventListener('scroll', function () {
-      if (!skillsPanel.classList.contains('is-paused')) return;
-      skillsPanel.classList.remove('is-paused');
+      if (!skillsPanel.classList.contains('is-collapsed')) return;
+      skillsPanel.classList.remove('is-collapsed');
       skillsToggle.setAttribute('aria-pressed', 'false');
-      skillsToggle.setAttribute('aria-label', 'Pause the flowing animation');
+      skillsToggle.setAttribute('aria-label', 'Pause and show everything at once');
     }, { passive: true });
   }
 
