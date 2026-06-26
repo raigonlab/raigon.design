@@ -49,13 +49,15 @@ body {
 }
 
 /* ─────────────────────────────────────────────
-   ALL PROJECTS — fixed shortcut, visible only inside the work section
+   ALL PROJECTS — lives inside .work-fixed, confined to the same 80%
+   width as the title, so it scrolls with the card and never bleeds
+   past its boundary
 ───────────────────────────────────────────── */
 .all-projects-btn {
-  position: fixed;
-  left: 1rem;
-  bottom: calc(1rem + var(--nav-h) + 0.75rem + env(safe-area-inset-bottom));
-  z-index: 150;
+  position: absolute;
+  left: 1.25rem;
+  bottom: 0.75rem;
+  z-index: 2;
   padding: 0.4rem 0.75rem;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.5);
@@ -66,10 +68,7 @@ body {
   color: #fff;
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
   cursor: pointer;
-}
-
-.all-projects-btn[hidden] {
-  display: none;
+  pointer-events: auto;
 }
 
 /* ─────────────────────────────────────────────
