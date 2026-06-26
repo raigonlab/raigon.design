@@ -986,6 +986,13 @@ body {
   display: none;
 }
 
+/* the reverse row repeats the exact same words as the first row (it
+   only exists for the flowing/reverse visual effect) — collapsed mode
+   shows each word once, so it is hidden entirely rather than wrapped */
+.skills-panel.is-collapsed .skills-river--reverse {
+  display: none;
+}
+
 @keyframes skills-river-scroll {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
