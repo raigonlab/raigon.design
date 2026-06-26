@@ -613,26 +613,20 @@ body {
 }
 
 /* ─────────────────────────────────────────────
-   SEE MORE — single card, expands in place to reveal the gallery
+   SEE MORE — now lives inside Contact, filling the space that used
+   to sit empty below the contact links, instead of its own card
 ───────────────────────────────────────────── */
-.work-more {
-  margin: var(--page-m) var(--page-m) calc(var(--page-m) + var(--nav-clearance));
-  border-radius: var(--radius);
-  background: var(--card);
-  padding: 1.75rem;
-  scroll-snap-align: start;
+.contact-more {
+  margin-top: auto;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--line);
 }
 
 .work-more-header {
-  position: sticky;
-  top: 1rem;
-  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  background: var(--card);
-  padding-bottom: 0.5rem;
 }
 
 .work-more-heading {
@@ -710,9 +704,10 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 1.5rem;
-  min-height: calc(100vh - var(--nav-clearance));
-  min-height: calc(100dvh - var(--nav-clearance));
+  height: calc(100vh - var(--nav-clearance));
+  height: calc(100dvh - var(--nav-clearance));
   margin: 0 0 var(--nav-clearance);
   border-radius: 0;
   background: var(--white);
@@ -806,12 +801,19 @@ body {
   border-radius: 3px;
 }
 
-/* ─── skills, dark icon/chip grid ─── */
+/* ─── skills, dark icon/chip grid — own full-bleed card ─── */
 .skills-panel {
-  margin: 0.5rem 0 0;
-  padding: 1.75rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: calc(100vh - var(--nav-clearance));
+  height: calc(100dvh - var(--nav-clearance));
+  margin: 0 0 var(--nav-clearance);
+  padding: 2.25rem 1.75rem;
   border-radius: 0;
   background: var(--ink);
+  scroll-snap-align: start;
+  overflow: hidden;
 }
 
 .skills-panel-label {
@@ -897,7 +899,12 @@ body {
   scroll-snap-align: start;
 }
 
-.contact-inner { max-width: 100%; }
+.contact-inner {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  max-width: 100%;
+}
 
 .contact-title {
   font-family: 'Cormorant Garamond', serif;

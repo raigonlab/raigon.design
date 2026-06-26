@@ -353,45 +353,45 @@
     <div class="about-bio">
       <p class="about-text">I'm Rai — a designer with 8+ years across luxury branding, UX/UI and digital identity. Founder of Raigon Lab, based in Zürich with a valid B permit.</p>
     </div>
+  </section>
 
-    <!-- SKILLS -->
-    <div class="skills-panel">
-
-      <div class="skills-groups">
-        <div class="skills-group">
-          <p class="skills-group-title">Design Tools</p>
-          <div class="skills-chips">
-            <span class="skill-chip">Figma</span>
-            <span class="skill-chip">Illustrator</span>
-            <span class="skill-chip">InDesign</span>
-            <span class="skill-chip">Photoshop</span>
-            <span class="skill-chip">After Effects</span>
-            <span class="skill-chip">CapCut</span>
-          </div>
+  <!-- SKILLS — own full-bleed card, separate from About -->
+  <section id="skills" class="skills-panel">
+    <div class="skills-groups">
+      <div class="skills-group">
+        <p class="skills-group-title">Design Tools</p>
+        <div class="skills-chips">
+          <span class="skill-chip">Figma</span>
+          <span class="skill-chip">Illustrator</span>
+          <span class="skill-chip">InDesign</span>
+          <span class="skill-chip">Photoshop</span>
+          <span class="skill-chip">After Effects</span>
+          <span class="skill-chip">CapCut</span>
         </div>
-        <div class="skills-group">
-          <p class="skills-group-title">Development</p>
-          <div class="skills-chips">
-            <span class="skill-chip">HTML</span>
-            <span class="skill-chip">CSS</span>
-            <span class="skill-chip">JavaScript</span>
-            <span class="skill-chip">Python</span>
-            <span class="skill-chip">Django</span>
-          </div>
+      </div>
+      <div class="skills-group">
+        <p class="skills-group-title">Development</p>
+        <div class="skills-chips">
+          <span class="skill-chip">HTML</span>
+          <span class="skill-chip">CSS</span>
+          <span class="skill-chip">JavaScript</span>
+          <span class="skill-chip">Python</span>
+          <span class="skill-chip">Django</span>
         </div>
-        <div class="skills-group">
-          <p class="skills-group-title">Design Thinking</p>
-          <div class="skills-chips">
-            <span class="skill-chip">UI/UX</span>
-            <span class="skill-chip">Problem Solving</span>
-            <span class="skill-chip">Research</span>
-          </div>
+      </div>
+      <div class="skills-group">
+        <p class="skills-group-title">Design Thinking</p>
+        <div class="skills-chips">
+          <span class="skill-chip">UI/UX</span>
+          <span class="skill-chip">Problem Solving</span>
+          <span class="skill-chip">Research</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
+  <!-- CONTACT — the "see more" block lives at the bottom of this same
+       full-bleed card, filling the space that used to sit empty -->
   <section id="contact">
     <div class="contact-inner">
       <p class="section-label">Contact</p>
@@ -417,43 +417,41 @@
         <a href="CV_Rai_Goncalves_EN.docx" class="about-cta" download>Download CV →</a>
         <a href="https://linkedin.com/in/railson-goncalves" target="_blank" rel="noopener" class="about-cta about-linkedin">LinkedIn →</a>
       </div>
-    </div>
-  </section>
 
-  <!-- SEE MORE — single card that expands in place, placed last so the
-       page loops back into the projects after the full journey -->
-  <section class="work-more" id="workMore">
-    <div class="work-more-header">
-      <h3 class="work-more-heading" id="workMoreHeading">See more about our stories and projects</h3>
-      <button class="work-more-toggle" id="workMoreBtn" aria-expanded="false">See more</button>
-    </div>
-    <p class="work-more-intro" id="workMoreIntro" hidden>See how we solve real problems for people and businesses through a clear and structured process.</p>
-    <div class="work-gallery-grid" id="workGalleryGrid" hidden>
-      <a href="#project-arcavault" class="work-gallery-item">
-        <div class="work-gallery-thumb"></div>
-        <p class="work-gallery-name">Arca Vault</p>
-        <p class="work-gallery-desc">UX/UI Design · Fintech</p>
-      </a>
-      <a href="#project-inxfitness" class="work-gallery-item">
-        <div class="work-gallery-thumb"></div>
-        <p class="work-gallery-name">inxfitness</p>
-        <p class="work-gallery-desc">Brand Identity · From Scratch</p>
-      </a>
-      <a href="#project-rehxa" class="work-gallery-item">
-        <div class="work-gallery-thumb"></div>
-        <p class="work-gallery-name">REHXA</p>
-        <p class="work-gallery-desc">Brand Identity · Concept</p>
-      </a>
-      <a href="#project-skyfly" class="work-gallery-item">
-        <div class="work-gallery-thumb"></div>
-        <p class="work-gallery-name">sky-fly</p>
-        <p class="work-gallery-desc">Web Design · UX</p>
-      </a>
-      <a href="#project-kerart" class="work-gallery-item">
-        <div class="work-gallery-thumb"></div>
-        <p class="work-gallery-name">kerart Gallery</p>
-        <p class="work-gallery-desc">Luxury Branding · Art Direction</p>
-      </a>
+      <div class="contact-more" id="workMore">
+        <div class="work-more-header">
+          <h3 class="work-more-heading" id="workMoreHeading">See more about our stories and projects</h3>
+          <button class="work-more-toggle" id="workMoreBtn" aria-expanded="false">See more</button>
+        </div>
+        <p class="work-more-intro" id="workMoreIntro" hidden>See how we solve real problems for people and businesses through a clear and structured process.</p>
+        <div class="work-gallery-grid" id="workGalleryGrid" hidden>
+          <a href="#project-arcavault" class="work-gallery-item">
+            <div class="work-gallery-thumb"></div>
+            <p class="work-gallery-name">Arca Vault</p>
+            <p class="work-gallery-desc">UX/UI Design · Fintech</p>
+          </a>
+          <a href="#project-inxfitness" class="work-gallery-item">
+            <div class="work-gallery-thumb"></div>
+            <p class="work-gallery-name">inxfitness</p>
+            <p class="work-gallery-desc">Brand Identity · From Scratch</p>
+          </a>
+          <a href="#project-rehxa" class="work-gallery-item">
+            <div class="work-gallery-thumb"></div>
+            <p class="work-gallery-name">REHXA</p>
+            <p class="work-gallery-desc">Brand Identity · Concept</p>
+          </a>
+          <a href="#project-skyfly" class="work-gallery-item">
+            <div class="work-gallery-thumb"></div>
+            <p class="work-gallery-name">sky-fly</p>
+            <p class="work-gallery-desc">Web Design · UX</p>
+          </a>
+          <a href="#project-kerart" class="work-gallery-item">
+            <div class="work-gallery-thumb"></div>
+            <p class="work-gallery-name">kerart Gallery</p>
+            <p class="work-gallery-desc">Luxury Branding · Art Direction</p>
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
