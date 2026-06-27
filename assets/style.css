@@ -86,7 +86,7 @@ body {
   padding: 0.12rem;
   height: var(--nav-h);
   --nav-btn: calc(var(--nav-h) - 0.24rem);
-  background: rgba(245, 244, 240, 0.6);
+  background: rgba(245, 244, 240, 0);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -500,6 +500,10 @@ body {
   background-position: center;
 }
 
+.project-gallery-half {
+  height: 280px;
+}
+
 .p-arcavault .project-gallery-img:nth-child(1) {
   background-image: url('images/projects/arcavault-gallery-1.png');
 }
@@ -510,10 +514,6 @@ body {
 
 .p-arcavault .project-gallery-img:nth-child(3) {
   background-image: url('images/projects/arcavault-gallery-3.png');
-}
-
-.p-arcavault .project-gallery-img:nth-child(4) {
-  background-image: url('images/projects/arcavault-gallery-4.png');
 }
 
 .project-gallery-full {
@@ -615,7 +615,7 @@ body {
 .project-impact {
   position: absolute;
   top: calc(4.5rem + 555px);
-  bottom: 4.5rem;
+  bottom: 5.4rem;
   left: 1.25rem;
   right: 1rem;
   display: flex;
@@ -625,7 +625,7 @@ body {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
   font-weight: 300;
-  font-size: clamp(1rem, 4vw, 1.25rem);
+  font-size: clamp(1.2rem, 4.8vw, 1.5rem);
   line-height: 1.4;
   color: rgba(255, 255, 255, 0.55);
 }
