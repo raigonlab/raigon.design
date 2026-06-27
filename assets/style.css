@@ -412,7 +412,7 @@ body {
   overflow: hidden;
   border-radius: 0;
   /* TEMP placeholder colour — remove once real content/imagery is in */
-  background: #A85D55;
+  background: #4D4B4B;
 }
 
 .work-project-extra {
@@ -450,6 +450,26 @@ body {
   font-weight: 300;
 }
 
+.project-challenge-list {
+  list-style: none;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.project-challenge-list li {
+  padding-left: 1rem;
+  position: relative;
+}
+
+.project-challenge-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: rgba(255, 255, 255, 0.4);
+}
+
 .work-project-main {
   position: relative;
 }
@@ -472,6 +492,12 @@ body {
   height: 140px;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.15);
+  background-size: cover;
+  background-position: center;
+}
+
+.p-arcavault .project-gallery-img:nth-child(1) {
+  background-image: url('images/projects/arcavault-gallery-1.png');
 }
 
 .project-gallery-full {
@@ -550,6 +576,8 @@ body {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   background: rgba(255, 255, 255, 0.15);
+  background-size: cover;
+  background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -557,6 +585,17 @@ body {
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.5);
+}
+
+.p-arcavault .project-image-placeholder {
+  background-image: url('images/projects/arcavault-hero-mobile.png');
+  color: transparent;
+}
+
+@media (min-width: 768px) {
+  .p-arcavault .project-image-placeholder {
+    background-image: url('images/projects/arcavault-hero-desktop.png');
+  }
 }
 
 /* default: project name/category sit at the bottom of the main panel,

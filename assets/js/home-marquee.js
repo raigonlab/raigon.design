@@ -10,7 +10,8 @@
     return {
       title: title ? title.textContent.trim() : '',
       desc: category ? category.textContent.trim() : '',
-      color: palette[i % palette.length]
+      color: palette[i % palette.length],
+      thumb: project.dataset.thumb || ''
     };
   });
 
@@ -34,8 +35,11 @@
       projects.forEach(function (p) {
         const card = document.createElement('div');
         card.className = 'home-marquee-card';
+        const thumbBg = p.thumb
+          ? 'background-image:url(' + p.thumb + ');background-size:cover;background-position:center'
+          : 'background:' + p.color;
         card.innerHTML =
-          '<div class="home-marquee-thumb" style="background:' + p.color + ';height:' + CARD_H + 'px"></div>' +
+          '<div class="home-marquee-thumb" style="' + thumbBg + ';height:' + CARD_H + 'px"></div>' +
           '<div>' +
             '<div class="home-marquee-card-title">' + p.title + '</div>' +
             '<div class="home-marquee-card-desc">' + p.desc + '</div>' +
