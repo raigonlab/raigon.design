@@ -437,6 +437,10 @@ body {
   margin-bottom: 0.5rem;
 }
 
+.project-problem-solution:first-of-type {
+  margin-top: 30vh;
+}
+
 .project-problem-solution .challenge-heading {
   text-align: left;
   margin-top: 1em;
