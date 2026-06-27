@@ -820,13 +820,17 @@ body {
   overflow: hidden;
 }
 
-/* collapsed mode trades the fixed full-bleed height for natural flow,
-   since every chip is unwrapped and shown at once instead of clipped */
-.skills-panel.is-collapsed {
-  height: auto;
-  min-height: calc(100vh - var(--nav-clearance));
-  min-height: calc(100dvh - var(--nav-clearance));
-  overflow: visible;
+/* collapsed mode keeps the same fixed full-bleed height as every other
+   card (scrolling inside a scroll-snap card is unreliable — it tends to
+   leak into the next section instead of scrolling locally) — so instead
+   everything shrinks just enough to fit the same screen with no scroll */
+.skills-panel.is-collapsed .skills-header {
+  margin-bottom: 1rem;
+}
+
+.skills-panel.is-collapsed .skills-toggle {
+  width: 1.6rem;
+  height: 1.6rem;
 }
 
 .skills-header {
@@ -922,8 +926,12 @@ body {
 
 .skills-panel.is-collapsed .skills-groups {
   justify-content: flex-start;
-  gap: 1.5rem;
+  gap: 0.85rem;
   flex: none;
+}
+
+.skills-panel.is-collapsed .skills-group-title {
+  margin-bottom: 0.4rem;
 }
 
 .skills-group { margin-bottom: 0; }
@@ -980,6 +988,12 @@ body {
   transform: none;
   flex-wrap: wrap;
   width: auto;
+  gap: 0.5rem;
+}
+
+.skills-panel.is-collapsed .skill-chip {
+  font-size: 0.62rem;
+  padding: 0.4rem 0.75rem;
 }
 
 .skills-panel.is-collapsed .skill-chip[aria-hidden="true"] {
