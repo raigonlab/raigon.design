@@ -504,6 +504,18 @@ body {
   background-image: url('images/projects/arcavault-gallery-1.png');
 }
 
+.p-arcavault .project-gallery-img:nth-child(2) {
+  background-image: url('images/projects/arcavault-gallery-2.png');
+}
+
+.p-arcavault .project-gallery-img:nth-child(3) {
+  background-image: url('images/projects/arcavault-gallery-3.png');
+}
+
+.p-arcavault .project-gallery-img:nth-child(4) {
+  background-image: url('images/projects/arcavault-gallery-4.png');
+}
+
 .project-gallery-full {
   grid-column: 1 / -1;
 }
