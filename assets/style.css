@@ -428,16 +428,6 @@ body {
   padding: 4.5rem 1.75rem 1.5rem;
 }
 
-.project-ps-line {
-  display: block;
-  width: 70px;
-  height: 1px;
-  align-self: flex-end;
-  margin: -0.5rem 2rem;
-  background: rgba(255, 255, 255, 0.5);
-  transform: rotate(35deg);
-}
-
 .project-problem-solution h4 {
   font-size: 0.7rem;
   letter-spacing: 0.18em;
@@ -447,14 +437,12 @@ body {
   margin-bottom: 0.5rem;
 }
 
-.challenge-heading {
-  max-width: 75%;
-  margin-left: auto;
-  text-align: right;
+.project-problem-solution .challenge-heading {
+  text-align: left;
   margin-top: 1em;
 }
 
-.approach-heading {
+.project-problem-solution .approach-heading {
   margin-top: 20vh;
   margin-bottom: 3em;
 }
@@ -470,6 +458,27 @@ body {
   font-weight: 300;
 }
 
+.project-impact-list {
+  list-style: none;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.project-impact-list li {
+  padding-left: 1rem;
+  position: relative;
+  margin-bottom: 0.4rem;
+}
+
+.project-impact-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: rgba(255, 255, 255, 0.4);
+}
+
 .project-challenge-list {
   list-style: none;
   font-size: 0.85rem;
@@ -477,8 +486,6 @@ body {
   line-height: 1.7;
   font-weight: 300;
   text-align: left;
-  max-width: 75%;
-  margin-left: auto;
 }
 
 .project-challenge-list li {
