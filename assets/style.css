@@ -447,6 +447,22 @@ body {
   margin-bottom: 0.5rem;
 }
 
+.challenge-heading {
+  max-width: 75%;
+  margin-left: auto;
+  text-align: right;
+  margin-top: 1em;
+}
+
+.approach-heading {
+  margin-top: 20vh;
+  margin-bottom: 3em;
+}
+
+.approach-plus {
+  color: rgba(255, 255, 255, 0.4);
+}
+
 .project-problem-solution p {
   font-size: 0.85rem;
   color: rgba(255, 255, 255, 0.75);
@@ -460,6 +476,9 @@ body {
   color: rgba(255, 255, 255, 0.75);
   line-height: 1.7;
   font-weight: 300;
+  text-align: left;
+  max-width: 75%;
+  margin-left: auto;
 }
 
 .project-challenge-list li {
