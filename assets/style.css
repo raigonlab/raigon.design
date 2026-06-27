@@ -824,6 +824,15 @@ body {
    card (scrolling inside a scroll-snap card is unreliable — it tends to
    leak into the next section instead of scrolling locally) — so instead
    everything shrinks just enough to fit the same screen with no scroll */
+
+/* flowing mode uses space-between to spread the header and the river
+   groups across the full card height; collapsed mode has no animated
+   rows to fill that space, so it stacks from the top instead, with no
+   artificial gap left dangling between the header and the first group */
+.skills-panel.is-collapsed {
+  justify-content: flex-start;
+}
+
 .skills-panel.is-collapsed .skills-header {
   margin-bottom: 1rem;
 }
@@ -991,11 +1000,6 @@ body {
   gap: 0.5rem;
 }
 
-.skills-panel.is-collapsed .skill-chip {
-  font-size: 0.62rem;
-  padding: 0.4rem 0.75rem;
-}
-
 .skills-panel.is-collapsed .skill-chip[aria-hidden="true"] {
   display: none;
 }
@@ -1014,10 +1018,10 @@ body {
 
 .skill-chip {
   flex-shrink: 0;
-  font-size: 0.7rem;
+  font-size: 0.62rem;
   font-weight: 500;
   color: #fff;
-  padding: 0.5rem 1rem;
+  padding: 0.4rem 0.75rem;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   background: rgba(255, 255, 255, 0.06);
@@ -1062,8 +1066,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  min-height: calc(100vh - var(--nav-clearance));
-  min-height: calc(100dvh - var(--nav-clearance));
+  height: calc(100vh - var(--nav-clearance));
+  height: calc(100dvh - var(--nav-clearance));
   margin: 0 0 var(--nav-clearance);
   border-radius: 0;
   background: var(--ink);
@@ -1071,6 +1075,7 @@ body {
   padding: 3.5rem 1.75rem;
   scroll-snap-align: start;
   scroll-snap-stop: always;
+  overflow: hidden;
 }
 
 .contact-inner {
