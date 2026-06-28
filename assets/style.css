@@ -579,6 +579,23 @@ body {
   color: transparent;
 }
 
+.p-dronzza .project-gallery-img:nth-child(1) {
+  background-image: url('images/projects/dronzza/gallery-1.png');
+}
+
+.p-dronzza .project-gallery-img:nth-child(2) {
+  background-image: url('images/projects/dronzza/gallery-2.png');
+}
+
+.p-dronzza .project-gallery-img:nth-child(3) {
+  background-image: url('images/projects/dronzza/gallery-3.png');
+}
+
+.p-dronzza .project-image-placeholder {
+  background-image: url('images/projects/dronzza/hero-mobile.png');
+  color: transparent;
+}
+
 .project-gallery-full {
   grid-column: 1 / -1;
 }
