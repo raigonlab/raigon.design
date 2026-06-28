@@ -669,6 +669,10 @@ body {
   background-position: center;
 }
 
+.p-dronzza .project-bg {
+  background: linear-gradient(180deg, #469B9E 0%, #0A543A 100%);
+}
+
 /* TEMP: stand-in for the real project shot, inset within the main panel */
 .project-image-placeholder {
   position: absolute;
