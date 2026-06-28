@@ -490,6 +490,28 @@ body {
   border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
 
+.project-impact-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 1.1rem 0;
+}
+
+.stat-number {
+  font-size: clamp(2rem, 9vw, 2.6rem);
+  font-weight: 300;
+  line-height: 1;
+  color: var(--white);
+}
+
+.stat-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.01em;
+}
+
 .work-project-main {
   position: relative;
 }
@@ -657,7 +679,7 @@ body {
 }
 
 .project-category {
-  font-size: 0.62rem;
+  font-size: 0.75rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.7);
