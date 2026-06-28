@@ -430,9 +430,9 @@ body {
 
 .project-footer {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.85rem;
   margin-top: 0.75rem;
   padding-top: 1.25rem;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
@@ -442,6 +442,13 @@ body {
   font-size: 0.68rem;
   color: rgba(255, 255, 255, 0.5);
   line-height: 1.4;
+}
+
+.project-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.5rem;
 }
 
 .project-footer .about-cta {
