@@ -665,7 +665,6 @@ body {
 .project-bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, #469B9E 0%, #0A543A 100%);
   background-size: cover;
   background-position: center;
 }
