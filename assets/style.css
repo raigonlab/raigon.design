@@ -424,92 +424,74 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 2rem;
+  gap: 1.25rem;
   padding: 6rem 1.75rem 1.5rem;
 }
 
 .project-problem-solution {
   width: 100%;
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 1.75rem 1.5rem;
 }
 
 .project-problem-solution h4 {
   font-size: 0.62rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
-  margin-top: -0.4rem;
-  margin-bottom: 0;
+  color: rgba(255, 255, 255, 0.92);
+  margin-top: 0;
+  margin-bottom: 1.1rem;
 }
 
-.project-problem-solution .challenge-heading {
+.project-problem-solution .challenge-heading,
+.project-problem-solution .approach-heading {
   text-align: left;
   margin-top: 0;
 }
 
-.project-problem-solution .approach-heading {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.approach-plus {
-  color: rgba(255, 255, 255, 0.4);
-}
-
 .project-problem-solution p {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1rem;
-  color: var(--white);
-  line-height: 1.5;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.7;
   font-weight: 300;
-  padding: 1.1rem 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-  margin-top: 0.9rem;
 }
 
 .project-impact-list,
 .project-challenge-list {
   list-style: none;
-  margin-top: 0.9rem;
 }
 
 .project-impact-list li,
 .project-challenge-list li {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1rem;
-  color: var(--white);
-  line-height: 1.5;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.7;
   font-weight: 300;
   text-align: left;
-  padding: 0.95rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-.project-impact-list li:first-child,
-.project-challenge-list li:first-child {
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
+.project-impact-list li + li,
+.project-challenge-list li + li {
+  margin-top: 0.6rem;
 }
 
 .project-impact-list li {
   display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-  padding: 1.1rem 0;
+  align-items: baseline;
+  gap: 0.6rem;
 }
 
 .stat-number {
-  font-size: clamp(2rem, 9vw, 2.6rem);
-  font-weight: 300;
-  line-height: 1;
-  color: var(--white);
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.92);
 }
 
 .stat-label {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.78rem;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.65);
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.6);
-  letter-spacing: 0.01em;
 }
 
 .work-project-main {
