@@ -578,7 +578,6 @@ body {
   padding: 0;
   cursor: pointer;
   pointer-events: auto;
-  opacity: 0.5;
   animation: work-down-bounce 1.8s ease-in-out infinite;
 }
 
@@ -588,7 +587,7 @@ body {
   width: 10px;
   height: 4px;
   border-radius: 999px;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.25);
 }
 
 .work-project-down span:first-child {
