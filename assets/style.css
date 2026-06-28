@@ -423,34 +423,32 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 2rem;
-  padding: 4.5rem 1.75rem 1.5rem;
+  padding: 6rem 1.75rem 1.5rem;
 }
 
 .project-problem-solution {
   width: 100%;
-  max-width: 22rem;
 }
 
 .project-problem-solution h4 {
-  font-size: 0.7rem;
+  font-size: 0.62rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #fff;
+  color: rgba(255, 255, 255, 0.5);
   margin-top: -0.4rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0;
 }
 
 .project-problem-solution .challenge-heading {
   text-align: left;
-  margin-top: 1em;
+  margin-top: 0;
 }
 
 .project-problem-solution .approach-heading {
   margin-top: 0;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0;
 }
 
 .approach-plus {
@@ -458,52 +456,38 @@ body {
 }
 
 .project-problem-solution p {
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.75);
-  line-height: 1.7;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  color: var(--white);
+  line-height: 1.5;
   font-weight: 300;
+  padding: 1.1rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  margin-top: 0.9rem;
 }
 
-.project-impact-list {
-  list-style: none;
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.75);
-  line-height: 1.7;
-  font-weight: 300;
-}
-
-.project-impact-list li {
-  padding-left: 1rem;
-  position: relative;
-  margin-bottom: 0.4rem;
-}
-
-.project-impact-list li::before {
-  content: '—';
-  position: absolute;
-  left: 0;
-  color: rgba(255, 255, 255, 0.4);
-}
-
+.project-impact-list,
 .project-challenge-list {
   list-style: none;
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.75);
-  line-height: 1.7;
+  margin-top: 0.9rem;
+}
+
+.project-impact-list li,
+.project-challenge-list li {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  color: var(--white);
+  line-height: 1.5;
   font-weight: 300;
   text-align: left;
+  padding: 0.95rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-.project-challenge-list li {
-  padding-left: 1rem;
-  position: relative;
-}
-
-.project-challenge-list li::before {
-  content: '—';
-  position: absolute;
-  left: 0;
-  color: rgba(255, 255, 255, 0.4);
+.project-impact-list li:first-child,
+.project-challenge-list li:first-child {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .work-project-main {
