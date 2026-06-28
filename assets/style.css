@@ -665,6 +665,7 @@ body {
 .project-bg {
   position: absolute;
   inset: 0;
+  background: linear-gradient(180deg, #469B9E 0%, #0A543A 100%);
   background-size: cover;
   background-position: center;
 }
@@ -673,7 +674,7 @@ body {
 .project-image-placeholder {
   position: absolute;
   top: 4.5rem; left: 1.25rem; right: 1rem;
-  height: 555px;
+  height: 535px;
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.15);
   background-size: cover;
