@@ -4,18 +4,27 @@
 
   const palette = ['#E6F1FB', '#EEEDFE', '#E1F5EE', '#FAEEDA', '#FAECE7'];
 
-  const projects = Array.from(document.querySelectorAll('.work-project')).map(function (project, i) {
-    const title = project.querySelector('.project-name');
-    const category = project.querySelector('.project-category');
-    return {
-      title: title ? title.textContent.trim() : '',
-      desc: category ? category.textContent.trim() : '',
-      color: palette[i % palette.length],
-      thumb: project.dataset.thumb || ''
-    };
-  });
+  const projectEls = Array.from(document.querySelectorAll('.work-project'));
 
-  if (!projects.length) return;
+  function buildProjects(thumbKey) {
+    return projectEls.map(function (project, i) {
+      const title = project.querySelector('.project-name');
+      const category = project.querySelector('.project-category');
+      return {
+        title: title ? title.textContent.trim() : '',
+        desc: category ? category.textContent.trim() : '',
+        color: palette[i % palette.length],
+        thumb: project.dataset[thumbKey] || ''
+      };
+    });
+  }
+
+  // Each column gets its own dedicated set of images (thumb1/thumb2)
+  // so the two columns never show the same photo at the same time.
+  const projects0 = buildProjects('thumb1');
+  const projects1 = buildProjects('thumb2');
+
+  if (!projects0.length) return;
 
   const CARD_H = 200;
   const INFO_H = 38;
@@ -25,9 +34,9 @@
   const SPEED = 0.22;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const SET_H = projects.length * STEP;
+  const SET_H = projects0.length * STEP;
 
-  function makeCol() {
+  function makeCol(projects) {
     const colEl = document.createElement('div');
     colEl.className = 'home-marquee-col';
 
@@ -52,8 +61,8 @@
     return colEl;
   }
 
-  const col0 = makeCol();
-  const col1 = makeCol();
+  const col0 = makeCol(projects0);
+  const col1 = makeCol(projects1);
 
   let colW = 0;
 
