@@ -673,6 +673,10 @@ body {
   background: linear-gradient(180deg, #3C8486 0%, #094731 100%);
 }
 
+.p-dronzza .project-problem-solution {
+  background: linear-gradient(180deg, #3C8486 0%, #094731 100%);
+}
+
 /* TEMP: stand-in for the real project shot, inset within the main panel */
 .project-image-placeholder {
   position: absolute;
