@@ -558,10 +558,6 @@ body {
   background-image: url('images/projects/arcavault/gallery-2.png');
 }
 
-.p-arcavault .project-gallery-img:nth-child(3) {
-  background-image: url('images/projects/arcavault/gallery-3.png');
-}
-
 .p-inxfitness .project-gallery-img:nth-child(1) {
   background-image: url('images/projects/inxfitness/gallery-1.png');
 }
