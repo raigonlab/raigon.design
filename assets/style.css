@@ -660,7 +660,7 @@ body {
 .project-impact {
   position: absolute;
   top: calc(4.5rem + 555px);
-  bottom: 5.4rem;
+  bottom: 5.3rem;
   left: 1.25rem;
   right: 1rem;
   display: flex;
@@ -672,7 +672,7 @@ body {
   font-weight: 300;
   font-size: clamp(1.2rem, 4.8vw, 1.5rem);
   line-height: 1.4;
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.63);
 }
 
 /* default: project name/category sit at the bottom of the main panel,
