@@ -44,8 +44,13 @@
       projects.forEach(function (p) {
         const card = document.createElement('div');
         card.className = 'home-marquee-card';
+        // dronzza-1.png runs very bright/white — a dark scrim is layered
+        // under it so it doesn't blow out against the rest of the marquee.
+        const scrim = /dronzza-1\.png$/.test(p.thumb)
+          ? 'linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),'
+          : '';
         const thumbBg = p.thumb
-          ? 'background-image:url(' + p.thumb + ');background-size:cover;background-position:center'
+          ? 'background-image:' + scrim + 'url(' + p.thumb + ');background-size:cover;background-position:center'
           : 'background:' + p.color;
         card.innerHTML =
           '<div class="home-marquee-thumb" style="' + thumbBg + ';height:' + CARD_H + 'px"></div>' +
