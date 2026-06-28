@@ -669,11 +669,9 @@ body {
   background-position: center;
 }
 
-.p-dronzza .project-bg {
-  background: linear-gradient(180deg, #3C8486 0%, #094731 100%);
-}
-
-.p-dronzza .project-problem-solution {
+.p-dronzza .project-bg,
+.p-dronzza .work-project-details,
+.p-dronzza .work-project-extra {
   background: linear-gradient(180deg, #3C8486 0%, #094731 100%);
 }
 
