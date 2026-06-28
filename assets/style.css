@@ -551,15 +551,15 @@ body {
 }
 
 .p-arcavault .project-gallery-img:nth-child(1) {
-  background-image: url('images/projects/arcavault-gallery-1.png');
+  background-image: url('images/projects/arcavault/gallery-1.png');
 }
 
 .p-arcavault .project-gallery-img:nth-child(2) {
-  background-image: url('images/projects/arcavault-gallery-2.png');
+  background-image: url('images/projects/arcavault/gallery-2.png');
 }
 
 .p-arcavault .project-gallery-img:nth-child(3) {
-  background-image: url('images/projects/arcavault-gallery-3.png');
+  background-image: url('images/projects/arcavault/gallery-3.png');
 }
 
 .project-gallery-full {
@@ -647,13 +647,13 @@ body {
 }
 
 .p-arcavault .project-image-placeholder {
-  background-image: url('images/projects/arcavault-hero-mobile.png');
+  background-image: url('images/projects/arcavault/hero-mobile.png');
   color: transparent;
 }
 
 @media (min-width: 768px) {
   .p-arcavault .project-image-placeholder {
-    background-image: url('images/projects/arcavault-hero-desktop.png');
+    background-image: url('images/projects/arcavault/hero-desktop.png');
   }
 }
 
