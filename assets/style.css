@@ -428,6 +428,28 @@ body {
   padding: 6rem 1.75rem 1.5rem;
 }
 
+.project-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 0.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.project-footer-copy {
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.4;
+}
+
+.project-footer .about-cta {
+  margin-top: 0;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
 .project-problem-solution {
   width: 100%;
   background: linear-gradient(180deg, rgba(121, 75, 75, 0.4) 0%, rgba(0, 0, 0, 0.5) 100%);
