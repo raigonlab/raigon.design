@@ -1205,6 +1205,11 @@ body {
   font-weight: 300;
 }
 
+.about-text strong {
+  color: var(--white);
+  font-weight: 600;
+}
+
 .about-cta {
   display: inline-flex;
   align-items: center;
