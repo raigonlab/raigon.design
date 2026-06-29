@@ -1187,11 +1187,11 @@ body {
 
 /* ─── condensed bio + links ─── */
 .about-bio {
-  padding: 0 1.75rem;
+  padding: 0 0.75rem 0 2.75rem;
 }
 
 .about-text {
-  max-width: 34ch;
+  max-width: 41ch;
   margin: 0 0 1.25rem;
   font-size: 0.95rem;
   color: rgba(255, 255, 255, 0.6);
