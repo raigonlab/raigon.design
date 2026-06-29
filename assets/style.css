@@ -603,6 +603,23 @@ body {
   color: transparent;
 }
 
+.p-skyfly .project-gallery-img:nth-child(1) {
+  background-image: url('images/projects/sky-fly/gallery-1.png');
+}
+
+.p-skyfly .project-gallery-img:nth-child(2) {
+  background-image: url('images/projects/sky-fly/gallery-2.png');
+}
+
+.p-skyfly .project-gallery-img:nth-child(3) {
+  background-image: url('images/projects/sky-fly/gallery-3.png');
+}
+
+.p-skyfly .project-image-placeholder {
+  background-image: url('images/projects/sky-fly/hero-mobile.png');
+  color: transparent;
+}
+
 .project-gallery-full {
   grid-column: 1 / -1;
 }
