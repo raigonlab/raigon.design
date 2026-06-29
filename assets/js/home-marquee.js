@@ -4,7 +4,9 @@
 
   const palette = ['#E6F1FB', '#EEEDFE', '#E1F5EE', '#FAEEDA', '#FAECE7'];
 
-  const projectEls = Array.from(document.querySelectorAll('.work-project'));
+  // Projects marked hidden (not yet ready to show) sit out of the
+  // marquee entirely, not just the swipe-through scroll order.
+  const projectEls = Array.from(document.querySelectorAll('.work-project:not([hidden])'));
 
   function buildProjects(thumbKey) {
     return projectEls.map(function (project, i) {
