@@ -931,7 +931,7 @@ body {
   height: calc(100dvh - var(--nav-clearance));
   margin: 0 0 var(--nav-clearance);
   border-radius: 0;
-  background: var(--ink);
+  background: linear-gradient(180deg, #32353A 0%, #000000 100%);
   padding: 2.25rem 0 2.5rem;
   scroll-snap-align: start;
   scroll-snap-stop: always;
@@ -945,6 +945,8 @@ body {
 /* ─── profile photo — small, fixed-size card so the bio text below
    has the room to breathe instead of fighting a full-height slide ─── */
 .about-photo {
+  display: flex;
+  justify-content: center;
   padding: 0 1.75rem;
 }
 
@@ -1176,14 +1178,15 @@ body {
 /* ─── condensed bio + links ─── */
 .about-bio {
   padding: 0 1.75rem;
+  text-align: center;
 }
 
 .about-text {
   max-width: 34ch;
+  margin: 0 auto 1.25rem;
   font-size: 0.95rem;
   color: rgba(255, 255, 255, 0.6);
   line-height: 1.75;
-  margin-bottom: 1.25rem;
   font-weight: 300;
 }
 
