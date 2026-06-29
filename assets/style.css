@@ -75,6 +75,12 @@ body {
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
   cursor: pointer;
   pointer-events: auto;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.all-projects-btn:hover {
+  color: rgba(255, 255, 255, 0.65);
+  border-color: rgba(255, 255, 255, 0.45);
 }
 
 /* ─────────────────────────────────────────────
@@ -1214,7 +1220,7 @@ body {
 .about-text {
   max-width: 41ch;
   margin: 0 0 1.25rem;
-  font-size: 0.65rem;
+  font-size: 0.85rem;
   color: rgba(255, 255, 255, 0.6);
   line-height: 1.75;
   font-weight: 300;
