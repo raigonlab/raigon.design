@@ -1446,7 +1446,7 @@ body {
     background: linear-gradient(180deg, #794B4B 0%, #000000 100%);
   }
 
-  .p-dronzza .work-project { background: linear-gradient(180deg, #3C8486 0%, #05261A 100%); }
+  .p-dronzza .work-project { background: #05261A; }
   .p-skyfly .work-project { background: linear-gradient(180deg, #275B8F 0%, #183458 100%); }
   .p-inxfitness .work-project { background: linear-gradient(180deg, #32353A 0%, #000000 100%); }
 
