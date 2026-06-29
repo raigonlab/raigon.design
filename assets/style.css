@@ -1424,7 +1424,7 @@ body {
       "topbar    topbar"
       "hero      gallery"
       "challenge gallery"
-      "cta       gallery";
+      "cta       .";
     column-gap: 3rem;
     row-gap: 1.5rem;
     height: auto;
@@ -1519,14 +1519,22 @@ body {
 
   .project-gallery {
     grid-area: gallery;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 1.75rem;
-    align-content: start;
     margin-bottom: 0;
+    height: 100%;
   }
 
   .project-gallery-img {
-    height: 280px;
+    flex: 0 0 280px;
+  }
+
+  /* the last screenshot stretches instead of staying a fixed height,
+     so the gallery column always ends flush with the bottom of the
+     Challenge & Approach card on the left, never short or overhanging */
+  .project-gallery-img.project-gallery-full {
+    flex: 1 1 auto;
   }
 
   .project-problem-solution {
