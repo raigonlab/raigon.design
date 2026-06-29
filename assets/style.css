@@ -1416,7 +1416,7 @@ body {
       "header  header"
       "topbar  topbar"
       "hero    gallery"
-      "desc    gallery"
+      "hero2   gallery"
       "closing closing"
       "cta     cta";
     column-gap: 3rem;
@@ -1474,7 +1474,12 @@ body {
   }
 
   .work-project-main {
-    grid-area: hero;
+    grid-column: 1;
+    /* spans both the hero row and the row below it, so the card's
+       background/rounded corners visually wrap the description text
+       too — project-desc sits in that second row, layered on top,
+       reading as part of the same card instead of floating below it */
+    grid-row: 3 / 5;
     position: relative;
     border-radius: var(--radius);
     overflow: hidden;
@@ -1499,7 +1504,11 @@ body {
   }
 
   .project-desc {
-    grid-area: desc;
+    grid-column: 1;
+    grid-row: 4;
+    align-self: end;
+    padding: 0 1.75rem 1.75rem;
+    margin-bottom: 0;
   }
 
   .project-gallery {
