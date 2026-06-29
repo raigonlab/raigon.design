@@ -1399,31 +1399,55 @@ body {
 /* ─────────────────────────────────────────────
    WORK — desktop case-study layout. The mobile swipe (main → details →
    extra) has no mouse equivalent, so past 1024px the three panels stop
-   being horizontal pages and become one static, two-column block —
-   hero image on the left, everything else stacked on the right, no
-   sideways scroll, nothing clipped. Reuses the same mobile imagery,
-   just laid out differently.
+   being horizontal "pages" and reflow into one static page instead:
+   a title bar, a two-column body (text on the left, screenshots on
+   the right, no card around them), and a full-width Challenge &
+   Approach close. .work-fixed/.work-project-track/.work-project-details/
+   .work-project-extra/.project-footer only exist to host the mobile
+   swipe mechanics, so they're unwrapped with display:contents — their
+   children get placed directly on one grid, with the markup (and the
+   mobile experience) untouched.
 ───────────────────────────────────────────── */
 @media (min-width: 1024px) {
   .work-project {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "header  header"
+      "topbar  topbar"
+      "hero    gallery"
+      "desc    gallery"
+      "closing closing"
+      "cta     cta";
+    column-gap: 3rem;
+    row-gap: 1.5rem;
     height: auto;
     overflow: visible;
+    padding: 2.5rem max(1.75rem, calc((100% - var(--content-max)) / 2)) 4rem;
+    background: linear-gradient(180deg, #794B4B 0%, #000000 100%);
   }
 
-  .work-fixed {
-    position: static;
-    inset: auto;
+  .p-dronzza .work-project { background: linear-gradient(180deg, #3C8486 0%, #05261A 100%); }
+  .p-skyfly .work-project { background: linear-gradient(180deg, #275B8F 0%, #183458 100%); }
+  .p-inxfitness .work-project { background: linear-gradient(180deg, #32353A 0%, #000000 100%); }
+
+  .work-fixed,
+  .work-project-track,
+  .work-project-details,
+  .work-project-extra,
+  .project-footer {
+    display: contents;
   }
 
   .work-header {
-    position: static;
+    grid-area: header;
   }
 
   .work-header-title {
     position: static;
     opacity: 1;
     pointer-events: auto;
-    padding: 1.75rem max(1.75rem, calc((100% - var(--content-max)) / 2)) 0;
+    padding: 0;
   }
 
   .work-header-title[data-panel="1"],
@@ -1431,10 +1455,17 @@ body {
     display: none;
   }
 
+  .project-footer-copy {
+    grid-area: topbar;
+    align-self: center;
+    justify-self: start;
+  }
+
   .all-projects-btn {
+    grid-area: topbar;
     position: static;
-    display: inline-flex;
-    margin: 1rem max(1.75rem, calc((100% - var(--content-max)) / 2)) 0;
+    justify-self: end;
+    align-self: center;
   }
 
   .work-project-down,
@@ -1442,42 +1473,56 @@ body {
     display: none;
   }
 
-  .work-project-track {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    height: auto;
-    overflow: visible;
-  }
-
-  .work-project-main,
-  .work-project-details,
-  .work-project-extra {
-    flex: none;
-    scroll-snap-align: none;
-    height: auto;
-    overflow: visible;
-    border-radius: var(--radius);
-  }
-
   .work-project-main {
-    grid-column: 1;
-    grid-row: 1 / span 2;
-    min-height: 660px;
+    grid-area: hero;
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    padding: 1.75rem;
   }
 
   .project-image-placeholder {
-    top: 1.5rem;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 420px;
   }
 
-  .work-project-details {
-    grid-column: 2;
-    grid-row: 1;
+  .project-impact {
+    position: static;
+    margin-top: 1.5rem;
+    padding: 0;
+    text-align: left;
+    justify-content: flex-start;
   }
 
-  .work-project-extra {
-    grid-column: 2;
-    grid-row: 2;
+  .project-desc {
+    grid-area: desc;
+  }
+
+  .project-gallery {
+    grid-area: gallery;
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    align-content: start;
+    margin-bottom: 0;
+  }
+
+  .project-gallery-img {
+    height: 280px;
+  }
+
+  .project-problem-solution {
+    grid-area: closing;
+    padding: 2.5rem;
+  }
+
+  .project-footer-links,
+  .project-footer > a.about-cta {
+    grid-area: cta;
+    justify-self: start;
   }
 }
 
