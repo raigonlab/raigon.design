@@ -1427,7 +1427,7 @@ body {
    children get placed directly on one grid, with the markup (and the
    mobile experience) untouched.
 ───────────────────────────────────────────── */
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .work-project {
     display: grid;
     grid-template-columns: 1fr 1fr;
