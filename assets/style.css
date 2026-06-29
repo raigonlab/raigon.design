@@ -1395,6 +1395,91 @@ body {
   }
 }
 
+/* ─────────────────────────────────────────────
+   WORK — desktop case-study layout. The mobile swipe (main → details →
+   extra) has no mouse equivalent, so past 1024px the three panels stop
+   being horizontal pages and become one static, two-column block —
+   hero image on the left, everything else stacked on the right, no
+   sideways scroll, nothing clipped. Reuses the same mobile imagery,
+   just laid out differently.
+───────────────────────────────────────────── */
+@media (min-width: 1024px) {
+  .work-project {
+    height: auto;
+    overflow: visible;
+  }
+
+  .work-fixed {
+    position: static;
+    inset: auto;
+  }
+
+  .work-header {
+    position: static;
+  }
+
+  .work-header-title {
+    position: static;
+    opacity: 1;
+    pointer-events: auto;
+    padding: 1.75rem max(1.75rem, calc((100% - var(--content-max)) / 2)) 0;
+  }
+
+  .work-header-title[data-panel="1"],
+  .work-header-title[data-panel="2"] {
+    display: none;
+  }
+
+  .all-projects-btn {
+    position: static;
+    display: inline-flex;
+    margin: 1rem max(1.75rem, calc((100% - var(--content-max)) / 2)) 0;
+  }
+
+  .work-project-down,
+  .work-nav-controls {
+    display: none;
+  }
+
+  .work-project-track {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    height: auto;
+    overflow: visible;
+  }
+
+  .work-project-main,
+  .work-project-details,
+  .work-project-extra {
+    flex: none;
+    scroll-snap-align: none;
+    height: auto;
+    overflow: visible;
+    border-radius: var(--radius);
+  }
+
+  .work-project-main {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    min-height: 660px;
+  }
+
+  .project-image-placeholder {
+    top: 1.5rem;
+  }
+
+  .work-project-details {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .work-project-extra {
+    grid-column: 2;
+    grid-row: 2;
+  }
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; }
