@@ -25,6 +25,22 @@
     }
   });
 
+  // Clicking anywhere on the nav bar itself (not on a link/the toggle,
+  // which already have their own behaviour) also opens it — so the
+  // whole pill is a target, not just the small hamburger button.
+  nav.addEventListener('click', function (e) {
+    if (e.target === nav && !nav.classList.contains('is-open')) {
+      openMenu();
+    }
+  });
+
+  // Clicking anywhere outside the nav closes it back down.
+  document.addEventListener('click', function (e) {
+    if (nav.classList.contains('is-open') && !nav.contains(e.target)) {
+      closeMenu();
+    }
+  });
+
   // Nav shrinks slightly once the page has scrolled away from the very
   // top, so it stays out of the way without disappearing entirely.
   window.addEventListener('scroll', function () {

@@ -140,6 +140,11 @@ body {
   opacity: 0.9;
 }
 
+.nav-toggle:hover .nav-toggle-icon--menu span,
+.nav-toggle:hover .nav-toggle-icon--close span {
+  background: rgba(255, 255, 255, 0.9);
+}
+
 .nav-toggle {
   position: relative;
   flex: 0 0 var(--nav-btn-fixed);
@@ -169,6 +174,7 @@ body {
   height: 2.5px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.5);
+  transition: background 0.2s ease;
 }
 
 .nav-toggle-icon--close {
