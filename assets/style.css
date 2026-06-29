@@ -1425,10 +1425,10 @@ body {
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
       "header    allbtn"
-      "header    copy"
       "hero      gallery"
       "challenge gallery"
-      "cta       .";
+      "cta       ."
+      "copy      .";
     column-gap: 1.65rem;
     row-gap: 1.65rem;
     height: auto;
@@ -1468,7 +1468,7 @@ body {
 
   .project-footer-copy {
     grid-area: copy;
-    justify-self: end;
+    justify-self: start;
   }
 
   .all-projects-btn {
