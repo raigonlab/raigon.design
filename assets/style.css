@@ -1192,6 +1192,10 @@ body {
   padding: 0 0.75rem 0 2.75rem;
 }
 
+.about-bio .about-cta {
+  opacity: 0.5;
+}
+
 .about-text {
   max-width: 41ch;
   margin: 0 0 1.25rem;
