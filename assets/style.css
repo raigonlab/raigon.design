@@ -951,7 +951,7 @@ body {
   color: rgba(255, 255, 255, 0.75);
   text-align: left;
   max-width: 28ch;
-  padding: 0 1.75rem;
+  padding: 0 0.75rem 0 2.75rem;
 }
 
 /* ─── profile photo — small, fixed-size card so the bio text below
