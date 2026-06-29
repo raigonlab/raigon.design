@@ -721,6 +721,12 @@ body {
   background: linear-gradient(180deg, #275B8F 0%, #183458 100%);
 }
 
+.p-inxfitness .project-bg,
+.p-inxfitness .work-project-details,
+.p-inxfitness .work-project-extra {
+  background: linear-gradient(180deg, #32353A 0%, #000000 100%);
+}
+
 /* TEMP: stand-in for the real project shot, inset within the main panel */
 .project-image-placeholder {
   position: absolute;
