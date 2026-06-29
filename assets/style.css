@@ -1425,8 +1425,8 @@ body {
       "hero      gallery"
       "challenge gallery"
       "cta       .";
-    column-gap: 3rem;
-    row-gap: 3rem;
+    column-gap: 1.65rem;
+    row-gap: 1.65rem;
     height: auto;
     margin: 0;
     overflow: visible;
@@ -1521,7 +1521,7 @@ body {
     grid-area: gallery;
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 1.65rem;
     margin-bottom: 0;
     height: 100%;
   }
