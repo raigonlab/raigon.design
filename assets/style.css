@@ -98,12 +98,17 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 16px;
   box-shadow: 0 10px 30px rgba(15, 15, 14, 0.08);
-  transition: height 0.35s ease;
+  transition: height 0.35s ease, transform 0.35s ease, opacity 0.35s ease;
 }
 
 .main-nav.is-open {
   height: calc(var(--nav-h) * 1.5);
   --nav-btn: calc((var(--nav-h) * 1.5) - 0.24rem);
+}
+
+.main-nav.is-scrolled:not(.is-open) {
+  transform: scale(0.88);
+  opacity: 0.85;
 }
 
 .nav-home {

@@ -25,6 +25,12 @@
     }
   });
 
+  // Nav shrinks slightly once the page has scrolled away from the very
+  // top, so it stays out of the way without disappearing entirely.
+  window.addEventListener('scroll', function () {
+    nav.classList.toggle('is-scrolled', window.scrollY > 24);
+  }, { passive: true });
+
   const workMore = document.getElementById('workMore');
   const workMoreBtn = document.getElementById('workMoreBtn');
   const workMoreHeading = document.getElementById('workMoreHeading');
