@@ -942,6 +942,15 @@ body {
   padding: 0 1.75rem;
 }
 
+.about-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(1.6rem, 7vw, 2.2rem);
+  line-height: 1.2;
+  color: var(--white);
+  margin-top: 0.6rem;
+}
+
 /* ─── profile photo — small, fixed-size card so the bio text below
    has the room to breathe instead of fighting a full-height slide ─── */
 .about-photo {
