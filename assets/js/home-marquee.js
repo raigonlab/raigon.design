@@ -35,7 +35,12 @@
   // stretches into a flat, cropped-looking rectangle on wide screens),
   // the column count grows to keep each card close to its mobile
   // proportions, and more (smaller) cards repeat across the marquee.
-  const TARGET_COL_W = 160;
+  // Capped at 6 columns and ~15% larger than the original mobile size;
+  // past that, columns stop growing and the whole block centers itself
+  // instead of stretching edge to edge.
+  const TARGET_COL_W = 184;
+  const MAX_COLS = 6;
+  const MAX_COL_W = 260;
   const ASPECT = 1.3; // card height = column width * ASPECT
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -78,9 +83,9 @@
   function numColsFor(stageW) {
     let n = Math.max(2, Math.round(stageW / (TARGET_COL_W + COL_GAP)));
     let colW = (stageW - (n - 1) * COL_GAP) / n;
-    if (colW > 210) n += 1;
-    else if (colW < 130 && n > 2) n -= 1;
-    return n;
+    if (colW > 241 && n < MAX_COLS) n += 1;
+    else if (colW < 150 && n > 2) n -= 1;
+    return Math.min(n, MAX_COLS);
   }
 
   function rebuildCols(numCols) {
@@ -99,9 +104,15 @@
 
     if (numCols !== lastNumCols) rebuildCols(numCols);
 
-    const colW = (stageW - (numCols - 1) * COL_GAP) / numCols;
+    const rawColW = (stageW - (numCols - 1) * COL_GAP) / numCols;
+    const colW = Math.min(rawColW, MAX_COL_W);
     const cardH = Math.round(colW * ASPECT);
     const step = cardH + INFO_H + ROW_GAP;
+
+    // Once columns hit their max width (capped at 6, wide screen), the
+    // block stops growing and centers itself instead of stretching.
+    const totalW = numCols * colW + (numCols - 1) * COL_GAP;
+    const offsetX = Math.max(0, (stageW - totalW) / 2);
 
     cols.forEach(function (col, i) {
       if (!col.el) {
@@ -113,7 +124,7 @@
       }
       col.setH = col.projects.length * step;
       col.el.style.width = colW + 'px';
-      col.el.style.left = (i * (colW + COL_GAP)) + 'px';
+      col.el.style.left = (offsetX + i * (colW + COL_GAP)) + 'px';
     });
   }
 
