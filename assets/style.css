@@ -949,8 +949,8 @@ body {
 }
 
 .about-photo-img {
-  width: 96px;
-  height: 96px;
+  width: 128px;
+  height: 128px;
   border-radius: 50%;
   overflow: hidden;
   background-image: url('images/profile.png');
@@ -1179,7 +1179,8 @@ body {
 }
 
 .about-text {
-  font-size: 0.85rem;
+  max-width: 34ch;
+  font-size: 0.95rem;
   color: rgba(255, 255, 255, 0.6);
   line-height: 1.75;
   margin-bottom: 1.25rem;
