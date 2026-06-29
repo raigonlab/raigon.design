@@ -242,7 +242,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: calc(var(--nav-btn) * 0.7225);
+  height: calc(var(--nav-btn) * 0.542);
   line-height: 1;
   font-size: 0.65rem;
   letter-spacing: 0.04em;
