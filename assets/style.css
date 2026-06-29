@@ -944,11 +944,15 @@ body {
 
 .about-headline {
   font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
   font-weight: 300;
-  font-size: clamp(1.6rem, 7vw, 2.2rem);
-  line-height: 1.2;
-  color: var(--white);
-  margin-top: 0.6rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.75);
+  text-align: center;
+  max-width: 28ch;
+  margin: 0 auto;
+  padding: 0 1.75rem;
 }
 
 /* ─── profile photo — small, fixed-size card so the bio text below
