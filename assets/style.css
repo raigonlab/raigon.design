@@ -23,7 +23,13 @@
   --radius: 28px;
   /* space reserved below every card so it never sits under the floating nav */
   --nav-clearance: calc((var(--nav-h) + 1.75rem) * 0.68);
+  /* readable content cap for tablet/desktop — mobile ignores this and
+     stays full-bleed at 1.75rem side padding */
+  --content-max: 1200px;
 }
+
+/* Breakpoints used across this file: 768px = tablet, 1024px = desktop.
+   Mobile-first — everything above is the unstyled default. */
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; scroll-snap-type: y mandatory; }
@@ -1337,6 +1343,31 @@ body {
 .footer-copy {
   font-size: 0.68rem;
   color: rgba(255, 255, 255, 0.5);
+}
+
+/* ─────────────────────────────────────────────
+   TABLET / DESKTOP
+   Mobile is gesture-native (bottom thumb-nav, swipe panels); none of
+   that translates to mouse + keyboard, so this isn't a stretch of the
+   mobile layout — it's a reflow. First pass: reposition the nav for
+   cursor use and cap content width so text/images stop running edge
+   to edge on wide viewports. The per-project horizontal swipe panels
+   still need a separate vertical-layout pass (tracked separately).
+───────────────────────────────────────────── */
+@media (min-width: 768px) {
+  .main-nav {
+    top: calc(1rem + env(safe-area-inset-top));
+    bottom: auto;
+  }
+
+  .work-project-details,
+  .work-project-extra,
+  .about-header,
+  .about-track,
+  #contact {
+    padding-left: max(1.75rem, calc((100% - var(--content-max)) / 2));
+    padding-right: max(1.75rem, calc((100% - var(--content-max)) / 2));
+  }
 }
 
 /* Reduced motion */
