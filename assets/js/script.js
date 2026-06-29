@@ -142,17 +142,29 @@
   }
 
   // Each project card carries its own "All Projects" shortcut, confined
-  // to the card so it always stays inside its visible bounds.
+  // to the card so it always stays inside its visible bounds. The "Work"
+  // nav link does the same thing, so it lands on the overview grid
+  // instead of dropping the visitor into a single, arbitrary project.
   if (workMore && workMoreBtn) {
+    const goToAllProjects = function () {
+      if (workMoreBtn.getAttribute('aria-expanded') !== 'true') {
+        workMoreBtn.click();
+      } else {
+        jumpTo(workMore);
+      }
+    };
+
     document.querySelectorAll('.all-projects-btn').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        if (workMoreBtn.getAttribute('aria-expanded') !== 'true') {
-          workMoreBtn.click();
-        } else {
-          jumpTo(workMore);
-        }
-      });
+      btn.addEventListener('click', goToAllProjects);
     });
+
+    const workNavLink = document.querySelector('.nav-link[data-nav="work"]');
+    if (workNavLink) {
+      workNavLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        goToAllProjects();
+      });
+    }
   }
 
   // Each work card carries its own header dots, reflecting which of
