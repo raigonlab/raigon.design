@@ -925,7 +925,7 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 1.5rem;
   height: calc(100vh - var(--nav-clearance));
   height: calc(100dvh - var(--nav-clearance));
@@ -949,8 +949,8 @@ body {
 }
 
 .about-photo-img {
-  width: 128px;
-  height: 128px;
+  width: 166px;
+  height: 166px;
   border-radius: 50%;
   overflow: hidden;
   background-image: url('images/profile.png');
