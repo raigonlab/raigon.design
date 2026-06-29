@@ -859,6 +859,13 @@ body {
   margin-bottom: 1.25rem;
 }
 
+/* desktop-only duplicate that lives inside the hero panel (see the
+   1024px block below) — hidden on mobile, where the original copy in
+   the details panel is the one that shows */
+.project-desc-hero {
+  display: none;
+}
+
 /* ─────────────────────────────────────────────
    SEE MORE — now lives inside Contact, filling the space that used
    to sit empty below the contact links, instead of its own card
@@ -1416,7 +1423,6 @@ body {
       "header  header"
       "topbar  topbar"
       "hero    gallery"
-      "hero2   gallery"
       "closing closing"
       "cta     cta";
     column-gap: 3rem;
@@ -1474,12 +1480,7 @@ body {
   }
 
   .work-project-main {
-    grid-column: 1;
-    /* spans both the hero row and the row below it, so the card's
-       background/rounded corners visually wrap the description text
-       too — project-desc sits in that second row, layered on top,
-       reading as part of the same card instead of floating below it */
-    grid-row: 3 / 5;
+    grid-area: hero;
     position: relative;
     border-radius: var(--radius);
     overflow: hidden;
@@ -1503,12 +1504,17 @@ body {
     justify-content: flex-start;
   }
 
-  .project-desc {
-    grid-column: 1;
-    grid-row: 4;
-    align-self: end;
-    padding: 0 1.75rem 1.75rem;
-    margin-bottom: 0;
+  /* The hero panel needs its own copy of the description (real DOM
+     child, not a grid trick) so the text actually sits inside the
+     card instead of floating below it; the original copy stays put
+     for the mobile swipe panel and just hides here. */
+  .project-desc-hero {
+    display: block;
+    margin-top: 1rem;
+  }
+
+  .project-desc-mobile {
+    display: none;
   }
 
   .project-gallery {
