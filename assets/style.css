@@ -483,10 +483,14 @@ body {
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-.project-problem-solution .challenge-heading,
-.project-problem-solution .approach-heading {
+.project-problem-solution .challenge-heading {
   text-align: left;
   margin-top: 0;
+}
+
+.project-problem-solution .approach-heading {
+  text-align: left;
+  margin-top: 1.5rem;
 }
 
 .project-problem-solution p {
