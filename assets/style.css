@@ -222,13 +222,13 @@ body {
   color: var(--mid);
   text-decoration: none;
   padding: 0 0.85rem;
-  border-radius: 10px;
+  border-radius: 999px;
   transition: background 0.2s ease, color 0.2s ease;
 }
 
 .nav-link.active,
 .nav-link:hover {
-  background: var(--white);
+  background: rgba(255, 255, 255, 0.85);
   color: var(--ink);
 }
 
