@@ -698,6 +698,12 @@ body {
   background: linear-gradient(180deg, #3C8486 0%, #05261A 100%);
 }
 
+.p-skyfly .project-bg,
+.p-skyfly .work-project-details,
+.p-skyfly .work-project-extra {
+  background: linear-gradient(180deg, #275B8F 0%, #183458 100%);
+}
+
 /* TEMP: stand-in for the real project shot, inset within the main panel */
 .project-image-placeholder {
   position: absolute;
