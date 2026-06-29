@@ -196,15 +196,4 @@
     }
   });
 
-  // About's cinematic cover slides: same dot-tracking pattern as the
-  // work cards, just a single flat track (no per-panel header swap).
-  const aboutTrack = document.getElementById('aboutTrack');
-  const aboutDots = document.querySelectorAll('.about-dots .dot');
-
-  if (aboutTrack && aboutDots.length) {
-    aboutTrack.addEventListener('scroll', function () {
-      const index = Math.min(aboutDots.length - 1, Math.round(aboutTrack.scrollLeft / aboutTrack.clientWidth));
-      aboutDots.forEach(function (dot, i) { dot.classList.toggle('active', i === index); });
-    }, { passive: true });
-  }
 })();
