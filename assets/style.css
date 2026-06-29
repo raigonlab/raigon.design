@@ -238,7 +238,7 @@ body {
 
 .nav-link.active,
 .nav-link:hover {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.43);
   color: var(--ink);
 }
 
