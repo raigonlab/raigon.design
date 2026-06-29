@@ -784,6 +784,10 @@ body {
   .p-arcavault .project-image-placeholder {
     background-image: url('images/projects/arcavault/hero-desktop.png');
   }
+
+  .p-arcavault .project-gallery-img:nth-child(3) {
+    background-image: url('images/projects/arcavault/gallery-desktop-3.png');
+  }
 }
 
 .project-impact {
