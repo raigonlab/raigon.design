@@ -1358,8 +1358,14 @@ body {
 ───────────────────────────────────────────── */
 @media (min-width: 768px) {
   .main-nav {
-    top: calc(1rem + env(safe-area-inset-top));
-    bottom: auto;
+    left: 50%;
+    right: auto;
+    width: fit-content;
+    transform: translateX(-50%);
+  }
+
+  .main-nav.is-scrolled:not(.is-open) {
+    transform: translateX(-50%) scale(0.88);
   }
 
   .work-project-details,
