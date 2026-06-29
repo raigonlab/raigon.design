@@ -19,24 +19,39 @@
     });
   }
 
-  // Each column gets its own dedicated set of images (thumb1/thumb2)
-  // so the two columns never show the same photo at the same time.
-  const projects0 = buildProjects('thumb1');
-  const projects1 = buildProjects('thumb2');
+  // Only two distinct image sets exist per project (thumb1/thumb2); columns
+  // alternate between them so no two adjacent columns show the same photo.
+  const projectSets = [buildProjects('thumb1'), buildProjects('thumb2')];
 
-  if (!projects0.length) return;
+  if (!projectSets[0].length) return;
 
-  const CARD_H = 200;
   const INFO_H = 38;
-  const GAP = 32;
-  const STEP = CARD_H + INFO_H + GAP;
+  const ROW_GAP = 32;
   const COL_GAP = 24;
   const SPEED = 0.22;
+  // Comfortable card width range — instead of always 2 columns (which
+  // stretches into a flat, cropped-looking rectangle on wide screens),
+  // the column count grows to keep each card close to its mobile
+  // proportions, and more (smaller) cards repeat across the marquee.
+  const TARGET_COL_W = 160;
+  const ASPECT = 1.3; // card height = column width * ASPECT
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const SET_H = projects0.length * STEP;
+  let cols = []; // { el, projects, dir, traveled, setH }
+  let lastNumCols = 0;
 
-  function makeCol(projects) {
+  function thumbBgFor(p) {
+    // dronzza-1.png runs very bright/white — a dark scrim is layered
+    // under it so it doesn't blow out against the rest of the marquee.
+    const scrim = /dronzza-1\.png$/.test(p.thumb)
+      ? 'linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),'
+      : '';
+    return p.thumb
+      ? 'background-image:' + scrim + 'url(' + p.thumb + ');background-size:cover;background-position:center'
+      : 'background:' + p.color;
+  }
+
+  function makeCol(projects, cardH) {
     const colEl = document.createElement('div');
     colEl.className = 'home-marquee-col';
 
@@ -44,16 +59,8 @@
       projects.forEach(function (p) {
         const card = document.createElement('div');
         card.className = 'home-marquee-card';
-        // dronzza-1.png runs very bright/white — a dark scrim is layered
-        // under it so it doesn't blow out against the rest of the marquee.
-        const scrim = /dronzza-1\.png$/.test(p.thumb)
-          ? 'linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),'
-          : '';
-        const thumbBg = p.thumb
-          ? 'background-image:' + scrim + 'url(' + p.thumb + ');background-size:cover;background-position:center'
-          : 'background:' + p.color;
         card.innerHTML =
-          '<div class="home-marquee-thumb" style="' + thumbBg + ';height:' + CARD_H + 'px"></div>' +
+          '<div class="home-marquee-thumb" style="' + thumbBgFor(p) + ';height:' + cardH + 'px"></div>' +
           '<div>' +
             '<div class="home-marquee-card-title">' + p.title + '</div>' +
             '<div class="home-marquee-card-desc">' + p.desc + '</div>' +
@@ -66,18 +73,46 @@
     return colEl;
   }
 
-  const col0 = makeCol(projects0);
-  const col1 = makeCol(projects1);
+  function numColsFor(stageW) {
+    let n = Math.max(2, Math.round(stageW / (TARGET_COL_W + COL_GAP)));
+    let colW = (stageW - (n - 1) * COL_GAP) / n;
+    if (colW > 210) n += 1;
+    else if (colW < 130 && n > 2) n -= 1;
+    return n;
+  }
 
-  let colW = 0;
+  function rebuildCols(numCols) {
+    cols.forEach(function (c) { c.el.remove(); });
+    cols = [];
+    for (let i = 0; i < numCols; i++) {
+      const projects = projectSets[i % projectSets.length];
+      cols.push({ el: null, projects: projects, dir: i % 2 === 0 ? 1 : -1, traveled: 0, setH: 0 });
+    }
+    lastNumCols = numCols;
+  }
 
   function layoutCols() {
     const stageW = stage.offsetWidth;
-    colW = (stageW - COL_GAP) / 2;
-    col0.style.width = colW + 'px';
-    col1.style.width = colW + 'px';
-    col0.style.left = '0px';
-    col1.style.left = (colW + COL_GAP) + 'px';
+    const numCols = numColsFor(stageW);
+
+    if (numCols !== lastNumCols) rebuildCols(numCols);
+
+    const colW = (stageW - (numCols - 1) * COL_GAP) / numCols;
+    const cardH = Math.round(colW * ASPECT);
+    const step = cardH + INFO_H + ROW_GAP;
+
+    cols.forEach(function (col, i) {
+      if (!col.el) {
+        col.el = makeCol(col.projects, cardH);
+      } else {
+        col.el.querySelectorAll('.home-marquee-thumb').forEach(function (thumb) {
+          thumb.style.height = cardH + 'px';
+        });
+      }
+      col.setH = col.projects.length * step;
+      col.el.style.width = colW + 'px';
+      col.el.style.left = (i * (colW + COL_GAP)) + 'px';
+    });
   }
 
   layoutCols();
@@ -90,8 +125,6 @@
   // function of elapsed distance — no threshold check, no risk of a
   // skipped/duplicated frame causing a visible stall or jump at the
   // wrap point.
-  let traveled0 = 0;
-  let traveled1 = 0;
   let lastTs = null;
 
   function render(ts) {
@@ -101,14 +134,12 @@
 
     const spd = SPEED * (dt / 16.67);
 
-    traveled0 += spd;
-    traveled1 += spd;
-
-    const offset0 = -SET_H - (traveled0 % SET_H);
-    const offset1 = -SET_H + (traveled1 % SET_H);
-
-    col0.style.transform = 'translateY(' + offset0.toFixed(1) + 'px)';
-    col1.style.transform = 'translateY(' + offset1.toFixed(1) + 'px)';
+    cols.forEach(function (col) {
+      if (!col.el || !col.setH) return;
+      col.traveled += spd;
+      const offset = -col.setH + col.dir * (col.traveled % col.setH);
+      col.el.style.transform = 'translateY(' + offset.toFixed(1) + 'px)';
+    });
 
     requestAnimationFrame(render);
   }
