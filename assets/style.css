@@ -1420,11 +1420,11 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
-      "header  header"
-      "topbar  topbar"
-      "hero    gallery"
-      "closing closing"
-      "cta     cta";
+      "header    header"
+      "topbar    topbar"
+      "hero      gallery"
+      "challenge gallery"
+      "cta       gallery";
     column-gap: 3rem;
     row-gap: 1.5rem;
     height: auto;
@@ -1530,7 +1530,7 @@ body {
   }
 
   .project-problem-solution {
-    grid-area: closing;
+    grid-area: challenge;
     padding: 2.5rem;
   }
 
