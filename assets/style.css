@@ -953,8 +953,7 @@ body {
   height: 96px;
   border-radius: 50%;
   overflow: hidden;
-  /* TEMP placeholder colour — swap for the real profile photo */
-  background: linear-gradient(160deg, #2a2f36, #14171a);
+  background-image: url('images/profile.png');
   background-size: cover;
   background-position: center;
 }
