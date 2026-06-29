@@ -1420,8 +1420,8 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
-      "header    header"
-      "topbar    topbar"
+      "header    allbtn"
+      "header    copy"
       "hero      gallery"
       "challenge gallery"
       "cta       .";
@@ -1462,16 +1462,15 @@ body {
   }
 
   .project-footer-copy {
-    grid-area: topbar;
-    align-self: center;
-    justify-self: start;
+    grid-area: copy;
+    justify-self: end;
   }
 
   .all-projects-btn {
-    grid-area: topbar;
+    grid-area: allbtn;
     position: static;
     justify-self: end;
-    align-self: center;
+    align-self: start;
   }
 
   .work-project-down,
