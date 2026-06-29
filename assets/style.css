@@ -1443,12 +1443,12 @@ body {
     margin: 0;
     overflow: visible;
     padding: 2.5rem max(1.75rem, calc((100% - var(--content-max)) / 2)) 4rem;
-    background: linear-gradient(180deg, #794B4B 0%, #000000 100%);
+    background: #000000;
   }
 
   .p-dronzza .work-project { background: #05261A; }
-  .p-skyfly .work-project { background: linear-gradient(180deg, #275B8F 0%, #183458 100%); }
-  .p-inxfitness .work-project { background: linear-gradient(180deg, #32353A 0%, #000000 100%); }
+  .p-skyfly .work-project { background: #183458; }
+  .p-inxfitness .work-project { background: #000000; }
 
   .work-fixed,
   .work-project-track,
