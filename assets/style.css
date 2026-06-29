@@ -1541,6 +1541,7 @@ body {
   .project-problem-solution {
     grid-area: challenge;
     padding: 2.5rem;
+    background: #000000;
   }
 
   .project-footer-links,
