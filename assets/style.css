@@ -1521,7 +1521,7 @@ body {
     grid-area: gallery;
     display: flex;
     flex-direction: column;
-    gap: 1.75rem;
+    gap: 3rem;
     margin-bottom: 0;
     height: 100%;
   }
