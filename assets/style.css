@@ -804,7 +804,7 @@ body {
 .p-skyfly .work-project-main,
 .p-skyfly .work-project-details,
 .p-skyfly .work-project-extra {
-  background: linear-gradient(180deg, #32353A 0%, #000000 100%);
+  background: conic-gradient(from 0deg at 50% 50%, #08232D 10%, #111736 25%, #121212 82%, #08232D 100%);
 }
 
 .p-inxfitness .project-bg,
@@ -1528,7 +1528,7 @@ a[href="#project-skyfly"] .work-gallery-thumb {
   }
 
   .p-dronzza.work-project { background: linear-gradient(180deg, #3C8486 0%, #05261A 100%); }
-  .p-skyfly.work-project { background: linear-gradient(180deg, #32353A 0%, #000000 100%); }
+  .p-skyfly.work-project { background: conic-gradient(from 0deg at 50% 50%, #08232D 10%, #111736 25%, #121212 82%, #08232D 100%); }
   .p-inxfitness.work-project { background: linear-gradient(180deg, #32353A 0%, #000000 100%); }
   .p-arcavault.work-project { background: linear-gradient(180deg, #794B4B 0%, #000000 100%); }
 
