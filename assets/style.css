@@ -1504,9 +1504,17 @@ body {
     grid-area: hero;
     position: relative;
     border-radius: var(--radius);
-    overflow: hidden;
+    overflow: visible;
     padding: 1.75rem;
     height: auto;
+  }
+
+  /* clip only the image itself to rounded corners — the hero box needs
+     overflow:visible so the grid can size the row to the full content
+     height (image + impact quote + description), not just the image */
+  .project-image-placeholder {
+    border-radius: var(--radius);
+    overflow: hidden;
   }
 
   .project-image-placeholder {
