@@ -21,9 +21,17 @@
     });
   }
 
-  // Only two distinct image sets exist per project (thumb1/thumb2); columns
-  // alternate between them so no two adjacent columns show the same photo.
-  const projectSets = [buildProjects('thumb1'), buildProjects('thumb2')];
+  // Up to 4 distinct image sets per project (thumb1..thumb4); each
+  // column cycles through a different set so adjacent columns never
+  // repeat the same photo. Projects with fewer than 4 images cycle
+  // back to their earlier thumbnails automatically via buildProjects
+  // falling back to '' (which renders the palette colour instead).
+  const projectSets = [
+    buildProjects('thumb1'),
+    buildProjects('thumb2'),
+    buildProjects('thumb3'),
+    buildProjects('thumb4'),
+  ];
 
   if (!projectSets[0].length) return;
 
@@ -31,15 +39,10 @@
   const ROW_GAP = 32;
   const COL_GAP = 24;
   const SPEED = 0.22;
-  // Comfortable card width range — instead of always 2 columns (which
-  // stretches into a flat, cropped-looking rectangle on wide screens),
-  // the column count grows to keep each card close to its mobile
-  // proportions, and more (smaller) cards repeat across the marquee.
-  // Capped at 6 columns and ~15% larger than the original mobile size;
-  // past that, columns stop growing and the whole block centers itself
-  // instead of stretching edge to edge.
+  // Capped at 5 columns with 4 distinct image sets cycling across them,
+  // giving a richer, less repetitive marquee on wide screens.
   const TARGET_COL_W = 184;
-  const MAX_COLS = 6;
+  const MAX_COLS = 5;
   const MAX_COL_W = 260;
   const ASPECT = 1.3; // card height = column width * ASPECT
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
