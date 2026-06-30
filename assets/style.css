@@ -1527,6 +1527,13 @@ a[href="#project-skyfly"] .work-gallery-thumb {
     height: auto;
   }
 
+  /* project-bg is absolute inset:0 — without overflow:hidden on the
+     parent, it renders square. Give it the same radius so the card
+     looks rounded even with overflow:visible */
+  .work-project-main .project-bg {
+    border-radius: var(--radius);
+  }
+
   /* clip only the image itself to rounded corners — the hero box needs
      overflow:visible so the grid can size the row to the full content
      height (image + impact quote + description), not just the image */
