@@ -445,9 +445,14 @@ body {
   height: 100%;
   overflow: hidden;
   border-radius: 0;
-  /* TEMP placeholder colour — remove once real content/imagery is in.
-     Ends near-black so the nav-clearance gap below blends in instead
-     of showing a hard seam against the dark page background. */
+}
+
+/* Each project owns its gradient — no shared fallback that fights
+   with project-specific overrides via specificity. */
+.p-arcavault .project-bg,
+.p-arcavault .work-project-main,
+.p-arcavault .work-project-details,
+.p-arcavault .work-project-extra {
   background: linear-gradient(180deg, #794B4B 0%, #000000 100%);
 }
 
