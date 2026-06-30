@@ -1436,11 +1436,7 @@ body {
    mobile experience) untouched.
 ───────────────────────────────────────────── */
 @media (min-width: 768px) {
-  /* our display:grid overrides the UA-stylesheet's display:none from
-     [hidden], so we restore it explicitly here */
-  .work-project[hidden] { display: none !important; }
-
-  .work-project {
+  .work-project:not([hidden]) {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
