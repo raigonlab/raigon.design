@@ -1611,6 +1611,41 @@ a[href="#project-skyfly"] .work-gallery-thumb {
   }
 }
 
+/* ─── ABOUT — desktop two-column layout ─── */
+@media (min-width: 768px) {
+  #about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas:
+      "header  photo"
+      "headline photo"
+      "bio      photo";
+    gap: 1.5rem 3rem;
+    padding: 2.25rem max(1.75rem, calc((100% - var(--content-max)) / 2)) 2.5rem;
+    height: calc(100vh - var(--nav-clearance));
+    height: calc(100dvh - var(--nav-clearance));
+    overflow: hidden;
+  }
+
+  .about-header    { grid-area: header; }
+  .about-headline  { grid-area: headline; }
+  .about-bio       { grid-area: bio; padding: 0; }
+
+  .about-photo {
+    grid-area: photo;
+    display: block;
+    padding: 0;
+    height: 100%;
+  }
+
+  .about-photo-img {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--radius);
+  }
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; }
