@@ -1526,19 +1526,21 @@ body {
     height: 420px;
   }
 
-  .project-impact {
+  /* higher specificity (2 classes) definitively beats the base
+     single-class rule that sets position:absolute on project-impact */
+  .work-project-main .project-impact {
     position: static;
+    display: block;
     margin-top: 1.5rem;
     padding: 0;
     text-align: left;
-    justify-content: flex-start;
+    top: auto;
+    bottom: auto;
+    left: auto;
+    right: auto;
   }
 
-  /* The hero panel needs its own copy of the description (real DOM
-     child, not a grid trick) so the text actually sits inside the
-     card instead of floating below it; the original copy stays put
-     for the mobile swipe panel and just hides here. */
-  .project-desc-hero {
+  .work-project-main .project-desc-hero {
     display: block;
     margin-top: 1rem;
   }
