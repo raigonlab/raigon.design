@@ -1026,7 +1026,7 @@ a[href="#project-skyfly"] .work-gallery-thumb {
   color: rgba(255, 255, 255, 0.4);
   text-align: left;
   max-width: 28ch;
-  padding: 0 0.75rem 0 2.75rem;
+  padding: 0 1.75rem;
 }
 
 .about-headline-bright {
@@ -1267,7 +1267,7 @@ a[href="#project-skyfly"] .work-gallery-thumb {
 
 /* ─── condensed bio + links ─── */
 .about-bio {
-  padding: 0 0.75rem 0 2.75rem;
+  padding: 0 1.75rem;
 }
 
 .about-bio .about-cta {
@@ -1634,9 +1634,9 @@ a[href="#project-skyfly"] .work-gallery-thumb {
     overflow: hidden;
   }
 
-  .about-header    { grid-area: header; }
-  .about-headline  { grid-area: headline; }
-  .about-bio       { grid-area: bio; padding: 0; }
+  .about-header    { grid-area: header;   padding: 0; }
+  .about-headline  { grid-area: headline; padding: 0; }
+  .about-bio       { grid-area: bio;      padding: 0; }
 
   .about-photo {
     grid-area: photo;
