@@ -956,7 +956,25 @@ body {
   height: 140px;
   border-radius: var(--radius);
   background: rgba(255, 255, 255, 0.1);
+  background-size: cover;
+  background-position: center;
   margin-bottom: 0.75rem;
+}
+
+a[href="#project-arcavault"] .work-gallery-thumb {
+  background-image: url('images/home/arcavault-1.png');
+}
+
+a[href="#project-inxfitness"] .work-gallery-thumb {
+  background-image: url('images/home/inxfitness-1.png');
+}
+
+a[href="#project-dronzza"] .work-gallery-thumb {
+  background-image: url('images/home/dronzza-1.png');
+}
+
+a[href="#project-skyfly"] .work-gallery-thumb {
+  background-image: url('images/home/sky-fly-1.png');
 }
 
 .work-gallery-name {
@@ -1529,7 +1547,8 @@ body {
   /* higher specificity (2 classes) definitively beats the base
      single-class rule that sets position:absolute on project-impact */
   .work-project-main .project-impact {
-    position: static;
+    position: relative;
+    z-index: 3;
     display: block;
     margin-top: 1.5rem;
     padding: 0;
@@ -1541,6 +1560,8 @@ body {
   }
 
   .work-project-main .project-desc-hero {
+    position: relative;
+    z-index: 3;
     display: block;
     margin-top: 1rem;
   }
