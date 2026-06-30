@@ -947,18 +947,22 @@ body {
 }
 
 .work-gallery-item {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   text-decoration: none;
   color: var(--white);
 }
 
 .work-gallery-thumb {
-  height: 140px;
-  border-radius: var(--radius);
+  height: 160px;
+  border-radius: 12px;
+  border: 0.5px solid rgba(0, 0, 0, 0.1);
+  overflow: hidden;
   background: rgba(255, 255, 255, 0.1);
   background-size: cover;
   background-position: center;
-  margin-bottom: 0.75rem;
+  flex-shrink: 0;
 }
 
 a[href="#project-arcavault"] .work-gallery-thumb {
@@ -978,15 +982,16 @@ a[href="#project-skyfly"] .work-gallery-thumb {
 }
 
 .work-gallery-name {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 500;
   color: var(--white);
-  margin-bottom: 0.15rem;
+  line-height: 1.3;
 }
 
 .work-gallery-desc {
-  font-size: 0.72rem;
-  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.58rem;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.4;
 }
 
 /* ─────────────────────────────────────────────
