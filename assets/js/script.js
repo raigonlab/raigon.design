@@ -218,4 +218,49 @@
     }
   });
 
+  // ─── Intro typing overlay ───────────────────────────────────────────
+  // Shown once per browser session so repeat visitors aren't forced to
+  // wait. If the user prefers reduced motion, skip it entirely.
+  (function () {
+    const intro  = document.getElementById('homeIntro');
+    const target = document.getElementById('homeIntroText');
+    const cursor = document.getElementById('homeIntroCursor');
+    if (!intro || !target) return;
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const seen = sessionStorage.getItem('intro-seen');
+
+    if (reduceMotion || seen) {
+      intro.style.display = 'none';
+      return;
+    }
+
+    const text  = "Hi, I'm Rai —\na design engineer.\nEmpowering businesses\nand people through design.";
+    const speed = 42; // ms per character
+    const pauseAfterDone = 1400; // ms before fade
+
+    let i = 0;
+    function type() {
+      if (i < text.length) {
+        const ch = text[i++];
+        if (ch === '\n') {
+          target.appendChild(document.createElement('br'));
+        } else {
+          target.appendChild(document.createTextNode(ch));
+        }
+        setTimeout(type, speed);
+      } else {
+        setTimeout(function () {
+          cursor.style.display = 'none';
+          intro.classList.add('is-done');
+          sessionStorage.setItem('intro-seen', '1');
+          setTimeout(function () { intro.style.display = 'none'; }, 950);
+        }, pauseAfterDone);
+      }
+    }
+
+    // Short delay so the marquee cards start moving first
+    setTimeout(type, 600);
+  }());
+
 })();

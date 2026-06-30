@@ -283,6 +283,52 @@ body {
   color: var(--white);
 }
 
+/* ─── intro typing overlay ─── */
+.home-intro {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 2rem;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  opacity: 1;
+  transition: opacity 0.9s ease;
+  pointer-events: none;
+}
+
+.home-intro.is-done {
+  opacity: 0;
+}
+
+.home-intro-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(1.6rem, 5vw, 2.6rem);
+  line-height: 1.35;
+  color: var(--white);
+  max-width: 22ch;
+}
+
+.home-intro-cursor {
+  display: inline-block;
+  font-size: clamp(1.6rem, 5vw, 2.6rem);
+  color: var(--warm);
+  animation: blink 0.75s step-end infinite;
+  margin-left: 2px;
+  vertical-align: baseline;
+  line-height: 1;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
 .home-title {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 600;
