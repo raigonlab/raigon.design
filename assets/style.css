@@ -740,18 +740,21 @@ body {
 }
 
 .p-dronzza .project-bg,
+.p-dronzza .work-project-main,
 .p-dronzza .work-project-details,
 .p-dronzza .work-project-extra {
   background: linear-gradient(180deg, #3C8486 0%, #05261A 100%);
 }
 
 .p-skyfly .project-bg,
+.p-skyfly .work-project-main,
 .p-skyfly .work-project-details,
 .p-skyfly .work-project-extra {
   background: linear-gradient(180deg, #275B8F 0%, #183458 100%);
 }
 
 .p-inxfitness .project-bg,
+.p-inxfitness .work-project-main,
 .p-inxfitness .work-project-details,
 .p-inxfitness .work-project-extra {
   background: linear-gradient(180deg, #32353A 0%, #000000 100%);
