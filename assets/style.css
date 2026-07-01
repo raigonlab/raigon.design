@@ -1045,6 +1045,43 @@ body {
   color: var(--white);
 }
 
+.work-gallery-item--locked {
+  cursor: default;
+  opacity: 0.7;
+}
+
+.work-gallery-item--locked .work-gallery-thumb {
+  position: relative;
+  background: linear-gradient(160deg, #1a1a2e, #0f0f1a);
+}
+
+.work-gallery-lock {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  backdrop-filter: blur(2px);
+}
+
+.work-gallery-lock-icon {
+  font-size: 1.4rem;
+  color: rgba(255, 255, 255, 0.3);
+  line-height: 1;
+}
+
+.work-gallery-lock-label {
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+}
+
 .work-gallery-thumb {
   height: 200px;
   border-radius: 12px;
