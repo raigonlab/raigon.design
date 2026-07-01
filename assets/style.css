@@ -820,6 +820,7 @@ body {
 /* TEMP: stand-in for the real project shot, inset within the main panel */
 .project-image-placeholder {
   position: relative;
+  z-index: 1;
   top: 0; left: 0; right: 0;
   width: 100%;
   height: 350px;
@@ -889,7 +890,8 @@ body {
 }
 
 .project-impact {
-  position: static;
+  position: relative;
+  z-index: 1;
   display: block;
   text-align: left;
   font-family: 'Cormorant Garamond', serif;
