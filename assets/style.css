@@ -1626,6 +1626,17 @@ a[href="#project-skyfly"] .work-gallery-thumb {
     flex: 0 0 calc(var(--nav-btn) * 1.1);
   }
 
+  /* desktop: no pill on active — just brighter text */
+  .nav-link.active {
+    background: none;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .nav-link:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.85);
+  }
+
   .work-project-details,
   .work-project-extra,
   .about-header,
