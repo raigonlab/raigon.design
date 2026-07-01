@@ -1029,7 +1029,7 @@ body {
 .work-gallery-grid {
   margin-top: 1.75rem;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr 1fr;
   gap: 1rem;
 }
 
@@ -1536,9 +1536,14 @@ a[href="#project-skyfly"] .work-gallery-thumb {
   .about-header,
   .about-photo,
   .skills-panel,
+  .work-page-inner,
   #contact {
     padding-left: max(1.75rem, calc((100% - var(--content-max)) / 2));
     padding-right: max(1.75rem, calc((100% - var(--content-max)) / 2));
+  }
+
+  .work-gallery-grid {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
