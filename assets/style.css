@@ -1599,10 +1599,26 @@ a[href="#project-skyfly"] .work-gallery-thumb {
     right: auto;
     width: fit-content;
     transform: translateX(-50%);
+    gap: 0.25rem;
+    padding: 0.25rem 0.5rem;
   }
 
   .main-nav.is-scrolled:not(.is-open) {
     transform: translateX(-50%) scale(0.88);
+  }
+
+  /* always show links on desktop — no toggle needed */
+  .nav-links {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: none;
+    flex: none;
+    gap: 0.15rem;
+  }
+
+  .nav-toggle {
+    display: none;
   }
 
   .work-project-details,
