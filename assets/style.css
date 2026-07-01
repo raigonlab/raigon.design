@@ -32,13 +32,10 @@
    Mobile-first — everything above is the unstyled default. */
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-/* iOS Safari fights "mandatory" snap + "scroll-snap-stop: always" during
-   momentum scrolling — every flick gets caught and forced to decelerate
-   into the very next card, which reads as a stuck/delayed scroll.
-   "proximity" only snaps once the scroll has actually settled near a
-   card, so fast flicks glide through normally and slow scrolls still
-   land cleanly on a section. */
-html { scroll-behavior: smooth; scroll-snap-type: y proximity; }
+/* Mobile: mandatory snap gives the cinematic full-screen card feel.
+   Desktop (768px+) overrides to proximity further down since project
+   sections are variable height and mandatory would feel jarring. */
+html { scroll-behavior: smooth; scroll-snap-type: y mandatory; }
 
 body {
   background: var(--bg);
@@ -269,6 +266,7 @@ body {
   margin: 0 0 var(--nav-clearance);
   background: var(--bg);
   scroll-snap-align: start;
+  scroll-snap-stop: always;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -411,6 +409,7 @@ body {
   background: var(--bg);
   position: relative;
   scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 /* confined to the current panel's own width (matches work-project-track
@@ -1059,6 +1058,7 @@ a[href="#project-skyfly"] .work-gallery-thumb {
   background: linear-gradient(180deg, #32353A 0%, #000000 100%);
   padding: 2.25rem 0 2.5rem;
   scroll-snap-align: start;
+  scroll-snap-stop: always;
   overflow: hidden;
 }
 
@@ -1112,6 +1112,7 @@ a[href="#project-skyfly"] .work-gallery-thumb {
   border-radius: 0;
   background: var(--ink);
   scroll-snap-align: start;
+  scroll-snap-stop: always;
   overflow: hidden;
 }
 
@@ -1371,6 +1372,7 @@ a[href="#project-skyfly"] .work-gallery-thumb {
   color: var(--white);
   padding: 3.5rem 1.75rem;
   scroll-snap-align: start;
+  scroll-snap-stop: always;
   overflow: hidden;
 }
 
@@ -1473,6 +1475,8 @@ a[href="#project-skyfly"] .work-gallery-thumb {
    still need a separate vertical-layout pass (tracked separately).
 ───────────────────────────────────────────── */
 @media (min-width: 768px) {
+  html { scroll-snap-type: y proximity; }
+
   .main-nav {
     left: 50%;
     right: auto;

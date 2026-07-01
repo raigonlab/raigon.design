@@ -235,7 +235,7 @@
       return;
     }
 
-    const text  = "Hi, I'm Rai —\na design engineer.\nEmpowering businesses\nand people through design.";
+    const text  = "Hi, I'm Rai —\na designer.\nEmpowering businesses\nand people through design.";
     const speed = 42; // ms per character
     const pauseAfterDone = 1400; // ms before fade
 
