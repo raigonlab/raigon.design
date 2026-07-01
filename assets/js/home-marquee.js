@@ -1,136 +1,126 @@
+// home-marquee.js — endless drifting grid of project thumbnails
 (function () {
+  'use strict';
+
   const stage = document.getElementById('homeStage');
   if (!stage) return;
 
-  const palette = ['#E6F1FB', '#EEEDFE', '#E1F5EE', '#FAEEDA', '#FAECE7'];
+  // All 18 home thumbnails as a static pool — independent of which
+  // project sections are visible in the page. This gives enough unique
+  // cards that columns of 15 look completely different from each other.
+  const ALL_CARDS = [
+    { title: 'Arca Vault',        desc: 'UX/UI Design · Fintech',        thumb: 'assets/images/home/arcavault-1.png' },
+    { title: 'Dronzza',           desc: 'UX/UI Design · Food Delivery',  thumb: 'assets/images/home/dronzza-1.png' },
+    { title: 'inxfitness',        desc: 'Brand Identity · From Scratch', thumb: 'assets/images/home/inxfitness-1.png' },
+    { title: 'sky-fly',           desc: 'Web Design · UX',               thumb: 'assets/images/home/sky-fly-1.png' },
+    { title: 'Arca Vault',        desc: 'UX/UI Design · Fintech',        thumb: 'assets/images/home/arcavault-2.png' },
+    { title: 'Dronzza',           desc: 'UX/UI Design · Food Delivery',  thumb: 'assets/images/home/dronzza-2.png' },
+    { title: 'inxfitness',        desc: 'Brand Identity · From Scratch', thumb: 'assets/images/home/inxfitness-2.png' },
+    { title: 'sky-fly',           desc: 'Web Design · UX',               thumb: 'assets/images/home/sky-fly-2.png' },
+    { title: 'Arca Vault',        desc: 'UX/UI Design · Fintech',        thumb: 'assets/images/home/arcavault-3.png' },
+    { title: 'Kerart Gallery',    desc: 'Identity · Web · Branding',     thumb: 'assets/images/home/kerart-gallery-1.png' },
+    { title: 'sky-fly',           desc: 'Web Design · UX',               thumb: 'assets/images/home/sky-fly-3.png' },
+    { title: 'Arca Vault',        desc: 'UX/UI Design · Fintech',        thumb: 'assets/images/home/arcavault-4.png' },
+    { title: 'Kerart Gallery',    desc: 'Identity · Web · Branding',     thumb: 'assets/images/home/kerart-gallery-2.png' },
+    { title: 'Raigon MMXI',       desc: 'Web · Vanilla HTML/CSS/JS',     thumb: 'assets/images/home/raigon-mmxi-1.png' },
+    { title: 'Kerart Gallery',    desc: 'Identity · Web · Branding',     thumb: 'assets/images/home/kerart-gallery-3.png' },
+    { title: 'Lumen',             desc: 'Product Design · Fintech API',  thumb: 'assets/images/home/lumen-1.png' },
+    { title: 'Lumen',             desc: 'Product Design · Fintech API',  thumb: 'assets/images/home/lumen-2.png' },
+    { title: 'Language Learning', desc: 'Design System · UX · Brand',    thumb: 'assets/images/home/language-learning-1.png' },
+  ];
 
-  // Projects marked hidden (not yet ready to show) sit out of the
-  // marquee entirely, not just the swipe-through scroll order.
-  const projectEls = Array.from(document.querySelectorAll('.work-project:not([hidden])'));
-
-  // Build one interleaved 12-card sequence (4 image variants × 3 projects)
-  // so the loop period is 12 cards instead of 3 — 4× less repetitive.
-  // Each "slot" rotates the thumbKey per project so adjacent cards always
-  // show a different image of a different project.
-  function buildInterleaved() {
-    const keys = ['thumb1', 'thumb2', 'thumb3', 'thumb4'];
-    const result = [];
-    for (var slot = 0; slot < keys.length; slot++) {
-      projectEls.forEach(function (project, pi) {
-        var key = keys[(slot + pi) % keys.length];
-        var title = project.querySelector('.project-name');
-        var category = project.querySelector('.project-category');
-        result.push({
-          title: title ? title.textContent.trim() : '',
-          desc:  category ? category.textContent.trim() : '',
-          color: palette[pi % palette.length],
-          thumb: project.dataset[key] || ''
-        });
-      });
+  // Shuffle once so columns start at different points in the sequence.
+  function shuffle(arr) {
+    var a = arr.slice();
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
     }
-    return result;
+    return a;
   }
 
-  const interleaved = buildInterleaved();
-  if (!interleaved.length) return;
-
-  // All columns share the same 12-card set; visual variety comes from
-  // alternating scroll direction and different starting offsets.
-  const projectSets = [interleaved];
-
-  const INFO_H = 38;
-  const ROW_GAP = 32;
-  const COL_GAP = 24;
-  const SPEED = 0.22;
-  // Capped at 5 columns with 4 distinct image sets cycling across them,
-  // giving a richer, less repetitive marquee on wide screens.
+  const INFO_H    = 38;
+  const ROW_GAP   = 32;
+  const COL_GAP   = 24;
+  const SPEED     = 0.22;
   const TARGET_COL_W = 184;
-  const MAX_COLS = 5;
+  const MAX_COLS  = 5;
   const MAX_COL_W = 260;
-  const ASPECT = 1.3; // card height = column width * ASPECT
+  const ASPECT    = 1.3;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  let cols = []; // { el, projects, dir, traveled, setH }
+  let cols = [];
   let lastNumCols = 0;
 
-  function thumbBgFor(p) {
-    // dronzza-1.png runs very bright/white — a dark scrim is layered
-    // under it so it doesn't blow out against the rest of the marquee.
-    const scrim = /dronzza-1\.png$/.test(p.thumb)
-      ? 'linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),'
+  function thumbBg(card) {
+    var scrim = /dronzza-1\.png$/.test(card.thumb)
+      ? 'linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),'
       : '';
-    return p.thumb
-      ? 'background-image:' + scrim + 'url(' + p.thumb + ');background-size:cover;background-position:center'
-      : 'background:' + p.color;
+    return 'background-image:' + scrim + 'url(' + card.thumb + ');background-size:cover;background-position:center';
   }
 
-  function makeCol(projects, cardH) {
-    const colEl = document.createElement('div');
+  function makeCol(cards, cardH) {
+    var colEl = document.createElement('div');
     colEl.className = 'home-marquee-col';
-
-    for (let rep = 0; rep < 3; rep++) {
-      projects.forEach(function (p) {
-        const card = document.createElement('div');
-        card.className = 'home-marquee-card';
-        card.innerHTML =
-          '<div class="home-marquee-thumb" style="' + thumbBgFor(p) + ';height:' + cardH + 'px"></div>' +
+    // Repeat 3 times to ensure seamless looping
+    for (var rep = 0; rep < 3; rep++) {
+      cards.forEach(function (card) {
+        var el = document.createElement('div');
+        el.className = 'home-marquee-card';
+        el.innerHTML =
+          '<div class="home-marquee-thumb" style="' + thumbBg(card) + ';height:' + cardH + 'px"></div>' +
           '<div>' +
-            '<div class="home-marquee-card-title">' + p.title + '</div>' +
-            '<div class="home-marquee-card-desc">' + p.desc + '</div>' +
+            '<div class="home-marquee-card-title">' + card.title + '</div>' +
+            '<div class="home-marquee-card-desc">'  + card.desc  + '</div>' +
           '</div>';
-        colEl.appendChild(card);
+        colEl.appendChild(el);
       });
     }
-
     stage.appendChild(colEl);
     return colEl;
   }
 
   function numColsFor(stageW) {
-    let n = Math.max(2, Math.round(stageW / (TARGET_COL_W + COL_GAP)));
-    let colW = (stageW - (n - 1) * COL_GAP) / n;
-    if (colW > 241 && n < MAX_COLS) n += 1;
-    else if (colW < 150 && n > 2) n -= 1;
+    var n = Math.max(2, Math.round(stageW / (TARGET_COL_W + COL_GAP)));
+    var w = (stageW - (n - 1) * COL_GAP) / n;
+    if (w > 241 && n < MAX_COLS) n++;
+    else if (w < 150 && n > 2) n--;
     return Math.min(n, MAX_COLS);
   }
 
   function rebuildCols(numCols) {
-    cols.forEach(function (c) { c.el.remove(); });
+    cols.forEach(function (c) { if (c.el) c.el.remove(); });
     cols = [];
-    for (let i = 0; i < numCols; i++) {
-      const projects = projectSets[i % projectSets.length];
-      cols.push({ el: null, projects: projects, dir: i % 2 === 0 ? 1 : -1, traveled: 0, setH: 0 });
+    for (var i = 0; i < numCols; i++) {
+      // Each column gets a differently-shuffled version of the full 18-card pool
+      cols.push({ el: null, cards: shuffle(ALL_CARDS), dir: i % 2 === 0 ? 1 : -1, traveled: 0, setH: 0 });
     }
     lastNumCols = numCols;
   }
 
   function layoutCols() {
-    const stageW = stage.offsetWidth;
-    const numCols = numColsFor(stageW);
-
+    var stageW  = stage.offsetWidth;
+    var numCols = numColsFor(stageW);
     if (numCols !== lastNumCols) rebuildCols(numCols);
 
-    const rawColW = (stageW - (numCols - 1) * COL_GAP) / numCols;
-    const colW = Math.min(rawColW, MAX_COL_W);
-    const cardH = Math.round(colW * ASPECT);
-    const step = cardH + INFO_H + ROW_GAP;
-
-    // Once columns hit their max width (capped at 6, wide screen), the
-    // block stops growing and centers itself instead of stretching.
-    const totalW = numCols * colW + (numCols - 1) * COL_GAP;
-    const offsetX = Math.max(0, (stageW - totalW) / 2);
+    var rawColW = (stageW - (numCols - 1) * COL_GAP) / numCols;
+    var colW    = Math.min(rawColW, MAX_COL_W);
+    var cardH   = Math.round(colW * ASPECT);
+    var step    = cardH + INFO_H + ROW_GAP;
+    var totalW  = numCols * colW + (numCols - 1) * COL_GAP;
+    var offsetX = Math.max(0, (stageW - totalW) / 2);
 
     cols.forEach(function (col, i) {
       if (!col.el) {
-        col.el = makeCol(col.projects, cardH);
+        col.el = makeCol(col.cards, cardH);
       } else {
-        col.el.querySelectorAll('.home-marquee-thumb').forEach(function (thumb) {
-          thumb.style.height = cardH + 'px';
+        col.el.querySelectorAll('.home-marquee-thumb').forEach(function (t) {
+          t.style.height = cardH + 'px';
         });
       }
-      col.setH = col.projects.length * step;
+      col.setH         = col.cards.length * step;
       col.el.style.width = colW + 'px';
-      col.el.style.left = (offsetX + i * (colW + COL_GAP)) + 'px';
+      col.el.style.left  = (offsetX + i * (colW + COL_GAP)) + 'px';
     });
   }
 
@@ -139,32 +129,27 @@
 
   if (reduceMotion) return;
 
-  // Pause animation when the tab is hidden — no point running rAF
-  // at 60fps when the user can't see it. Saves CPU/battery.
-  let paused = false;
+  // Pause when the tab is hidden — saves CPU/battery.
+  var paused = false;
   document.addEventListener('visibilitychange', function () {
     paused = document.hidden;
   });
 
-  let lastTs = null;
-
+  var lastTs = null;
   function render(ts) {
     if (paused) { lastTs = null; requestAnimationFrame(render); return; }
     if (!lastTs) lastTs = ts;
-    const dt = Math.min(ts - lastTs, 50);
-    lastTs = ts;
-
-    const spd = SPEED * (dt / 16.67);
+    var dt  = Math.min(ts - lastTs, 50);
+    lastTs  = ts;
+    var spd = SPEED * (dt / 16.67);
 
     cols.forEach(function (col) {
       if (!col.el || !col.setH) return;
       col.traveled += spd;
-      const offset = -col.setH + col.dir * (col.traveled % col.setH);
+      var offset = -col.setH + col.dir * (col.traveled % col.setH);
       col.el.style.transform = 'translateY(' + offset.toFixed(1) + 'px)';
     });
-
     requestAnimationFrame(render);
   }
-
   requestAnimationFrame(render);
-})();
+}());
