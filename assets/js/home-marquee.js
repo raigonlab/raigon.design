@@ -40,12 +40,12 @@
   }
 
   const INFO_H    = 38;
-  const ROW_GAP   = 32;
+  const ROW_GAP   = 52;
   const COL_GAP   = 48;
   const SPEED     = 0.22;
-  const TARGET_COL_W = 160;
+  const TARGET_COL_W = 264;
   const MAX_COLS  = 4;
-  const MAX_COL_W = 180;
+  const MAX_COL_W = 264; // 4 cols × 264 + 3 × 48 gap = 1200px = content-max
   const ASPECT    = 1.3;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
