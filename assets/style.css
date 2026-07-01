@@ -1134,6 +1134,18 @@ a[href="#project-skyfly"] .work-gallery-thumb {
   background-image: url('images/home/sky-fly-1.png');
 }
 
+.work-gallery-thumb--raigonmmxi {
+  background-image: url('images/home/raigon-mmxi-1.png');
+}
+
+.work-gallery-thumb--kerart {
+  background-image: url('images/home/kerart-gallery-1.png');
+}
+
+.work-gallery-thumb--language {
+  background-image: url('images/home/language-learning-1.png');
+}
+
 .work-gallery-name {
   font-size: 0.8rem;
   font-weight: 500;
