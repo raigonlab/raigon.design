@@ -139,14 +139,17 @@
 
   if (reduceMotion) return;
 
-  // Distance travelled accumulates forever; the on-screen offset is
-  // derived from it with modulo, so the position is always a pure
-  // function of elapsed distance — no threshold check, no risk of a
-  // skipped/duplicated frame causing a visible stall or jump at the
-  // wrap point.
+  // Pause animation when the tab is hidden — no point running rAF
+  // at 60fps when the user can't see it. Saves CPU/battery.
+  let paused = false;
+  document.addEventListener('visibilitychange', function () {
+    paused = document.hidden;
+  });
+
   let lastTs = null;
 
   function render(ts) {
+    if (paused) { lastTs = null; requestAnimationFrame(render); return; }
     if (!lastTs) lastTs = ts;
     const dt = Math.min(ts - lastTs, 50);
     lastTs = ts;
