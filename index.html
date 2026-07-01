@@ -680,8 +680,41 @@
     </div>
   </section>
 
-  <!-- CONTACT — the "see more" block lives at the bottom of this same
-       full-bleed card, filling the space that used to sit empty -->
+  <!-- WORK PAGE — standalone full-bleed section listing all projects -->
+  <section id="workMore" class="work-page">
+    <div class="work-page-inner">
+      <p class="section-label">Work</p>
+      <div class="work-more-header">
+        <h2 class="work-more-heading" id="workMoreHeading">Our stories and projects</h2>
+        <button class="work-more-toggle" id="workMoreBtn" aria-expanded="true">See less</button>
+      </div>
+      <p class="work-more-intro" id="workMoreIntro">See how we solve real problems for people and businesses through a clear and structured process.</p>
+      <div class="work-gallery-grid" id="workGalleryGrid">
+        <a href="#project-arcavault" class="work-gallery-item">
+          <div class="work-gallery-thumb"></div>
+          <p class="work-gallery-name">Arca Vault</p>
+          <p class="work-gallery-desc">UX/UI Design · Fintech</p>
+        </a>
+        <a href="#project-inxfitness" class="work-gallery-item">
+          <div class="work-gallery-thumb"></div>
+          <p class="work-gallery-name">inxfitness</p>
+          <p class="work-gallery-desc">Brand Identity · From Scratch</p>
+        </a>
+        <a href="#project-dronzza" class="work-gallery-item">
+          <div class="work-gallery-thumb"></div>
+          <p class="work-gallery-name">Dronzza</p>
+          <p class="work-gallery-desc">UX/UI Design · Food Delivery</p>
+        </a>
+        <a href="#project-skyfly" class="work-gallery-item">
+          <div class="work-gallery-thumb"></div>
+          <p class="work-gallery-name">sky-fly</p>
+          <p class="work-gallery-desc">Web Design · UX</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
   <section id="contact">
     <div class="contact-inner">
       <p class="section-label">Contact</p>
@@ -713,36 +746,6 @@
         <a href="https://www.linkedin.com/in/railsongoncalves" target="_blank" rel="noopener" class="about-cta about-linkedin">LinkedIn →</a>
       </div>
 
-      <div class="contact-more" id="workMore">
-        <div class="work-more-header">
-          <h3 class="work-more-heading" id="workMoreHeading">See more about our stories and projects</h3>
-          <button class="work-more-toggle" id="workMoreBtn" aria-expanded="false">See more</button>
-        </div>
-        <p class="work-more-intro" id="workMoreIntro" hidden>See how we solve real problems for people and businesses through a clear and structured process.</p>
-        <div class="work-gallery-grid" id="workGalleryGrid" hidden>
-          <a href="#project-arcavault" class="work-gallery-item">
-            <div class="work-gallery-thumb"></div>
-            <p class="work-gallery-name">Arca Vault</p>
-            <p class="work-gallery-desc">UX/UI Design · Fintech</p>
-          </a>
-          <a href="#project-inxfitness" class="work-gallery-item">
-            <div class="work-gallery-thumb"></div>
-            <p class="work-gallery-name">inxfitness</p>
-            <p class="work-gallery-desc">Brand Identity · From Scratch</p>
-          </a>
-          <a href="#project-dronzza" class="work-gallery-item">
-            <div class="work-gallery-thumb"></div>
-            <p class="work-gallery-name">Dronzza</p>
-            <p class="work-gallery-desc">UX/UI Design · Food Delivery</p>
-          </a>
-          <a href="#project-skyfly" class="work-gallery-item">
-            <div class="work-gallery-thumb"></div>
-            <p class="work-gallery-name">sky-fly</p>
-            <p class="work-gallery-desc">Web Design · UX</p>
-          </a>
-        </div>
-      </div>
-
       <!-- FOOTER — moved inside this card so it stays visible instead of
            sitting past the last full-bleed snap point -->
       <footer class="contact-footer">
@@ -761,7 +764,7 @@
     </a>
 
     <ul class="nav-links" id="navLinks">
-      <li><a href="#project-arcavault" class="nav-link" data-nav="work">Work</a></li>
+      <li><a href="#workMore" class="nav-link" data-nav="work">Work</a></li>
       <li><a href="#about" class="nav-link" data-nav="about">About</a></li>
       <li><a href="#contact" class="nav-link" data-nav="contact">Talk</a></li>
     </ul>

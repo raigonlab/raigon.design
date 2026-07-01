@@ -966,10 +966,25 @@ body {
    SEE MORE — now lives inside Contact, filling the space that used
    to sit empty below the contact links, instead of its own card
 ───────────────────────────────────────────── */
-.contact-more {
-  margin-top: auto;
-  padding-top: 2.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
+.work-page {
+  height: calc(100vh - var(--nav-clearance));
+  height: calc(100dvh - var(--nav-clearance));
+  margin: 0 0 var(--nav-clearance);
+  background: var(--ink);
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.work-page-inner {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 2.5rem 1.75rem 2rem;
+  gap: 1.25rem;
+  overflow: hidden;
 }
 
 .work-more-header {

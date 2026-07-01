@@ -49,22 +49,18 @@
 
   const workMore = document.getElementById('workMore');
   const workMoreBtn = document.getElementById('workMoreBtn');
-  const workMoreHeading = document.getElementById('workMoreHeading');
   const workMoreIntro = document.getElementById('workMoreIntro');
   const workGalleryGrid = document.getElementById('workGalleryGrid');
 
-  const COLLAPSED_HEADING = 'See more about our stories and projects';
-  const EXPANDED_HEADING = 'Our stories and projects';
-
-  if (workMore && workMoreBtn && workMoreHeading && workMoreIntro && workGalleryGrid) {
+  // Work page is now a standalone section — grid is visible by default;
+  // the toggle collapses it rather than expanding it.
+  if (workMoreBtn && workMoreIntro && workGalleryGrid) {
     workMoreBtn.addEventListener('click', function () {
-      const expanding = workMoreBtn.getAttribute('aria-expanded') !== 'true';
-      workMoreBtn.setAttribute('aria-expanded', String(expanding));
-      workMoreBtn.textContent = expanding ? 'See less' : 'See more';
-      workMoreHeading.textContent = expanding ? EXPANDED_HEADING : COLLAPSED_HEADING;
-      workMoreIntro.hidden = !expanding;
-      workGalleryGrid.hidden = !expanding;
-      if (expanding) jumpTo(workMore);
+      const collapsed = workMoreBtn.getAttribute('aria-expanded') === 'true';
+      workMoreBtn.setAttribute('aria-expanded', String(!collapsed));
+      workMoreBtn.textContent = collapsed ? 'See less' : 'See more';
+      workMoreIntro.hidden = collapsed;
+      workGalleryGrid.hidden = collapsed;
     });
   }
 
@@ -132,13 +128,13 @@
   // top-level scroll-snap item (single continuous vertical scroll —
   // no nested scroll-snap tracks, so no scroll-chaining hacks needed).
   const pageSlides = Array.from(
-    document.querySelectorAll('.home-slide, .work-project, #about, #skills, #contact')
+    document.querySelectorAll('.home-slide, .work-project, .work-page, #about, #skills, #contact')
   );
 
   function navGroupFor(el) {
     if (el.id === 'about' || el.id === 'skills') return 'about';
     if (el.id === 'contact') return 'contact';
-    if (el.classList.contains('work-project')) return 'work';
+    if (el.classList.contains('work-project') || el.classList.contains('work-page')) return 'work';
     return null;
   }
 
