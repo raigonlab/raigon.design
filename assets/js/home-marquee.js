@@ -8,32 +8,35 @@
   // marquee entirely, not just the swipe-through scroll order.
   const projectEls = Array.from(document.querySelectorAll('.work-project:not([hidden])'));
 
-  function buildProjects(thumbKey) {
-    return projectEls.map(function (project, i) {
-      const title = project.querySelector('.project-name');
-      const category = project.querySelector('.project-category');
-      return {
-        title: title ? title.textContent.trim() : '',
-        desc: category ? category.textContent.trim() : '',
-        color: palette[i % palette.length],
-        thumb: project.dataset[thumbKey] || ''
-      };
-    });
+  // Build one interleaved 12-card sequence (4 image variants × 3 projects)
+  // so the loop period is 12 cards instead of 3 — 4× less repetitive.
+  // Each "slot" rotates the thumbKey per project so adjacent cards always
+  // show a different image of a different project.
+  function buildInterleaved() {
+    const keys = ['thumb1', 'thumb2', 'thumb3', 'thumb4'];
+    const result = [];
+    for (var slot = 0; slot < keys.length; slot++) {
+      projectEls.forEach(function (project, pi) {
+        var key = keys[(slot + pi) % keys.length];
+        var title = project.querySelector('.project-name');
+        var category = project.querySelector('.project-category');
+        result.push({
+          title: title ? title.textContent.trim() : '',
+          desc:  category ? category.textContent.trim() : '',
+          color: palette[pi % palette.length],
+          thumb: project.dataset[key] || ''
+        });
+      });
+    }
+    return result;
   }
 
-  // Up to 4 distinct image sets per project (thumb1..thumb4); each
-  // column cycles through a different set so adjacent columns never
-  // repeat the same photo. Projects with fewer than 4 images cycle
-  // back to their earlier thumbnails automatically via buildProjects
-  // falling back to '' (which renders the palette colour instead).
-  const projectSets = [
-    buildProjects('thumb1'),
-    buildProjects('thumb2'),
-    buildProjects('thumb3'),
-    buildProjects('thumb4'),
-  ];
+  const interleaved = buildInterleaved();
+  if (!interleaved.length) return;
 
-  if (!projectSets[0].length) return;
+  // All columns share the same 12-card set; visual variety comes from
+  // alternating scroll direction and different starting offsets.
+  const projectSets = [interleaved];
 
   const INFO_H = 38;
   const ROW_GAP = 32;
