@@ -8,35 +8,33 @@
   // All 18 home thumbnails as a static pool — independent of which
   // project sections are visible in the page. This gives enough unique
   // cards that columns of 15 look completely different from each other.
+  // 16 unique cards — no duplicates, interleaved so adjacent entries
+  // are always from different projects. Each column is offset by
+  // ALL_CARDS.length / MAX_COLS cards so the 4 columns always show
+  // completely different parts of the sequence at the same moment.
   const ALL_CARDS = [
-    { title: 'Arca Vault',        desc: 'UX/UI Design · Fintech',        thumb: 'assets/images/home/arcavault-1.png' },
-    { title: 'Dronzza',           desc: 'UX/UI Design · Food Delivery',  thumb: 'assets/images/home/dronzza-1.png' },
-    { title: 'inxfitness',        desc: 'Brand Identity · From Scratch', thumb: 'assets/images/home/inxfitness-1.png' },
-    { title: 'sky-fly',           desc: 'Web Design · UX',               thumb: 'assets/images/home/sky-fly-1.png' },
-    { title: 'Arca Vault',        desc: 'UX/UI Design · Fintech',        thumb: 'assets/images/home/arcavault-2.png' },
-    { title: 'Dronzza',           desc: 'UX/UI Design · Food Delivery',  thumb: 'assets/images/home/dronzza-2.png' },
-    { title: 'inxfitness',        desc: 'Brand Identity · From Scratch', thumb: 'assets/images/home/inxfitness-2.png' },
-    { title: 'sky-fly',           desc: 'Web Design · UX',               thumb: 'assets/images/home/sky-fly-2.png' },
-    { title: 'Arca Vault',        desc: 'UX/UI Design · Fintech',        thumb: 'assets/images/home/arcavault-3.png' },
-    { title: 'Kerart Gallery',    desc: 'Identity · Branding · e-Commerce',     thumb: 'assets/images/home/kerart-gallery-1.png' },
-    { title: 'sky-fly',           desc: 'Web Design · UX',               thumb: 'assets/images/home/sky-fly-3.png' },
-    { title: 'Arca Vault',        desc: 'UX/UI Design · Fintech',        thumb: 'assets/images/home/arcavault-3.png' },
-    { title: 'Kerart Gallery',    desc: 'Identity · Branding · e-Commerce',     thumb: 'assets/images/home/kerart-gallery-2.png' },
-    { title: 'Raigon MMXI',       desc: 'Web · Full Stack',     thumb: 'assets/images/home/raigon-mmxi-1.png' },
-    { title: 'Kerart Gallery',    desc: 'Identity · Branding · e-Commerce',     thumb: 'assets/images/home/kerart-gallery-2.png' },
-    { title: 'Lumen',             desc: 'Product Design · Fintech API',  thumb: 'assets/images/home/lumen-1.png' },
-    { title: 'Lumen',             desc: 'Product Design · Fintech API',  thumb: 'assets/images/home/lumen-2.png' },
-    { title: 'Language Learning', desc: 'Design System · UX · Brand',    thumb: 'assets/images/home/language-learning-1.png' },
+    { title: 'Arca Vault',        desc: 'UX/UI Design · Fintech',          thumb: 'assets/images/home/arcavault-1.png' },
+    { title: 'Kerart Gallery',    desc: 'Identity · Branding · e-Commerce', thumb: 'assets/images/home/kerart-gallery-1.png' },
+    { title: 'Dronzza',           desc: 'UX/UI Design · Food Delivery',    thumb: 'assets/images/home/dronzza-1.png' },
+    { title: 'Lumen',             desc: 'Product Design · Fintech API',    thumb: 'assets/images/home/lumen-1.png' },
+    { title: 'inxfitness',        desc: 'Brand Identity · From Scratch',   thumb: 'assets/images/home/inxfitness-1.png' },
+    { title: 'sky-fly',           desc: 'Web Design · UX',                 thumb: 'assets/images/home/sky-fly-1.png' },
+    { title: 'Arca Vault',        desc: 'UX/UI Design · Fintech',          thumb: 'assets/images/home/arcavault-2.png' },
+    { title: 'Raigon MMXI',       desc: 'Web · Full Stack',                thumb: 'assets/images/home/raigon-mmxi-1.png' },
+    { title: 'Dronzza',           desc: 'UX/UI Design · Food Delivery',    thumb: 'assets/images/home/dronzza-2.png' },
+    { title: 'sky-fly',           desc: 'Web Design · UX',                 thumb: 'assets/images/home/sky-fly-2.png' },
+    { title: 'Kerart Gallery',    desc: 'Identity · Branding · e-Commerce', thumb: 'assets/images/home/kerart-gallery-2.png' },
+    { title: 'inxfitness',        desc: 'Brand Identity · From Scratch',   thumb: 'assets/images/home/inxfitness-2.png' },
+    { title: 'Arca Vault',        desc: 'UX/UI Design · Fintech',          thumb: 'assets/images/home/arcavault-3.png' },
+    { title: 'Language Learning', desc: 'Design System · UX · Brand',      thumb: 'assets/images/home/language-learning-1.png' },
+    { title: 'sky-fly',           desc: 'Web Design · UX',                 thumb: 'assets/images/home/sky-fly-3.png' },
+    { title: 'Lumen',             desc: 'Product Design · Fintech API',    thumb: 'assets/images/home/lumen-2.png' },
   ];
 
-  // Shuffle once so columns start at different points in the sequence.
-  function shuffle(arr) {
-    var a = arr.slice();
-    for (var i = a.length - 1; i > 0; i--) {
-      var j = Math.floor(Math.random() * (i + 1));
-      var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
-    }
-    return a;
+  // Returns a rotated copy of the array starting at `offset`.
+  function rotate(arr, offset) {
+    var n = arr.length;
+    return arr.map(function (_, i) { return arr[(i + offset) % n]; });
   }
 
   const INFO_H    = 38;
@@ -91,9 +89,11 @@
   function rebuildCols(numCols) {
     cols.forEach(function (c) { if (c.el) c.el.remove(); });
     cols = [];
+    var step = Math.floor(ALL_CARDS.length / numCols);
     for (var i = 0; i < numCols; i++) {
-      // Each column gets a differently-shuffled version of the full 18-card pool
-      cols.push({ el: null, cards: shuffle(ALL_CARDS), dir: i % 2 === 0 ? 1 : -1, traveled: 0, setH: 0 });
+      // Each column is offset by step cards — guarantees the 4 columns
+      // always show completely different parts of the sequence at the same time.
+      cols.push({ el: null, cards: rotate(ALL_CARDS, i * step), dir: i % 2 === 0 ? 1 : -1, traveled: 0, setH: 0 });
     }
     lastNumCols = numCols;
   }
