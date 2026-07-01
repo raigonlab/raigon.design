@@ -41,11 +41,11 @@
 
   const INFO_H    = 38;
   const ROW_GAP   = 32;
-  const COL_GAP   = 24;
+  const COL_GAP   = 48;
   const SPEED     = 0.22;
-  const TARGET_COL_W = 184;
-  const MAX_COLS  = 5;
-  const MAX_COL_W = 260;
+  const TARGET_COL_W = 200;
+  const MAX_COLS  = 4;
+  const MAX_COL_W = 300;
   const ASPECT    = 1.3;
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
