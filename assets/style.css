@@ -1621,6 +1621,11 @@ a[href="#project-skyfly"] .work-gallery-thumb {
     display: none;
   }
 
+  /* tighten the R icon area so it sits closer to the links */
+  .nav-home {
+    flex: 0 0 calc(var(--nav-btn) * 1.1);
+  }
+
   .work-project-details,
   .work-project-extra,
   .about-header,
