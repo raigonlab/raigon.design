@@ -1082,6 +1082,12 @@ body {
   border-radius: 999px;
 }
 
+.work-gallery-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
 .work-gallery-repo {
   display: inline-flex;
   align-items: center;
