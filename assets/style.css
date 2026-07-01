@@ -1082,6 +1082,26 @@ body {
   border-radius: 999px;
 }
 
+.work-gallery-repo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 0.1rem;
+  transition: color 0.2s ease, border-color 0.2s ease;
+  pointer-events: auto;
+}
+
+.work-gallery-repo:hover {
+  color: rgba(255, 255, 255, 0.85);
+  border-bottom-color: rgba(255, 255, 255, 0.5);
+}
+
 .work-gallery-thumb {
   height: 200px;
   border-radius: 12px;
