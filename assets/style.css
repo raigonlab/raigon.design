@@ -1154,7 +1154,7 @@ a[href="#project-dronzza"] .work-gallery-thumb {
   background-image: url('images/home/dronzza-1.png');
 }
 
-a[href="#project-skyfly"] .work-gallery-thumb {
+.work-gallery-thumb--skyfly {
   background-image: url('images/home/sky-fly-1.png');
 }
 
