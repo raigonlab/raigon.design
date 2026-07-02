@@ -1075,7 +1075,6 @@ body {
 
 .work-gallery-item--locked .work-gallery-thumb {
   position: relative;
-  background: linear-gradient(160deg, #1a1a2e, #0f0f1a);
 }
 
 .work-gallery-lock {
@@ -1086,7 +1085,8 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.3);
 }
 
 .work-gallery-lock-icon {
