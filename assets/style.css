@@ -1032,8 +1032,10 @@ body {
 
 .work-gallery-grid {
   margin-top: 1.75rem;
+  flex: 1;
+  min-height: 0;
   display: grid;
-  grid-template-rows: auto auto;
+  grid-template-rows: 1fr 1fr;
   grid-auto-flow: column;
   grid-auto-columns: 40vw;
   gap: 1rem;
@@ -1129,14 +1131,13 @@ body {
 }
 
 .work-gallery-thumb {
-  aspect-ratio: 4 / 3;
-  height: auto;
+  flex: 1;
+  min-height: 0;
   border-radius: 12px;
   overflow: hidden;
   background: rgba(0, 0, 0, 0.2);
   background-size: cover;
   background-position: center;
-  flex-shrink: 0;
 }
 
 a[href="#project-arcavault"] .work-gallery-thumb {
@@ -1670,6 +1671,7 @@ a[href="#project-skyfly"] .work-gallery-thumb {
   }
 
   .work-gallery-grid {
+    flex: none;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: unset;
     grid-auto-flow: row;
@@ -1686,8 +1688,8 @@ a[href="#project-skyfly"] .work-gallery-thumb {
   }
 
   .work-gallery-thumb {
+    flex: none;
     height: 200px;
-    aspect-ratio: unset;
   }
 }
 
