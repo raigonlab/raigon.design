@@ -1133,6 +1133,7 @@ body {
 .work-gallery-thumb {
   flex: 1;
   min-height: 0;
+  aspect-ratio: 4 / 5;
   border-radius: 12px;
   overflow: hidden;
   background: rgba(0, 0, 0, 0.2);
