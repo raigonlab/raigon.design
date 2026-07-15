@@ -52,22 +52,6 @@
     });
   });
 
-  // "All Projects" shortcut inside each project card + nav Work link.
-  const workMore    = document.getElementById('workMore');
-  const workNavLink = document.querySelector('.nav-link[data-nav="work"]');
-  if (workMore) {
-    function goToWork() { jumpTo(workMore); }
-    document.querySelectorAll('.all-projects-btn').forEach(function (btn) {
-      btn.addEventListener('click', goToWork);
-    });
-    if (workNavLink) {
-      workNavLink.addEventListener('click', function (e) {
-        e.preventDefault();
-        goToWork();
-      });
-    }
-  }
-
   // Per-project horizontal swipe: sync dots + header title to active panel.
   document.querySelectorAll('.work-project').forEach(function (project) {
     const track  = project.querySelector('.work-project-track');
@@ -82,14 +66,5 @@
         title.classList.toggle('is-active', Number(title.dataset.panel) === index);
       });
     }, { passive: true });
-
-    const down = project.querySelector('.work-project-down');
-    if (down) {
-      down.addEventListener('click', function () {
-        let next = project.nextElementSibling;
-        while (next && next.hasAttribute('hidden')) next = next.nextElementSibling;
-        if (next) jumpTo(next);
-      });
-    }
   });
 }());
