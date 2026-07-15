@@ -668,82 +668,82 @@ body {
 }
 
 .p-arcavault .project-gallery-img:nth-child(1) {
-  background-image: url('images/projects/arcavault/gallery-1.png');
+  background-image: url('images/projects/arcavault/gallery-1.webp');
 }
 
 .p-arcavault .project-gallery-img:nth-child(2) {
-  background-image: url('images/projects/arcavault/gallery-2.png');
+  background-image: url('images/projects/arcavault/gallery-2.webp');
 }
 
 .p-arcavault .project-gallery-img:nth-child(3) {
-  background-image: url('images/projects/arcavault/gallery-3.png');
+  background-image: url('images/projects/arcavault/gallery-3.webp');
 }
 
 .p-inxfitness .project-gallery-img:nth-child(1) {
-  background-image: url('images/projects/inxfitness/gallery-1.png');
+  background-image: url('images/projects/inxfitness/gallery-1.webp');
 }
 
 .p-inxfitness .project-gallery-img:nth-child(2) {
-  background-image: url('images/projects/inxfitness/gallery-2.png');
+  background-image: url('images/projects/inxfitness/gallery-2.webp');
 }
 
 .p-inxfitness .project-gallery-img:nth-child(3) {
-  background-image: url('images/projects/inxfitness/gallery-3.png');
+  background-image: url('images/projects/inxfitness/gallery-3.webp');
 }
 
 .p-inxfitness .project-image-placeholder {
-  background-image: url('images/projects/inxfitness/hero-mobile.png');
+  background-image: url('images/projects/inxfitness/hero-mobile.webp');
   color: transparent;
 }
 
 .p-dronzza .project-gallery-img:nth-child(1) {
-  background-image: url('images/projects/dronzza/gallery-1.png');
+  background-image: url('images/projects/dronzza/gallery-1.webp');
 }
 
 .p-dronzza .project-gallery-img:nth-child(2) {
-  background-image: url('images/projects/dronzza/gallery-2.png');
+  background-image: url('images/projects/dronzza/gallery-2.webp');
 }
 
 .p-dronzza .project-gallery-img:nth-child(3) {
-  background-image: url('images/projects/dronzza/gallery-3.png');
+  background-image: url('images/projects/dronzza/gallery-3.webp');
 }
 
 .p-dronzza .project-image-placeholder {
-  background-image: url('images/projects/dronzza/hero-mobile.png');
+  background-image: url('images/projects/dronzza/hero-mobile.webp');
   color: transparent;
 }
 
 .p-skyfly .project-gallery-img:nth-child(1) {
-  background-image: url('images/projects/sky-fly/gallery-1.png');
+  background-image: url('images/projects/sky-fly/gallery-1.webp');
 }
 
 .p-skyfly .project-gallery-img:nth-child(2) {
-  background-image: url('images/projects/sky-fly/gallery-2.png');
+  background-image: url('images/projects/sky-fly/gallery-2.webp');
 }
 
 .p-skyfly .project-gallery-img:nth-child(3) {
-  background-image: url('images/projects/sky-fly/gallery-3.png');
+  background-image: url('images/projects/sky-fly/gallery-3.webp');
 }
 
 .p-skyfly .project-image-placeholder {
-  background-image: url('images/projects/sky-fly/hero-mobile.png');
+  background-image: url('images/projects/sky-fly/hero-mobile.webp');
   color: transparent;
 }
 
 .p-lumen .project-gallery-img:nth-child(1) {
-  background-image: url('images/projects/lumen/gallery-1.png');
+  background-image: url('images/projects/lumen/gallery-1.webp');
 }
 
 .p-lumen .project-gallery-img:nth-child(2) {
-  background-image: url('images/projects/lumen/gallery-2.png');
+  background-image: url('images/projects/lumen/gallery-2.webp');
 }
 
 .p-lumen .project-gallery-img:nth-child(3) {
-  background-image: url('images/projects/lumen/gallery-3.png');
+  background-image: url('images/projects/lumen/gallery-3.webp');
 }
 
 .p-lumen .project-image-placeholder {
-  background-image: url('images/projects/lumen/hero-mobile.png');
+  background-image: url('images/projects/lumen/hero-mobile.webp');
   color: transparent;
 }
 
@@ -818,53 +818,53 @@ body {
 }
 
 .p-arcavault .project-image-placeholder {
-  background-image: url('images/projects/arcavault/hero-mobile.png');
+  background-image: url('images/projects/arcavault/hero-mobile.webp');
   color: transparent;
 }
 
 @media (min-width: 768px) {
   .p-arcavault .project-image-placeholder {
-    background-image: url('images/projects/arcavault/hero-desktop.png');
+    background-image: url('images/projects/arcavault/hero-desktop.webp');
   }
 
   .p-arcavault .project-gallery-img:nth-child(1) {
-    background-image: url('images/projects/arcavault/gallery-desktop-1.png');
+    background-image: url('images/projects/arcavault/gallery-desktop-1.webp');
   }
 
   .p-arcavault .project-gallery-img:nth-child(2) {
-    background-image: url('images/projects/arcavault/gallery-desktop-2.png');
+    background-image: url('images/projects/arcavault/gallery-desktop-2.webp');
   }
 
   .p-arcavault .project-gallery-img:nth-child(3) {
-    background-image: url('images/projects/arcavault/gallery-desktop-3.png');
+    background-image: url('images/projects/arcavault/gallery-desktop-3.webp');
   }
 
   .p-dronzza .project-gallery-img:nth-child(1) {
-    background-image: url('images/projects/dronzza/gallery-desktop-1.png');
+    background-image: url('images/projects/dronzza/gallery-desktop-1.webp');
   }
 
   .p-dronzza .project-gallery-img:nth-child(2) {
-    background-image: url('images/projects/dronzza/gallery-desktop-2.png');
+    background-image: url('images/projects/dronzza/gallery-desktop-2.webp');
   }
 
   .p-dronzza .project-gallery-img:nth-child(3) {
-    background-image: url('images/projects/dronzza/gallery-desktop-3.png');
+    background-image: url('images/projects/dronzza/gallery-desktop-3.webp');
   }
 
   .p-skyfly .project-image-placeholder {
-    background-image: url('images/projects/sky-fly/hero-desktop.png');
+    background-image: url('images/projects/sky-fly/hero-desktop.webp');
   }
 
   .p-skyfly .project-gallery-img:nth-child(1) {
-    background-image: url('images/projects/sky-fly/gallery-desktop-1.png');
+    background-image: url('images/projects/sky-fly/gallery-desktop-1.webp');
   }
 
   .p-skyfly .project-gallery-img:nth-child(2) {
-    background-image: url('images/projects/sky-fly/gallery-desktop-2.png');
+    background-image: url('images/projects/sky-fly/gallery-desktop-2.webp');
   }
 
   .p-skyfly .project-gallery-img:nth-child(3) {
-    background-image: url('images/projects/sky-fly/gallery-desktop-3.png');
+    background-image: url('images/projects/sky-fly/gallery-desktop-3.webp');
   }
 }
 
@@ -1096,31 +1096,31 @@ body {
 }
 
 a[href="#project-arcavault"] .work-gallery-thumb {
-  background-image: url('images/home/arcavault-1.png');
+  background-image: url('images/home/arcavault-1.webp');
 }
 
 a[href="#project-inxfitness"] .work-gallery-thumb {
-  background-image: url('images/home/inxfitness-1.png');
+  background-image: url('images/home/inxfitness-1.webp');
 }
 
 a[href="#project-dronzza"] .work-gallery-thumb {
-  background-image: url('images/home/dronzza-1.png');
+  background-image: url('images/home/dronzza-1.webp');
 }
 
 .work-gallery-thumb--skyfly {
-  background-image: url('images/home/sky-fly-1.png');
+  background-image: url('images/home/sky-fly-1.webp');
 }
 
 .work-gallery-thumb--raigonmmxi {
-  background-image: url('images/home/raigon-mmxi-1.png');
+  background-image: url('images/home/raigon-mmxi-1.webp');
 }
 
 .work-gallery-thumb--kerart {
-  background-image: url('images/home/kerart-gallery-1.png');
+  background-image: url('images/home/kerart-gallery-1.webp');
 }
 
 .work-gallery-thumb--language {
-  background-image: url('images/home/language-learning-1.png');
+  background-image: url('images/home/language-learning-1.webp');
 }
 
 .work-gallery-name {
@@ -1195,7 +1195,7 @@ a[href="#project-dronzza"] .work-gallery-thumb {
   height: 166px;
   border-radius: 50%;
   overflow: hidden;
-  background-image: url('images/profile.png');
+  background-image: url('images/profile.webp');
   background-size: cover;
   background-position: center;
 }
