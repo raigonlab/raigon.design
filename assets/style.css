@@ -944,7 +944,7 @@ body {
 }
 
 .work-gallery-grid {
-  margin-top: 1.75rem;
+  margin-top: 0.75rem;
   flex: 1;
   min-height: 0;
   display: grid;
