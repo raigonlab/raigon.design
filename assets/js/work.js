@@ -41,6 +41,16 @@
     }, { passive: true });
   }
 
+  // Work nav link → jump to the gallery page.
+  const workMore    = document.getElementById('workMore');
+  const workNavLink = document.querySelector('.nav-link[data-nav="work"]');
+  if (workMore && workNavLink) {
+    workNavLink.addEventListener('click', function (e) {
+      e.preventDefault();
+      jumpTo(workMore);
+    });
+  }
+
   // Gallery thumbnail clicks: reveal hidden project section then scroll to it.
   document.querySelectorAll('.work-gallery-item[href]').forEach(function (item) {
     item.addEventListener('click', function (e) {
