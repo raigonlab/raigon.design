@@ -33,9 +33,10 @@
     if (nav.classList.contains('is-open') && !nav.contains(e.target)) closeMenu();
   });
 
-  // Shrink nav slightly once user scrolls away from the very top.
+  // Shrink nav slightly once user scrolls away from the very top; close if open.
   window.addEventListener('scroll', function () {
     nav.classList.toggle('is-scrolled', window.scrollY > 24);
+    if (nav.classList.contains('is-open')) closeMenu();
   }, { passive: true });
 
   // Highlight the nav link for whichever section is in view.
