@@ -991,36 +991,12 @@ body {
   overflow: hidden;
 }
 
-.work-more-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
 .work-more-heading {
-  font-size: 0.95rem;
-  font-weight: 600;
-  line-height: 1.35;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(1.7rem, 7vw, 2.6rem);
+  line-height: 1.15;
   color: var(--white);
-}
-
-.work-more-toggle {
-  flex-shrink: 0;
-  padding: 0.55rem 1.1rem;
-  border-radius: 999px;
-  border: none;
-  background: rgba(255, 255, 255, 0.12);
-  color: rgba(255, 255, 255, 0.7);
-  font-size: 0.72rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
-}
-
-.work-more-toggle:hover {
-  background: var(--white);
-  color: var(--ink);
 }
 
 .work-more-intro {

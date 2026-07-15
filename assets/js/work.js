@@ -41,20 +41,6 @@
     }, { passive: true });
   }
 
-  // Work-page toggle: grid is expanded by default, button collapses it.
-  const workMoreBtn   = document.getElementById('workMoreBtn');
-  const workMoreIntro = document.getElementById('workMoreIntro');
-  const workGalleryGrid = document.getElementById('workGalleryGrid');
-  if (workMoreBtn && workMoreIntro && workGalleryGrid) {
-    workMoreBtn.addEventListener('click', function () {
-      const collapsed = workMoreBtn.getAttribute('aria-expanded') === 'true';
-      workMoreBtn.setAttribute('aria-expanded', String(!collapsed));
-      workMoreBtn.textContent  = collapsed ? 'See less' : 'See more';
-      workMoreIntro.hidden     = collapsed;
-      workGalleryGrid.hidden   = collapsed;
-    });
-  }
-
   // Gallery thumbnail clicks: reveal hidden project section then scroll to it.
   document.querySelectorAll('.work-gallery-item[href]').forEach(function (item) {
     item.addEventListener('click', function (e) {
