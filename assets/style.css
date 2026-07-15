@@ -1044,14 +1044,14 @@ body {
 }
 
 .work-gallery-thumb {
-  flex: 1;
-  min-height: 0;
+  width: 100%;
   aspect-ratio: 4 / 5;
   border-radius: 12px;
   overflow: hidden;
   background: rgba(0, 0, 0, 0.2);
   background-size: cover;
   background-position: center;
+  flex-shrink: 0;
 }
 
 a[href="#project-arcavault"] .work-gallery-thumb {
