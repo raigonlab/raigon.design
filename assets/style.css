@@ -924,24 +924,23 @@ body {
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding: 2.5rem 1.75rem 2rem;
-  gap: 1.25rem;
+  padding: 1.5rem 1.75rem 1rem;
+  gap: 0.5rem;
   overflow: hidden;
 }
 
 .work-more-heading {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 300;
-  font-size: clamp(1.7rem, 7vw, 2.6rem);
+  font-size: clamp(1.3rem, 5.5vw, 2rem);
   line-height: 1.15;
   color: var(--white);
 }
 
 .work-more-intro {
-  margin-top: 1rem;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   color: rgba(255, 255, 255, 0.6);
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
 .work-gallery-grid {
