@@ -76,5 +76,14 @@
         title.classList.toggle('is-active', Number(title.dataset.panel) === index);
       });
     }, { passive: true });
+
+    const down = project.querySelector('.work-project-down');
+    if (down) {
+      down.addEventListener('click', function () {
+        let next = project.nextElementSibling;
+        while (next && next.hasAttribute('hidden')) next = next.nextElementSibling;
+        if (next) jumpTo(next);
+      });
+    }
   });
 }());
