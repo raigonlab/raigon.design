@@ -14,7 +14,7 @@
   // completely different parts of the sequence at the same moment.
   const ALL_CARDS = [
     { title: 'Arca Vault',        desc: 'UX/UI Design · Fintech',          thumb: 'assets/images/home/arcavault-1.png' },
-    { title: 'Kerart Gallery',    desc: 'Identity · Branding · e-Commerce', thumb: 'assets/images/home/kerart-gallery-1.png' },
+    { title: 'Kerart Gallery',    desc: 'Identity · Branding · e-commerce', thumb: 'assets/images/home/kerart-gallery-1.png' },
     { title: 'Dronzza',           desc: 'UX/UI Design · Food Delivery',    thumb: 'assets/images/home/dronzza-1.png' },
     { title: 'Lumen',             desc: 'Product Design · Fintech API',    thumb: 'assets/images/home/lumen-1.png' },
     { title: 'inxfitness',        desc: 'Brand Identity · From Scratch',   thumb: 'assets/images/home/inxfitness-1.png' },
@@ -23,7 +23,7 @@
     { title: 'Raigon MMXI',       desc: 'Web · Full Stack',                thumb: 'assets/images/home/raigon-mmxi-1.png' },
     { title: 'Dronzza',           desc: 'UX/UI Design · Food Delivery',    thumb: 'assets/images/home/dronzza-2.png' },
     { title: 'sky-fly',           desc: 'Web Design · UX',                 thumb: 'assets/images/home/sky-fly-2.png' },
-    { title: 'Kerart Gallery',    desc: 'Identity · Branding · e-Commerce', thumb: 'assets/images/home/kerart-gallery-2.png' },
+    { title: 'Kerart Gallery',    desc: 'Identity · Branding · e-commerce', thumb: 'assets/images/home/kerart-gallery-2.png' },
     { title: 'inxfitness',        desc: 'Brand Identity · From Scratch',   thumb: 'assets/images/home/inxfitness-2.png' },
     { title: 'Arca Vault',        desc: 'UX/UI Design · Fintech',          thumb: 'assets/images/home/arcavault-3.png' },
     { title: 'Wordly',            desc: 'Design System · UX · Brand',      thumb: 'assets/images/home/language-learning-1.png' },
