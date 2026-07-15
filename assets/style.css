@@ -1472,7 +1472,11 @@ a[href="#project-dronzza"] .work-gallery-thumb {
   height: calc(100dvh - var(--nav-clearance));
   margin: 0 0 var(--nav-clearance);
   border-radius: 0;
-  background: var(--ink);
+  background:
+    radial-gradient(ellipse 90% 70% at 10% 10%, #05261A 0%, transparent 65%),
+    radial-gradient(ellipse 80% 90% at 90% 90%, #111736 0%, transparent 65%),
+    radial-gradient(ellipse 60% 50% at 55% 45%, #08232D 0%, transparent 70%),
+    #080d0a;
   color: var(--white);
   padding: 3.5rem 1.75rem;
   scroll-snap-align: start;
