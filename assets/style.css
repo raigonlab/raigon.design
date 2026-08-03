@@ -265,10 +265,10 @@ body {
   z-index: 10;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: 0 2rem;
-  text-align: center;
+  padding: 0 3rem;
+  text-align: left;
   background: rgba(0, 0, 0, 0.72);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -285,7 +285,7 @@ body {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
   font-weight: 300;
-  font-size: clamp(1.6rem, 5vw, 2.6rem);
+  font-size: clamp(1.25rem, 5vw, 2.6rem);
   line-height: 1.35;
   color: var(--white);
   max-width: 22ch;
@@ -293,7 +293,7 @@ body {
 
 .home-intro-cursor {
   display: inline-block;
-  font-size: clamp(1.6rem, 5vw, 2.6rem);
+  font-size: clamp(1.25rem, 5vw, 2.6rem);
   color: var(--warm);
   animation: blink 0.75s step-end infinite;
   margin-left: 2px;
