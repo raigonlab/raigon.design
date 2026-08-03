@@ -713,7 +713,7 @@ body {
   color: transparent;
 }
 
-.p-skyfly .project-gallery-img.project-gallery-single {
+.p-skyfly .project-gallery .project-gallery-img.project-gallery-single {
   background-image: url('images/projects/sky-fly/sky-fly-mobile-second-slide.webp');
 }
 
