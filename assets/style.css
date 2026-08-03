@@ -713,6 +713,10 @@ body {
   color: transparent;
 }
 
+.p-skyfly .project-gallery-single {
+  background-image: url('images/projects/sky-fly/sky-fly-mobile-second-slide.webp');
+}
+
 .p-skyfly .project-gallery-img:nth-child(1) {
   background-image: url('images/projects/sky-fly/gallery-1.webp');
 }
