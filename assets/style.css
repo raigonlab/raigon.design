@@ -769,6 +769,15 @@ body {
   color: transparent;
 }
 
+.p-raigonos .project-gallery-img:nth-child(1) {
+  background-image: url('images/projects/raigonos/gallery-1.webp');
+}
+
+.p-raigonos .project-image-placeholder {
+  background-image: url('images/projects/raigonos/hero-mobile.webp');
+  color: transparent;
+}
+
 .project-gallery-full {
   grid-column: 1 / -1;
   order: -1;
@@ -1195,6 +1204,10 @@ a[href="#project-dronzza"] .work-gallery-thumb {
 
 .work-gallery-thumb--raigonch {
   background-image: url('images/home/raigonch-1.webp');
+}
+
+.work-gallery-thumb--raigonos {
+  background-image: url('images/home/raigonos-1.webp');
 }
 
 .work-gallery-name {

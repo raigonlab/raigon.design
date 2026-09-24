@@ -5,35 +5,39 @@
   const stage = document.getElementById('homeStage');
   if (!stage) return;
 
-  // All 18 home thumbnails as a static pool — independent of which
-  // project sections are visible in the page. This gives enough unique
-  // cards that columns of 15 look completely different from each other.
-  // 16 unique cards — no duplicates, interleaved so adjacent entries
-  // are always from different projects. Each column is offset by
+  // All 22 home thumbnails as a static pool — independent of which
+  // project sections are visible in the page. Interleaved so adjacent
+  // entries are always from different projects. Each column is offset by
   // ALL_CARDS.length / MAX_COLS cards so the 4 columns always show
   // completely different parts of the sequence at the same moment.
+  // Newer projects (Raigon Tattoo, Cublok, RaigonOS) sit near the start of
+  // each column's sequence so they are on screen as soon as the page loads.
   const ALL_CARDS = [
-    { title: 'Arca Vault',        desc: 'UX/UI Design · Fintech',          thumb: 'assets/images/home/arcavault-1.webp' },
-    { title: 'Kerart Gallery',    desc: 'Identity · Branding · e-commerce', thumb: 'assets/images/home/kerart-gallery-1.webp' },
-    { title: 'Dronzza',           desc: 'UX/UI Design · Food Delivery',    thumb: 'assets/images/home/dronzza-1.webp' },
-    { title: 'Lumen',             desc: 'Product Design · Fintech API',    thumb: 'assets/images/home/lumen-1.webp' },
-    { title: 'inxfitness',        desc: 'Brand Identity · From Scratch',   thumb: 'assets/images/home/inxfitness-1.webp' },
-    { title: 'sky-fly',           desc: 'Web Design · UX',                 thumb: 'assets/images/home/sky-fly-1.webp' },
-    { title: 'Arca Vault',        desc: 'UX/UI Design · Fintech',          thumb: 'assets/images/home/arcavault-2.webp' },
-    { title: 'Raigon MMXI',       desc: 'Web · Full Stack',                thumb: 'assets/images/home/raigon-mmxi-1.webp' },
-    { title: 'Dronzza',           desc: 'UX/UI Design · Food Delivery',    thumb: 'assets/images/home/dronzza-2.webp' },
-    { title: 'sky-fly',           desc: 'Web Design · UX',                 thumb: 'assets/images/home/sky-fly-2.webp' },
-    { title: 'Kerart Gallery',    desc: 'Identity · Branding · e-commerce', thumb: 'assets/images/home/kerart-gallery-2.webp' },
-    { title: 'inxfitness',        desc: 'Brand Identity · From Scratch',   thumb: 'assets/images/home/inxfitness-2.webp' },
-    { title: 'Arca Vault',        desc: 'UX/UI Design · Fintech',          thumb: 'assets/images/home/arcavault-3.webp' },
-    { title: 'Wordly',            desc: 'Design System · UX · Brand',      thumb: 'assets/images/home/language-learning-1.webp' },
-    { title: 'sky-fly',           desc: 'Web Design · UX',                 thumb: 'assets/images/home/sky-fly-3.webp' },
-    { title: 'Lumen',             desc: 'Product Design · Fintech API',    thumb: 'assets/images/home/lumen-2.webp' },
-    { title: 'Cublok',            desc: 'Design Tool · Physical Art',      thumb: 'assets/images/home/cublok-1.webp' },
-    { title: 'Cublok',            desc: 'Design Tool · Physical Art',      thumb: 'assets/images/home/cublok-2.webp' },
-    { title: 'Raigon Tattoo',     desc: 'Web Design · Tattoo Studio',      thumb: 'assets/images/home/raigonch-1.webp' },
-    { title: 'Raigon Tattoo',     desc: 'Web Design · Tattoo Studio',      thumb: 'assets/images/home/raigonch-2.webp' },
+    { title: 'Arca Vault',    desc: 'UX/UI Design · Fintech',          thumb: 'assets/images/home/arcavault-1.webp' },
+    { title: 'Raigon Tattoo', desc: 'Web Design · Tattoo Studio',      thumb: 'assets/images/home/raigonch-1.webp' },
+    { title: 'RaigonOS',      desc: 'Full-Stack · Django',             thumb: 'assets/images/home/raigonos-1.webp' },
+    { title: 'Kerart Gallery', desc: 'Identity · Branding · e-commerce', thumb: 'assets/images/home/kerart-gallery-1.webp' },
+    { title: 'Dronzza',       desc: 'UX/UI Design · Food Delivery',    thumb: 'assets/images/home/dronzza-1.webp' },
+    { title: 'Lumen',         desc: 'Product Design · Fintech API',    thumb: 'assets/images/home/lumen-1.webp' },
+    { title: 'Cublok',        desc: 'Design Tool · Physical Art',      thumb: 'assets/images/home/cublok-1.webp' },
+    { title: 'inxfitness',    desc: 'Brand Identity · From Scratch',   thumb: 'assets/images/home/inxfitness-1.webp' },
+    { title: 'sky-fly',       desc: 'Web Design · UX',                 thumb: 'assets/images/home/sky-fly-1.webp' },
+    { title: 'Arca Vault',    desc: 'UX/UI Design · Fintech',          thumb: 'assets/images/home/arcavault-2.webp' },
+    { title: 'Raigon MMXI',   desc: 'Web · Full Stack',                thumb: 'assets/images/home/raigon-mmxi-1.webp' },
+    { title: 'Raigon Tattoo', desc: 'Web Design · Tattoo Studio',      thumb: 'assets/images/home/raigonch-2.webp' },
+    { title: 'Dronzza',       desc: 'UX/UI Design · Food Delivery',    thumb: 'assets/images/home/dronzza-2.webp' },
+    { title: 'sky-fly',       desc: 'Web Design · UX',                 thumb: 'assets/images/home/sky-fly-2.webp' },
+    { title: 'Kerart Gallery', desc: 'Identity · Branding · e-commerce', thumb: 'assets/images/home/kerart-gallery-2.webp' },
+    { title: 'inxfitness',    desc: 'Brand Identity · From Scratch',   thumb: 'assets/images/home/inxfitness-2.webp' },
+    { title: 'Cublok',        desc: 'Design Tool · Physical Art',      thumb: 'assets/images/home/cublok-2.webp' },
+    { title: 'RaigonOS',      desc: 'Full-Stack · Django',             thumb: 'assets/images/home/raigonos-2.webp' },
+    { title: 'Arca Vault',    desc: 'UX/UI Design · Fintech',          thumb: 'assets/images/home/arcavault-3.webp' },
+    { title: 'Wordly',        desc: 'Design System · UX · Brand',      thumb: 'assets/images/home/language-learning-1.webp' },
+    { title: 'sky-fly',       desc: 'Web Design · UX',                 thumb: 'assets/images/home/sky-fly-3.webp' },
+    { title: 'Lumen',         desc: 'Product Design · Fintech API',    thumb: 'assets/images/home/lumen-2.webp' },
   ];
+
+
 
   // Returns a rotated copy of the array starting at `offset`.
   function rotate(arr, offset) {
