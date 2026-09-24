@@ -18,8 +18,25 @@
   const PAUSE_AFTER_MS = 1400;
   const FADE_DURATION  = 950;
 
+  let done = false;
+  function finish() {
+    if (done) return;
+    done = true;
+    if (cursor) cursor.style.display = 'none';
+    intro.classList.add('is-done');
+    sessionStorage.setItem('intro-seen', '1');
+    setTimeout(function () { intro.style.display = 'none'; }, FADE_DURATION);
+  }
+
+  // .home-intro is fixed to the viewport (so it centres on the actual
+  // screen, not just the Home slide) — if the visitor scrolls away
+  // before it's done, dismiss it right away instead of letting the
+  // dark backdrop follow them over Work/About/Contact.
+  window.addEventListener('scroll', finish, { once: true, passive: true });
+
   let i = 0;
   function type() {
+    if (done) return;
     if (i < text.length) {
       const ch = text[i++];
       if (ch === '\n') {
@@ -29,12 +46,7 @@
       }
       setTimeout(type, CHAR_SPEED_MS);
     } else {
-      setTimeout(function () {
-        if (cursor) cursor.style.display = 'none';
-        intro.classList.add('is-done');
-        sessionStorage.setItem('intro-seen', '1');
-        setTimeout(function () { intro.style.display = 'none'; }, FADE_DURATION);
-      }, PAUSE_AFTER_MS);
+      setTimeout(finish, PAUSE_AFTER_MS);
     }
   }
 
