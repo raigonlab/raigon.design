@@ -1726,6 +1726,20 @@ a[href="#project-dronzza"] .work-gallery-thumb {
     padding-right: max(1.75rem, calc((100% - var(--content-max)) / 2));
   }
 
+  /* the list grows with the number of projects instead of clipping the
+     last row at one screen's height; bottom padding clears the nav pill */
+  .work-page {
+    height: auto;
+    min-height: calc(100dvh - var(--nav-clearance));
+    overflow: visible;
+    scroll-snap-stop: normal;
+  }
+
+  .work-page-inner {
+    overflow: visible;
+    padding-bottom: 6rem;
+  }
+
   .work-gallery-grid {
     flex: none;
     grid-template-columns: repeat(4, 1fr);
