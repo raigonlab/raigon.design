@@ -260,7 +260,7 @@ body {
 
 /* ─── intro typing overlay ─── */
 .home-intro {
-  position: absolute;
+  position: fixed;
   inset: 0;
   z-index: 10;
   display: flex;
@@ -512,13 +512,13 @@ body {
   border-radius: 0;
 }
 
-/* Each project owns its gradient — no shared fallback that fights
-   with project-specific overrides via specificity. */
-.p-arcavault .project-bg,
-.p-arcavault .work-project-main,
-.p-arcavault .work-project-details,
-.p-arcavault .work-project-extra {
-  background: linear-gradient(180deg, #794B4B 0%, #000000 100%);
+/* One quiet, neutral tone shared by every project — the real project
+   photography carries the colour, not the surrounding card chrome. */
+.project-bg,
+.work-project-main,
+.work-project-details,
+.work-project-extra {
+  background: var(--ink);
 }
 
 .work-project-extra {
@@ -637,8 +637,8 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 4.5rem 1.25rem 5.5rem;
-  gap: 1.25rem;
+  padding: 3.5rem 2.25rem 5.5rem;
+  gap: 2rem;
 }
 
 .work-project-details {
@@ -751,6 +751,24 @@ body {
   color: transparent;
 }
 
+.p-cublok .project-gallery-img:nth-child(1) {
+  background-image: url('images/projects/cublok/gallery-1.webp');
+}
+
+.p-cublok .project-image-placeholder {
+  background-image: url('images/projects/cublok/hero-mobile.webp');
+  color: transparent;
+}
+
+.p-raigonch .project-gallery-img:nth-child(1) {
+  background-image: url('images/projects/raigon-ch/gallery-1.webp');
+}
+
+.p-raigonch .project-image-placeholder {
+  background-image: url('images/projects/raigon-ch/hero-mobile.webp');
+  color: transparent;
+}
+
 .project-gallery-full {
   grid-column: 1 / -1;
   order: -1;
@@ -785,37 +803,17 @@ body {
   background-position: center;
 }
 
-.p-dronzza .project-bg,
-.p-dronzza .work-project-main,
-.p-dronzza .work-project-details,
-.p-dronzza .work-project-extra {
-  background: linear-gradient(180deg, #3C8486 0%, #05261A 100%);
-}
-
-.p-skyfly .project-bg,
-.p-skyfly .work-project-main,
-.p-skyfly .work-project-details,
-.p-skyfly .work-project-extra {
-  background: conic-gradient(from 0deg at 50% 50%, #08232D 10%, #111736 25%, #121212 82%, #08232D 100%);
-}
-
-.p-inxfitness .project-bg,
-.p-inxfitness .work-project-main,
-.p-inxfitness .work-project-details,
-.p-inxfitness .work-project-extra {
-  background: linear-gradient(180deg, #32353A 0%, #000000 100%);
-}
-
 /* TEMP: stand-in for the real project shot, inset within the main panel */
 .project-image-placeholder {
   position: relative;
   z-index: 1;
-  top: 0; left: 0; right: 0;
-  width: 100%;
+  top: 0; right: 0;
+  width: 72%;
+  margin: 0 auto;
   aspect-ratio: 4 / 5;
   height: auto;
   flex-shrink: 0;
-  border-radius: 16px;
+  border-radius: 10px;
   background: rgba(255, 255, 255, 0.15);
   background-size: cover;
   background-position: center;
@@ -939,9 +937,11 @@ body {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
   font-weight: 300;
-  font-size: clamp(1.2rem, 4.8vw, 1.5rem);
-  line-height: 1.4;
-  color: rgba(255, 255, 255, 0.63);
+  font-size: clamp(1.05rem, 4.2vw, 1.3rem);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.55);
+  max-width: 26ch;
+  margin: 0 auto;
 }
 
 /* default: project name/category sit at the bottom of the main panel,
@@ -978,17 +978,17 @@ body {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   margin-bottom: 0;
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 255, 255, 0.45);
 }
 
 .work-header .project-name {
   font-family: 'Inter', sans-serif;
-  font-weight: 700;
-  font-size: 0.75rem;
-  letter-spacing: 0.25em;
+  font-weight: 500;
+  font-size: 0.68rem;
+  letter-spacing: 0.32em;
   text-transform: uppercase;
   line-height: normal;
-  color: #fff;
+  color: rgba(255, 255, 255, 0.88);
 }
 
 .project-desc {
@@ -1187,6 +1187,14 @@ a[href="#project-dronzza"] .work-gallery-thumb {
 
 .work-gallery-thumb--language {
   background-image: url('images/home/language-learning-1.webp');
+}
+
+.work-gallery-thumb--cublok {
+  background-image: url('images/home/cublok-1.webp');
+}
+
+.work-gallery-thumb--raigonch {
+  background-image: url('images/home/raigonch-1.webp');
 }
 
 .work-gallery-name {
@@ -1756,13 +1764,8 @@ a[href="#project-dronzza"] .work-gallery-thumb {
     margin: 0;
     overflow: visible;
     padding: 2.5rem max(1.75rem, calc((100% - var(--content-max)) / 2)) 4rem;
-    background: linear-gradient(180deg, #794B4B 0%, #000000 100%);
+    background: var(--ink);
   }
-
-  .p-dronzza.work-project { background: linear-gradient(180deg, #3C8486 0%, #05261A 100%); }
-  .p-skyfly.work-project { background: conic-gradient(from 0deg at 50% 50%, #08232D 10%, #111736 25%, #121212 82%, #08232D 100%); }
-  .p-inxfitness.work-project { background: linear-gradient(180deg, #32353A 0%, #000000 100%); }
-  .p-arcavault.work-project { background: linear-gradient(180deg, #794B4B 0%, #000000 100%); }
 
   .work-fixed,
   .work-project-track,

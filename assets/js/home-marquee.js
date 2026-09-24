@@ -29,6 +29,10 @@
     { title: 'Wordly',            desc: 'Design System · UX · Brand',      thumb: 'assets/images/home/language-learning-1.webp' },
     { title: 'sky-fly',           desc: 'Web Design · UX',                 thumb: 'assets/images/home/sky-fly-3.webp' },
     { title: 'Lumen',             desc: 'Product Design · Fintech API',    thumb: 'assets/images/home/lumen-2.webp' },
+    { title: 'Cublok',            desc: 'Design Tool · Physical Art',      thumb: 'assets/images/home/cublok-1.webp' },
+    { title: 'Cublok',            desc: 'Design Tool · Physical Art',      thumb: 'assets/images/home/cublok-2.webp' },
+    { title: 'Raigon Tattoo',     desc: 'Web Design · Tattoo Studio',      thumb: 'assets/images/home/raigonch-1.webp' },
+    { title: 'Raigon Tattoo',     desc: 'Web Design · Tattoo Studio',      thumb: 'assets/images/home/raigonch-2.webp' },
   ];
 
   // Returns a rotated copy of the array starting at `offset`.
