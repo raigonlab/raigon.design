@@ -1763,6 +1763,18 @@ a[href="#project-dronzza"] .work-gallery-thumb {
   }
 }
 
+/* wide screens: five columns, so ten projects sit in two rows and the
+   whole list fits on one screen without scrolling */
+@media (min-width: 1100px) {
+  .work-gallery-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .work-gallery-thumb {
+    height: 170px;
+  }
+}
+
 /* ─────────────────────────────────────────────
    WORK — desktop case-study layout. The mobile swipe (main → details →
    extra) has no mouse equivalent, so past 1024px the three panels stop
