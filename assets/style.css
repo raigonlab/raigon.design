@@ -778,6 +778,15 @@ body {
   color: transparent;
 }
 
+.p-languageschool .project-gallery-img:nth-child(1) {
+  background-image: url('images/projects/language-school/gallery-1.webp');
+}
+
+.p-languageschool .project-image-placeholder {
+  background-image: url('images/projects/language-school/hero-mobile.webp');
+  color: transparent;
+}
+
 .project-gallery-full {
   grid-column: 1 / -1;
   order: -1;
@@ -1208,6 +1217,10 @@ a[href="#project-dronzza"] .work-gallery-thumb {
 
 .work-gallery-thumb--raigonos {
   background-image: url('images/home/raigonos-1.webp');
+}
+
+.work-gallery-thumb--languageschool {
+  background-image: url('images/home/languageschool-1.webp');
 }
 
 .work-gallery-name {
