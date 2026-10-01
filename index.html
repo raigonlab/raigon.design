@@ -3,1116 +3,264 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rai Gonçalves — Designer</title>
-  <meta name="description" content="UX/UI, Web & Graphic Designer based in Zürich. 8+ years of experience in luxury branding and digital identity.">
+  <title>Rai Gonçalves — Designer &amp; Developer</title>
+  <meta name="description" content="Rai Gonçalves — UX/UI designer and front-end developer in Zürich. Selected case studies: RaigonOS, Arca Vault, Raigon Tattoo Studio and Dronzza.">
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
-  <!-- Styles -->
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 
-  <!-- HOME -->
-  <section class="home-slide" id="home-stage-section">
-    <div class="home-content">
-      <h1 class="home-title" hidden>Connecting brands with people</h1>
-      <p class="home-subtitle" hidden>UX/UI · Web · Graphic Designer<br>— Zürich, Switzerland</p>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="wrap site-header-inner">
+      <a href="#top" class="logo">Rai Gonçalves</a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
-    <div id="homeStage" class="home-marquee"></div>
+  </header>
 
-    <!-- Intro typing overlay — shown once per session, fades out automatically -->
-    <div class="home-intro" id="homeIntro" aria-hidden="true">
-      <p class="home-intro-text" id="homeIntroText"></p>
-      <span class="home-intro-cursor" id="homeIntroCursor">|</span>
-    </div>
-  </section>
+  <main id="top">
 
-  <!-- WORK -->
+    <!-- INTRO -->
+    <section class="intro wrap">
+      <p class="eyebrow">UX/UI Designer &amp; Front-end Developer · Zürich</p>
+      <h1 class="intro-title">I design digital products <em>and build them</em> — from the first question to shipped code.</h1>
+      <p class="intro-sub">Four selected projects below. Each one shows the problem, what I did, and what came out of it.</p>
+    </section>
 
-  <!-- 1 — Arca_Vault -->
-  <section class="work-project p-arcavault" id="project-arcavault" data-thumb1="assets/images/home/arcavault-1.webp" data-thumb2="assets/images/home/arcavault-2.webp" data-thumb3="assets/images/home/arcavault-3.webp" data-thumb4="assets/images/home/arcavault-4.webp">
-    <div class="work-fixed">
-      <div class="work-header">
-        <div class="work-header-title is-active" data-panel="0">
-          <h3 class="project-name">Arca Vault</h3>
-          <p class="project-category">UX/UI Design · Fintech</p>
-        </div>
-        <div class="work-header-title" data-panel="1">
-          <h3 class="project-name">Arca Vault</h3>
-          <p class="project-category">UX/UI Design · Fintech</p>
-        </div>
-        <div class="work-header-title" data-panel="2">
-          <h3 class="project-name">Arca Vault</h3>
-          <p class="project-category">Problem and solution</p>
-        </div>
-      </div>
-    </div>
-    <div class="work-nav-controls">
-      <div class="work-dots" aria-hidden="true">
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-      </div>
-    </div>
-    <button class="work-project-down" aria-label="Next project"><span></span><span></span></button>
-    <div class="work-project-track">
-      <div class="work-project-main">
-        <div class="project-bg"></div>
-        <div class="project-overlay"></div>
-        <div class="project-image-placeholder" aria-hidden="true">Image</div>
-        <p class="project-impact">Imagine knowing the exact day<br>you&rsquo;ll hit your first million.</p>
-        <p class="project-desc project-desc-hero">A financial decision app combining banking data, behavioural insights and credit health into a single, clear experience — from problem definition to high-fidelity prototype.</p>
-      </div>
-      <div class="work-project-details">
-        <div class="project-gallery">
-          <div class="project-gallery-img project-gallery-single"></div>
-        </div>
-        <p class="project-desc project-desc-mobile">A financial decision app combining banking data, behavioural insights and credit health into a single, clear experience — from problem definition to high-fidelity prototype.</p>
-      </div>
-      <!-- TEMP: reusing project-desc copy until real Problem/Solution text is in -->
-      <div class="work-project-extra">
-        <div class="project-problem-solution">
-          <h4 class="challenge-heading">Challenge</h4>
-          <ul class="project-challenge-list">
-            <li>Financial procrastination</li>
-            <li>Lack of focus</li>
-            <li>Lack of intuitive tools</li>
-            <li>Poor financial decision-making</li>
-            <li>Difficulty in setting goals</li>
-          </ul>
-          <h4 class="approach-heading">Approach & Impact</h4>
-          <ul class="project-impact-list">
-            <li><span class="stat-number">91%</span><span class="stat-label">felt more in control of their finances</span></li>
-            <li><span class="stat-number">3&times;</span><span class="stat-label">faster decisions vs. banking apps</span></li>
-            <li><span class="stat-number">64%</span><span class="stat-label">hit a savings milestone within 30 days</span></li>
-          </ul>
-        </div>
-        <div class="project-footer">
-          <p class="project-footer-copy">&copy; 2026 Arca Vault&trade;. All rights reserved.</p>
-          <a href="#contact" class="about-cta">Let's talk →</a>
-        </div>
-      </div>
-    </div>
-  </section>
+    <!-- WORK -->
+    <div id="work">
 
-  <!-- 2 — Dronzza -->
-  <section class="work-project p-dronzza" id="project-dronzza" data-thumb1="assets/images/home/dronzza-1.webp" data-thumb2="assets/images/home/dronzza-2.webp" data-thumb3="assets/images/home/dronzza-1.webp" data-thumb4="assets/images/home/dronzza-2.webp">
-    <div class="work-fixed">
-      <div class="work-header">
-        <div class="work-header-title is-active" data-panel="0">
-          <h3 class="project-name">Dronzza</h3>
-          <p class="project-category">UX/UI Design · Food Delivery</p>
-        </div>
-        <div class="work-header-title" data-panel="1">
-          <h3 class="project-name">Dronzza</h3>
-          <p class="project-category">UX/UI Design · Food Delivery</p>
-        </div>
-        <div class="work-header-title" data-panel="2">
-          <h3 class="project-name">Dronzza</h3>
-          <p class="project-category">Problem and solution</p>
-        </div>
-      </div>
-    </div>
-    <div class="work-nav-controls">
-      <div class="work-dots" aria-hidden="true">
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-      </div>
-    </div>
-    <button class="work-project-down" aria-label="Next project"><span></span><span></span></button>
-    <div class="work-project-track">
-      <div class="work-project-main">
-        <div class="project-bg"></div>
-        <div class="project-overlay"></div>
-        <div class="project-image-placeholder" aria-hidden="true">Image</div>
-        <p class="project-impact">Hot pizza, dropped from the sky<br>before the box even cools.</p>
-        <p class="project-desc project-desc-hero">A food delivery app built around drone logistics — live tracking, smart drop zones and an order flow designed for delivery in minutes, not motorcycles.</p>
-      </div>
-      <div class="work-project-details">
-        <div class="project-gallery">
-          <div class="project-gallery-img project-gallery-single"></div>
-        </div>
-        <p class="project-desc project-desc-mobile">A food delivery app built around drone logistics — live tracking, smart drop zones and an order flow designed for delivery in minutes, not motorcycles.</p>
-      </div>
-      <!-- TEMP: draft copy, awaiting client review -->
-      <div class="work-project-extra">
-        <div class="project-problem-solution">
-          <h4 class="challenge-heading">Challenge</h4>
-          <ul class="project-challenge-list">
-            <li>Low trust in unmanned delivery</li>
-            <li>No UX pattern for drop-off</li>
-            <li>Weather and no-fly constraints</li>
-          </ul>
-          <h4 class="approach-heading">Approach &amp; Impact</h4>
-          <ul class="project-impact-list">
-            <li>Live drone tracking</li>
-            <li>Smart drop-zone selection</li>
-            <li>Delivery in minutes</li>
-          </ul>
-        </div>
-        <div class="project-footer">
-          <p class="project-footer-copy">&copy; 2026 Dronzza&trade;. All rights reserved.</p>
-          <a href="#contact" class="about-cta">Let's talk →</a>
-        </div>
-      </div>
-    </div>
-  </section>
+      <!-- 01 — RaigonOS (featured) -->
+      <article class="case case--featured" id="raigonos">
+        <div class="wrap">
+          <header class="case-head">
+            <p class="case-index"><span class="badge">New</span> 01 — Featured</p>
+            <h2 class="case-title">RaigonOS</h2>
+            <p class="case-lede">A gallery an artist can run without touching code.</p>
+            <div class="case-links">
+              <a href="https://raigonos.onrender.com" target="_blank" rel="noopener" class="btn btn--solid">Visit live site ↗</a>
+              <a href="https://github.com/raigonlab/raigonos" target="_blank" rel="noopener" class="btn">View code ↗</a>
+            </div>
+          </header>
 
-  <!-- 3 — inxfitness -->
-  <section class="work-project p-inxfitness" id="project-inxfitness" data-thumb1="assets/images/home/inxfitness-1.webp" data-thumb2="assets/images/home/inxfitness-2.webp" data-thumb3="assets/images/home/inxfitness-1.webp" data-thumb4="assets/images/home/inxfitness-2.webp">
-    <div class="work-fixed">
-      <div class="work-header">
-        <div class="work-header-title is-active" data-panel="0">
-          <h3 class="project-name">inxfitness</h3>
-          <p class="project-category">Brand Identity · From Scratch</p>
-        </div>
-        <div class="work-header-title" data-panel="1">
-          <h3 class="project-name">inxfitness</h3>
-          <p class="project-category">Brand Identity · From Scratch</p>
-        </div>
-        <div class="work-header-title" data-panel="2">
-          <h3 class="project-name">inxfitness</h3>
-          <p class="project-category">Problem and solution</p>
-        </div>
-      </div>
-    </div>
-    <div class="work-nav-controls">
-      <div class="work-dots" aria-hidden="true">
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-      </div>
-    </div>
-    <button class="work-project-down" aria-label="Next project"><span></span><span></span></button>
-    <div class="work-project-track">
-      <div class="work-project-main">
-        <div class="project-bg"></div>
-        <div class="project-overlay"></div>
-        <div class="project-image-placeholder" aria-hidden="true">Image</div>
-        <p class="project-impact">A fitness brand that didn&rsquo;t exist yet<br>— built from a single blank page.</p>
-        <p class="project-desc project-desc-hero">Complete brand identity built from zero — symbol, logotype, colour system, typography and full stationery for a fitness community brand.</p>
-      </div>
-      <div class="work-project-details">
-        <div class="project-gallery">
-          <div class="project-gallery-img project-gallery-single"></div>
-        </div>
-        <p class="project-desc project-desc-mobile">Complete brand identity built from zero — symbol, logotype, colour system, typography and full stationery for a fitness community brand.</p>
-      </div>
-      <!-- TEMP: draft copy, awaiting client review -->
-      <div class="work-project-extra">
-        <div class="project-problem-solution">
-          <h4 class="challenge-heading">Challenge</h4>
-          <ul class="project-challenge-list">
-            <li>No visual identity or brand voice</li>
-            <li>No stationery system</li>
-            <li>Hard to stand out in fitness market</li>
-          </ul>
-          <h4 class="approach-heading">Approach &amp; Impact</h4>
-          <ul class="project-impact-list">
-            <li>Full identity from zero</li>
-            <li>Complete stationery suite</li>
-            <li>Scalable system for future touchpoints</li>
-          </ul>
-        </div>
-        <div class="project-footer">
-          <p class="project-footer-copy">&copy; 2026 inxfitness&trade;. All rights reserved.</p>
-          <a href="#contact" class="about-cta">Let's talk →</a>
-        </div>
-      </div>
-    </div>
-  </section>
+          <figure class="case-cover">
+            <img src="assets/images/projects/raigonos/cover.webp" width="1920" height="1200" alt="RaigonOS public gallery: artworks floating on a dark wall">
+          </figure>
 
-  <!-- 4 — sky-fly -->
-  <section class="work-project p-skyfly" id="project-skyfly" data-thumb1="assets/images/home/sky-fly-1.webp" data-thumb2="assets/images/home/sky-fly-2.webp">
-    <div class="work-fixed">
-      <div class="work-header">
-        <div class="work-header-title is-active" data-panel="0">
-          <h3 class="project-name">sky-fly</h3>
-          <p class="project-category">Web Design · UX</p>
-        </div>
-        <div class="work-header-title" data-panel="1">
-          <h3 class="project-name">sky-fly</h3>
-          <p class="project-category">Web Design · UX</p>
-        </div>
-        <div class="work-header-title" data-panel="2">
-          <h3 class="project-name">sky-fly</h3>
-          <p class="project-category">Problem and solution</p>
-        </div>
-      </div>
-    </div>
-    <div class="work-nav-controls">
-      <div class="work-dots" aria-hidden="true">
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-      </div>
-    </div>
-    <button class="work-project-down" aria-label="Next project"><span></span><span></span></button>
-    <div class="work-project-track">
-      <div class="work-project-main">
-        <div class="project-bg"></div>
-        <div class="project-overlay"></div>
-        <div class="project-image-placeholder" aria-hidden="true">Image</div>
-        <p class="project-impact">Turning the fear of jumping<br>into the excitement of booking.</p>
-        <p class="project-desc project-desc-hero">Built entirely in HTML &amp; CSS — no frameworks. Keeping a full-screen, emotionally-driven layout clean and consistent was the core challenge. A course project for a Swiss paragliding experience company.</p>
-      </div>
-      <div class="work-project-details">
-        <div class="project-gallery">
-          <div class="project-gallery-img project-gallery-single"></div>
-        </div>
-        <p class="project-desc project-desc-mobile">Built entirely in HTML &amp; CSS — no frameworks. Keeping a full-screen, emotionally-driven layout clean and consistent was the core challenge. A course project for a Swiss paragliding experience company.</p>
-      </div>
-      <!-- TEMP: draft copy, awaiting client review -->
-      <div class="work-project-extra">
-        <div class="project-problem-solution">
-          <h4 class="challenge-heading">Challenge</h4>
-          <ul class="project-challenge-list">
-            <li>Hesitation without feeling the experience</li>
-            <li>Generic flows, adrenaline brand</li>
-            <li>Immersive feel vs. fast conversion</li>
-          </ul>
-          <h4 class="approach-heading">Approach &amp; Impact</h4>
-          <ul class="project-impact-list">
-            <li>Full-screen, emotion-first layout</li>
-            <li>Streamlined scroll-to-booking flow</li>
-            <li>Site designed to feel like the jump</li>
-          </ul>
-        </div>
-        <div class="project-footer">
-          <p class="project-footer-copy">&copy; 2026 sky-fly&trade;. All rights reserved.</p>
-          <div class="project-footer-links">
-            <a href="https://raigonlab.github.io/sky-fly/" target="_blank" rel="noopener" class="about-cta">View Live →</a>
-            <a href="https://github.com/raigonlab/sky-fly" target="_blank" rel="noopener" class="about-cta">Repository →</a>
-            <a href="#contact" class="about-cta">Let's talk →</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+          <dl class="case-meta">
+            <div><dt>Role</dt><dd>Design &amp; full-stack development</dd></div>
+            <div><dt>Stack</dt><dd>Django, PostgreSQL, Cloudinary, Render</dd></div>
+            <div><dt>Type</dt><dd>Web app · Personal project</dd></div>
+            <div><dt>Status</dt><dd>Live · 2026</dd></div>
+          </dl>
 
-  <!-- 5 — Gallery MMXI -->
-  <section class="work-project p-raigonmmxi" id="project-raigonmmxi" data-thumb1="assets/images/home/raigon-mmxi-1.webp" data-thumb2="assets/images/home/raigon-mmxi-2.webp" hidden>
-    <div class="work-fixed">
-      <div class="work-header">
-        <div class="work-header-title is-active" data-panel="0">
-          <h3 class="project-name">Gallery MMXI</h3>
-          <p class="project-category">Web Design · Artist Portfolio</p>
-        </div>
-        <div class="work-header-title" data-panel="1">
-          <h3 class="project-name">Gallery MMXI</h3>
-          <p class="project-category">Web Design · Artist Portfolio</p>
-        </div>
-        <div class="work-header-title" data-panel="2">
-          <h3 class="project-name">Gallery MMXI</h3>
-          <p class="project-category">Problem and solution</p>
-        </div>
-      </div>
-    </div>
-    <div class="work-nav-controls">
-      <div class="work-dots" aria-hidden="true">
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-      </div>
-    </div>
-    <button class="work-project-down" aria-label="Next project"><span></span><span></span></button>
-    <div class="work-project-track">
-      <div class="work-project-main">
-        <div class="project-bg"></div>
-        <div class="project-overlay"></div>
-        <div class="project-image-placeholder" aria-hidden="true">Image</div>
-        <p class="project-impact">A gallery that lives online<br>— not just on a wall.</p>
-        <p class="project-desc project-desc-hero">An interactive portfolio gallery built for a visual artist — designed to feel like walking through an exhibition, entirely in the browser.</p>
-      </div>
-      <div class="work-project-details">
-        <div class="project-gallery">
-          <div class="project-gallery-img project-gallery-single"></div>
-        </div>
-        <p class="project-desc project-desc-mobile">An interactive portfolio gallery built for a visual artist — designed to feel like walking through an exhibition, entirely in the browser.</p>
-      </div>
-      <!-- TEMP: draft copy, awaiting client review -->
-      <div class="work-project-extra">
-        <div class="project-problem-solution">
-          <h4 class="challenge-heading">Challenge</h4>
-          <ul class="project-challenge-list">
-            <li>Static site, no real gallery feel</li>
-            <li>Artwork flattened into generic grid</li>
-            <li>Built and deployed solo</li>
-          </ul>
-          <h4 class="approach-heading">Approach &amp; Impact</h4>
-          <ul class="project-impact-list">
-            <li>Interactive gallery, built from scratch</li>
-            <li>Live on GitHub Pages</li>
-            <li>Open-source, code on GitHub</li>
-          </ul>
-        </div>
-        <div class="project-footer">
-          <p class="project-footer-copy">&copy; 2026 Rai Gon&ccedil;alves. All rights reserved.</p>
-          <div class="project-footer-links">
-            <a href="https://raigonlab.github.io/raigon-mmxi/" target="_blank" rel="noopener" class="about-cta">View Live →</a>
-            <a href="https://github.com/raigonlab/raigon-mmxi" target="_blank" rel="noopener" class="about-cta">Repository →</a>
-            <a href="#contact" class="about-cta">Let's talk →</a>
+          <div class="case-story">
+            <section>
+              <h3>Challenge</h3>
+              <p>Artists need a place to publish and organise their work, but most tools either need code or flatten artwork into a generic grid. Only the owner should be able to change content, and uploads had to survive a host that wipes its filesystem on every deploy.</p>
+            </section>
+            <section>
+              <h3>Approach</h3>
+              <p>Two related models, Collection and Artwork, with full CRUD scoped to the logged-in owner. A private dashboard with search, grid and list views, archive status and a light/dark theme, plus a read-only public gallery that feels like walking through an exhibition.</p>
+            </section>
+            <section>
+              <h3>Outcome</h3>
+              <p>A live, deployed product with real collections in it. Setup is environment-driven: SQLite locally, PostgreSQL on Render, images on Cloudinary, so nothing is lost between deploys.</p>
+            </section>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- 6 — Lumen -->
-  <section class="work-project p-lumen" id="project-lumen" data-thumb1="assets/images/home/lumen-1.webp" data-thumb2="assets/images/home/lumen-2.webp" hidden>
-    <div class="work-fixed">
-      <div class="work-header">
-        <div class="work-header-title is-active" data-panel="0">
-          <h3 class="project-name">Lumen</h3>
-          <p class="project-category">Product Design · Fintech API</p>
-        </div>
-        <div class="work-header-title" data-panel="1">
-          <h3 class="project-name">Lumen</h3>
-          <p class="project-category">Product Design · Fintech API</p>
-        </div>
-        <div class="work-header-title" data-panel="2">
-          <h3 class="project-name">Lumen</h3>
-          <p class="project-category">Problem and solution</p>
-        </div>
-      </div>
-    </div>
-    <div class="work-nav-controls">
-      <div class="work-dots" aria-hidden="true">
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-      </div>
-    </div>
-    <button class="work-project-down" aria-label="Next project"><span></span><span></span></button>
-    <div class="work-project-track">
-      <div class="work-project-main">
-        <div class="project-bg"></div>
-        <div class="project-overlay"></div>
-        <div class="project-image-placeholder" aria-hidden="true">Image</div>
-        <p class="project-impact">Let banks see how you actually<br>pay your debts — not just a score.</p>
-        <p class="project-desc project-desc-hero">A credit health API banks can integrate to read how a customer repays debt over time — and what they can do to improve their financial health.</p>
-      </div>
-      <div class="work-project-details">
-        <div class="project-gallery">
-          <div class="project-gallery-img project-gallery-single"></div>
-        </div>
-        <p class="project-desc project-desc-mobile">A credit health API banks can integrate to read how a customer repays debt over time — and what they can do to improve their financial health.</p>
-      </div>
-      <!-- TEMP: draft copy, awaiting client review -->
-      <div class="work-project-extra">
-        <div class="project-problem-solution">
-          <h4 class="challenge-heading">Challenge</h4>
-          <ul class="project-challenge-list">
-            <li>Banks had no clear signal on how customers actually repay debt over time</li>
-            <li>Credit decisions relied on static scores, not real repayment behaviour</li>
-            <li>No simple way to tell users what would actually improve their standing</li>
-          </ul>
-          <h4 class="approach-heading">Approach &amp; Impact</h4>
-          <ul class="project-impact-list">
-            <li>A credit health API banks can integrate directly into their own decision flow</li>
-            <li>Debt repayment history translated into a clear, ongoing health score</li>
-            <li>Personalised recommendations on what improves a user&rsquo;s financial standing</li>
-          </ul>
-        </div>
-        <div class="project-footer">
-          <p class="project-footer-copy">&copy; 2026 Lumen&trade;. All rights reserved.</p>
-          <a href="#contact" class="about-cta">Let's talk →</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 7 — Cublok -->
-  <section class="work-project p-cublok" id="project-cublok" data-thumb1="assets/images/home/cublok-1.webp" data-thumb2="assets/images/home/cublok-2.webp" hidden>
-    <div class="work-fixed">
-      <div class="work-header">
-        <div class="work-header-title is-active" data-panel="0">
-          <h3 class="project-name">Cublok</h3>
-          <p class="project-category">Design Tool · Physical Art</p>
-        </div>
-        <div class="work-header-title" data-panel="1">
-          <h3 class="project-name">Cublok</h3>
-          <p class="project-category">Design Tool · Physical Art</p>
-        </div>
-        <div class="work-header-title" data-panel="2">
-          <h3 class="project-name">Cublok</h3>
-          <p class="project-category">Problem and solution</p>
-        </div>
-      </div>
-    </div>
-    <div class="work-nav-controls">
-      <div class="work-dots" aria-hidden="true">
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-      </div>
-    </div>
-    <button class="work-project-down" aria-label="Next project"><span></span><span></span></button>
-    <div class="work-project-track">
-      <div class="work-project-main">
-        <div class="project-bg"></div>
-        <div class="project-overlay"></div>
-        <div class="project-image-placeholder" aria-hidden="true">Image</div>
-        <p class="project-impact">Colour as a material decision<br>— not a digital effect.</p>
-        <p class="project-desc project-desc-hero">A browser-based tool for composing artwork on a centimetre grid, then bringing each piece to life with magnetic blocks you can take apart and rebuild by hand.</p>
-      </div>
-      <div class="work-project-details">
-        <div class="project-gallery">
-          <div class="project-gallery-img project-gallery-single"></div>
-        </div>
-        <p class="project-desc project-desc-mobile">A browser-based tool for composing artwork on a centimetre grid, then bringing each piece to life with magnetic blocks you can take apart and rebuild by hand.</p>
-      </div>
-      <div class="work-project-extra">
-        <div class="project-problem-solution">
-          <h4 class="challenge-heading">Challenge</h4>
-          <ul class="project-challenge-list">
-            <li>Digital pixel art rarely survives past the screen</li>
-            <li>No easy bridge between a design tool and a physical, hangable object</li>
-            <li>Needed a system that stays modular — reversible, not a one-off print</li>
-          </ul>
-          <h4 class="approach-heading">Approach &amp; Impact</h4>
-          <ul class="project-impact-list">
-            <li>A grid-based editor treating every cell as one physical, solid-colour unit</li>
-            <li>Designs export as a build reference, then assemble with magnetic blocks on any ferromagnetic surface</li>
-            <li>Pieces can be fully dismantled and rebuilt into new compositions</li>
-          </ul>
-        </div>
-        <div class="project-footer">
-          <p class="project-footer-copy">&copy; 2026 Cublok&trade;. All rights reserved.</p>
-          <div class="project-footer-links">
-            <a href="https://cublok.com" target="_blank" rel="noopener" class="about-cta">View Live →</a>
-            <a href="#contact" class="about-cta">Let's talk →</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 8 — Tattoo Studio (raigon.ch) -->
-  <section class="work-project p-raigonch" id="project-raigonch" data-thumb1="assets/images/home/raigonch-1.webp" data-thumb2="assets/images/home/raigonch-2.webp" hidden>
-    <div class="work-fixed">
-      <div class="work-header">
-        <div class="work-header-title is-active" data-panel="0">
-          <h3 class="project-name">Tattoo Studio</h3>
-          <p class="project-category">Web Design · Zürich</p>
-        </div>
-        <div class="work-header-title" data-panel="1">
-          <h3 class="project-name">Tattoo Studio</h3>
-          <p class="project-category">Web Design · Zürich</p>
-        </div>
-        <div class="work-header-title" data-panel="2">
-          <h3 class="project-name">Tattoo Studio</h3>
-          <p class="project-category">Problem and solution</p>
-        </div>
-      </div>
-    </div>
-    <div class="work-nav-controls">
-      <div class="work-dots" aria-hidden="true">
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-      </div>
-    </div>
-    <button class="work-project-down" aria-label="Next project"><span></span><span></span></button>
-    <div class="work-project-track">
-      <div class="work-project-main">
-        <div class="project-bg"></div>
-        <div class="project-overlay"></div>
-        <div class="project-image-placeholder" aria-hidden="true">Image</div>
-        <p class="project-impact">A studio site built to book<br>consultations — not to sell products.</p>
-        <p class="project-desc project-desc-hero">The live website of my tattoo studio in Zürich: a one-page portfolio with gallery, client reviews and gift cards, designed to turn visitors into consultation requests.</p>
-      </div>
-      <div class="work-project-details">
-        <div class="project-gallery">
-          <div class="project-gallery-img project-gallery-single"></div>
-        </div>
-        <p class="project-desc project-desc-mobile">The live website of my tattoo studio in Zürich: a one-page portfolio with gallery, client reviews and gift cards, designed to turn visitors into consultation requests.</p>
-      </div>
-      <div class="work-project-extra">
-        <div class="project-problem-solution">
-          <h4 class="challenge-heading">Challenge</h4>
-          <ul class="project-challenge-list">
-            <li>Validate the concept quickly before committing to hand-written code</li>
-            <li>Replace placeholder branding, stock photos and filler copy with the real studio identity</li>
-            <li>Keep text legible over real, highly variable photography</li>
-          </ul>
-          <h4 class="approach-heading">Approach &amp; Impact</h4>
-          <ul class="project-impact-list">
-            <li>Prototyped in Figma Make to test the Home → Gallery → Contact flow, then rebuilt and refined by hand in React, TypeScript and Tailwind</li>
-            <li>Real logo, bio, studio portrait and client work, plus gift cards with TWINT, Klarna, Apple Pay and Google Pay</li>
-            <li>Accessibility pass for contrast and alt text; motion respects reduced-motion settings</li>
-          </ul>
-        </div>
-        <div class="project-footer">
-          <p class="project-footer-copy">&copy; 2026 Rai Gon&ccedil;alves. All rights reserved.</p>
-          <div class="project-footer-links">
-            <a href="https://raigon.ch" target="_blank" rel="noopener" class="about-cta">View Live →</a>
-            <a href="#contact" class="about-cta">Let's talk →</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 9 — Artist Portfolio Manager (RaigonOS) -->
-  <section class="work-project p-raigonos" id="project-raigonos" data-thumb1="assets/images/home/raigonos-1.webp" data-thumb2="assets/images/home/raigonos-2.webp" hidden>
-    <div class="work-fixed">
-      <div class="work-header">
-        <div class="work-header-title is-active" data-panel="0">
-          <h3 class="project-name">Artist Portfolio Manager</h3>
-          <p class="project-category">Full-Stack · Django</p>
-        </div>
-        <div class="work-header-title" data-panel="1">
-          <h3 class="project-name">Artist Portfolio Manager</h3>
-          <p class="project-category">Full-Stack · Django</p>
-        </div>
-        <div class="work-header-title" data-panel="2">
-          <h3 class="project-name">Artist Portfolio Manager</h3>
-          <p class="project-category">Problem and solution</p>
-        </div>
-      </div>
-    </div>
-    <div class="work-nav-controls">
-      <div class="work-dots" aria-hidden="true">
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-      </div>
-    </div>
-    <button class="work-project-down" aria-label="Next project"><span></span><span></span></button>
-    <div class="work-project-track">
-      <div class="work-project-main">
-        <div class="project-bg"></div>
-        <div class="project-overlay"></div>
-        <div class="project-image-placeholder" aria-hidden="true">Image</div>
-        <p class="project-impact">A gallery an artist can run<br>without touching code.</p>
-        <p class="project-desc project-desc-hero">A full-stack gallery management platform built with Django and PostgreSQL. Artists catalogue Collections and Artworks from a private dashboard; visitors browse a clean public gallery. Live and in active development.</p>
-      </div>
-      <div class="work-project-details">
-        <div class="project-gallery">
-          <div class="project-gallery-img project-gallery-single"></div>
-        </div>
-        <p class="project-desc project-desc-mobile">A full-stack gallery management platform built with Django and PostgreSQL. Artists catalogue Collections and Artworks from a private dashboard; visitors browse a clean public gallery. Live and in active development.</p>
-      </div>
-      <div class="work-project-extra">
-        <div class="project-problem-solution">
-          <h4 class="challenge-heading">Challenge</h4>
-          <ul class="project-challenge-list">
-            <li>Let an artist publish and organise their work without writing code</li>
-            <li>Keep the public gallery read-only while only the owner can change content</li>
-            <li>Keep uploads persistent on a host whose filesystem is wiped on every deploy</li>
-          </ul>
-          <h4 class="approach-heading">Approach &amp; Impact</h4>
-          <ul class="project-impact-list">
-            <li>Two related models, Collection and Artwork, with full CRUD scoped to the authenticated owner</li>
-            <li>An editorial public gallery plus a dashboard with search, grid and list views, archive status and a light/dark theme</li>
-            <li>Environment-driven setup: SQLite locally, PostgreSQL on Render, image storage on Cloudinary</li>
-          </ul>
-        </div>
-        <div class="project-footer">
-          <p class="project-footer-copy">&copy; 2026 Rai Gon&ccedil;alves. All rights reserved.</p>
-          <div class="project-footer-links">
-            <a href="https://raigonos.onrender.com" target="_blank" rel="noopener" class="about-cta">View Live →</a>
-            <a href="https://github.com/raigonlab/raigonos" target="_blank" rel="noopener" class="about-cta">Repository →</a>
-            <a href="#contact" class="about-cta">Let's talk →</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 10 — Language School (Sprachschule Schneider, UX consulting) -->
-  <section class="work-project p-languageschool" id="project-languageschool" data-thumb1="assets/images/home/languageschool-1.webp" data-thumb2="assets/images/home/languageschool-2.webp" hidden>
-    <div class="work-fixed">
-      <div class="work-header">
-        <div class="work-header-title is-active" data-panel="0">
-          <h3 class="project-name">Language School</h3>
-          <p class="project-category">UX Consulting · Zürich</p>
-        </div>
-        <div class="work-header-title" data-panel="1">
-          <h3 class="project-name">Language School</h3>
-          <p class="project-category">UX Consulting · Zürich</p>
-        </div>
-        <div class="work-header-title" data-panel="2">
-          <h3 class="project-name">Language School</h3>
-          <p class="project-category">Problem and solution</p>
-        </div>
-      </div>
-    </div>
-    <div class="work-nav-controls">
-      <div class="work-dots" aria-hidden="true">
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-      </div>
-    </div>
-    <button class="work-project-down" aria-label="Next project"><span></span><span></span></button>
-    <div class="work-project-track">
-      <div class="work-project-main">
-        <div class="project-bg"></div>
-        <div class="project-overlay"></div>
-        <div class="project-image-placeholder" aria-hidden="true">Image</div>
-        <p class="project-impact">Languages connect —<br>in Zürich and online.</p>
-        <p class="project-desc project-desc-hero">UX design consulting for Sprachschule Schneider, a Zürich language school with over 25 years of experience. The live site helps adults, companies and families find the right course and book a free consultation.</p>
-      </div>
-      <div class="work-project-details">
-        <div class="project-gallery">
-          <div class="project-gallery-img project-gallery-single"></div>
-        </div>
-        <p class="project-desc project-desc-mobile">UX design consulting for Sprachschule Schneider, a Zürich language school with over 25 years of experience. The live site helps adults, companies and families find the right course and book a free consultation.</p>
-      </div>
-      <!-- TEMP: draft copy, scope to be confirmed with the client -->
-      <div class="work-project-extra">
-        <div class="project-problem-solution">
-          <h4 class="challenge-heading">Challenge</h4>
-          <ul class="project-challenge-list">
-            <li>Eleven languages, several course formats and three audiences to present clearly on one site</li>
-            <li>Helping visitors find the right course and book without friction</li>
-            <li>Serving individuals, companies and families with different needs</li>
-          </ul>
-          <h4 class="approach-heading">Approach &amp; Impact</h4>
-          <ul class="project-impact-list">
-            <li>Ongoing UX design consulting for the school&rsquo;s team</li>
-            <li>Focus on course discovery, booking and clear paths for each audience</li>
-            <li>A live site with a free placement test and a free consultation as its main calls to action</li>
-          </ul>
-        </div>
-        <div class="project-footer">
-          <p class="project-footer-copy">Consulting project for Sprachschule Schneider AG.</p>
-          <div class="project-footer-links">
-            <a href="https://sprachschuleschneider.ch" target="_blank" rel="noopener" class="about-cta">View Live →</a>
-            <a href="#contact" class="about-cta">Let's talk →</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="about-header">
-      <p class="section-label">About</p>
-    </div>
-
-    <div class="about-photo">
-      <div class="about-photo-img" aria-hidden="true"></div>
-    </div>
-
-    <h2 class="about-headline"><span class="about-headline-bright">Empowering</span> businesses and <span class="about-headline-bright">people</span> through <span class="about-headline-bright">design</span>.</h2>
-
-    <!-- BIO -->
-    <div class="about-bio">
-      <p class="about-text">I'm Rai, a <strong>designer and front-end developer</strong> based in Zurich, Switzerland. With a background in <strong>Communication Design</strong>, I create human-centered digital experiences that combine strategy, aesthetics, and technology. I'm currently studying <strong>Full-Stack Software Development</strong>, expanding my ability to design and build intuitive, accessible, and scalable digital products. I believe great digital experiences are created where thoughtful design meets clean code.</p>
-      <a href="#contact" class="about-cta">Let's talk →</a>
-      <a href="https://www.linkedin.com/in/railsongoncalves" target="_blank" rel="noopener" class="about-cta about-linkedin">LinkedIn →</a>
-    </div>
-  </section>
-
-  <!-- SKILLS — one full-bleed card, everything flowing as a slow river -->
-  <section id="skills" class="skills-panel">
-    <div class="skills-header">
-      <div class="skills-header-top">
-        <p class="section-label skills-eyebrow">Skills</p>
-        <button type="button" class="skills-toggle" id="skillsToggle" aria-pressed="false" aria-label="Pause and show everything at once">
-          <span class="skills-toggle-icon skills-toggle-icon--pause"><span></span><span></span></span>
-          <span class="skills-toggle-icon skills-toggle-icon--play"></span>
-        </button>
-      </div>
-      <h2 class="skills-title">Stack</h2>
-    </div>
-    <div class="skills-groups">
-      <div class="skills-group">
-        <p class="skills-group-title">Designing Tools</p>
-        <div class="skills-river">
-          <div class="skills-river-track">
-            <span class="skill-chip">Figma</span>
-            <span class="skill-chip">Adobe</span>
-            <span class="skill-chip">CapCut</span>
-            <span class="skill-chip">AI Design</span>
-            <span class="skill-chip">VS Code</span>
-            <span class="skill-chip">GitHub</span>
-            <span class="skill-chip">Vercel</span>
-            <span class="skill-chip" aria-hidden="true">Figma</span>
-            <span class="skill-chip" aria-hidden="true">Adobe</span>
-            <span class="skill-chip" aria-hidden="true">CapCut</span>
-            <span class="skill-chip" aria-hidden="true">AI Design</span>
-            <span class="skill-chip" aria-hidden="true">VS Code</span>
-            <span class="skill-chip" aria-hidden="true">GitHub</span>
-            <span class="skill-chip" aria-hidden="true">Vercel</span>
-          </div>
-        </div>
-        <div class="skills-river skills-river--reverse">
-          <div class="skills-river-track">
-            <span class="skill-chip">Figma</span>
-            <span class="skill-chip">Adobe</span>
-            <span class="skill-chip">CapCut</span>
-            <span class="skill-chip">AI Design</span>
-            <span class="skill-chip">VS Code</span>
-            <span class="skill-chip">GitHub</span>
-            <span class="skill-chip">Vercel</span>
-            <span class="skill-chip" aria-hidden="true">Figma</span>
-            <span class="skill-chip" aria-hidden="true">Adobe</span>
-            <span class="skill-chip" aria-hidden="true">CapCut</span>
-            <span class="skill-chip" aria-hidden="true">AI Design</span>
-            <span class="skill-chip" aria-hidden="true">VS Code</span>
-            <span class="skill-chip" aria-hidden="true">GitHub</span>
-            <span class="skill-chip" aria-hidden="true">Vercel</span>
-          </div>
-        </div>
-      </div>
-      <div class="skills-group">
-        <p class="skills-group-title">Full Stack Development <span class="skills-group-note">finishing January 2027</span></p>
-        <div class="skills-river">
-          <div class="skills-river-track">
-            <span class="skill-chip">HTML</span>
-            <span class="skill-chip">CSS</span>
-            <span class="skill-chip">JavaScript</span>
-            <span class="skill-chip">Python</span>
-            <span class="skill-chip">Django</span>
-            <span class="skill-chip" aria-hidden="true">HTML</span>
-            <span class="skill-chip" aria-hidden="true">CSS</span>
-            <span class="skill-chip" aria-hidden="true">JavaScript</span>
-            <span class="skill-chip" aria-hidden="true">Python</span>
-            <span class="skill-chip" aria-hidden="true">Django</span>
-          </div>
-        </div>
-        <div class="skills-river skills-river--reverse">
-          <div class="skills-river-track">
-            <span class="skill-chip">HTML</span>
-            <span class="skill-chip">CSS</span>
-            <span class="skill-chip">JavaScript</span>
-            <span class="skill-chip">Python</span>
-            <span class="skill-chip">Django</span>
-            <span class="skill-chip" aria-hidden="true">HTML</span>
-            <span class="skill-chip" aria-hidden="true">CSS</span>
-            <span class="skill-chip" aria-hidden="true">JavaScript</span>
-            <span class="skill-chip" aria-hidden="true">Python</span>
-            <span class="skill-chip" aria-hidden="true">Django</span>
-          </div>
-        </div>
-      </div>
-      <div class="skills-group">
-        <p class="skills-group-title">Ways of Working</p>
-        <div class="skills-river">
-          <div class="skills-river-track">
-            <span class="skill-chip">Agile Methodology</span>
-            <span class="skill-chip">Design Thinking</span>
-            <span class="skill-chip">Design Engineering</span>
-            <span class="skill-chip">UI &amp; UX</span>
-            <span class="skill-chip">HCD</span>
-            <span class="skill-chip">Problem Solving</span>
-            <span class="skill-chip">Iteration</span>
-            <span class="skill-chip" aria-hidden="true">Agile Methodology</span>
-            <span class="skill-chip" aria-hidden="true">Design Thinking</span>
-            <span class="skill-chip" aria-hidden="true">Design Engineering</span>
-            <span class="skill-chip" aria-hidden="true">UI &amp; UX</span>
-            <span class="skill-chip" aria-hidden="true">HCD</span>
-            <span class="skill-chip" aria-hidden="true">Problem Solving</span>
-            <span class="skill-chip" aria-hidden="true">Iteration</span>
-          </div>
-        </div>
-        <div class="skills-river skills-river--reverse">
-          <div class="skills-river-track">
-            <span class="skill-chip">Agile Methodology</span>
-            <span class="skill-chip">Design Thinking</span>
-            <span class="skill-chip">Design Engineering</span>
-            <span class="skill-chip">UI &amp; UX</span>
-            <span class="skill-chip">HCD</span>
-            <span class="skill-chip">Problem Solving</span>
-            <span class="skill-chip">Iteration</span>
-            <span class="skill-chip" aria-hidden="true">Agile Methodology</span>
-            <span class="skill-chip" aria-hidden="true">Design Thinking</span>
-            <span class="skill-chip" aria-hidden="true">Design Engineering</span>
-            <span class="skill-chip" aria-hidden="true">UI &amp; UX</span>
-            <span class="skill-chip" aria-hidden="true">HCD</span>
-            <span class="skill-chip" aria-hidden="true">Problem Solving</span>
-            <span class="skill-chip" aria-hidden="true">Iteration</span>
-          </div>
-        </div>
-      </div>
-      <div class="skills-group">
-        <p class="skills-group-title">Interests</p>
-        <div class="skills-river">
-          <div class="skills-river-track">
-            <span class="skill-chip">Dogs</span>
-            <span class="skill-chip">Spirituality</span>
-            <span class="skill-chip">Tattoo</span>
-            <span class="skill-chip">Star Trek</span>
-            <span class="skill-chip">Fitness</span>
-            <span class="skill-chip">Art</span>
-            <span class="skill-chip">LGBT</span>
-            <span class="skill-chip" aria-hidden="true">Dogs</span>
-            <span class="skill-chip" aria-hidden="true">Spirituality</span>
-            <span class="skill-chip" aria-hidden="true">Tattoo</span>
-            <span class="skill-chip" aria-hidden="true">Star Trek</span>
-            <span class="skill-chip" aria-hidden="true">Skydiving</span>
-            <span class="skill-chip" aria-hidden="true">Art</span>
-            <span class="skill-chip" aria-hidden="true">LGBT</span>
-          </div>
-        </div>
-        <div class="skills-river skills-river--reverse">
-          <div class="skills-river-track">
-            <span class="skill-chip">Dogs</span>
-            <span class="skill-chip">Spirituality</span>
-            <span class="skill-chip">Tattoo</span>
-            <span class="skill-chip">Star Trek</span>
-            <span class="skill-chip">Skydiving</span>
-            <span class="skill-chip">Art</span>
-            <span class="skill-chip">LGBT</span>
-            <span class="skill-chip" aria-hidden="true">Dogs</span>
-            <span class="skill-chip" aria-hidden="true">Spirituality</span>
-            <span class="skill-chip" aria-hidden="true">Tattoo</span>
-            <span class="skill-chip" aria-hidden="true">Star Trek</span>
-            <span class="skill-chip" aria-hidden="true">Skydiving</span>
-            <span class="skill-chip" aria-hidden="true">Art</span>
-            <span class="skill-chip" aria-hidden="true">LGBT</span>
-          </div>
-        </div>
-      </div>
-      <div class="skills-group">
-        <p class="skills-group-title">A Small World Called Home</p>
-        <div class="skills-river">
-          <div class="skills-river-track">
-            <span class="skill-chip">Brazil</span>
-            <span class="skill-chip">Portugal</span>
-            <span class="skill-chip">Dubai</span>
-            <span class="skill-chip">Switzerland</span>
-            <span class="skill-chip">Davos</span>
-            <span class="skill-chip">Zurich</span>
-            <span class="skill-chip">Kuala Lumpur</span>
-            <span class="skill-chip">Guarapari</span>
-            <span class="skill-chip">Maranhão</span>
-            <span class="skill-chip">Vitória</span>
-            <span class="skill-chip">Lago dos Rodrigues</span>
-            <span class="skill-chip" aria-hidden="true">Brazil</span>
-            <span class="skill-chip" aria-hidden="true">Portugal</span>
-            <span class="skill-chip" aria-hidden="true">Dubai</span>
-            <span class="skill-chip" aria-hidden="true">Switzerland</span>
-            <span class="skill-chip" aria-hidden="true">Davos</span>
-            <span class="skill-chip" aria-hidden="true">Zurich</span>
-            <span class="skill-chip" aria-hidden="true">Kuala Lumpur</span>
-            <span class="skill-chip" aria-hidden="true">Guarapari</span>
-            <span class="skill-chip" aria-hidden="true">Maranhão</span>
-            <span class="skill-chip" aria-hidden="true">Vitória</span>
-            <span class="skill-chip" aria-hidden="true">Lago dos Rodrigues</span>
-          </div>
-        </div>
-        <div class="skills-river skills-river--reverse">
-          <div class="skills-river-track">
-            <span class="skill-chip">Brazil</span>
-            <span class="skill-chip">Portugal</span>
-            <span class="skill-chip">Dubai</span>
-            <span class="skill-chip">Switzerland</span>
-            <span class="skill-chip">Davos</span>
-            <span class="skill-chip">Zurich</span>
-            <span class="skill-chip">Kuala Lumpur</span>
-            <span class="skill-chip">Guarapari</span>
-            <span class="skill-chip">Maranhão</span>
-            <span class="skill-chip">Vitória</span>
-            <span class="skill-chip">Lago dos Rodrigues</span>
-            <span class="skill-chip" aria-hidden="true">Brazil</span>
-            <span class="skill-chip" aria-hidden="true">Portugal</span>
-            <span class="skill-chip" aria-hidden="true">Dubai</span>
-            <span class="skill-chip" aria-hidden="true">Switzerland</span>
-            <span class="skill-chip" aria-hidden="true">Davos</span>
-            <span class="skill-chip" aria-hidden="true">Zurich</span>
-            <span class="skill-chip" aria-hidden="true">Kuala Lumpur</span>
-            <span class="skill-chip" aria-hidden="true">Guarapari</span>
-            <span class="skill-chip" aria-hidden="true">Maranhão</span>
-            <span class="skill-chip" aria-hidden="true">Vitória</span>
-            <span class="skill-chip" aria-hidden="true">Lago dos Rodrigues</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WORK PAGE — standalone full-bleed section listing all projects -->
-  <section id="workMore" class="work-page">
-    <div class="work-page-inner">
-      <p class="section-label">Work</p>
-      <h2 class="work-more-heading">Stories &amp; projects</h2>
-      <p class="work-more-intro" id="workMoreIntro">Design, strategy and code — built around real problems.</p>
-      <div class="work-gallery-grid" id="workGalleryGrid">
-        <a href="#project-arcavault" class="work-gallery-item">
-          <div class="work-gallery-thumb"></div>
-          <p class="work-gallery-name">Arca Vault</p>
-          <p class="work-gallery-desc">UX/UI Design · Fintech</p>
-        </a>
-        <a href="#project-inxfitness" class="work-gallery-item">
-          <div class="work-gallery-thumb"></div>
-          <p class="work-gallery-name">inxfitness</p>
-          <p class="work-gallery-desc">Brand Identity · From Scratch</p>
-        </a>
-        <a href="#project-dronzza" class="work-gallery-item">
-          <div class="work-gallery-thumb"></div>
-          <p class="work-gallery-name">Dronzza</p>
-          <p class="work-gallery-desc">UX/UI Design · Food Delivery</p>
-        </a>
-        <div class="work-gallery-item">
-          <a href="#project-skyfly" class="work-gallery-thumb-link">
-            <div class="work-gallery-thumb work-gallery-thumb--skyfly"></div>
-          </a>
-          <p class="work-gallery-name">sky-fly</p>
-          <p class="work-gallery-desc">Web · HTML/CSS · Fullstack</p>
-          <div class="work-gallery-links">
-            <a href="https://raigonlab.github.io/sky-fly/" target="_blank" rel="noopener" class="work-gallery-repo">View Live →</a>
-            <a href="https://github.com/raigonlab/sky-fly" target="_blank" rel="noopener" class="work-gallery-repo">Repository →</a>
-          </div>
-        </div>
-        <div class="work-gallery-item">
-          <a href="#project-cublok" class="work-gallery-thumb-link">
-            <div class="work-gallery-thumb work-gallery-thumb--cublok"></div>
-          </a>
-          <p class="work-gallery-name">Cublok</p>
-          <p class="work-gallery-desc">Design Tool · Physical Art</p>
-          <div class="work-gallery-links">
-            <a href="https://cublok.com" target="_blank" rel="noopener" class="work-gallery-repo">View Live →</a>
-          </div>
-        </div>
-        <div class="work-gallery-item">
-          <a href="#project-raigonch" class="work-gallery-thumb-link">
-            <div class="work-gallery-thumb work-gallery-thumb--raigonch"></div>
-          </a>
-          <p class="work-gallery-name">Tattoo Studio</p>
-          <p class="work-gallery-desc">Web Design · Zürich</p>
-          <div class="work-gallery-links">
-            <a href="https://raigon.ch" target="_blank" rel="noopener" class="work-gallery-repo">View Live →</a>
-          </div>
-        </div>
-        <div class="work-gallery-item">
-          <a href="#project-raigonos" class="work-gallery-thumb-link">
-            <div class="work-gallery-thumb work-gallery-thumb--raigonos"></div>
-          </a>
-          <p class="work-gallery-name">Artist Portfolio Manager</p>
-          <p class="work-gallery-desc">Full-Stack · Django · In development</p>
-          <div class="work-gallery-links">
-            <a href="https://raigonos.onrender.com" target="_blank" rel="noopener" class="work-gallery-repo">View Live →</a>
-            <a href="https://github.com/raigonlab/raigonos" target="_blank" rel="noopener" class="work-gallery-repo">Repository →</a>
-          </div>
-        </div>
-        <div class="work-gallery-item">
-          <a href="#project-languageschool" class="work-gallery-thumb-link">
-            <div class="work-gallery-thumb work-gallery-thumb--languageschool"></div>
-          </a>
-          <p class="work-gallery-name">Language School</p>
-          <p class="work-gallery-desc">UX Consulting · Zürich</p>
-          <div class="work-gallery-links">
-            <a href="https://sprachschuleschneider.ch" target="_blank" rel="noopener" class="work-gallery-repo">View Live →</a>
-          </div>
-        </div>
-        <div class="work-gallery-item work-gallery-item--locked" role="article" aria-label="Gallery MMXI — access restricted">
-          <div class="work-gallery-thumb work-gallery-thumb--raigonmmxi">
-            <div class="work-gallery-lock">
-              <span class="work-gallery-lock-icon">⬡</span>
-              <span class="work-gallery-lock-label">Request Access</span>
+          <div class="case-gallery">
+            <figure class="span-2">
+              <img src="assets/images/projects/raigonos/collection.webp" width="1920" height="1200" loading="lazy" alt="Collection page listing six charcoal artworks">
+            </figure>
+            <div class="row" style="--cols: 1.6fr 0.462fr">
+              <figure><img src="assets/images/projects/raigonos/artwork.webp" width="1920" height="1200" loading="lazy" alt="Artwork detail page with title, year and description"></figure>
+              <figure class="tall"><img src="assets/images/projects/raigonos/mobile.webp" width="780" height="1688" loading="lazy" alt="Collections page on a phone"></figure>
             </div>
           </div>
-          <p class="work-gallery-name">Gallery MMXI</p>
-          <p class="work-gallery-desc">Web · HTML/CSS/JS · Fullstack</p>
-          <div class="work-gallery-links">
-            <a href="https://raigon-design.vercel.app/" target="_blank" rel="noopener" class="work-gallery-repo">View Live →</a>
-          </div>
         </div>
-        <div class="work-gallery-item work-gallery-item--locked" role="article" aria-label="Kerart Gallery — access restricted">
-          <div class="work-gallery-thumb work-gallery-thumb--kerart">
-            <div class="work-gallery-lock">
-              <span class="work-gallery-lock-icon">⬡</span>
-              <span class="work-gallery-lock-label">Request Access</span>
+      </article>
+
+      <!-- 02 — Arca Vault -->
+      <article class="case" id="arcavault">
+        <div class="wrap">
+          <header class="case-head">
+            <p class="case-index">02</p>
+            <h2 class="case-title">Arca Vault</h2>
+            <p class="case-lede">Imagine knowing the exact day you&rsquo;ll hit your first million.</p>
+          </header>
+
+          <figure class="case-cover">
+            <img src="assets/images/projects/arcavault/hero-desktop.webp" width="2160" height="1536" loading="lazy" alt="Three Arca Vault screens: dashboard, wealth map and goals">
+          </figure>
+
+          <dl class="case-meta">
+            <div><dt>Role</dt><dd>UX/UI design, research to hi-fi prototype</dd></div>
+            <div><dt>Tools</dt><dd>Figma</dd></div>
+            <div><dt>Type</dt><dd>Mobile app · Fintech</dd></div>
+            <div><dt>Status</dt><dd>Concept</dd></div>
+          </dl>
+
+          <div class="case-story">
+            <section>
+              <h3>Challenge</h3>
+              <p>People put off financial decisions. Banking apps show balances, not direction, so setting a goal and sticking to it feels hard and unclear.</p>
+            </section>
+            <section>
+              <h3>Approach</h3>
+              <p>One app that combines banking data, behavioural insights and credit health. A compound calculator turns savings into a date, and a portfolio view shows progress toward it.</p>
+            </section>
+            <section>
+              <h3>Outcome</h3>
+              <ul class="stats">
+                <li><strong>91%</strong> felt more in control of their finances</li>
+                <li><strong>3&times;</strong> faster decisions vs. banking apps</li>
+                <li><strong>64%</strong> hit a savings milestone within 30 days</li>
+              </ul>
+            </section>
+          </div>
+
+          <div class="case-gallery">
+            <div class="row" style="--cols: 1.406fr 1.169fr">
+              <figure><img src="assets/images/projects/arcavault/gallery-desktop-2.webp" width="2160" height="1536" loading="lazy" alt="Compound calculator screen"></figure>
+              <figure><img src="assets/images/projects/arcavault/gallery-desktop-3.webp" width="2160" height="1848" loading="lazy" alt="Grid of Arca Vault app screens"></figure>
             </div>
           </div>
-          <p class="work-gallery-name">Kerart Gallery</p>
-          <p class="work-gallery-desc">Identity · Branding · Web</p>
         </div>
-        <div class="work-gallery-item work-gallery-item--locked" role="article" aria-label="Wordly — access restricted">
-          <div class="work-gallery-thumb work-gallery-thumb--language">
-            <div class="work-gallery-lock">
-              <span class="work-gallery-lock-icon">⬡</span>
-              <span class="work-gallery-lock-label">Request Access</span>
+      </article>
+
+      <!-- 03 — Raigon Tattoo Studio -->
+      <article class="case" id="raigonch">
+        <div class="wrap">
+          <header class="case-head">
+            <p class="case-index">03</p>
+            <h2 class="case-title">Raigon Tattoo Studio</h2>
+            <p class="case-lede">A studio site built to book consultations, not to sell products.</p>
+            <div class="case-links">
+              <a href="https://raigon.ch" target="_blank" rel="noopener" class="btn">Visit live site ↗</a>
+            </div>
+          </header>
+
+          <figure class="case-cover">
+            <img src="assets/images/projects/raigon-ch/cover.webp" width="1920" height="1200" loading="lazy" alt="raigon.ch homepage with full-screen video and Book button">
+          </figure>
+
+          <dl class="case-meta">
+            <div><dt>Role</dt><dd>Design &amp; front-end development</dd></div>
+            <div><dt>Stack</dt><dd>Figma Make, React, TypeScript, Tailwind</dd></div>
+            <div><dt>Type</dt><dd>Website · Own studio, Zürich</dd></div>
+            <div><dt>Status</dt><dd>Live</dd></div>
+          </dl>
+
+          <div class="case-story">
+            <section>
+              <h3>Challenge</h3>
+              <p>Validate the concept quickly, then replace placeholder branding and stock photos with the real studio, while keeping text readable over highly variable photography.</p>
+            </section>
+            <section>
+              <h3>Approach</h3>
+              <p>Prototyped the Home → Gallery → Contact flow in Figma Make, then rebuilt and refined it by hand in React, TypeScript and Tailwind, with real logo, bio, portrait and client work.</p>
+            </section>
+            <section>
+              <h3>Outcome</h3>
+              <p>A live one-page site with gallery, reviews and gift cards (TWINT, Klarna, Apple Pay, Google Pay). Contrast and alt text checked; motion respects reduced-motion settings.</p>
+            </section>
+          </div>
+
+          <div class="case-gallery">
+            <div class="row" style="--cols: 1.6fr 0.8fr">
+              <figure><img src="assets/images/projects/raigon-ch/portfolio.webp" width="1920" height="1200" loading="lazy" alt="About section and selected tattoo works"></figure>
+              <figure><img src="assets/images/projects/raigon-ch/gallery-1.webp" width="800" height="1000" loading="lazy" alt="Typographic tagline: Tattoos that empower you"></figure>
             </div>
           </div>
-          <p class="work-gallery-name">Wordly</p>
-          <p class="work-gallery-desc">Design System · UX · Brand</p>
+        </div>
+      </article>
+
+      <!-- 04 — Dronzza -->
+      <article class="case" id="dronzza">
+        <div class="wrap">
+          <header class="case-head">
+            <p class="case-index">04</p>
+            <h2 class="case-title">Dronzza</h2>
+            <p class="case-lede">Hot pizza, dropped from the sky before the box even cools.</p>
+          </header>
+
+          <figure class="case-cover">
+            <img src="assets/images/projects/dronzza/gallery-desktop-1.webp" width="2160" height="1536" loading="lazy" alt="Dronzza logo with three app screens">
+          </figure>
+
+          <dl class="case-meta">
+            <div><dt>Role</dt><dd>UX/UI design</dd></div>
+            <div><dt>Tools</dt><dd>Figma</dd></div>
+            <div><dt>Type</dt><dd>Mobile app · Food delivery</dd></div>
+            <div><dt>Status</dt><dd>Concept</dd></div>
+          </dl>
+
+          <div class="case-story">
+            <section>
+              <h3>Challenge</h3>
+              <p>People don&rsquo;t yet trust unmanned delivery, there is no UX pattern for a drone drop-off, and weather or no-fly zones can block an order at any time.</p>
+            </section>
+            <section>
+              <h3>Approach</h3>
+              <p>An order flow built around drone logistics: live tracking so you always see where your food is, and smart drop-zone selection so you know exactly where it lands.</p>
+            </section>
+            <section>
+              <h3>Outcome</h3>
+              <p>A complete flow from wireframes to high-fidelity screens, designed for delivery in minutes, not motorcycles.</p>
+            </section>
+          </div>
+
+          <div class="case-gallery">
+            <div class="row" style="--cols: 1.406fr 1.169fr">
+              <figure><img src="assets/images/projects/dronzza/gallery-desktop-2.webp" width="2160" height="1536" loading="lazy" alt="Four high-fidelity Dronzza screens"></figure>
+              <figure><img src="assets/images/projects/dronzza/gallery-desktop-3.webp" width="2160" height="1848" loading="lazy" alt="Dronzza wireframes"></figure>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- ABOUT -->
+    <section id="about" class="about wrap">
+      <p class="eyebrow">About</p>
+      <div class="about-grid">
+        <img class="about-photo" src="assets/images/profile.webp" alt="Portrait of Rai Gonçalves" loading="lazy">
+        <div>
+          <p class="about-text">I&rsquo;m Rai, a designer and front-end developer in Zürich with a background in Communication Design. I create human-centred digital experiences that combine strategy, aesthetics and technology.</p>
+          <p class="about-text">I&rsquo;m finishing a Full-Stack Software Development course (January 2027), so I can take a product from research and design all the way to working code.</p>
+          <p class="about-skills">Figma · Adobe · HTML · CSS · JavaScript · Python · Django · Git</p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="contact-inner">
-      <p class="section-label">Contact</p>
-      <h2 class="contact-title">Let's create<br><em>together</em></h2>
-      <div class="contact-links">
-        <a href="mailto:create@raigonlab.com" class="contact-link">
-          <span class="contact-link-label">Email</span>
-          <span class="contact-link-value">create@raigonlab.com</span>
-          <span class="contact-arrow">→</span>
-        </a>
-        <a href="https://www.linkedin.com/in/railsongoncalves" target="_blank" rel="noopener" class="contact-link">
-          <span class="contact-link-label">LinkedIn</span>
-          <span class="contact-link-value">railson-goncalves</span>
-          <span class="contact-arrow">→</span>
-        </a>
-        <a href="tel:+41796354399" class="contact-link">
-          <span class="contact-link-label">Phone</span>
-          <span class="contact-link-value">+41 79 635 43 99</span>
-          <span class="contact-arrow">→</span>
-        </a>
-        <a href="https://github.com/raigonlab" target="_blank" rel="noopener" class="contact-link">
-          <span class="contact-link-label">GitHub</span>
-          <span class="contact-link-value">raigonlab</span>
-          <span class="contact-arrow">→</span>
-        </a>
-      </div>
-      <div class="footer-links">
-        <a href="assets/cv/CV_Railson_Designer_ATS.pdf" class="about-cta" download>Download CV →</a>
-        <a href="https://www.linkedin.com/in/railsongoncalves" target="_blank" rel="noopener" class="about-cta about-linkedin">LinkedIn →</a>
-      </div>
+    <!-- CONTACT -->
+    <section id="contact" class="contact wrap">
+      <p class="eyebrow">Contact</p>
+      <h2 class="contact-title">Let&rsquo;s create <em>together.</em></h2>
+      <ul class="contact-list">
+        <li><span>Email</span><a href="mailto:create@raigonlab.com">create@raigonlab.com</a></li>
+        <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/railsongoncalves" target="_blank" rel="noopener">railsongoncalves ↗</a></li>
+        <li><span>GitHub</span><a href="https://github.com/raigonlab" target="_blank" rel="noopener">raigonlab ↗</a></li>
+        <li><span>CV</span><a href="assets/cv/CV_Railson_Designer_ATS.pdf" download>Download PDF ↓</a></li>
+      </ul>
+    </section>
 
-      <!-- FOOTER — moved inside this card so it stays visible instead of
-           sitting past the last full-bleed snap point -->
-      <footer class="contact-footer">
-        <span class="footer-name">Rai Gonçalves</span>
-        <span class="footer-copy">© 2026 — Zürich, Switzerland</span>
-      </footer>
-    </div>
-  </section>
+  </main>
 
-  <!-- NAV (fixed, bottom, mobile-first) -->
-  <nav id="mainNav" class="main-nav">
-    <a href="#home-stage-section" class="nav-home" id="navHome" aria-label="Home">
-      <svg class="nav-home-icon" viewBox="0 0 1080 1080" aria-hidden="true">
-        <path d="M168.9,837.6h145.7c9.8,0,17.8-5.5,17.8-13.8v-98.5l199.6-101.2,171.6,203.2c5.3,6.3,13.9,10,23,10h153.4c18.1,0,48.6.7,18.1-29.9l-216.2-255.4,271-137.3h0s0,0,0,0l-31-51.6h0c-.3-.6-39.5-68.7-48-76.5,0,0,0,0,0,0-.2-.2-3.2-3.4-8.5-7.9-8.8-7.3-23.8-17.9-42.9-23.9-.8-.3-1.7-.6-2.6-.8,0,0-.2,0-.3,0-4-1.1-8.2-2-12.5-2.7,0,0,0,0,0,0-30.1-5.8-65-8.8-104.9-8.8H168.9c-9.8,0-17.8,6.8-17.8,15.1v560.7c0,8.4,8,19.4,17.8,19.4ZM332.5,382c0-8.4,8-15.1,17.8-15.1h317c32.9-.5,47.7,8.4,47.7,8.4l-382.5,186.8v-180.1Z"/>
-      </svg>
-    </a>
-
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#workMore" class="nav-link" data-nav="work">Work</a></li>
-      <li><a href="#about" class="nav-link" data-nav="about">About</a></li>
-      <li><a href="#contact" class="nav-link" data-nav="contact">Talk</a></li>
-    </ul>
-
-    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
-      <span class="nav-toggle-icon nav-toggle-icon--menu" aria-hidden="true">
-        <span></span><span></span>
-      </span>
-      <span class="nav-toggle-icon nav-toggle-icon--close" aria-hidden="true">
-        <span></span><span></span>
-      </span>
-    </button>
-  </nav>
-
-  <!-- JS -->
-  <script src="assets/js/home-marquee.js" defer></script>
-  <script src="assets/js/nav.js" defer></script>
-  <script src="assets/js/work.js" defer></script>
-  <script src="assets/js/intro.js" defer></script>
+  <footer class="site-footer wrap">
+    <span>Rai Gonçalves</span>
+    <span>© 2026 · Zürich, Switzerland</span>
+  </footer>
 
 </body>
 </html>

@@ -1,1987 +1,275 @@
 /* =============================================
    RAI GONÇALVES — Portfolio
-   style.css
-   Mobile-first. Desktop breakpoints added later.
+   One page, four case studies. Every case uses the same
+   structure: head → cover → meta → story → gallery.
    ============================================= */
 
-/* ─────────────────────────────────────────────
-   TOKENS
-───────────────────────────────────────────── */
 :root {
-  --bg:     #15161A;
-  --card:   #1C1E22;
-  --ink:    #14171A;
-  --mid:    #767C82;
-  --warm:   #B8A898;
-  --line:   rgba(255, 255, 255, 0.12);
-  --white:  #FFFFFF;
-  --nav-h:  34.56px;
-  --nav-btn: calc(var(--nav-h) - 0.24rem);
-  /* toggle button stays this size always, so the icon never shifts when the menu opens */
-  --nav-btn-fixed: calc(var(--nav-h) - 0.24rem);
-  --page-m: 0.75rem;
-  --radius: 28px;
-  /* space reserved below every card so it never sits under the floating nav */
-  --nav-clearance: calc((var(--nav-h) + 1.75rem) * 0.68);
-  /* readable content cap for tablet/desktop — mobile ignores this and
-     stays full-bleed at 1.75rem side padding */
-  --content-max: 1200px;
+  --bg:      #111214;
+  --surface: #1A1B1F;
+  --ink:     #F2F0EC;
+  --mid:     #9A9A9F;
+  --dim:     #6B6B70;
+  --line:    rgba(255, 255, 255, 0.10);
+  --accent:  #C9B8A3;
+  --serif:   'Cormorant Garamond', Georgia, serif;
+  --sans:    'Inter', system-ui, sans-serif;
+  --max:     1200px;
+  --gutter:  clamp(1rem, 4vw, 3rem);
+  --radius:  14px;
 }
-
-/* Breakpoints used across this file: 768px = tablet, 1024px = desktop.
-   Mobile-first — everything above is the unstyled default. */
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-/* Mobile: mandatory snap gives the cinematic full-screen card feel.
-   Desktop (768px+) overrides to proximity further down since project
-   sections are variable height and mandatory would feel jarring. */
-html { scroll-behavior: smooth; scroll-snap-type: y mandatory; }
-
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
 body {
   background: var(--bg);
-  color: var(--white);
-  font-family: 'Inter', sans-serif;
+  color: var(--ink);
+  font-family: var(--sans);
   font-size: 16px;
-  line-height: 1.6;
-  overflow-x: hidden;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+
+.wrap {
+  max-width: calc(var(--max) + var(--gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
 }
 
-/* ─────────────────────────────────────────────
-   SHARED
-───────────────────────────────────────────── */
-.section-label {
-  font-size: 0.65rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.55);
-  margin-bottom: 0.85rem;
-}
-
-/* ─────────────────────────────────────────────
-   ALL PROJECTS — lives inside .work-fixed, confined to the same 80%
-   width as the title, so it scrolls with the card and never bleeds
-   past its boundary
-───────────────────────────────────────────── */
-
-/* ─────────────────────────────────────────────
-   NAV — fixed bottom, glassmorphism
-───────────────────────────────────────────── */
-.main-nav {
-  position: fixed;
-  left: 1rem;
-  right: 1rem;
-  bottom: calc(1rem + env(safe-area-inset-bottom));
-  z-index: 200;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.12rem;
-  height: var(--nav-h);
-  --nav-btn: calc(var(--nav-h) - 0.24rem);
-  background: rgba(245, 244, 240, 0);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(15, 15, 14, 0.08);
-  transition: height 0.35s ease, transform 0.35s ease, opacity 0.35s ease;
-}
-
-.main-nav.is-open {
-  height: calc(var(--nav-h) * 1.5);
-  --nav-btn: calc((var(--nav-h) * 1.5) - 0.24rem);
-}
-
-.main-nav.is-scrolled:not(.is-open) {
-  transform: scale(0.88);
-  opacity: 0.85;
-}
-
-.nav-home {
-  flex: 0 0 calc(var(--nav-btn) * 1.8);
-  height: calc(var(--nav-btn) * 0.85);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: flex-basis 0.35s ease, height 0.35s ease;
-}
-
-.nav-home-icon {
-  width: 74.25%;
-  height: 74.25%;
-  fill: #ffffff;
-  opacity: 0.5;
-  filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.4));
-  transform: translateX(-20%);
-  transition: opacity 0.2s ease;
-}
-
-.nav-home:hover .nav-home-icon {
-  opacity: 0.9;
-}
-
-.nav-toggle:hover .nav-toggle-icon--menu span,
-.nav-toggle:hover .nav-toggle-icon--close span {
-  background: rgba(255, 255, 255, 0.9);
-}
-
-.nav-toggle {
-  position: relative;
-  flex: 0 0 var(--nav-btn-fixed);
-  height: var(--nav-btn-fixed);
-  margin-right: calc(var(--nav-btn-fixed) * 0.3);
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: flex-basis 0.35s ease, height 0.35s ease;
-}
-
-.nav-toggle-icon {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
-
-.nav-toggle-icon--menu span {
-  display: block;
-  width: 16px;
-  height: 2.5px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.5);
-  transition: background 0.2s ease;
-}
-
-.nav-toggle-icon--close {
-  opacity: 0;
-  transform: scale(0.7);
-}
-
-.nav-toggle-icon--close span:first-child {
-  width: 16px;
-  height: 2.5px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.5);
-  transform: rotate(45deg);
-  position: absolute;
-}
-
-.nav-toggle-icon--close span:last-child {
-  width: 16px;
-  height: 2.5px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.5);
-  transform: rotate(-45deg);
-  position: absolute;
-}
-
-.main-nav.is-open .nav-toggle-icon--menu {
-  opacity: 0;
-  transform: rotate(45deg) scale(0.7);
-}
-
-.main-nav.is-open .nav-toggle-icon--close {
-  opacity: 1;
-  transform: rotate(0deg) scale(1);
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  list-style: none;
-  flex: 1;
-  min-width: 0;
-  white-space: nowrap;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: opacity 0.25s ease, visibility 0s linear 0.25s;
-}
-
-.main-nav.is-open .nav-links {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  transition: opacity 0.25s ease, visibility 0s linear 0s;
-}
-
-.nav-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: calc(var(--nav-btn) * 0.542);
-  line-height: 1;
-  font-size: 0.65rem;
-  letter-spacing: 0.04em;
+.eyebrow {
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--mid);
-  text-decoration: none;
-  padding: 0 0.85rem;
-  border-radius: 999px;
-  transition: background 0.2s ease, color 0.2s ease;
+  margin-bottom: 1.25rem;
 }
 
-.nav-link.active,
-.nav-link:hover {
-  background: rgba(255, 255, 255, 0.43);
+/* ── HEADER ── */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(17, 18, 20, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+.site-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4rem;
+}
+.logo { font-weight: 500; text-decoration: none; }
+.site-nav { display: flex; gap: clamp(1rem, 3vw, 2rem); }
+.site-nav a {
+  font-size: 0.9rem;
+  color: var(--mid);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.site-nav a:hover { color: var(--ink); }
+
+/* ── INTRO ── */
+.intro { padding-block: clamp(5rem, 14vw, 10rem) clamp(4rem, 10vw, 7rem); }
+.intro-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2.25rem, 5.5vw, 4.5rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  max-width: 18ch;
+}
+.intro-title em { color: var(--accent); }
+.intro-sub {
+  margin-top: 2rem;
+  max-width: 44ch;
+  color: var(--mid);
+  font-size: 1.05rem;
+}
+
+/* ── CASE STUDY ── */
+.case {
+  padding-block: clamp(4rem, 10vw, 8rem);
+  border-top: 1px solid var(--line);
+}
+.case--featured { background: var(--surface); border-top: 0; }
+
+.case-head { max-width: 760px; margin-bottom: clamp(2rem, 5vw, 3.5rem); }
+.case-index {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 1rem;
+}
+.badge {
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #111;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+.case-title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(2.5rem, 6vw, 4.75rem);
+  line-height: 1;
+  letter-spacing: -0.015em;
+}
+.case--featured .case-title { font-size: clamp(3rem, 8vw, 6.5rem); }
+.case-lede {
+  margin-top: 1rem;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.25rem, 2.4vw, 1.75rem);
+  line-height: 1.3;
+  color: var(--mid);
+}
+.case-links { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.7rem 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.btn:hover { border-color: var(--ink); }
+.btn--solid { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.btn--solid:hover { background: var(--accent); border-color: var(--accent); }
+
+.case-cover img,
+.case-gallery img {
+  width: 100%;
+  border-radius: var(--radius);
+  background: #000;
+}
+
+.case-meta {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-block: clamp(2rem, 5vw, 3rem);
+  padding-block: 1.5rem;
+  border-block: 1px solid var(--line);
+}
+.case-meta dt {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 0.35rem;
+}
+.case-meta dd { font-size: 0.95rem; }
+
+.case-story {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  margin-bottom: clamp(2.5rem, 6vw, 4rem);
+}
+.case-story h3 {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+.case-story p { color: #C8C7C4; font-size: 0.98rem; }
+
+.stats { list-style: none; display: grid; gap: 0.9rem; }
+.stats li { color: #C8C7C4; font-size: 0.95rem; line-height: 1.4; }
+.stats strong {
+  display: block;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 2rem;
+  line-height: 1;
   color: var(--ink);
 }
 
-/* ─────────────────────────────────────────────
-   HOME — intro slides (each is a top-level snap card)
-───────────────────────────────────────────── */
-.home-slide {
-  height: calc(100vh - var(--nav-clearance));
-  height: calc(100dvh - var(--nav-clearance));
-  margin: 0 0 var(--nav-clearance);
-  background: var(--bg);
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 0 1.75rem 2.25rem;
-  overflow: hidden;
-}
-
-.home-content {
-  position: relative;
-  z-index: 1;
-  color: var(--white);
-}
-
-/* ─── intro typing overlay ─── */
-.home-intro {
-  position: fixed;
-  inset: 0;
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  padding: 0 3rem;
-  text-align: left;
-  background: rgba(0, 0, 0, 0.72);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  opacity: 1;
-  transition: opacity 0.9s ease;
-  pointer-events: none;
-}
-
-.home-intro.is-done {
-  opacity: 0;
-}
-
-.home-intro-text {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-weight: 300;
-  font-size: clamp(1.25rem, 5vw, 2.6rem);
-  line-height: 1.35;
-  color: var(--white);
-  max-width: 22ch;
-}
-
-.home-intro-cursor {
-  display: inline-block;
-  font-size: clamp(1.25rem, 5vw, 2.6rem);
-  color: var(--warm);
-  animation: blink 0.75s step-end infinite;
-  margin-left: 2px;
-  vertical-align: baseline;
-  line-height: 1;
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0; }
-}
-
-.home-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 600;
-  font-size: clamp(2.2rem, 9vw, 3.4rem);
-  line-height: 1.05;
-  margin-bottom: 0.75rem;
-}
-
-.home-subtitle {
-  font-style: italic;
-  font-size: 0.95rem;
-  font-weight: 300;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.6);
-}
-
-/* ─────────────────────────────────────────────
-   HOME MARQUEE — endless two-column drifting grid
-   of project thumbnails behind the intro heading
-───────────────────────────────────────────── */
-.home-marquee {
-  position: absolute;
-  inset: 0 1.75rem;
-  z-index: 0;
-  overflow: hidden;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 32%, black 68%, transparent 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, black 32%, black 68%, transparent 100%);
-}
-
-.home-marquee-col {
-  position: absolute;
-  top: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  will-change: transform;
-}
-
-.home-marquee-card {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  flex-shrink: 0;
-}
-
-.home-marquee-thumb {
-  border-radius: 12px;
-  border: 0.5px solid rgba(0, 0, 0, 0.1);
-  flex-shrink: 0;
-  overflow: hidden;
-}
-
-.home-marquee-card-title {
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--white);
-  line-height: 1.3;
-}
-
-.home-marquee-card-desc {
-  font-size: 0.58rem;
-  color: rgba(255, 255, 255, 0.55);
-  line-height: 1.4;
-}
-
-/* ─────────────────────────────────────────────
-   WORK — vertical between projects, horizontal within
-───────────────────────────────────────────── */
-.work-project {
-  height: calc(100vh - var(--page-m));
-  height: calc(100dvh - var(--page-m));
-  margin: var(--page-m) 0 0;
-  /* no radius here — each panel defines its own corner shape; an outer
-     radius + overflow:hidden would clip the edge panel back to round */
-  border-radius: 0;
-  overflow: hidden;
-  /* shows through the track gap, so each panel reads as a separate card */
-  background: var(--bg);
-  position: relative;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-}
-
-/* confined to the current panel's own width (matches work-project-track
-   items) so it never bleeds into the peek area of the next panel */
-.work-fixed {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.work-header {
-  position: absolute;
-  top: 0; left: 0; right: 0;
-}
-
-/* the three header titles ("Selected work", name+category, name+section)
-   sit stacked on the same spot and cross-fade based on which of the 3
-   horizontal panels is active */
-.work-header-title {
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  padding: 2rem 1.25rem 1rem;
-  display: flex;
-  align-items: baseline;
-  gap: 0.5rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.25s ease;
-}
-
-.work-header-title.is-active {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.work-header .section-label {
-  font-size: 0.75rem;
-  margin-bottom: 0;
-  color: rgba(255, 255, 255, 0.7);
-  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
-}
-
-.work-project-down {
-  position: absolute;
-  left: 50%;
-  bottom: calc(var(--nav-h) + 1.5rem + env(safe-area-inset-bottom));
-  transform: translateX(-50%);
-  width: 20px;
-  height: 12px;
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  pointer-events: auto;
-  z-index: 2;
-  animation: work-down-bounce 1.8s ease-in-out infinite;
-}
-
-.work-project-down span {
-  position: absolute;
-  bottom: 0;
-  width: 10px;
-  height: 4px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.35);
-}
-
-.work-project-down span:first-child {
-  left: 0;
-  transform-origin: right center;
-  transform: rotate(45deg);
-}
-
-.work-project-down span:last-child {
-  right: 0;
-  transform-origin: left center;
-  transform: rotate(-45deg);
-}
-
-@keyframes work-down-bounce {
-  0%, 100% { transform: translateX(-50%) translateY(0); }
-  50%       { transform: translateX(-50%) translateY(4px); }
-}
-
-/* dots cluster — bottom-right, above nav pill */
-.work-nav-controls {
-  position: absolute;
-  right: 0.85rem;
-  bottom: calc(var(--nav-h) + 1.5rem + env(safe-area-inset-bottom));
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-.work-dots {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-}
-
-.work-project-track {
-  height: 100%;
-  display: flex;
-  overflow-x: scroll;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-}
-
-.work-project-track::-webkit-scrollbar { display: none; }
-
-.work-project-main,
-.work-project-details,
-.work-project-extra {
-  flex: 0 0 100%;
-  scroll-snap-align: start;
-  height: 100%;
-  overflow: hidden;
-  border-radius: 0;
-}
-
-/* One quiet, neutral tone shared by every project — the real project
-   photography carries the colour, not the surrounding card chrome. */
-.project-bg,
-.work-project-main,
-.work-project-details,
-.work-project-extra {
-  background: var(--ink);
-}
-
-.work-project-extra {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 1.25rem;
-  padding: 6rem 1.75rem 1.5rem;
-}
-
-.project-footer {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.85rem;
-  margin-top: 0.75rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.project-footer-copy {
-  font-size: 0.68rem;
-  color: rgba(255, 255, 255, 0.5);
-  line-height: 1.4;
-}
-
-.project-footer-links {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.75rem 1.5rem;
-}
-
-.project-footer .about-cta {
-  margin-top: 0;
-  flex-shrink: 0;
-  white-space: nowrap;
-  color: rgba(255, 255, 255, 0.4);
-  border-bottom-color: rgba(255, 255, 255, 0.4);
-}
-
-.project-problem-solution {
-  width: 100%;
-  background: var(--card);
-  border-radius: var(--radius);
-  padding: 1.75rem 1.5rem;
-}
-
-.project-problem-solution h4 {
-  font-size: 0.62rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.92);
-  margin-top: 0;
-  margin-bottom: 1.1rem;
-  padding-bottom: 1.1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.project-problem-solution .challenge-heading {
-  text-align: left;
-  margin-top: 0;
-}
-
-.project-problem-solution .approach-heading {
-  text-align: left;
-  margin-top: 1.5rem;
-}
-
-.project-problem-solution p {
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.65);
-  line-height: 1.7;
-  font-weight: 300;
-}
-
-.project-impact-list,
-.project-challenge-list {
-  list-style: none;
-}
-
-.project-impact-list li,
-.project-challenge-list li {
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.65);
-  line-height: 1.7;
-  font-weight: 300;
-  text-align: left;
-}
-
-.project-impact-list li + li,
-.project-challenge-list li + li {
-  margin-top: 0.6rem;
-}
-
-.project-impact-list li {
-  display: flex;
-  align-items: baseline;
-  gap: 0.6rem;
-}
-
-.stat-number {
-  font-size: 1rem;
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.65);
-}
-
-.stat-label {
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.65);
-  font-weight: 300;
-}
-
-.work-project-main {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  padding: 3.5rem 2.25rem 5.5rem;
-  gap: 2rem;
-}
-
-.work-project-details {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding: 4.5rem 1.75rem 1.5rem;
-}
-
-.project-gallery {
+.case-gallery { display: grid; gap: clamp(0.75rem, 2vw, 1.25rem); }
+/* Two images side by side at equal height: columns sized by each image's aspect ratio */
+.case-gallery .row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
-  margin-bottom: 1.25rem;
+  grid-template-columns: var(--cols);
+  gap: inherit;
+  align-items: start;
 }
 
-.project-gallery-img {
-  height: 190px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.15);
-  background-size: cover;
-  background-position: center;
-}
-
-.project-gallery-half {
-  height: 280px;
-}
-
-.p-arcavault .project-gallery-img:nth-child(1) {
-  background-image: url('images/projects/arcavault/gallery-1.webp');
-}
-
-.p-arcavault .project-gallery-img:nth-child(2) {
-  background-image: url('images/projects/arcavault/gallery-2.webp');
-}
-
-.p-arcavault .project-gallery-img:nth-child(3) {
-  background-image: url('images/projects/arcavault/gallery-3.webp');
-}
-
-.p-inxfitness .project-gallery-img:nth-child(1) {
-  background-image: url('images/projects/inxfitness/gallery-1.webp');
-}
-
-.p-inxfitness .project-gallery-img:nth-child(2) {
-  background-image: url('images/projects/inxfitness/gallery-2.webp');
-}
-
-.p-inxfitness .project-gallery-img:nth-child(3) {
-  background-image: url('images/projects/inxfitness/gallery-3.webp');
-}
-
-.p-inxfitness .project-image-placeholder {
-  background-image: url('images/projects/inxfitness/hero-mobile.webp');
-  color: transparent;
-}
-
-.p-dronzza .project-gallery-img:nth-child(1) {
-  background-image: url('images/projects/dronzza/hero-mobilex.webp');
-}
-
-.p-dronzza .project-gallery-img:nth-child(2) {
-  background-image: url('images/projects/dronzza/gallery-2.webp');
-}
-
-.p-dronzza .project-gallery-img:nth-child(3) {
-  background-image: url('images/projects/dronzza/gallery-3.webp');
-}
-
-.p-dronzza .project-image-placeholder {
-  background-image: url('images/projects/dronzza/hero-mobile.webp');
-  color: transparent;
-}
-
-.p-skyfly .project-gallery .project-gallery-img.project-gallery-single {
-  background-image: url('images/projects/sky-fly/sky-fly-mobile-second-slide.webp');
-}
-
-.p-skyfly .project-gallery-img:nth-child(1) {
-  background-image: url('images/projects/sky-fly/gallery-1.webp');
-}
-
-.p-skyfly .project-gallery-img:nth-child(2) {
-  background-image: url('images/projects/sky-fly/gallery-2.webp');
-}
-
-.p-skyfly .project-gallery-img:nth-child(3) {
-  background-image: url('images/projects/sky-fly/gallery-3.webp');
-}
-
-.p-skyfly .project-image-placeholder {
-  background-image: url('images/projects/sky-fly/hero-mobile.webp');
-  color: transparent;
-}
-
-.p-lumen .project-gallery-img:nth-child(1) {
-  background-image: url('images/projects/lumen/gallery-1.webp');
-}
-
-.p-lumen .project-gallery-img:nth-child(2) {
-  background-image: url('images/projects/lumen/gallery-2.webp');
-}
-
-.p-lumen .project-gallery-img:nth-child(3) {
-  background-image: url('images/projects/lumen/gallery-3.webp');
-}
-
-.p-lumen .project-image-placeholder {
-  background-image: url('images/projects/lumen/hero-mobile.webp');
-  color: transparent;
-}
-
-.p-cublok .project-gallery-img:nth-child(1) {
-  background-image: url('images/projects/cublok/gallery-1.webp');
-}
-
-.p-cublok .project-image-placeholder {
-  background-image: url('images/projects/cublok/hero-mobile.webp');
-  color: transparent;
-}
-
-.p-raigonch .project-gallery-img:nth-child(1) {
-  background-image: url('images/projects/raigon-ch/gallery-1.webp');
-}
-
-.p-raigonch .project-image-placeholder {
-  background-image: url('images/projects/raigon-ch/hero-mobile.webp');
-  color: transparent;
-}
-
-.p-raigonos .project-gallery-img:nth-child(1) {
-  background-image: url('images/projects/raigonos/gallery-1.webp');
-}
-
-.p-raigonos .project-image-placeholder {
-  background-image: url('images/projects/raigonos/hero-mobile.webp');
-  color: transparent;
-}
-
-.p-languageschool .project-gallery-img:nth-child(1) {
-  background-image: url('images/projects/language-school/gallery-1.webp');
-}
-
-.p-languageschool .project-image-placeholder {
-  background-image: url('images/projects/language-school/hero-mobile.webp');
-  color: transparent;
-}
-
-.project-gallery-full {
-  grid-column: 1 / -1;
-  order: -1;
-}
-
-/* Ticket 2 — single image card in second panel (mobile) */
-.project-gallery-single {
-  grid-column: 1 / -1;
-  height: auto;
-  aspect-ratio: 4 / 5;
-}
-
-
-.work-dots .dot {
-  height: 5px;
-  width: 5px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.4);
-  transition: width 0.3s ease, background 0.3s ease;
-}
-
-.work-dots .dot.active {
-  background: rgba(255, 255, 255, 0.25);
-  width: 16px;
-  border-radius: 3px;
-}
-
-.project-bg {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-}
-
-/* TEMP: stand-in for the real project shot, inset within the main panel */
-.project-image-placeholder {
-  position: relative;
-  z-index: 1;
-  top: 0; right: 0;
-  width: 72%;
-  margin: 0 auto;
-  aspect-ratio: 4 / 5;
-  height: auto;
-  flex-shrink: 0;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.15);
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.7rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.p-arcavault .project-image-placeholder {
-  background-image: url('images/projects/arcavault/hero-mobile.webp');
-  color: transparent;
-}
-
-/* ─────────────────────────────────────────────
-   MOBILE-ONLY overrides (tickets 1, 3)
-   max-width: 767px — does NOT affect desktop
-───────────────────────────────────────────── */
-@media (max-width: 767px) {
-  /* Ticket 1 — scroll performance on iOS
-     Reduce blur and transition cost during scroll */
-  .main-nav {
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    transition: height 0.18s ease, transform 0.18s ease, opacity 0.18s ease;
-  }
-
-  .work-project-track {
-    will-change: transform;
-    transform: translateZ(0);
-  }
-
-  .work-project {
-    transform: translateZ(0);
-  }
-
-  /* Ticket 3 — reduce gap between R logo and nav items */
-  .nav-home {
-    flex: 0 0 calc(var(--nav-btn) * 1.2);
-  }
-
-  .nav-toggle {
-    margin-right: 0;
-  }
-
-  /* Ticket 5 & 6 — pill breathing room, closed state only */
-  .main-nav:not(.is-open) {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-  }
-
-  /* Ticket 5 — bigger logo with corrected offset for smaller container */
-  .nav-home-icon {
-    width: 86%;
-    height: 86%;
-    transform: translateX(-10%);
-  }
-
-  /* Ticket 5 — uniform gap between all nav items in open state */
-  .main-nav.is-open {
-    gap: 0.35rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .p-arcavault .project-image-placeholder {
-    background-image: url('images/projects/arcavault/hero-desktop.webp');
-  }
-
-  .p-arcavault .project-gallery-img:nth-child(1) {
-    background-image: url('images/projects/arcavault/gallery-desktop-1.webp');
-  }
-
-  .p-arcavault .project-gallery-img:nth-child(2) {
-    background-image: url('images/projects/arcavault/gallery-desktop-2.webp');
-  }
-
-  .p-arcavault .project-gallery-img:nth-child(3) {
-    background-image: url('images/projects/arcavault/gallery-desktop-3.webp');
-  }
-
-  .p-dronzza .project-gallery-img:nth-child(1) {
-    background-image: url('images/projects/dronzza/gallery-desktop-1.webp');
-  }
-
-  .p-dronzza .project-gallery-img:nth-child(2) {
-    background-image: url('images/projects/dronzza/gallery-desktop-2.webp');
-  }
-
-  .p-dronzza .project-gallery-img:nth-child(3) {
-    background-image: url('images/projects/dronzza/gallery-desktop-3.webp');
-  }
-
-  .p-skyfly .project-image-placeholder {
-    background-image: url('images/projects/sky-fly/hero-desktop.webp');
-  }
-
-  .p-skyfly .project-gallery-img:nth-child(1) {
-    background-image: url('images/projects/sky-fly/gallery-desktop-1.webp');
-  }
-
-  .p-skyfly .project-gallery-img:nth-child(2) {
-    background-image: url('images/projects/sky-fly/gallery-desktop-2.webp');
-  }
-
-  .p-skyfly .project-gallery-img:nth-child(3) {
-    background-image: url('images/projects/sky-fly/gallery-desktop-3.webp');
-  }
-}
-
-.project-impact {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-weight: 300;
-  font-size: clamp(1.05rem, 4.2vw, 1.3rem);
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.55);
-  max-width: 26ch;
-  margin: 0 auto;
-}
-
-/* default: project name/category sit at the bottom of the main panel,
-   same spot they have always been in */
-.project-info {
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  padding: 1.5rem 1.75rem;
-  /* TEMP: white text while .work-project-main has a flat test colour */
-  color: #fff;
-}
-
-.project-category {
-  font-size: 0.75rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.7);
-  margin-bottom: 0.6rem;
-}
-
-.project-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 300;
-  font-size: clamp(1.8rem, 8vw, 2.6rem);
-  line-height: 1.05;
-  color: #fff;
-}
-
-/* header copy: name + a panel-specific subtitle, side by side, only
-   shown on the work-header-title that is currently active */
-.work-header .project-category {
-  font-size: 0.6rem;
-  font-weight: 300;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  margin-bottom: 0;
-  color: rgba(255, 255, 255, 0.45);
-}
-
-.work-header .project-name {
-  font-family: 'Inter', sans-serif;
-  font-weight: 500;
-  font-size: 0.68rem;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  line-height: normal;
-  color: rgba(255, 255, 255, 0.88);
-}
-
-.project-desc {
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.75);
-  line-height: 1.75;
-  font-weight: 300;
-  margin-bottom: 1.25rem;
-}
-
-/* desktop-only duplicate that lives inside the hero panel (see the
-   1024px block below) — hidden on mobile, where the original copy in
-   the details panel is the one that shows */
-.project-desc-hero {
-  display: none;
-}
-
-/* ─────────────────────────────────────────────
-   SEE MORE — now lives inside Contact, filling the space that used
-   to sit empty below the contact links, instead of its own card
-───────────────────────────────────────────── */
-.work-page {
-  height: calc(100vh - var(--nav-clearance));
-  height: calc(100dvh - var(--nav-clearance));
-  margin: 0 0 var(--nav-clearance);
-  background: var(--ink);
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
-.work-page-inner {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  padding: 1.5rem 1.75rem 1rem;
-  gap: 0.5rem;
-  overflow: hidden;
-}
-
-.work-more-heading {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 300;
-  font-size: clamp(1.3rem, 5.5vw, 2rem);
-  line-height: 1.15;
-  color: var(--white);
-}
-
-.work-more-intro {
-  font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.6);
-  line-height: 1.5;
-}
-
-.work-gallery-grid {
-  margin-top: 0.75rem;
-  flex: 1;
-  min-height: 0;
+/* ── ABOUT ── */
+.about { padding-block: clamp(5rem, 12vw, 9rem); }
+.about-grid {
   display: grid;
-  grid-template-rows: 1fr 1fr;
-  grid-auto-flow: column;
-  grid-auto-columns: 40vw;
-  gap: 1rem;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-  scroll-padding-left: 1.75rem;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  margin-left: -1.75rem;
-  margin-right: -1.75rem;
-  padding-left: 1.75rem;
+  grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: start;
 }
-
-.work-gallery-grid::-webkit-scrollbar {
-  display: none;
-}
-
-.work-gallery-grid[hidden] {
-  display: none;
-}
-
-.work-gallery-item {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  text-decoration: none;
-  color: var(--white);
-  scroll-snap-align: start;
-}
-
-.work-gallery-item--locked {
-  cursor: default;
-  opacity: 0.7;
-}
-
-.work-gallery-item--locked .work-gallery-thumb {
-  position: relative;
-}
-
-.work-gallery-lock {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  backdrop-filter: blur(6px);
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.work-gallery-lock-icon {
-  font-size: 1.4rem;
-  color: rgba(255, 255, 255, 0.3);
-  line-height: 1;
-}
-
-.work-gallery-lock-label {
-  font-size: 0.55rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  padding: 0.3rem 0.65rem;
-  border-radius: 999px;
-}
-
-.work-gallery-links {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.work-gallery-repo {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-size: 0.58rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
-  text-decoration: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  padding-bottom: 0.1rem;
-  transition: color 0.2s ease, border-color 0.2s ease;
-  pointer-events: auto;
-}
-
-.work-gallery-repo:hover {
-  color: rgba(255, 255, 255, 0.85);
-  border-bottom-color: rgba(255, 255, 255, 0.5);
-}
-
-.work-gallery-thumb-link {
-  display: block;
-  width: 100%;
-}
-
-.work-gallery-thumb {
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  border-radius: 12px;
-  overflow: hidden;
-  background: rgba(0, 0, 0, 0.2);
-  background-size: cover;
-  background-position: center;
-  flex-shrink: 0;
-}
-
-a[href="#project-arcavault"] .work-gallery-thumb {
-  background-image: url('images/home/arcavault-1.webp');
-}
-
-a[href="#project-inxfitness"] .work-gallery-thumb {
-  background-image: url('images/home/inxfitness-1.webp');
-}
-
-a[href="#project-dronzza"] .work-gallery-thumb {
-  background-image: url('images/home/dronzza-1.webp');
-}
-
-.work-gallery-thumb--skyfly {
-  background-image: url('images/home/sky-fly-1.webp');
-}
-
-.work-gallery-thumb--raigonmmxi {
-  background-image: url('images/home/raigon-mmxi-1.webp');
-}
-
-.work-gallery-thumb--kerart {
-  background-image: url('images/home/kerart-gallery-1.webp');
-}
-
-.work-gallery-thumb--language {
-  background-image: url('images/home/language-learning-1.webp');
-}
-
-.work-gallery-thumb--cublok {
-  background-image: url('images/home/cublok-1.webp');
-}
-
-.work-gallery-thumb--raigonch {
-  background-image: url('images/home/raigonch-1.webp');
-}
-
-.work-gallery-thumb--raigonos {
-  background-image: url('images/home/raigonos-1.webp');
-}
-
-.work-gallery-thumb--languageschool {
-  background-image: url('images/home/languageschool-1.webp');
-}
-
-.work-gallery-name {
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--white);
-  line-height: 1.3;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.work-gallery-desc {
-  font-size: 0.58rem;
-  color: rgba(255, 255, 255, 0.55);
-  line-height: 1.4;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* ─────────────────────────────────────────────
-   ABOUT
-───────────────────────────────────────────── */
-#about {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 1.5rem;
-  height: calc(100vh - var(--nav-clearance));
-  height: calc(100dvh - var(--nav-clearance));
-  margin: 0 0 var(--nav-clearance);
-  border-radius: 0;
-  background: linear-gradient(180deg, #32353A 0%, #000000 100%);
-  padding: 2.25rem 0 2.5rem;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-  overflow: hidden;
-}
-
-.about-header {
-  padding: 0 1.75rem;
-}
-
-.about-headline {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-weight: 300;
-  font-size: 1.9rem;
-  line-height: 1.3;
-  color: rgba(255, 255, 255, 0.4);
-  text-align: left;
-  max-width: 28ch;
-  padding: 0 1.75rem 0 2.5rem;
-}
-
-.about-headline-bright {
-  color: rgba(255, 255, 255, 0.9);
-}
-
-/* ─── profile photo — small, fixed-size card so the bio text below
-   has the room to breathe instead of fighting a full-height slide ─── */
-.about-photo {
-  display: flex;
-  justify-content: center;
-  padding: 0 1.75rem;
-}
-
-.about-photo-img {
-  width: 166px;
-  height: 166px;
-  border-radius: 50%;
-  overflow: hidden;
-  background-image: url('images/profile.webp');
-  background-size: cover;
-  background-position: center;
-}
-
-/* ─── skills, dark icon/chip grid — own full-bleed card ─── */
-.skills-panel {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: calc(100vh - var(--nav-clearance));
-  height: calc(100dvh - var(--nav-clearance));
-  margin: 0 0 var(--nav-clearance);
-  padding: 2.5rem 1.75rem 2rem;
-  border-radius: 0;
-  background:
-    radial-gradient(ellipse 90% 70% at 10% 10%, #05261A 0%, transparent 65%),
-    radial-gradient(ellipse 80% 90% at 90% 90%, #111736 0%, transparent 65%),
-    radial-gradient(ellipse 60% 50% at 55% 45%, #08232D 0%, transparent 70%),
-    #080d0a;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-  overflow: hidden;
-}
-
-/* collapsed mode keeps the same fixed full-bleed height as every other
-   card (scrolling inside a scroll-snap card is unreliable — it tends to
-   leak into the next section instead of scrolling locally) — so instead
-   everything shrinks just enough to fit the same screen with no scroll */
-
-/* flowing mode uses space-between to spread the header and the river
-   groups across the full card height; collapsed mode has no animated
-   rows to fill that space, so it stacks from the top instead, with no
-   artificial gap left dangling between the header and the first group */
-.skills-panel.is-collapsed {
-  justify-content: flex-start;
-}
-
-.skills-panel.is-collapsed .skills-header {
-  margin-bottom: 1rem;
-}
-
-.skills-panel.is-collapsed .skills-toggle {
-  width: 1.6rem;
-  height: 1.6rem;
-}
-
-.skills-header {
-  margin-bottom: 1.5rem;
-}
-
-.skills-header-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.skills-eyebrow {
-  color: rgba(255, 255, 255, 0.5);
-  margin-bottom: 0;
-}
-
-.skills-toggle {
-  position: relative;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.9rem;
-  height: 1.9rem;
-  border: none;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.08);
-  cursor: pointer;
-}
-
-.skills-toggle-icon {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 3px;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
-
-.skills-toggle-icon--pause span {
-  width: 3px;
-  height: 10px;
-  border-radius: 1px;
-  background: rgba(255, 255, 255, 0.7);
-}
-
-.skills-toggle-icon--play {
-  width: 0;
-  height: 0;
-  margin-left: 2px;
-  border-style: solid;
-  border-width: 6px 0 6px 9px;
-  border-color: transparent transparent transparent rgba(255, 255, 255, 0.7);
-  opacity: 0;
-  transform: scale(0.7);
-}
-
-.skills-toggle[aria-pressed="true"] .skills-toggle-icon--pause {
-  opacity: 0;
-  transform: scale(0.7);
-}
-
-.skills-toggle[aria-pressed="true"] .skills-toggle-icon--play {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.skills-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 300;
-  font-size: clamp(2.4rem, 11vw, 3.6rem);
-  line-height: 1.02;
-  color: var(--white);
-  margin-top: 0.5rem;
-}
-
-.skills-groups {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  flex: 1;
-}
-
-.skills-panel.is-collapsed .skills-groups {
-  justify-content: flex-start;
-  gap: 0.85rem;
-  flex: none;
-}
-
-.skills-panel.is-collapsed .skills-group-title {
-  margin-bottom: 0.4rem;
-}
-
-.skills-group { margin-bottom: 0; }
-
-.skills-group-title {
-  font-size: 0.6rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.4);
-  margin-bottom: 0.7rem;
-}
-
-.skills-group-note {
-  text-transform: none;
-  letter-spacing: 0;
-  color: rgba(255, 255, 255, 0.3);
-  font-style: italic;
-}
-
-/* slow, meditative right-to-left flow — content is duplicated once in
-   the HTML, translating exactly -50% is a perfectly seamless loop. Each
-   group has two rows so the block fills its space instead of leaving
-   the bottom half empty; the second row runs in reverse for variety. */
-.skills-river {
-  overflow: hidden;
-  margin-top: 0.6rem;
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
-  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
-}
-
-.skills-river:first-of-type { margin-top: 0; }
-
-.skills-panel.is-collapsed .skills-river {
-  overflow: visible;
-  -webkit-mask-image: none;
-  mask-image: none;
-}
-
-.skills-river-track {
-  display: flex;
-  width: max-content;
-  gap: 0.85rem;
-  animation: skills-river-scroll 38s linear infinite;
-}
-
-.skills-river--reverse .skills-river-track {
-  animation-direction: reverse;
-}
-
-/* collapsed: stop the scroll, wrap into a static stacked grid, and hide
-   the duplicate chip set (it only exists to make the loop seamless) */
-.skills-panel.is-collapsed .skills-river-track {
-  animation: none;
-  transform: none;
-  flex-wrap: wrap;
-  width: auto;
-  gap: 0.5rem;
-}
-
-.skills-panel.is-collapsed .skill-chip[aria-hidden="true"] {
-  display: none;
-}
-
-/* the reverse row repeats the exact same words as the first row (it
-   only exists for the flowing/reverse visual effect) — collapsed mode
-   shows each word once, so it is hidden entirely rather than wrapped */
-.skills-panel.is-collapsed .skills-river--reverse {
-  display: none;
-}
-
-@keyframes skills-river-scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-.skill-chip {
-  flex-shrink: 0;
-  font-size: 0.62rem;
-  font-weight: 500;
-  color: #fff;
-  padding: 0.4rem 0.75rem;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background: rgba(255, 255, 255, 0.06);
-}
-
-/* ─── condensed bio + links ─── */
-.about-bio {
-  padding: 0 1.75rem 0 2.5rem;
-}
-
-.about-bio .about-cta {
-  opacity: 0.5;
-}
-
+.about-photo { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); }
 .about-text {
-  max-width: 41ch;
-  margin: 0 0 1.25rem;
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.6);
-  line-height: 1.75;
-  font-weight: 300;
+  font-family: var(--serif);
+  font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+  line-height: 1.35;
+  max-width: 32ch;
 }
+.about-text + .about-text { margin-top: 1.25rem; color: var(--mid); }
+.about-skills { margin-top: 2.5rem; font-size: 0.9rem; color: var(--mid); }
 
-.about-text strong {
-  color: var(--white);
-  font-weight: 600;
-}
-
-.about-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.7rem;
-  margin-top: 0.5rem;
-  font-size: 0.72rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--white);
-  text-decoration: none;
-  border-bottom: 1px solid var(--white);
-  padding-bottom: 0.25rem;
-  transition: gap 0.2s ease;
-}
-
-.about-cta:hover { gap: 1.1rem; }
-
-.about-linkedin { margin-left: 1.5rem; }
-
-/* ─────────────────────────────────────────────
-   CONTACT
-───────────────────────────────────────────── */
-#contact {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  height: calc(100vh - var(--nav-clearance));
-  height: calc(100dvh - var(--nav-clearance));
-  margin: 0 0 var(--nav-clearance);
-  border-radius: 0;
-  background:
-    radial-gradient(ellipse 90% 70% at 10% 10%, #05261A 0%, transparent 65%),
-    radial-gradient(ellipse 80% 90% at 90% 90%, #111736 0%, transparent 65%),
-    radial-gradient(ellipse 60% 50% at 55% 45%, #08232D 0%, transparent 70%),
-    #080d0a;
-  color: var(--white);
-  padding: 3.5rem 1.75rem;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-  overflow: hidden;
-}
-
-.contact-inner {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  max-width: 100%;
-}
-
+/* ── CONTACT ── */
+.contact { padding-block: clamp(5rem, 12vw, 9rem) 0; }
 .contact-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 300;
-  font-size: clamp(2.4rem, 11vw, 3.6rem);
-  line-height: 1.02;
-  margin-bottom: 2.5rem;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2.75rem, 7vw, 5.5rem);
+  line-height: 1;
+  margin-bottom: clamp(2.5rem, 6vw, 4rem);
 }
-
-.contact-title em { font-style: italic; color: var(--warm); }
-
-.contact-links { display: flex; flex-direction: column; }
-
-.contact-link {
+.contact-title em { color: var(--accent); }
+.contact-list { list-style: none; max-width: 720px; }
+.contact-list li {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 1.1rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-  text-decoration: none;
-  color: var(--white);
-  transition: padding-left 0.22s ease;
+  gap: 1rem;
+  padding-block: 1.1rem;
+  border-bottom: 1px solid var(--line);
 }
+.contact-list span { color: var(--dim); }
+.contact-list a { text-decoration: none; text-align: right; }
+.contact-list a:hover { color: var(--accent); }
 
-.contact-link:first-child { border-top: 1px solid rgba(255, 255, 255, 0.15); }
-.contact-link:hover { padding-left: 0.5rem; }
-
-.contact-link-label {
-  font-size: 0.62rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
-  width: 70px;
-  flex-shrink: 0;
-}
-
-.contact-link-value {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.15rem;
-  font-weight: 300;
-  flex: 1;
-}
-
-.contact-arrow {
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.5);
-}
-
-#contact .about-cta { color: var(--white); border-bottom-color: var(--white); }
-
-/* ─────────────────────────────────────────────
-   FOOTER
-───────────────────────────────────────────── */
-.contact-footer {
-  margin-top: 2rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
+.site-footer {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.6rem;
-  text-align: center;
+  justify-content: space-between;
+  padding-block: 2rem 3rem;
+  font-size: 0.85rem;
+  color: var(--dim);
 }
 
-.footer-links {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 1.5rem;
-  margin-top: 2rem;
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .case-meta { grid-template-columns: repeat(2, 1fr); }
+  .case-story { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .site-nav a:nth-child(2) { display: none; }
+  .case-gallery .row { grid-template-columns: 1fr; }
+  .case-gallery .tall { width: 60%; margin-inline: auto; }
+  .about-grid { grid-template-columns: 1fr; }
+  .about-photo { max-width: 280px; }
+  .site-footer { flex-direction: column; gap: 0.25rem; }
 }
 
-.footer-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.9rem;
-  letter-spacing: 0.1em;
-}
-
-.footer-copy {
-  font-size: 0.68rem;
-  color: rgba(255, 255, 255, 0.5);
-}
-
-/* ─────────────────────────────────────────────
-   TABLET / DESKTOP
-   Mobile is gesture-native (bottom thumb-nav, swipe panels); none of
-   that translates to mouse + keyboard, so this isn't a stretch of the
-   mobile layout — it's a reflow. First pass: reposition the nav for
-   cursor use and cap content width so text/images stop running edge
-   to edge on wide viewports. The per-project horizontal swipe panels
-   still need a separate vertical-layout pass (tracked separately).
-───────────────────────────────────────────── */
-@media (min-width: 768px) {
-  html { scroll-snap-type: y proximity; }
-
-  .main-nav {
-    left: 50%;
-    right: auto;
-    width: fit-content;
-    transform: translateX(-50%);
-    gap: 0.25rem;
-    padding: 0.25rem 0.5rem;
-  }
-
-  .main-nav.is-scrolled:not(.is-open) {
-    transform: translateX(-50%) scale(0.88);
-  }
-
-  /* always show links on desktop — no toggle needed */
-  .nav-links {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transition: none;
-    flex: none;
-    gap: 0.15rem;
-  }
-
-  .nav-toggle {
-    display: none;
-  }
-
-  /* tighten the R icon area so it sits closer to the links */
-  .nav-home {
-    flex: 0 0 calc(var(--nav-btn) * 1.1);
-  }
-
-  /* desktop: no pill on active — just brighter text */
-  .nav-link.active {
-    background: none;
-    color: rgba(255, 255, 255, 0.85);
-  }
-
-  .nav-link:hover {
-    background: rgba(255, 255, 255, 0.12);
-    color: rgba(255, 255, 255, 0.85);
-  }
-
-  .work-project-details,
-  .work-project-extra,
-  .about-header,
-  .about-photo,
-  .skills-panel,
-  .work-page-inner,
-  #contact {
-    padding-left: max(1.75rem, calc((100% - var(--content-max)) / 2));
-    padding-right: max(1.75rem, calc((100% - var(--content-max)) / 2));
-  }
-
-  /* the list grows with the number of projects instead of clipping the
-     last row at one screen's height; bottom padding clears the nav pill */
-  .work-page {
-    height: auto;
-    min-height: calc(100dvh - var(--nav-clearance));
-    overflow: visible;
-    scroll-snap-stop: normal;
-  }
-
-  .work-page-inner {
-    overflow: visible;
-    padding-bottom: 6rem;
-  }
-
-  .work-gallery-grid {
-    flex: none;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: unset;
-    grid-auto-flow: row;
-    grid-auto-columns: unset;
-    overflow: visible;
-    scroll-snap-type: unset;
-    margin-left: 0;
-    margin-right: 0;
-    padding-left: 0;
-  }
-
-  .work-gallery-item {
-    scroll-snap-align: unset;
-  }
-
-  .work-gallery-thumb {
-    flex: none;
-    height: 200px;
-  }
-}
-
-/* wide screens: five columns, so ten projects sit in two rows and the
-   whole list fits on one screen without scrolling */
-@media (min-width: 1100px) {
-  .work-gallery-grid {
-    grid-template-columns: repeat(5, 1fr);
-  }
-
-  .work-gallery-thumb {
-    height: 170px;
-  }
-}
-
-/* ─────────────────────────────────────────────
-   WORK — desktop case-study layout. The mobile swipe (main → details →
-   extra) has no mouse equivalent, so past 1024px the three panels stop
-   being horizontal "pages" and reflow into one static page instead:
-   a title bar, a two-column body (text on the left, screenshots on
-   the right, no card around them), and a full-width Challenge &
-   Approach close. .work-fixed/.work-project-track/.work-project-details/
-   .work-project-extra/.project-footer only exist to host the mobile
-   swipe mechanics, so they're unwrapped with display:contents — their
-   children get placed directly on one grid, with the markup (and the
-   mobile experience) untouched.
-───────────────────────────────────────────── */
-@media (min-width: 768px) {
-  .work-project:not([hidden]) {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-      "header    allbtn"
-      "hero      gallery"
-      "challenge gallery"
-      "cta       ."
-      "copy      .";
-    column-gap: 1.65rem;
-    row-gap: 1.65rem;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    padding: 2.5rem max(1.75rem, calc((100% - var(--content-max)) / 2)) 4rem;
-    background: var(--ink);
-  }
-
-  .work-fixed,
-  .work-project-track,
-  .work-project-details,
-  .work-project-extra,
-  .project-footer {
-    display: contents;
-  }
-
-  .work-header {
-    grid-area: header;
-  }
-
-  .work-header-title {
-    position: static;
-    opacity: 1;
-    pointer-events: auto;
-    padding: 0;
-  }
-
-  .work-header-title[data-panel="1"],
-  .work-header-title[data-panel="2"] {
-    display: none;
-  }
-
-  .project-footer-copy {
-    grid-area: copy;
-    justify-self: start;
-  }
-
-  .work-nav-controls {
-    display: none;
-  }
-
-  .work-project-main {
-    grid-area: hero;
-    position: relative;
-    border-radius: var(--radius);
-    overflow: visible;
-    padding: 1.75rem;
-    height: auto;
-  }
-
-  /* project-bg is absolute inset:0 — without overflow:hidden on the
-     parent, it renders square. Give it the same radius so the card
-     looks rounded even with overflow:visible */
-  .work-project-main .project-bg {
-    border-radius: var(--radius);
-  }
-
-  /* clip only the image itself to rounded corners — the hero box needs
-     overflow:visible so the grid can size the row to the full content
-     height (image + impact quote + description), not just the image */
-  .project-image-placeholder {
-    border-radius: var(--radius);
-    overflow: hidden;
-  }
-
-  .project-image-placeholder {
-    position: relative;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 420px;
-  }
-
-  /* higher specificity (2 classes) definitively beats the base
-     single-class rule that sets position:absolute on project-impact */
-  .work-project-main .project-impact {
-    position: relative;
-    z-index: 3;
-    display: block;
-    margin-top: 1.5rem;
-    padding: 0;
-    text-align: left;
-    top: auto;
-    bottom: auto;
-    left: auto;
-    right: auto;
-  }
-
-  .work-project-main .project-desc-hero {
-    position: relative;
-    z-index: 3;
-    display: block;
-    margin-top: 2.5rem;
-  }
-
-  .project-desc-mobile {
-    display: none;
-  }
-
-  .project-gallery {
-    grid-area: gallery;
-    display: flex;
-    flex-direction: column;
-    gap: 1.65rem;
-    margin-bottom: 0;
-    height: 100%;
-  }
-
-  .project-gallery-img {
-    flex: 0 0 280px;
-    border-radius: var(--radius);
-  }
-
-  /* the last screenshot stretches instead of staying a fixed height,
-     so the gallery column always ends flush with the bottom of the
-     Challenge & Approach card on the left, never short or overhanging */
-  .project-gallery-img.project-gallery-full {
-    flex: 1 1 auto;
-  }
-
-  .project-problem-solution {
-    grid-area: challenge;
-    padding: 2.5rem;
-    background: #000000;
-  }
-
-  .project-footer-links,
-  .project-footer > a.about-cta {
-    grid-area: cta;
-    justify-self: start;
-  }
-}
-
-/* ─── ABOUT — desktop two-column layout ─── */
-@media (min-width: 768px) {
-  #about {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto 1fr;
-    grid-template-areas:
-      "header  photo"
-      "headline photo"
-      "bio      photo";
-    gap: 1.5rem 3rem;
-    padding: 2.25rem max(1.75rem, calc((100% - var(--content-max)) / 2)) 2.5rem;
-    height: calc(100vh - var(--nav-clearance));
-    height: calc(100dvh - var(--nav-clearance));
-    overflow: hidden;
-  }
-
-  .about-header    { grid-area: header;   padding: 0; }
-  .about-headline  { grid-area: headline; padding: 0; }
-  .about-bio       { grid-area: bio;      padding: 0; }
-
-  .about-photo {
-    grid-area: photo;
-    display: block;
-    padding: 0;
-    height: 100%;
-  }
-
-  .about-photo-img {
-    width: 100%;
-    height: 100%;
-    border-radius: var(--radius);
-  }
-}
-
-/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { transition: none !important; animation: none !important; }
   html { scroll-behavior: auto; }
 }
