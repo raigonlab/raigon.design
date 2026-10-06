@@ -98,14 +98,13 @@ a { color: inherit; }
 .case--featured { background: var(--surface); border-top: 0; }
 
 .case-head { max-width: 760px; margin-bottom: clamp(2rem, 5vw, 3.5rem); }
-.case-index {
+.case-tag {
   font-size: 0.8rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--dim);
+  color: var(--accent);
   margin-bottom: 1rem;
 }
-.case-new { color: var(--accent); }
 .case-title {
   font-family: var(--serif);
   font-weight: 500;
