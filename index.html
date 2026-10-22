@@ -29,11 +29,15 @@
   <main id="top">
 
     <!-- INTRO -->
-    <section class="intro wrap">
-      <p class="eyebrow">UX/UI Designer &amp; Front-end Developer · Zürich</p>
-      <h1 class="intro-title">I design digital products <em>and build them</em> — from the first question to shipped code.</h1>
-      <p class="intro-sub">Five selected projects below. Each one shows the problem, what I did, and what came out of it.</p>
-    </section>
+    <div class="hero">
+      <canvas class="hero-bg" aria-hidden="true"></canvas>
+      <section class="intro wrap">
+        <div class="word-field" aria-hidden="true"></div>
+        <p class="eyebrow">UX/UI Designer &amp; Front-end Developer · Zürich</p>
+        <h1 class="intro-title" aria-label="I design digital products and build them — from the first question to shipped code."><span aria-hidden="true">I <span class="word-swap" data-words="design,iterate,combine,interpolate,prototype,fabricate,sketch,refine,compose">design</span> digital products <em>and <span class="word-swap" data-words="build,code,ship,test,launch,evolve,craft">build</span> them</em> — from the first question to shipped code.</span></h1>
+        <p class="intro-sub">Five selected projects below. Each one shows the problem, what I did, and what came out of it.</p>
+      </section>
+    </div>
 
     <!-- WORK -->
     <div id="work">
@@ -314,5 +318,7 @@
     <span>© 2026 · Zürich, Switzerland</span>
   </footer>
 
+  <script src="assets/js/hero-bg.js" defer></script>
+  <script src="assets/js/hero-words.js" defer></script>
 </body>
 </html>

@@ -73,7 +73,60 @@ a { color: inherit; }
 .site-nav a:hover { color: var(--ink); }
 
 /* ── INTRO ── */
-.intro { padding-block: clamp(5rem, 14vw, 10rem) clamp(4rem, 10vw, 7rem); }
+.intro { padding-block: clamp(5rem, 14vw, 10rem) clamp(4rem, 10vw, 7rem); position: relative; overflow: hidden; }
+.intro > :not(.word-field) { position: relative; z-index: 1; }
+.word-swap {
+  display: inline-block;
+  font-style: italic;
+  color: var(--accent);
+  white-space: nowrap;
+  vertical-align: bottom;
+  transition: opacity 0.7s ease, filter 0.7s ease, transform 0.7s ease, width 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.word-swap.is-out { opacity: 0; filter: blur(4px); transform: translateY(0.12em); }
+
+/* Dotted notebook grid that slowly flies toward the viewer */
+.hero { position: relative; overflow: hidden; }
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent);
+          mask-image: linear-gradient(to bottom, #000 70%, transparent);
+}
+.hero > .intro { position: relative; z-index: 1; }
+
+/* Process words that surface around the cursor */
+.word-field { position: absolute; inset: 0; pointer-events: none; }
+.word-float {
+  position: absolute;
+  font-family: var(--serif);
+  font-style: italic;
+  white-space: nowrap;
+  color: var(--dim);
+  transform: translate(-50%, -50%);
+  animation: word-drift 5s ease-out forwards;
+}
+.word-float.is-accent { color: var(--accent); }
+.word-float span {
+  display: inline-block;
+  white-space: pre;
+  opacity: 0;
+  animation: letter-live 4.4s ease-in-out forwards;
+  animation-delay: calc(var(--i) * 45ms);
+}
+@keyframes word-drift {
+  to { transform: translate(calc(-50% + var(--drift)), calc(-50% - 14px)); }
+}
+@keyframes letter-live {
+  0%   { opacity: 0;    filter: blur(3px); }
+  30%  { opacity: 0.35; filter: blur(0); }
+  65%  { opacity: 0.3;  filter: blur(0); }
+  100% { opacity: 0;    filter: blur(3px); }
+}
+
 .intro-title {
   font-family: var(--serif);
   font-weight: 400;
