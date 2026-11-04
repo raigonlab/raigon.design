@@ -8,7 +8,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400&family=Inter:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="assets/style.css">
 </head>
@@ -28,16 +28,79 @@
 
   <main id="top">
 
-    <!-- INTRO -->
-    <div class="hero">
-      <canvas class="hero-bg" aria-hidden="true"></canvas>
-      <section class="intro wrap">
+    <!-- COVER -->
+    <section class="cover" aria-label="Introduction">
+      <svg class="cover-defs" aria-hidden="true" focusable="false">
+        <filter id="rough"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="7"/><feDisplacementMap in="SourceGraphic" scale="7"/></filter>
+        <filter id="ink">
+          <feTurbulence type="fractalNoise" baseFrequency="0.11" numOctaves="4" seed="3" result="noise"/>
+          <feColorMatrix in="noise" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -7 0 0 0 5.6" result="mask"/>
+          <feComposite in="SourceGraphic" in2="mask" operator="in" result="speckled"/>
+          <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="9" result="warp"/>
+          <feDisplacementMap in="speckled" in2="warp" scale="5"/>
+        </filter>
+      </svg>
+
+      <div class="cover-stage wrap">
         <div class="word-field" aria-hidden="true"></div>
-        <p class="eyebrow">UX/UI Designer &amp; Front-end Developer · Zürich</p>
-        <h1 class="intro-title" aria-label="I design digital products and build them — from the first question to shipped code."><span aria-hidden="true">I <span class="word-swap" data-words="design,iterate,combine,interpolate,prototype,fabricate,sketch,refine,compose">design</span> digital products <em>and <span class="word-swap" data-words="build,code,ship,test,launch,evolve,craft">build</span> them</em> — from the first question to shipped code.</span></h1>
-        <p class="intro-sub">Five selected projects below. Each one shows the problem, what I did, and what came out of it.</p>
-      </section>
-    </div>
+
+        <div class="c-letter" style="--d:3">
+          <span class="c-giant" aria-hidden="true">R</span>
+          <p class="c-kicker">UX/UI Design<br>&amp; Front-end<br>Zürich</p>
+        </div>
+
+        <p class="c-lede">In a time of templates, I still start with a pencil, a question, and the people who&rsquo;ll use it.</p>
+
+        <div class="c-window c-window--tall" data-torn="trbl" style="--d:9" aria-hidden="true">
+          <div class="c-reel" data-reel="0"></div>
+        </div>
+
+        <div class="c-paper c-paper--red" data-torn="tr" style="--d:5" aria-hidden="true">
+          <svg class="c-scribble" data-scribble="18" viewBox="0 0 100 100" preserveAspectRatio="none"></svg>
+        </div>
+
+        <div class="c-window c-window--wide" data-torn="tl" style="--d:7" aria-hidden="true">
+          <div class="c-reel c-reel--x" data-reel="6"></div>
+        </div>
+
+        <svg class="c-brush" style="--d:14" viewBox="0 0 100 100" aria-hidden="true">
+          <path d="M74 8 C 50 4, 30 18, 34 34 C 38 48, 80 46, 82 62 C 84 74, 52 80, 12 90"/>
+        </svg>
+
+        <span class="c-issue" aria-hidden="true">/26</span>
+
+        <h1 class="c-title" aria-label="I design digital products and build them.">
+          <span aria-hidden="true">I <span class="word-swap" data-words="design,iterate,combine,interpolate,prototype,fabricate,sketch,refine,compose">design</span><br>and <span class="word-swap" data-words="build,code,ship,test,launch,evolve,craft">build</span></span>
+        </h1>
+
+        <p class="c-body">Digital products, from the first question to shipped code. Research, interface, front-end&nbsp;&mdash; made by hand, one decision at a time.</p>
+
+        <p class="c-caption" aria-hidden="true">Rai Gonçalves · Portfolio · Zürich, 2026</p>
+
+        <aside class="c-quote">
+          <p>&ldquo;Design is a question you keep answering with your hands.&rdquo;</p>
+          <a href="#about">About Rai<br>p. 06</a>
+        </aside>
+
+        <nav class="c-toc" aria-label="In this issue">
+          <p class="c-toc-label">In this issue</p>
+          <ol>
+            <li><a href="#raigonos"><span>RaigonOS</span><span>01</span></a></li>
+            <li><a href="#cublok"><span>Cublok</span><span>02</span></a></li>
+            <li><a href="#arcavault"><span>Arca Vault</span><span>03</span></a></li>
+            <li><a href="#raigonch"><span>Raigon Tattoo Studio</span><span>04</span></a></li>
+            <li><a href="#dronzza"><span>Dronzza</span><span>05</span></a></li>
+          </ol>
+        </nav>
+
+        <div class="c-paper c-paper--yellow" data-torn="tlb" style="--d:4" aria-hidden="true">
+          <svg class="c-scribble c-scribble--dense" data-scribble="40" viewBox="0 0 100 100" preserveAspectRatio="none"></svg>
+        </div>
+        <p class="c-note">Five products, made from the first sketch to the last commit.</p>
+
+        <a class="c-stamp" href="#work" style="--d:2"><span>WO</span><span>RK</span></a>
+      </div>
+    </section>
 
     <!-- WORK -->
     <div id="work">
@@ -318,7 +381,7 @@
     <span>© 2026 · Zürich, Switzerland</span>
   </footer>
 
-  <script src="assets/js/hero-bg.js" defer></script>
+  <script src="assets/js/cover.js" defer></script>
   <script src="assets/js/hero-words.js" defer></script>
 </body>
 </html>

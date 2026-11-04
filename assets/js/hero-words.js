@@ -3,8 +3,8 @@
 (function () {
   'use strict';
 
-  const intro = document.querySelector('.intro');
-  const swaps = [...document.querySelectorAll('.intro .word-swap')];
+  const intro = document.querySelector('.cover-stage');
+  const swaps = [...document.querySelectorAll('.cover-stage .word-swap')];
   const field = document.querySelector('.word-field');
   if (!intro || !swaps.length || !field) return;
 
