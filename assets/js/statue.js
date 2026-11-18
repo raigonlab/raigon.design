@@ -1,5 +1,5 @@
 // statue.js — a form made of pixels, always turning: a Greek head that dissolves
-// into a fish, a Greek athlete and a plant, and back. Each project is a coloured point
+// into a fish, a Greek Hercules and a plant, and back. Each project is a coloured point
 // orbiting it; the points appear when the visitor comes close.
 (function () {
   'use strict';
@@ -24,7 +24,7 @@
   const CREDITS = {
     head:  'fig. 01 · niobid nymph · cast KAS869, SMK · public domain',
     fish:  'fig. 02 · barramundi · Khronos glTF sample · CC0',
-    athlete: 'fig. 03 · discobolus · cast KAS1074, SMK · public domain',
+    hercules: 'fig. 03 · lansdowne herakles · cast KAS224, SMK · public domain',
     plant: 'fig. 04 · anthurium · Poly Haven · CC0',
   };
   const SHAPES = data.shapes.map(function (sh) {
@@ -114,7 +114,7 @@
   let W, H, PX, cw, ch, cx, cy, scale, img, buf32, zbuf, light;
   let yawExtra = 0, pitchExtra = 0, targetYaw = 0, targetPitch = 0;
   let running = false, raf, start = performance.now();
-  let nearAmt = 0, booming = false;   // 0 → 1 as the projects condense into view
+  let booming = false;
 
   function resize() {
     cw = cover.clientWidth; ch = cover.clientHeight;
@@ -184,8 +184,6 @@
     }
     // Orbits: each project is a cloud of atoms projected with the same camera.
     // Atoms behind the statue almost vanish; nothing here is a perfect dot.
-    const nearTarget = cover.classList.contains('is-near') ? 1 : 0;
-    nearAmt = reduceMotion ? nearTarget : nearAmt + (nearTarget - nearAmt) * 0.05;
     const spreadR = cw < 700 ? 0.82 : 1;
     orbits.forEach(function (o) {
       const a = o.phase + (reduceMotion ? 0 : t * o.speed);
@@ -202,22 +200,20 @@
       o.sx = bx * PX; o.sy = by * PX;
 
       o.lit += ((o.el.classList.contains('is-lit') ? 1 : 0) - o.lit) * 0.12;
-      if (nearAmt < 0.01) return;
-      // hover: the cloud grows by half. click: it bursts outwards.
+      // small and crisp while orbiting; hover makes it bigger and more diffuse; a click bursts it
       let burst = 0, fade = 1;
       if (o.boom) {
         const p = Math.min(1, (now - o.boom) / 900);
         burst = 1 - Math.pow(1 - p, 3); fade = 1 - p * p;
       } else if (booming) fade = 0.25;
       if (fade <= 0) return;
-      const A = o.atoms, swell = (1 + o.lit * 0.5) * (1 + burst * 16);
+      const A = o.atoms, swell = (0.7 + o.lit * 0.9) * (1 + burst * 16);   // 30% smaller in orbit, full size on hover
       for (let i = 0; i < ATOMS; i++) {
         const k = i * 9, w = A[k + 3], ph = A[k + 4], amp = A[k + 5];
         // strays drift out and come back; the core breathes
         let out = 1 + 0.18 * Math.sin(t * 0.9 + ph);
         if (A[k + 7]) out += 1.6 * Math.pow(Math.max(0, Math.sin(t * 0.35 + A[k + 8])), 4);
-        // until the visitor comes near, the atoms are scattered wider and fainter
-        out *= swell * (1 + (1 - nearAmt) * 2.5);
+        out *= swell;
         const ax = x + A[k] * out + amp * Math.sin(t * w + ph);
         const ay = y2 + A[k + 1] * out + amp * Math.sin(t * w * 1.3 + ph * 2);
         const az = z2 + A[k + 2] * out + amp * Math.cos(t * w * 0.8 + ph);
@@ -225,12 +221,12 @@
         const px = (cx + ax * scale * ps) | 0, py = (cy - ay * scale * ps) | 0;
         if (px < 0 || py < 0 || px >= W || py >= H) continue;
         const idx = py * W + px;
-        let dens = A[k + 6] * Math.min(1, nearAmt * 1.4) * (0.85 + o.lit * 0.3) * fade;
+        let dens = A[k + 6] * (0.9 - o.lit * 0.3) * fade;
         if (zbuf[idx] > az) dens *= 0.12;                      // behind the statue
         if (dens <= BAYER[((py & 3) * 4) + (px & 3)]) continue;  // translucent by omission
-        const c = A[k + 6] > 0.75 || o.lit > 0.5 ? o.col : o.colSoft;
+        const c = A[k + 6] > 0.75 + o.lit * 0.15 ? o.col : o.colSoft;
         buf32[idx] = c;
-        if (A[k + 6] > 0.93 && px < W - 1 && py < H - 1) {   // a few heavier nuclei
+        if (A[k + 6] > 0.93 && o.lit < 0.5 && px < W - 1 && py < H - 1) {   // a few heavier nuclei
           buf32[idx + 1] = c; buf32[idx + W] = c; buf32[idx + W + 1] = c;
         }
       }
@@ -269,36 +265,34 @@
         f[y * w + x] = Math.hypot(x - ox, y - oy) / m * 0.7 + Math.random() * 0.3;
       return f;
     }
-    const inF = field((r.left + o.sx) / B, (r.top + o.sy) / B), outF = field(w / 2, h * 0.4);
+    const inF = field((r.left + o.sx) / B, (r.top + o.sy) / B);
     const solid = o.col, soft = o.colSoft;
-    const t0 = performance.now() + 380, IN = 520, OUT = 800;
-    let jumped = false;
+    const t0 = performance.now() + 300, IN = 560;
 
     function step() {
       const e = performance.now() - t0;
+      const c = Math.max(0, Math.min(1, e / IN)) * 1.08;    // the pixels take over the screen
       u.fill(0);
-      if (e < IN) {                                         // the wave of pixels covers the screen
-        const c = Math.max(0, e / IN) * 1.08;
-        for (let k = 0; k < u.length; k++) if (inF[k] < c) u[k] = inF[k] > c - 0.06 ? soft : solid;
-      } else {
-        if (!jumped) {                                      // fully covered: move to the work
-          jumped = true;
-          const y = target.getBoundingClientRect().top + scrollY;
-          window.scrollTo({ top: y, behavior: 'instant' });
-          try { history.pushState(null, '', '#' + target.id); } catch (err) { /* file:// previews */ }
-          target.classList.remove('is-arriving'); void target.offsetWidth;
-          target.classList.add('is-arriving');
-        }
-        const c = Math.min(1, (e - IN) / OUT) * 1.08;       // …and dissolves into it
-        for (let k = 0; k < u.length; k++) if (outF[k] > c) u[k] = outF[k] < c + 0.06 ? soft : solid;
-        if (e >= IN + OUT) {
-          ov.remove(); o.boom = 0; booming = false;
-          target.setAttribute('tabindex', '-1'); target.focus({ preventScroll: true });
-          return;
-        }
-      }
+      for (let k = 0; k < u.length; k++) if (inF[k] < c) u[k] = inF[k] > c - 0.06 ? soft : solid;
       c2.putImageData(im, 0, 0);
-      requestAnimationFrame(step);
+      if (e < IN + 60) { requestAnimationFrame(step); return; }
+
+      // fully covered: swap to the work underneath (no scroll), then fade out / fade in
+      const root = document.documentElement, sb = root.style.scrollBehavior;
+      root.style.scrollBehavior = 'auto';
+      window.scrollTo(0, target.getBoundingClientRect().top + scrollY);
+      root.style.scrollBehavior = sb;
+      try { history.pushState(null, '', '#' + target.id); } catch (err) { /* file:// previews */ }
+      target.classList.remove('is-arriving'); void target.offsetWidth;
+      target.classList.add('is-arriving');
+      o.boom = 0;
+      requestAnimationFrame(function () {
+        ov.classList.add('is-leaving');
+        setTimeout(function () {
+          ov.remove(); booming = false;
+          target.setAttribute('tabindex', '-1'); target.focus({ preventScroll: true });
+        }, 900);
+      });
     }
     requestAnimationFrame(step);
   }
