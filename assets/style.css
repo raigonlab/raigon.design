@@ -152,8 +152,8 @@ a { color: inherit; }
 .orbit {
   position: absolute;
   left: 0; top: 0;
-  width: 44px; height: 44px;
-  margin: -22px 0 0 -22px;
+  width: 64px; height: 64px;
+  margin: -32px 0 0 -32px;
   border-radius: 50%;
   opacity: 0;
   pointer-events: none;
@@ -163,7 +163,7 @@ a { color: inherit; }
 .cover.is-near .orbit { opacity: 1; pointer-events: auto; }
 .orbit span {
   position: absolute;
-  left: 40px; top: 50%;
+  left: 58px; top: 50%;
   transform: translateY(-50%);
   white-space: nowrap;
   font: 400 0.75rem var(--mono);
@@ -174,6 +174,21 @@ a { color: inherit; }
 .orbit span::before { content: '// '; color: var(--c); }
 .orbit:hover span, .orbit:focus-visible span, .orbit.is-lit span { opacity: 1; }
 .orbit:focus-visible { outline: 1px dashed var(--c); outline-offset: 2px; }
+
+/* the wave of pixels a project explodes into, and the work arriving out of it */
+.materialize {
+  position: fixed; inset: 0; z-index: 100;
+  width: 100%; height: 100%;
+  image-rendering: pixelated;
+  pointer-events: none;
+}
+.case.is-arriving .wrap > * { animation: arrive 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+.case.is-arriving .wrap > :nth-child(2) { animation-delay: 0.08s; }
+.case.is-arriving .wrap > :nth-child(3) { animation-delay: 0.16s; }
+.case.is-arriving .wrap > :nth-child(4) { animation-delay: 0.24s; }
+.case.is-arriving .wrap > :nth-child(n+5) { animation-delay: 0.32s; }
+@keyframes arrive { from { opacity: 0; transform: translateY(18px); filter: blur(6px); } }
+.case:focus { outline: none; }
 
 .c-head {
   position: absolute;

@@ -1,5 +1,5 @@
 // statue.js — a form made of pixels, always turning: a Greek head that dissolves
-// into a fish, a wolf and a plant, and back. Each project is a coloured point
+// into a fish, a Greek athlete and a plant, and back. Each project is a coloured point
 // orbiting it; the points appear when the visitor comes close.
 (function () {
   'use strict';
@@ -24,7 +24,7 @@
   const CREDITS = {
     head:  'fig. 01 · niobid nymph · cast KAS869, SMK · public domain',
     fish:  'fig. 02 · barramundi · Khronos glTF sample · CC0',
-    wolf:  'fig. 03 · capitoline wolf · cast KAS837, SMK · public domain',
+    athlete: 'fig. 03 · discobolus · cast KAS1074, SMK · public domain',
     plant: 'fig. 04 · anthurium · Poly Haven · CC0',
   };
   const SHAPES = data.shapes.map(function (sh) {
@@ -72,15 +72,11 @@
 
   // Each project is a small cloud of coloured atoms, still being formed, on its own
   // wide orbit — far from the others, like loose particles around the statue.
-  // Same pace, evenly spaced around the circle, so they never bunch together;
-  // different radii and tilts keep them at different depths.
-  const ORBITS = [
-    { r: 0.82, incl: -0.50, node: 0.0 },
-    { r: 1.32, incl:  0.40, node: 0.9 },
-    { r: 1.00, incl: -0.15, node: 1.7 },
-    { r: 1.42, incl:  0.60, node: 0.4 },
-    { r: 1.14, incl:  0.15, node: 1.3 },
-  ].map(function (o, i) { o.speed = 0.075; o.phase = i * (Math.PI * 2 / 5); return o; });
+  // One tilted plane, same pace, evenly spaced: the clouds never meet.
+  // Different radii keep the ring loose, like atoms rather than beads.
+  const ORBITS = [0.86, 1.32, 1.02, 1.42, 1.16].map(function (r, i) {
+    return { r: r, incl: 0.32 + (i % 2 ? 0.08 : -0.08), node: 0.35, speed: 0.075, phase: i * (Math.PI * 2 / 5) };
+  });
   const ATOMS = 230;
   function rgba(hex, a) {
     const m = /^#?([0-9a-f]{6})$/i.exec(hex.trim());
@@ -111,14 +107,14 @@
     const o = ORBITS[i % ORBITS.length];
     const col = getComputedStyle(el).getPropertyValue('--c');
     return { el: el, r: o.r, incl: o.incl, node: o.node, speed: o.speed, phase: o.phase,
-      atoms: cloud(), col: rgba(col, 0xFF), colSoft: rgba(col, 0xA6), lit: 0 };
+      atoms: cloud(), hex: col.trim(), col: rgba(col, 0xFF), colSoft: rgba(col, 0xA6), lit: 0, boom: 0, sx: 0, sy: 0 };
   });
   const legend = [...cover.querySelectorAll('.c-legend a')];
 
   let W, H, PX, cw, ch, cx, cy, scale, img, buf32, zbuf, light;
   let yawExtra = 0, pitchExtra = 0, targetYaw = 0, targetPitch = 0;
   let running = false, raf, start = performance.now();
-  let nearAmt = 0;   // 0 → 1 as the projects condense into view
+  let nearAmt = 0, booming = false;   // 0 → 1 as the projects condense into view
 
   function resize() {
     cw = cover.clientWidth; ch = cover.clientHeight;
@@ -203,10 +199,18 @@
       const bx = cx + x * scale * s, by = cy - y2 * scale * s;
       o.el.style.transform = 'translate(' + (bx * PX).toFixed(1) + 'px,' + (by * PX).toFixed(1) + 'px)';
       o.el.style.zIndex = z2 > 0 ? 3 : 1;
+      o.sx = bx * PX; o.sy = by * PX;
 
       o.lit += ((o.el.classList.contains('is-lit') ? 1 : 0) - o.lit) * 0.12;
       if (nearAmt < 0.01) return;
-      const A = o.atoms, swell = 1 + o.lit * 0.35;
+      // hover: the cloud grows by half. click: it bursts outwards.
+      let burst = 0, fade = 1;
+      if (o.boom) {
+        const p = Math.min(1, (now - o.boom) / 900);
+        burst = 1 - Math.pow(1 - p, 3); fade = 1 - p * p;
+      } else if (booming) fade = 0.25;
+      if (fade <= 0) return;
+      const A = o.atoms, swell = (1 + o.lit * 0.5) * (1 + burst * 16);
       for (let i = 0; i < ATOMS; i++) {
         const k = i * 9, w = A[k + 3], ph = A[k + 4], amp = A[k + 5];
         // strays drift out and come back; the core breathes
@@ -221,7 +225,7 @@
         const px = (cx + ax * scale * ps) | 0, py = (cy - ay * scale * ps) | 0;
         if (px < 0 || py < 0 || px >= W || py >= H) continue;
         const idx = py * W + px;
-        let dens = A[k + 6] * Math.min(1, nearAmt * 1.4) * (0.85 + o.lit * 0.3);
+        let dens = A[k + 6] * Math.min(1, nearAmt * 1.4) * (0.85 + o.lit * 0.3) * fade;
         if (zbuf[idx] > az) dens *= 0.12;                      // behind the statue
         if (dens <= BAYER[((py & 3) * 4) + (px & 3)]) continue;  // translucent by omission
         const c = A[k + 6] > 0.75 || o.lit > 0.5 ? o.col : o.colSoft;
@@ -243,6 +247,73 @@
     raf = requestAnimationFrame(frame);
   }
   function pause() { running = false; cancelAnimationFrame(raf); }
+
+  // ── Click: the cloud explodes and the work materialises out of its pixels ──
+  function materialize(i, target) {
+    const o = orbits[i];
+    if (!o || booming) return;
+    booming = true; o.boom = performance.now(); near(true);
+    if (!running) play();
+
+    const B = innerWidth < 700 ? 8 : 12;                   // one block of the wave, in CSS px
+    const w = Math.ceil(innerWidth / B), h = Math.ceil(innerHeight / B);
+    const ov = document.createElement('canvas');
+    ov.className = 'materialize'; ov.width = w; ov.height = h;
+    ov.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(ov);
+    const c2 = ov.getContext('2d'), im = c2.createImageData(w, h), u = new Uint32Array(im.data.buffer);
+    const r = cover.getBoundingClientRect();
+    function field(ox, oy) {                                // distance from a point, roughened
+      const f = new Float32Array(w * h), m = Math.hypot(Math.max(ox, w - ox), Math.max(oy, h - oy));
+      for (let y = 0; y < h; y++) for (let x = 0; x < w; x++)
+        f[y * w + x] = Math.hypot(x - ox, y - oy) / m * 0.7 + Math.random() * 0.3;
+      return f;
+    }
+    const inF = field((r.left + o.sx) / B, (r.top + o.sy) / B), outF = field(w / 2, h * 0.4);
+    const solid = o.col, soft = o.colSoft;
+    const t0 = performance.now() + 380, IN = 520, OUT = 800;
+    let jumped = false;
+
+    function step() {
+      const e = performance.now() - t0;
+      u.fill(0);
+      if (e < IN) {                                         // the wave of pixels covers the screen
+        const c = Math.max(0, e / IN) * 1.08;
+        for (let k = 0; k < u.length; k++) if (inF[k] < c) u[k] = inF[k] > c - 0.06 ? soft : solid;
+      } else {
+        if (!jumped) {                                      // fully covered: move to the work
+          jumped = true;
+          const y = target.getBoundingClientRect().top + scrollY;
+          window.scrollTo({ top: y, behavior: 'instant' });
+          try { history.pushState(null, '', '#' + target.id); } catch (err) { /* file:// previews */ }
+          target.classList.remove('is-arriving'); void target.offsetWidth;
+          target.classList.add('is-arriving');
+        }
+        const c = Math.min(1, (e - IN) / OUT) * 1.08;       // …and dissolves into it
+        for (let k = 0; k < u.length; k++) if (outF[k] > c) u[k] = outF[k] < c + 0.06 ? soft : solid;
+        if (e >= IN + OUT) {
+          ov.remove(); o.boom = 0; booming = false;
+          target.setAttribute('tabindex', '-1'); target.focus({ preventScroll: true });
+          return;
+        }
+      }
+      c2.putImageData(im, 0, 0);
+      requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  function explodeOnClick(el, i) {
+    el.addEventListener('click', function (e) {
+      if (reduceMotion || e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;
+      const target = document.querySelector(el.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      materialize(i, target);
+    });
+  }
+  orbits.forEach(function (o, i) { explodeOnClick(o.el, i); });
+  legend.forEach(function (a, i) { explodeOnClick(a, i); });
 
   // ── Coming close reveals the projects ──
   function near(on) {
