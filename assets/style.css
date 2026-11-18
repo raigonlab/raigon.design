@@ -147,23 +147,23 @@ a { color: inherit; }
 
 /* project dots */
 .c-orbits { position: absolute; inset: 0; pointer-events: none; }
+/* the project itself is a cloud of coloured pixels drawn on the canvas;
+   this link is only its invisible hit area and its name */
 .orbit {
   position: absolute;
   left: 0; top: 0;
-  width: 12px; height: 12px;
-  margin: -6px 0 0 -6px;
+  width: 44px; height: 44px;
+  margin: -22px 0 0 -22px;
   border-radius: 50%;
-  background: var(--c);
-  box-shadow: 0 0 14px 2px color-mix(in srgb, var(--c) 60%, transparent);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.8s ease;
   text-decoration: none;
 }
-.cover.is-near .orbit { opacity: var(--o, 1); pointer-events: auto; }
+.cover.is-near .orbit { opacity: 1; pointer-events: auto; }
 .orbit span {
   position: absolute;
-  left: 18px; top: 50%;
+  left: 40px; top: 50%;
   transform: translateY(-50%);
   white-space: nowrap;
   font: 400 0.75rem var(--mono);
@@ -171,8 +171,9 @@ a { color: inherit; }
   opacity: 0;
   transition: opacity 0.25s;
 }
+.orbit span::before { content: '// '; color: var(--c); }
 .orbit:hover span, .orbit:focus-visible span, .orbit.is-lit span { opacity: 1; }
-.orbit:hover, .orbit.is-lit { width: 16px; height: 16px; margin: -8px 0 0 -8px; }
+.orbit:focus-visible { outline: 1px dashed var(--c); outline-offset: 2px; }
 
 .c-head {
   position: absolute;
@@ -235,7 +236,20 @@ a { color: inherit; }
   transition: color 0.2s;
 }
 .c-legend a:hover, .c-legend a.is-lit { color: var(--ink); }
-.c-legend i { width: 8px; height: 8px; border-radius: 50%; background: var(--c); flex: none; }
+/* a few loose pixels in the project's colour: the same atoms as in the orbit */
+.c-legend i {
+  width: 3px; height: 3px; margin: 0 9px 0 3px; flex: none;
+  background: var(--c);
+  box-shadow:
+    3px 0 color-mix(in srgb, var(--c) 70%, transparent),
+    0 3px color-mix(in srgb, var(--c) 55%, transparent),
+    6px 3px color-mix(in srgb, var(--c) 80%, transparent),
+    3px -3px color-mix(in srgb, var(--c) 45%, transparent),
+    -3px 6px color-mix(in srgb, var(--c) 35%, transparent),
+    9px -3px color-mix(in srgb, var(--c) 25%, transparent);
+  transition: transform 0.4s ease;
+}
+.c-legend a:hover i, .c-legend a.is-lit i { transform: rotate(90deg) scale(1.2); }
 .c-legend span { margin-left: auto; margin-right: 1.2rem; color: var(--dim); }
 
 .c-credit {

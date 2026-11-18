@@ -70,14 +70,55 @@
   const INK = 0xFFE7EBEC;    // #ECEBE7 as little-endian ABGR
   const DIST = 3.4;          // camera distance in model units
 
+  // Each project is a small cloud of coloured atoms, still being formed, on its own
+  // wide orbit — far from the others, like loose particles around the statue.
+  // Same pace, evenly spaced around the circle, so they never bunch together;
+  // different radii and tilts keep them at different depths.
+  const ORBITS = [
+    { r: 0.82, incl: -0.50, node: 0.0 },
+    { r: 1.32, incl:  0.40, node: 0.9 },
+    { r: 1.00, incl: -0.15, node: 1.7 },
+    { r: 1.42, incl:  0.60, node: 0.4 },
+    { r: 1.14, incl:  0.15, node: 1.3 },
+  ].map(function (o, i) { o.speed = 0.075; o.phase = i * (Math.PI * 2 / 5); return o; });
+  const ATOMS = 230;
+  function rgba(hex, a) {
+    const m = /^#?([0-9a-f]{6})$/i.exec(hex.trim());
+    const v = m ? parseInt(m[1], 16) : 0xECEBE7;
+    return ((a << 24) | ((v & 0xFF) << 16) | (v & 0xFF00) | ((v >> 16) & 0xFF)) >>> 0;
+  }
+  function cloud() {
+    // anisotropic blob: every project gets its own lopsided shape
+    const sx = 0.6 + Math.random() * 0.8, sy = 0.6 + Math.random() * 0.8, sz = 0.6 + Math.random() * 0.8;
+    const a = new Float32Array(ATOMS * 9);
+    for (let i = 0; i < ATOMS; i++) {
+      const k = i * 9, u = Math.random();
+      const stray = Math.random() < 0.18;
+      let dx = Math.random() * 2 - 1, dy = Math.random() * 2 - 1, dz = Math.random() * 2 - 1;
+      const l = Math.hypot(dx, dy, dz) || 1;
+      const r = stray ? 0.1 + u * 0.12 : 0.01 + Math.pow(u, 0.85) * 0.085;
+      a[k] = dx / l * r * sx; a[k + 1] = dy / l * r * sy; a[k + 2] = dz / l * r * sz;
+      a[k + 3] = 0.6 + Math.random() * 1.4;           // wobble speed
+      a[k + 4] = Math.random() * Math.PI * 2;         // wobble phase
+      a[k + 5] = (stray ? 0.03 : 0.012) + Math.random() * 0.02;   // wobble amplitude
+      a[k + 6] = stray ? 0.25 + Math.random() * 0.3 : 0.55 + Math.random() * 0.45;   // weight
+      a[k + 7] = stray ? 1 : 0;
+      a[k + 8] = Math.random() * Math.PI * 2;         // drift-away phase
+    }
+    return a;
+  }
   const orbits = [...cover.querySelectorAll('.orbit')].map(function (el, i) {
-    return { el: el, r: 0.8 + i * 0.075, incl: -0.55 + i * 0.27, node: i * 1.25, speed: 0.16 + i * 0.035, phase: i * (Math.PI * 2 / 5) };
+    const o = ORBITS[i % ORBITS.length];
+    const col = getComputedStyle(el).getPropertyValue('--c');
+    return { el: el, r: o.r, incl: o.incl, node: o.node, speed: o.speed, phase: o.phase,
+      atoms: cloud(), col: rgba(col, 0xFF), colSoft: rgba(col, 0xA6), lit: 0 };
   });
   const legend = [...cover.querySelectorAll('.c-legend a')];
 
   let W, H, PX, cw, ch, cx, cy, scale, img, buf32, zbuf, light;
   let yawExtra = 0, pitchExtra = 0, targetYaw = 0, targetPitch = 0;
   let running = false, raf, start = performance.now();
+  let nearAmt = 0;   // 0 → 1 as the projects condense into view
 
   function resize() {
     cw = cover.clientWidth; ch = cover.clientHeight;
@@ -145,12 +186,14 @@
         if (zbuf[idx] > -1e8 && light[idx] > BAYER[by + (px & 3)]) buf32[idx] = INK;
       }
     }
-    ctx.putImageData(img, 0, 0);
-
-    // Orbits: project each point with the same camera; dim it when it passes behind the head
+    // Orbits: each project is a cloud of atoms projected with the same camera.
+    // Atoms behind the statue almost vanish; nothing here is a perfect dot.
+    const nearTarget = cover.classList.contains('is-near') ? 1 : 0;
+    nearAmt = reduceMotion ? nearTarget : nearAmt + (nearTarget - nearAmt) * 0.05;
+    const spreadR = cw < 700 ? 0.82 : 1;
     orbits.forEach(function (o) {
       const a = o.phase + (reduceMotion ? 0 : t * o.speed);
-      let x = o.r * Math.cos(a), y = 0, z = o.r * Math.sin(a);
+      let x = o.r * spreadR * Math.cos(a), y = 0, z = o.r * spreadR * Math.sin(a);
       const ci = Math.cos(o.incl), si = Math.sin(o.incl);
       [y, z] = [y * ci - z * si, y * si + z * ci];
       const cn = Math.cos(o.node + yawExtra), sn = Math.sin(o.node + yawExtra);
@@ -158,12 +201,37 @@
       const y2 = y * cP - z * sP, z2 = y * sP + z * cP;
       const s = DIST / (DIST - z2);
       const bx = cx + x * scale * s, by = cy - y2 * scale * s;
-      const idx = (by | 0) * W + (bx | 0);
-      const hidden = idx >= 0 && idx < zbuf.length && zbuf[idx] > z2;
-      o.el.style.transform = 'translate(' + (bx * PX).toFixed(1) + 'px,' + (by * PX).toFixed(1) + 'px) scale(' + s.toFixed(2) + ')';
-      o.el.style.setProperty('--o', hidden ? 0.15 : 1);
+      o.el.style.transform = 'translate(' + (bx * PX).toFixed(1) + 'px,' + (by * PX).toFixed(1) + 'px)';
       o.el.style.zIndex = z2 > 0 ? 3 : 1;
+
+      o.lit += ((o.el.classList.contains('is-lit') ? 1 : 0) - o.lit) * 0.12;
+      if (nearAmt < 0.01) return;
+      const A = o.atoms, swell = 1 + o.lit * 0.35;
+      for (let i = 0; i < ATOMS; i++) {
+        const k = i * 9, w = A[k + 3], ph = A[k + 4], amp = A[k + 5];
+        // strays drift out and come back; the core breathes
+        let out = 1 + 0.18 * Math.sin(t * 0.9 + ph);
+        if (A[k + 7]) out += 1.6 * Math.pow(Math.max(0, Math.sin(t * 0.35 + A[k + 8])), 4);
+        // until the visitor comes near, the atoms are scattered wider and fainter
+        out *= swell * (1 + (1 - nearAmt) * 2.5);
+        const ax = x + A[k] * out + amp * Math.sin(t * w + ph);
+        const ay = y2 + A[k + 1] * out + amp * Math.sin(t * w * 1.3 + ph * 2);
+        const az = z2 + A[k + 2] * out + amp * Math.cos(t * w * 0.8 + ph);
+        const ps = DIST / (DIST - az);
+        const px = (cx + ax * scale * ps) | 0, py = (cy - ay * scale * ps) | 0;
+        if (px < 0 || py < 0 || px >= W || py >= H) continue;
+        const idx = py * W + px;
+        let dens = A[k + 6] * Math.min(1, nearAmt * 1.4) * (0.85 + o.lit * 0.3);
+        if (zbuf[idx] > az) dens *= 0.12;                      // behind the statue
+        if (dens <= BAYER[((py & 3) * 4) + (px & 3)]) continue;  // translucent by omission
+        const c = A[k + 6] > 0.75 || o.lit > 0.5 ? o.col : o.colSoft;
+        buf32[idx] = c;
+        if (A[k + 6] > 0.93 && px < W - 1 && py < H - 1) {   // a few heavier nuclei
+          buf32[idx + 1] = c; buf32[idx + W] = c; buf32[idx + W + 1] = c;
+        }
+      }
     });
+    ctx.putImageData(img, 0, 0);
 
     if (running) raf = requestAnimationFrame(frame);
   }
@@ -177,7 +245,10 @@
   function pause() { running = false; cancelAnimationFrame(raf); }
 
   // ── Coming close reveals the projects ──
-  function near(on) { cover.classList.toggle('is-near', on); }
+  function near(on) {
+    cover.classList.toggle('is-near', on);
+    if (!running && img) frame(performance.now());
+  }
 
   if (fine) {
     cover.addEventListener('pointermove', function (e) {
@@ -208,8 +279,8 @@
     a.addEventListener('focus', function () { lit(true); });
     a.addEventListener('blur', function () { lit(false); });
     if (orbits[i]) {
-      orbits[i].el.addEventListener('pointerenter', function () { a.classList.add('is-lit'); });
-      orbits[i].el.addEventListener('pointerleave', function () { a.classList.remove('is-lit'); });
+      orbits[i].el.addEventListener('pointerenter', function () { lit(true); });
+      orbits[i].el.addEventListener('pointerleave', function () { lit(false); });
     }
   });
 
