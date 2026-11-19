@@ -143,17 +143,17 @@
 
   function frame(now) {
     const t = (now - start) / 1000;
-    // No pointer: a slow idle glance from side to side.
-    const idle = !pointing && !reduceMotion;
-    const tyaw = idle ? Math.sin(t * 0.35) * 0.35 : targetYaw;
-    const tpitch = idle ? 0 : targetPitch;
+    // The pointer leans the turning figure a little toward itself.
+    const tyaw = pointing ? targetYaw : 0;
+    const tpitch = pointing ? targetPitch : 0;
     yawExtra += (tyaw - yawExtra) * 0.04;
     pitchExtra += (tpitch - pitchExtra) * 0.04;
     const calmTarget = cover.classList.contains('is-calm') ? 1 : 0;
     calm = reduceMotion ? calmTarget : calm + (calmTarget - calm) * 0.025;
     cx = cx0 + (cx1 - cx0) * calm; cy = cy0 + (cy1 - cy0) * calm;
 
-    const yaw = yawExtra;          // the figure faces the viewer and turns toward the pointer
+    // the figure turns slowly on its own axis, one full turn every 30 s
+    const yaw = (reduceMotion ? 0 : t * (Math.PI * 2 / 30)) + yawExtra;
     const pitch = -0.08 + pitchExtra;
     const cY = Math.cos(yaw), sY = Math.sin(yaw), cP = Math.cos(pitch), sP = Math.sin(pitch);
     if (!reduceMotion) morph(t);
@@ -357,7 +357,7 @@
       near(d < Math.min(cw, ch) * 0.55);
       // look toward the pointer: up to ~50° left/right, ~17° up/down
       pointing = true;
-      targetYaw = Math.max(-1, Math.min(1, (mx - cx * PX) / (cw * 0.5))) * 0.9;
+      targetYaw = Math.max(-1, Math.min(1, (mx - cx * PX) / (cw * 0.5))) * 0.5;
       targetPitch = Math.max(-1, Math.min(1, (my - cy * PX) / (ch * 0.5))) * 0.3;
     });
     cover.addEventListener('pointerleave', function () { near(false); pointing = false; });
