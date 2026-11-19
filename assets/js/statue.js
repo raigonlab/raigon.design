@@ -1,5 +1,5 @@
 // statue.js — a form made of pixels, always turning: a Greek head that dissolves
-// into a fish, a Greek Hercules and a plant, and back. Each project is a coloured point
+// into a tree, the torso of Hercules and a plant, and back. Each project is a coloured point
 // orbiting it; the points appear when the visitor comes close.
 (function () {
   'use strict';
@@ -23,7 +23,7 @@
   const N = data.count;
   const CREDITS = {
     head:  'fig. 01 · niobid nymph · cast KAS869, SMK · public domain',
-    fish:  'fig. 02 · barramundi · Khronos glTF sample · CC0',
+    tree:  'fig. 02 · jacaranda tree · Poly Haven · CC0',
     hercules: 'fig. 03 · lansdowne herakles · cast KAS224, SMK · public domain',
     plant: 'fig. 04 · anthurium · Poly Haven · CC0',
   };
@@ -31,7 +31,7 @@
     const rawP = decode(sh.pos, Int16Array), rawN = decode(sh.nor, Int8Array);
     const p = new Float32Array(N * 3), n = new Float32Array(N * 3);
     for (let i = 0; i < N * 3; i++) { p[i] = rawP[i] / 32767; n[i] = rawN[i] / 127; }
-    return { name: sh.name, p: p, n: n, twoSided: sh.name === 'plant' };
+    return { name: sh.name, p: p, n: n, twoSided: sh.name === 'plant' || sh.name === 'tree' };
   });
 
   // Current cloud (what gets drawn) and a random direction per point for the scatter.
@@ -39,7 +39,11 @@
   for (let i = 0; i < N * 3; i++) J[i] = Math.random() * 2 - 1;
   P.set(SHAPES[0].p); NR.set(SHAPES[0].n);
 
-  const HOLD = 7, MORPH = 2.8;   // seconds a form stays, seconds to become the next one
+  // A slow, simple change of form: every point glides to its new place together,
+  // with only a little stagger so the change feels soft rather than mechanical.
+  const HOLD = 8, MORPH = 6, WAVE = 0.8;
+  const R = new Float32Array(N);
+  for (let i = 0; i < N; i++) R[i] = Math.random();
   let shown = -1, twoSided = false;
 
   function morph(t) {
@@ -56,11 +60,16 @@
     }
     shown = -1; twoSided = true;
     const b = SHAPES[(idx + 1) % SHAPES.length];
-    const x = (phase - HOLD) / MORPH, e = x * x * (3 - 2 * x);
-    const spread = Math.sin(Math.PI * e) * 0.45;   // points fly loose mid-way
-    for (let i = 0; i < N * 3; i++) {
-      P[i] = a.p[i] + (b.p[i] - a.p[i]) * e + J[i] * spread;
-      NR[i] = a.n[i] + (b.n[i] - a.n[i]) * e;
+    const x = (phase - HOLD) / MORPH;
+    for (let i = 0; i < N; i++) {
+      const k = i * 3;
+      let u = (x - R[i] * (1 - WAVE)) / WAVE;
+      u = u < 0 ? 0 : u > 1 ? 1 : u;
+      const e = u * u * u * (u * (u * 6 - 15) + 10);           // smootherstep
+      for (let c = 0; c < 3; c++) {
+        P[k + c] = a.p[k + c] + (b.p[k + c] - a.p[k + c]) * e;
+        NR[k + c] = a.n[k + c] + (b.n[k + c] - a.n[k + c]) * e;
+      }
     }
   }
 
@@ -111,18 +120,20 @@
   });
   const legend = [...cover.querySelectorAll('.c-legend a')];
 
+  let cx0, cx1, cy0, cy1;
   let W, H, PX, cw, ch, cx, cy, scale, img, buf32, zbuf, light;
   let yawExtra = 0, pitchExtra = 0, targetYaw = 0, targetPitch = 0;
   let running = false, raf, start = performance.now();
-  let booming = false;
+  let booming = false, calm = 0, pointing = false;   // calm: 0 → 1 as the title steps aside and the figure centres
 
   function resize() {
     cw = cover.clientWidth; ch = cover.clientHeight;
     PX = cw < 700 ? 2 : 3;                       // size of one statue pixel in CSS px
     W = Math.ceil(cw / PX); H = Math.ceil(ch / PX);
     canvas.width = W; canvas.height = H;
-    cx = W * (cw < 700 ? 0.5 : 0.6);
-    cy = H * (cw < 700 ? 0.66 : 0.47);
+    cx0 = W * 0.5;  cx1 = W * 0.5;
+    cy0 = H * (cw < 700 ? 0.66 : 0.47); cy1 = H * (cw < 700 ? 0.5 : 0.47);
+    cx = cx0 + (cx1 - cx0) * calm; cy = cy0 + (cy1 - cy0) * calm;
     scale = Math.min(H * (cw < 700 ? 0.2 : 0.32), W * 0.4);
     img = ctx.createImageData(W, H);
     buf32 = new Uint32Array(img.data.buffer);
@@ -132,10 +143,17 @@
 
   function frame(now) {
     const t = (now - start) / 1000;
-    yawExtra += (targetYaw - yawExtra) * 0.05;
-    pitchExtra += (targetPitch - pitchExtra) * 0.05;
+    // No pointer: a slow idle glance from side to side.
+    const idle = !pointing && !reduceMotion;
+    const tyaw = idle ? Math.sin(t * 0.35) * 0.35 : targetYaw;
+    const tpitch = idle ? 0 : targetPitch;
+    yawExtra += (tyaw - yawExtra) * 0.04;
+    pitchExtra += (tpitch - pitchExtra) * 0.04;
+    const calmTarget = cover.classList.contains('is-calm') ? 1 : 0;
+    calm = reduceMotion ? calmTarget : calm + (calmTarget - calm) * 0.025;
+    cx = cx0 + (cx1 - cx0) * calm; cy = cy0 + (cy1 - cy0) * calm;
 
-    const yaw = (reduceMotion ? 0.6 : t * (Math.PI * 2 / 40)) + yawExtra;
+    const yaw = yawExtra;          // the figure faces the viewer and turns toward the pointer
     const pitch = -0.08 + pitchExtra;
     const cY = Math.cos(yaw), sY = Math.sin(yaw), cP = Math.cos(pitch), sP = Math.sin(pitch);
     if (!reduceMotion) morph(t);
@@ -309,6 +327,22 @@
   orbits.forEach(function (o, i) { explodeOnClick(o.el, i); });
   legend.forEach(function (a, i) { explodeOnClick(a, i); });
 
+  // ── The title steps aside after a few seconds; the pill brings it back ──
+  const toggle = cover.querySelector('.c-toggle');
+  function setCalm(on) {
+    cover.classList.toggle('is-calm', on);
+    if (toggle) {
+      toggle.textContent = on ? 'Intro +' : 'Hide';
+      toggle.setAttribute('aria-expanded', String(!on));
+    }
+    if (!running) frame(performance.now());
+  }
+  let calmTimer = setTimeout(function () { setCalm(true); }, 5500);
+  if (toggle) toggle.addEventListener('click', function () {
+    clearTimeout(calmTimer);
+    setCalm(!cover.classList.contains('is-calm'));
+  });
+
   // ── Coming close reveals the projects ──
   function near(on) {
     cover.classList.toggle('is-near', on);
@@ -321,10 +355,12 @@
       const mx = e.clientX - r.left, my = e.clientY - r.top;
       const d = Math.hypot(mx - cx * PX, my - cy * PX);
       near(d < Math.min(cw, ch) * 0.55);
-      targetYaw = ((mx / cw) - 0.5) * 0.6;
-      targetPitch = ((my / ch) - 0.5) * 0.2;
+      // look toward the pointer: up to ~50° left/right, ~17° up/down
+      pointing = true;
+      targetYaw = Math.max(-1, Math.min(1, (mx - cx * PX) / (cw * 0.5))) * 0.9;
+      targetPitch = Math.max(-1, Math.min(1, (my - cy * PX) / (ch * 0.5))) * 0.3;
     });
-    cover.addEventListener('pointerleave', function () { near(false); targetYaw = targetPitch = 0; });
+    cover.addEventListener('pointerleave', function () { near(false); pointing = false; });
   } else {
     near(true);   // no hover on touch screens: the orbit is always visible
   }
