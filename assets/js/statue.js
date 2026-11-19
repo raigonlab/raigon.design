@@ -337,7 +337,7 @@
     }
     if (!running) frame(performance.now());
   }
-  let calmTimer = setTimeout(function () { setCalm(true); }, 5500);
+  let calmTimer = setTimeout(function () { setCalm(true); }, 3000);
   if (toggle) toggle.addEventListener('click', function () {
     clearTimeout(calmTimer);
     setCalm(!cover.classList.contains('is-calm'));
